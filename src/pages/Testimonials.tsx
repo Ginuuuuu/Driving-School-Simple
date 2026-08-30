@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useOutletContext } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ShieldCheck, CheckCircle2, MessageSquare, Sparkles } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { SectionHeading } from '../components/common/SectionHeading';
@@ -43,7 +44,12 @@ export const Testimonials: React.FC = () => {
       />
 
       {/* Filter Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1 sm:p-1.5 bg-slate-100 rounded-xl sm:rounded-2xl max-w-2xl mx-auto text-[0.7rem] sm:text-xs font-bold">
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35 }}
+        className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1 sm:p-1.5 bg-slate-100 rounded-xl sm:rounded-2xl max-w-2xl mx-auto text-[0.7rem] sm:text-xs font-bold"
+      >
         <button
           onClick={() => setSelectedTag('all')}
           className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl transition-all ${
@@ -63,17 +69,37 @@ export const Testimonials: React.FC = () => {
             {tag}
           </button>
         ))}
-      </div>
+      </motion.div>
 
-      {/* Testimonials Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-8">
-        {filteredTestimonials.map((testimonial) => (
-          <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-        ))}
-      </div>
+      {/* Testimonials Grid with Staggered Motion */}
+      <motion.div
+        layout
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-8"
+      >
+        <AnimatePresence mode="popLayout">
+          {filteredTestimonials.map((testimonial, idx) => (
+            <motion.div
+              key={testimonial.id}
+              layout
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.3, delay: idx * 0.05 }}
+            >
+              <TestimonialCard testimonial={testimonial} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
 
       {/* CTA Box */}
-      <section className="bg-slate-900 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-12 text-center max-w-3xl mx-auto border border-slate-800 space-y-3 sm:space-y-4">
+      <motion.section
+        initial={{ opacity: 0, scale: 0.98 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-30px" }}
+        transition={{ duration: 0.45 }}
+        className="bg-slate-900 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-12 text-center max-w-3xl mx-auto border border-slate-800 space-y-3 sm:space-y-4 shadow-xl"
+      >
         <h2 className="text-xl sm:text-3xl font-bold font-display text-white">
           Ready to Write Your Own Driving Success Story?
         </h2>
@@ -85,13 +111,13 @@ export const Testimonials: React.FC = () => {
             variant="amber"
             size="md"
             onClick={() => onOpenBooking()}
-            className="text-xs sm:text-sm py-2.5 sm:py-3"
+            className="text-xs sm:text-sm py-2.5 sm:py-3 hover-lift"
             icon={<Sparkles className="w-4 h-4 text-slate-950" />}
           >
             Book Your First Lesson
           </Button>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
