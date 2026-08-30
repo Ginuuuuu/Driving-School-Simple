@@ -76,11 +76,11 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
   ];
 
   return (
-    <div ref={containerRef} className="relative w-full py-8 lg:py-16 select-none">
+    <div ref={containerRef} className="relative w-full py-4 lg:py-6 select-none">
       {/* FLOWING CENTRAL SERPENTINE ROAD SPINE */}
-      <div className="absolute left-6 md:left-1/2 top-10 bottom-10 -translate-x-1/2 w-10 sm:w-14 z-0 flex flex-col items-center">
+      <div className="absolute left-6 md:left-1/2 top-4 bottom-4 -translate-x-1/2 w-8 sm:w-10 z-0 flex flex-col items-center">
         {/* Outer Asphalt Road Layer */}
-        <div className="relative w-full h-full bg-slate-900 rounded-full border-2 border-slate-700 shadow-xl overflow-hidden flex justify-center">
+        <div className="relative w-full h-full bg-slate-900 rounded-full border-2 border-slate-700 shadow-md overflow-hidden flex justify-center">
           {/* Dashed Center Road Line */}
           <div className="absolute inset-y-0 w-0.5 border-r-2 border-dashed border-slate-600/70" />
 
@@ -98,20 +98,20 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
             x: carX,
             rotate: carRotate,
           }}
-          className="absolute z-20 -translate-x-1/2 pointer-events-none filter drop-shadow-2xl transition-transform"
+          className="absolute z-20 -translate-x-1/2 pointer-events-none filter drop-shadow-xl transition-transform"
         >
           {/* Headlights Glow Beam */}
-          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-10 h-10 bg-amber-300/30 rounded-full blur-md" />
+          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-8 h-8 bg-amber-300/30 rounded-full blur-sm" />
 
           {/* Illustrated Top-Down Learner Car */}
-          <div className="w-8 h-14 sm:w-10 sm:h-16 relative">
+          <div className="w-7 h-12 sm:w-8 sm:h-14 relative">
             <RoadmapCar isCompact />
           </div>
         </motion.div>
       </div>
 
       {/* MILESTONE STATIONS LIST (Alternating Left & Right on Desktop) */}
-      <div className="relative z-10 space-y-12 sm:space-y-20 lg:space-y-28">
+      <div className="relative z-10 space-y-5 sm:space-y-7 lg:space-y-9">
         {steps.map((step, idx) => {
           const isEven = idx % 2 === 0;
           const meta = milestoneIcons[idx] || milestoneIcons[0];
@@ -120,11 +120,11 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
           return (
             <motion.div
               key={step.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: idx * 0.05 }}
-              className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center"
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.4, delay: idx * 0.04 }}
+              className="grid grid-cols-1 md:grid-cols-12 gap-3 lg:gap-6 items-center"
             >
               {/* Desktop Left Side Card (if Even) */}
               <div
@@ -146,10 +146,10 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
               <div className="pl-14 md:pl-0 md:col-span-2 flex justify-start md:justify-center">
                 <button
                   onClick={() => setActiveModalStep(step)}
-                  className="group relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white border-2 border-slate-800 shadow-lg hover:scale-110 hover:border-emerald-500 transition-transform duration-200 z-10 cursor-pointer"
+                  className="group relative flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border-2 border-slate-800 shadow-md hover:scale-110 hover:border-emerald-500 transition-transform duration-200 z-10 cursor-pointer"
                   title={`Stage ${step.stepNumber}: ${step.title}`}
                 >
-                  <span className="text-xs sm:text-sm font-black font-display text-slate-900 group-hover:text-emerald-700">
+                  <span className="text-xs font-black font-display text-slate-900 group-hover:text-emerald-700">
                     {step.stepNumber}
                   </span>
 
@@ -175,7 +175,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
               </div>
 
               {/* Mobile View Card (Always visible on smaller screens) */}
-              <div className="block md:hidden pl-12 sm:pl-16 pr-1 -mt-8 sm:-mt-10">
+              <div className="block md:hidden pl-12 sm:pl-14 pr-1 -mt-7 sm:-mt-8">
                 <MilestoneCard
                   step={step}
                   meta={meta}
