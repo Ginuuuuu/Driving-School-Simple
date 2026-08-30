@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Sparkles, ShieldCheck, Clock, CheckCircle2, Car } from 'lucide-react';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
@@ -21,7 +22,12 @@ export const Book: React.FC = () => {
 
       <Breadcrumbs items={[{ label: 'Book a Lesson' }]} />
 
-      <div className="text-center space-y-2 sm:space-y-3">
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="text-center space-y-2 sm:space-y-3"
+      >
         <div className="inline-flex items-center gap-2 px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200">
           <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
           Lesson Booking Studio
@@ -32,36 +38,46 @@ export const Book: React.FC = () => {
         <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
           Complete the form below to generate your pre-formatted WhatsApp enquiry for instant scheduling with zero advance payment.
         </p>
-      </div>
+      </motion.div>
 
       {/* Main Form Container */}
-      <div className="p-3.5 sm:p-10 bg-white rounded-2xl sm:rounded-3xl border border-slate-200 shadow-xs">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.1 }}
+        className="p-3.5 sm:p-10 bg-white rounded-2xl sm:rounded-3xl border border-slate-200 shadow-xs"
+      >
         <EnquiryForm
           preselectedCourseSlug={courseParam}
           preselectedInstructorId={instructorParam}
         />
-      </div>
+      </motion.div>
 
       {/* Trust Guarantee Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 text-center">
-        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs space-y-1">
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.2 }}
+        className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 text-center"
+      >
+        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs space-y-1 hover-lift">
           <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 mx-auto" />
           <h4 className="text-xs font-bold text-slate-900">100% Dual-Control</h4>
           <p className="text-[0.65rem] sm:text-[0.7rem] text-slate-500">Secondary instructor safety pedals</p>
         </div>
 
-        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs space-y-1">
+        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs space-y-1 hover-lift">
           <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 mx-auto" />
           <h4 className="text-xs font-bold text-slate-900">Flexible Scheduling</h4>
           <p className="text-[0.65rem] sm:text-[0.7rem] text-slate-500">Daily 1-hour slots from 6 AM to 8 PM</p>
         </div>
 
-        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs space-y-1">
+        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs space-y-1 hover-lift">
           <Car className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 mx-auto" />
           <h4 className="text-xs font-bold text-slate-900">Doorstep Pickup</h4>
           <p className="text-[0.65rem] sm:text-[0.7rem] text-slate-500">Directly from your home or office</p>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
