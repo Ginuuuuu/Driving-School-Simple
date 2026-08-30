@@ -123,9 +123,9 @@ export const Contact: React.FC = () => {
         </div>
 
         {/* Right Column: Full Enquiry Form (7 Cols) */}
-        <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-6">
+        <div className="lg:col-span-7 p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4 sm:space-y-6">
           <div>
-            <h3 className="text-xl font-bold font-display text-slate-900">
+            <h3 className="text-lg sm:text-xl font-bold font-display text-slate-900">
               Send a Lesson Enquiry
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">

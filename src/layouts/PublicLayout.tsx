@@ -79,12 +79,12 @@ export const PublicLayout: React.FC = () => {
       </main>
 
       {/* Floating Bottom-Right Quick WhatsApp Hub */}
-      <div className="fixed bottom-6 right-6 z-30 flex flex-col gap-3 print:hidden">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-30 flex flex-col gap-3 print:hidden">
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-3 rounded-full bg-[#25D366] text-white font-bold shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all group"
+          className="flex items-center justify-center gap-2 p-2.5 sm:px-4 sm:py-3 rounded-full bg-[#25D366] text-white font-bold shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all group"
           aria-label="Chat directly on WhatsApp"
         >
           <MessageCircle className="w-5 h-5 fill-current transform group-hover:rotate-12 transition-transform" />

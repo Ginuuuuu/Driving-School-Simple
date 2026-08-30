@@ -237,12 +237,11 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
-      {/* 2-Column Responsive Grid for Core Fields */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {/* Full Name */}
+    <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4" noValidate>
+      {/* Row 1: Full Name & WhatsApp Mobile */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         <div>
-          <label htmlFor="fullName" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+          <label htmlFor="fullName" className="block text-xs font-semibold text-slate-700 mb-1">
             Full Name <span className="text-red-500">*</span>
           </label>
           <input
@@ -252,20 +251,19 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
             placeholder="e.g. Rahul Sharma"
             value={formState.fullName}
             onChange={(e) => setFormState({ ...formState, fullName: e.target.value })}
-            className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
-              errors.fullName ? 'border-red-400 bg-red-50/50' : 'border-slate-300 bg-white'
+            className={`w-full px-3.5 py-2 sm:py-2.5 rounded-xl border text-xs sm:text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
+              errors.fullName ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
             }`}
           />
-          {errors.fullName && <p className="mt-1 text-xs text-red-600">{errors.fullName}</p>}
+          {errors.fullName && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.fullName}</p>}
         </div>
 
-        {/* Phone Number */}
         <div>
-          <label htmlFor="phoneNumber" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-            Mobile Number (WhatsApp) <span className="text-red-500">*</span>
+          <label htmlFor="phoneNumber" className="block text-xs font-semibold text-slate-700 mb-1">
+            WhatsApp Mobile <span className="text-red-500">*</span>
           </label>
           <div className="relative">
-            <span className="absolute left-3.5 top-2.5 text-slate-400 text-sm font-semibold">+91</span>
+            <span className="absolute left-3 top-2 sm:top-2.5 text-slate-400 text-xs sm:text-sm font-semibold">+91</span>
             <input
               id="phoneNumber"
               type="tel"
@@ -274,44 +272,26 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               placeholder="98765 43210"
               value={formState.phoneNumber}
               onChange={(e) => setFormState({ ...formState, phoneNumber: e.target.value.replace(/[^0-9]/g, '') })}
-              className={`w-full pl-12 pr-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
-                errors.phoneNumber ? 'border-red-400 bg-red-50/50' : 'border-slate-300 bg-white'
+              className={`w-full pl-11 pr-3.5 py-2 sm:py-2.5 rounded-xl border text-xs sm:text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
+                errors.phoneNumber ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
               }`}
             />
           </div>
-          {errors.phoneNumber && <p className="mt-1 text-xs text-red-600">{errors.phoneNumber}</p>}
+          {errors.phoneNumber && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.phoneNumber}</p>}
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {/* Email Address */}
+      {/* Row 2: City & Pickup Area */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         <div>
-          <label htmlFor="email" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-            Email Address (Optional)
-          </label>
-          <input
-            id="email"
-            type="email"
-            placeholder="e.g. rahul@example.com"
-            value={formState.email}
-            onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-            className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
-              errors.email ? 'border-red-400 bg-red-50/50' : 'border-slate-300 bg-white'
-            }`}
-          />
-          {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
-        </div>
-
-        {/* City Selection */}
-        <div>
-          <label htmlFor="city" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-            Your City / Metro Area
+          <label htmlFor="city" className="block text-xs font-semibold text-slate-700 mb-1">
+            City / Metro Area
           </label>
           <select
             id="city"
             value={formState.city}
             onChange={(e) => setFormState({ ...formState, city: e.target.value })}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+            className="w-full px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
           >
             {siteConfig.serviceCities.map((city) => (
               <option key={city} value={city}>
@@ -320,59 +300,57 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
             ))}
           </select>
         </div>
-      </div>
 
-      {/* Doorstep Pickup Locality */}
-      <div>
-        <label htmlFor="pickupArea" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-          Pickup Locality / Apartment / Pincode <span className="text-red-500">*</span>
-        </label>
-        <input
-          id="pickupArea"
-          type="text"
-          required
-          placeholder="e.g. Indiranagar 100ft Road / Sector 62 / Andheri West"
-          value={formState.pickupArea}
-          onChange={(e) => setFormState({ ...formState, pickupArea: e.target.value })}
-          className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
-            errors.pickupArea ? 'border-red-400 bg-red-50/50' : 'border-slate-300 bg-white'
-          }`}
-        />
-        {errors.pickupArea && <p className="mt-1 text-xs text-red-600">{errors.pickupArea}</p>}
-      </div>
-
-      {/* Course Selection */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="courseSlug" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-            Preferred Driving Course
+          <label htmlFor="pickupArea" className="block text-xs font-semibold text-slate-700 mb-1">
+            Pickup Locality / Address <span className="text-red-500">*</span>
+          </label>
+          <input
+            id="pickupArea"
+            type="text"
+            required
+            placeholder="e.g. Indiranagar / Sector 62 / Bandra"
+            value={formState.pickupArea}
+            onChange={(e) => setFormState({ ...formState, pickupArea: e.target.value })}
+            className={`w-full px-3.5 py-2 sm:py-2.5 rounded-xl border text-xs sm:text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
+              errors.pickupArea ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
+            }`}
+          />
+          {errors.pickupArea && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.pickupArea}</p>}
+        </div>
+      </div>
+
+      {/* Row 3: Course Selection & Transmission */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        <div>
+          <label htmlFor="courseSlug" className="block text-xs font-semibold text-slate-700 mb-1">
+            Preferred Driving Program
           </label>
           <select
             id="courseSlug"
             value={formState.courseSlug}
             onChange={(e) => setFormState({ ...formState, courseSlug: e.target.value })}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+            className="w-full px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
           >
             {courses.map((course) => (
               <option key={course.slug} value={course.slug}>
-                {course.shortTitle} (₹{course.price})
+                {course.shortTitle} (₹{course.price.toLocaleString('en-IN')})
               </option>
             ))}
           </select>
         </div>
 
-        {/* Transmission */}
         <div>
-          <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-semibold text-slate-700 mb-1">
             Vehicle Transmission
           </label>
           <div className="grid grid-cols-2 gap-2">
             <button
               type="button"
               onClick={() => setFormState({ ...formState, transmission: 'manual' })}
-              className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all ${
+              className={`py-2 px-2.5 rounded-xl border text-xs font-semibold transition-all ${
                 formState.transmission === 'manual'
-                  ? 'border-emerald-600 bg-emerald-50 text-emerald-900 shadow-sm'
+                  ? 'border-emerald-600 bg-emerald-50 text-emerald-900 shadow-xs font-bold'
                   : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
               }`}
             >
@@ -381,9 +359,9 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
             <button
               type="button"
               onClick={() => setFormState({ ...formState, transmission: 'automatic' })}
-              className={`py-2 px-3 rounded-xl border text-xs font-bold transition-all ${
+              className={`py-2 px-2.5 rounded-xl border text-xs font-semibold transition-all ${
                 formState.transmission === 'automatic'
-                  ? 'border-emerald-600 bg-emerald-50 text-emerald-900 shadow-sm'
+                  ? 'border-emerald-600 bg-emerald-50 text-emerald-900 shadow-xs font-bold'
                   : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
               }`}
             >
@@ -393,89 +371,108 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
         </div>
       </div>
 
-      {/* Time Slot & Experience */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {/* Row 4: Preferred Time Slot & Experience Level */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         <div>
-          <label htmlFor="preferredTimeSlot" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+          <label htmlFor="preferredTimeSlot" className="block text-xs font-semibold text-slate-700 mb-1">
             Preferred Time Slot
           </label>
           <select
             id="preferredTimeSlot"
             value={formState.preferredTimeSlot}
             onChange={(e) => setFormState({ ...formState, preferredTimeSlot: e.target.value as TimeSlot })}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+            className="w-full px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
           >
-            <option value="early_morning">Early Morning (6:00 AM – 8:00 AM)</option>
-            <option value="morning">Morning (8:00 AM – 12:00 PM)</option>
-            <option value="afternoon">Afternoon (12:00 PM – 4:00 PM)</option>
-            <option value="evening">Evening (4:00 PM – 8:00 PM)</option>
-            <option value="weekend_only">Weekends Only (Sat/Sun)</option>
+            <option value="early_morning">Early Morning (6 AM – 8 AM)</option>
+            <option value="morning">Morning (8 AM – 12 PM)</option>
+            <option value="afternoon">Afternoon (12 PM – 4 PM)</option>
+            <option value="evening">Evening (4 PM – 8 PM)</option>
+            <option value="weekend_only">Weekends (Sat/Sun)</option>
           </select>
         </div>
 
         <div>
-          <label htmlFor="experienceLevel" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-            Current Experience Level
+          <label htmlFor="experienceLevel" className="block text-xs font-semibold text-slate-700 mb-1">
+            Driving Experience Level
           </label>
           <select
             id="experienceLevel"
             value={formState.experienceLevel}
             onChange={(e) => setFormState({ ...formState, experienceLevel: e.target.value as ExperienceLevel })}
-            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+            className="w-full px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
           >
             <option value="absolute_beginner">Absolute Beginner (Never driven)</option>
-            <option value="some_experience">Some basic steering experience</option>
-            <option value="test_prep">Preparing for RTO Test</option>
-            <option value="refresher">Have Licence, need confidence</option>
+            <option value="some_experience">Basic Steering & Clutch Knowledge</option>
+            <option value="test_prep">RTO Test Track Preparation</option>
+            <option value="refresher">Refresher (Need Road Confidence)</option>
           </select>
         </div>
       </div>
 
-      {/* Optional Note */}
-      <div>
-        <label htmlFor="message" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-          Special Notes or Requests (Optional)
-        </label>
-        <textarea
-          id="message"
-          rows={2}
-          placeholder="e.g. Requesting female instructor, or need office route practice..."
-          value={formState.message}
-          onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-          className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none resize-none"
-        />
+      {/* Row 5: Email & Special Note */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        <div>
+          <label htmlFor="email" className="block text-xs font-semibold text-slate-700 mb-1">
+            Email Address (Optional)
+          </label>
+          <input
+            id="email"
+            type="email"
+            placeholder="e.g. rahul@example.com"
+            value={formState.email}
+            onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+            className={`w-full px-3.5 py-2 sm:py-2.5 rounded-xl border text-xs sm:text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
+              errors.email ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
+            }`}
+          />
+          {errors.email && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.email}</p>}
+        </div>
+
+        <div>
+          <label htmlFor="message" className="block text-xs font-semibold text-slate-700 mb-1">
+            Special Notes / Requests (Optional)
+          </label>
+          <input
+            id="message"
+            type="text"
+            placeholder="e.g. Female instructor, office route practice"
+            value={formState.message}
+            onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+            className="w-full px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+          />
+        </div>
       </div>
 
       {/* Terms Agreement */}
-      <div>
+      <div className="pt-0.5">
         <label className="flex items-start gap-2.5 cursor-pointer select-none">
           <input
             type="checkbox"
             checked={formState.agreeToTerms}
             onChange={(e) => setFormState({ ...formState, agreeToTerms: e.target.checked })}
-            className="mt-0.5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 w-4 h-4"
+            className="mt-0.5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 w-3.5 h-3.5 sm:w-4 sm:h-4"
           />
-          <span className="text-xs text-slate-600 leading-relaxed">
+          <span className="text-[0.72rem] sm:text-xs text-slate-600 leading-snug">
             I agree to receive lesson scheduling and instructor details via WhatsApp/SMS. 100% dual-control safety guaranteed.
           </span>
         </label>
-        {errors.agreeToTerms && <p className="mt-1 text-xs text-red-600">{errors.agreeToTerms}</p>}
+        {errors.agreeToTerms && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.agreeToTerms}</p>}
       </div>
 
       {/* Primary Submit Button */}
       <Button
         type="submit"
         variant="primary"
-        size="lg"
+        size="md"
         isLoading={isSubmitting}
-        className="w-full justify-center text-base py-3.5 shadow-md hover:shadow-glow-emerald"
-        icon={<Sparkles className="w-5 h-5 text-amber-300" />}
+        className="w-full justify-center text-xs sm:text-sm py-2.5 sm:py-3 shadow-md font-bold"
+        icon={<Sparkles className="w-4 h-4 text-amber-300" />}
       >
         Generate WhatsApp Booking Request
       </Button>
 
       {/* Security & Response SLA Note */}
-      <div className="flex items-center justify-center gap-4 text-[0.72rem] text-slate-500 pt-1">
+      <div className="flex items-center justify-center gap-3 text-[0.68rem] sm:text-xs text-slate-500 pt-0.5">
         <span className="flex items-center gap-1">
           <Shield className="w-3.5 h-3.5 text-emerald-600" /> No Advance Payment Required
         </span>
