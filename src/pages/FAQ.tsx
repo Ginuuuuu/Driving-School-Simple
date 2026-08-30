@@ -201,6 +201,3 @@ export const FAQ: React.FC = () => {
     </div>
   );
 };
-    </div>
-  );
-};
