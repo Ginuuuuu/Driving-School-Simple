@@ -132,7 +132,7 @@ export const CourseDetail: React.FC = () => {
               variant="amber"
               size="md"
               onClick={() => onOpenBooking(course.slug)}
-              className="w-full justify-center shadow-md font-bold text-xs sm:text-sm py-2.5 sm:py-3"
+              className="w-full justify-center shadow-md font-bold text-xs sm:text-sm py-2.5 sm:py-3 hover-lift"
               icon={<Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-950" />}
             >
               Book This Course Now
@@ -143,14 +143,14 @@ export const CourseDetail: React.FC = () => {
               size="md"
               href={whatsappUrl}
               isExternal
-              className="w-full justify-center text-xs sm:text-sm py-2 sm:py-2.5"
+              className="w-full justify-center text-xs sm:text-sm py-2 sm:py-2.5 hover-lift"
               icon={<MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" />}
             >
               Enquire on WhatsApp
             </Button>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 2-Column Content Grid: Left Syllabus, Right Inclusions & Prerequisites */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-start">
@@ -173,11 +173,11 @@ export const CourseDetail: React.FC = () => {
               return (
                 <div
                   key={idx}
-                  className="rounded-xl sm:rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs transition-all"
+                  className="rounded-xl sm:rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-xs transition-all hover:border-slate-300"
                 >
                   <button
                     onClick={() => toggleModule(idx)}
-                    className="w-full p-3 sm:p-5 text-left flex items-start justify-between gap-2.5 sm:gap-3 hover:bg-slate-50 transition-colors"
+                    className="w-full p-3 sm:p-5 text-left flex items-start justify-between gap-2.5 sm:gap-3 hover:bg-slate-50/80 transition-colors"
                   >
                     <div className="flex items-start gap-2.5 sm:gap-3 min-w-0">
                       <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-emerald-100 text-emerald-800 text-[0.7rem] sm:text-xs font-black flex items-center justify-center shrink-0 mt-0.5">
@@ -200,32 +200,42 @@ export const CourseDetail: React.FC = () => {
                     />
                   </button>
 
-                  {isOpen && (
-                    <div className="px-3.5 sm:px-5 pb-3.5 sm:pb-5 pt-1 border-t border-slate-100 bg-slate-50/50 space-y-2.5 sm:space-y-3 animate-in fade-in duration-150">
-                      <div>
-                        <span className="text-[0.65rem] sm:text-[0.7rem] uppercase font-bold text-slate-500 tracking-wider">
-                          Session Objective:
-                        </span>
-                        <p className="text-xs sm:text-sm text-slate-700 mt-0.5 leading-relaxed">
-                          {mod.objective}
-                        </p>
-                      </div>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-3.5 sm:px-5 pb-3.5 sm:pb-5 pt-1 border-t border-slate-100 bg-slate-50/50 space-y-2.5 sm:space-y-3">
+                          <div>
+                            <span className="text-[0.65rem] sm:text-[0.7rem] uppercase font-bold text-slate-500 tracking-wider">
+                              Session Objective:
+                            </span>
+                            <p className="text-xs sm:text-sm text-slate-700 mt-0.5 leading-relaxed">
+                              {mod.objective}
+                            </p>
+                          </div>
 
-                      <div>
-                        <span className="text-[0.65rem] sm:text-[0.7rem] uppercase font-bold text-slate-500 tracking-wider">
-                          Key Topics Covered:
-                        </span>
-                        <ul className="mt-1 space-y-1 text-xs text-slate-600">
-                          {mod.topics.map((t, i) => (
-                            <li key={i} className="flex items-center gap-2">
-                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                              <span className="text-[0.72rem] sm:text-xs">{t}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  )}
+                          <div>
+                            <span className="text-[0.65rem] sm:text-[0.7rem] uppercase font-bold text-slate-500 tracking-wider">
+                              Key Topics Covered:
+                            </span>
+                            <ul className="mt-1 space-y-1 text-xs text-slate-600">
+                              {mod.topics.map((t, i) => (
+                                <li key={i} className="flex items-center gap-2">
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                                  <span className="text-[0.72rem] sm:text-xs">{t}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
