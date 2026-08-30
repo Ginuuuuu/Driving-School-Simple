@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useOutletContext } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Filter, Sparkles, Check, Car, Clock } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { SectionHeading } from '../components/common/SectionHeading';
@@ -53,7 +54,12 @@ export const Courses: React.FC = () => {
       />
 
       {/* Filter and Search Bar */}
-      <div className="p-3.5 sm:p-6 bg-white rounded-2xl sm:rounded-3xl border border-slate-200 shadow-xs space-y-3 sm:space-y-4">
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35 }}
+        className="p-3.5 sm:p-6 bg-white rounded-2xl sm:rounded-3xl border border-slate-200 shadow-xs space-y-3 sm:space-y-4"
+      >
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-2.5 sm:gap-4 items-center">
           {/* Search Box (6 cols) */}
           <div className="sm:col-span-6 relative">
@@ -63,7 +69,7 @@ export const Courses: React.FC = () => {
               placeholder="Search courses, parking, highway, RTO..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 sm:pl-10 pr-3.5 sm:pr-4 py-2 sm:py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+              className="w-full pl-9 sm:pl-10 pr-3.5 sm:pr-4 py-2 sm:py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none transition-all"
             />
           </div>
 
@@ -72,7 +78,7 @@ export const Courses: React.FC = () => {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white"
+              className="w-full px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white transition-all"
             >
               <option value="all">All Categories</option>
               <option value="beginner">Beginner Complete</option>
@@ -88,7 +94,7 @@ export const Courses: React.FC = () => {
             <select
               value={selectedTransmission}
               onChange={(e) => setSelectedTransmission(e.target.value)}
-              className="w-full px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white"
+              className="w-full px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white transition-all"
             >
               <option value="all">All Transmissions</option>
               <option value="manual">Manual Transmission</option>
@@ -109,25 +115,38 @@ export const Courses: React.FC = () => {
                 setSelectedCategory('all');
                 setSelectedTransmission('all');
               }}
-              className="text-emerald-700 font-bold hover:underline"
+              className="text-emerald-700 font-bold hover:underline transition-colors"
             >
               Reset Filters
             </button>
           </div>
         )}
-      </div>
+      </motion.div>
 
-      {/* Courses Grid */}
+      {/* Courses Grid with Staggered Entrance */}
       {filteredCourses.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-8">
-          {filteredCourses.map((course) => (
-            <CourseCard
-              key={course.id}
-              course={course}
-              onBookNow={(slug) => onOpenBooking(slug)}
-            />
-          ))}
-        </div>
+        <motion.div
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-8"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredCourses.map((course, idx) => (
+              <motion.div
+                key={course.id}
+                layout
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.3, delay: idx * 0.05 }}
+              >
+                <CourseCard
+                  course={course}
+                  onBookNow={(slug) => onOpenBooking(slug)}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       ) : (
         /* Empty State */
         <div className="p-12 text-center bg-white rounded-3xl border border-slate-200 shadow-xs max-w-md mx-auto space-y-3">
