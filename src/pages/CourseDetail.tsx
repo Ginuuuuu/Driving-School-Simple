@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link, useOutletContext, Navigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Clock,
   Car,
@@ -57,7 +58,12 @@ export const CourseDetail: React.FC = () => {
       />
 
       {/* Course Hero Banner */}
-      <section className="bg-slate-900 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-10 lg:p-14 border border-slate-800 shadow-xl sm:shadow-2xl relative overflow-hidden">
+      <motion.section
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45 }}
+        className="bg-slate-900 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-10 lg:p-14 border border-slate-800 shadow-xl sm:shadow-2xl relative overflow-hidden"
+      >
         <div className="absolute right-0 bottom-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center relative z-10">
