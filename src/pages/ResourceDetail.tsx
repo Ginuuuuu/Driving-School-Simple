@@ -125,6 +125,3 @@ export const ResourceDetail: React.FC = () => {
     </div>
   );
 };
-    </div>
-  );
-};
