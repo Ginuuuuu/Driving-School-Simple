@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Phone, MessageCircle, Mail, MapPin, Clock, ShieldCheck, Sparkles, Navigation } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { SectionHeading } from '../components/common/SectionHeading';
@@ -34,7 +35,12 @@ export const Contact: React.FC = () => {
       {/* Main Grid: Left Contact Info & Branches, Right Enquiry Form */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-start">
         {/* Left Column: Direct Contact & Locations (5 Cols) */}
-        <div className="lg:col-span-5 space-y-4 sm:space-y-6">
+        <motion.div
+          initial={{ opacity: 0, x: -15 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4 }}
+          className="lg:col-span-5 space-y-4 sm:space-y-6"
+        >
           {/* Quick Helpline Cards */}
           <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-md sm:shadow-lg space-y-3.5 sm:space-y-5">
             <h3 className="text-base sm:text-lg font-bold font-display text-white">
@@ -44,7 +50,7 @@ export const Contact: React.FC = () => {
             <div className="space-y-2.5 sm:space-y-4 text-xs sm:text-sm">
               <a
                 href={`tel:${siteConfig.phoneDial}`}
-                className="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 transition-colors"
+                className="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 hover-lift-subtle transition-all"
               >
                 <div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-emerald-500/20 text-emerald-400">
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -59,7 +65,7 @@ export const Contact: React.FC = () => {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-[#25D366]/10 hover:bg-[#25D366]/20 text-slate-200 transition-colors border border-[#25D366]/30"
+                className="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-[#25D366]/10 hover:bg-[#25D366]/20 text-slate-200 hover-lift-subtle transition-all border border-[#25D366]/30"
               >
                 <div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-[#25D366] text-white">
                   <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
@@ -91,7 +97,7 @@ export const Contact: React.FC = () => {
             {siteConfig.branches.map((branch) => (
               <div
                 key={branch.id}
-                className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs space-y-1.5 sm:space-y-2"
+                className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs space-y-1.5 sm:space-y-2 hover-lift"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-slate-900 text-sm">{branch.name}</span>
@@ -112,7 +118,7 @@ export const Contact: React.FC = () => {
                     href={branch.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 hover:underline text-slate-600 hover:text-slate-900"
+                    className="flex items-center gap-1 hover:underline text-slate-600 hover:text-slate-900 transition-colors"
                   >
                     <Navigation className="w-3.5 h-3.5" /> Map
                   </a>
@@ -120,10 +126,15 @@ export const Contact: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Column: Full Enquiry Form (7 Cols) */}
-        <div className="lg:col-span-7 p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4 sm:space-y-6">
+        <motion.div
+          initial={{ opacity: 0, x: 15 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="lg:col-span-7 p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-sm space-y-4 sm:space-y-6"
+        >
           <div>
             <h3 className="text-lg sm:text-xl font-bold font-display text-slate-900">
               Send a Lesson Enquiry
@@ -134,7 +145,7 @@ export const Contact: React.FC = () => {
           </div>
 
           <EnquiryForm />
-        </div>
+        </motion.div>
       </div>
     </div>
   );
