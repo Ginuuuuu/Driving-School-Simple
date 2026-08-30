@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ChevronDown, MessageCircle, HelpCircle } from 'lucide-react';
+import { Search, Plus, ArrowRight, MessageCircle, Phone, HelpCircle } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
@@ -12,7 +13,7 @@ export const FAQ: React.FC = () => {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [openItemIds, setOpenItemIds] = useState<Set<string>>(new Set([faqs[0]?.id || '']));
+  const [openMobileId, setOpenMobileId] = useState<string | null>(faqs[0]?.id || null);
 
   const categories = ['all', 'Licence & RTO', 'Lessons & Scheduling', 'Vehicles & Safety', 'Pricing & Payments', 'Beginners'];
 
@@ -27,173 +28,208 @@ export const FAQ: React.FC = () => {
     });
   }, [faqs, searchQuery, selectedCategory]);
 
-  const toggleItem = (id: string) => {
-    setOpenItemIds((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      return next;
-    });
-  };
-
-  const handleExpandAll = () => {
-    setOpenItemIds(new Set(filteredFAQs.map((f) => f.id)));
-  };
-
-  const handleCollapseAll = () => {
-    setOpenItemIds(new Set());
+  const toggleMobileFaq = (id: string) => {
+    setOpenMobileId(openMobileId === id ? null : id);
   };
 
   const whatsappUrl = generateDirectWhatsAppChatLink(siteConfig);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 space-y-6 sm:space-y-12">
+    <div className="py-4 sm:py-10">
       <SEO
         title="Frequently Asked Questions | RTO Rules & Lesson FAQs"
         description="Got questions about getting your learner's licence, dual-control cars, automated RTO tracks, or scheduling? Browse our comprehensive FAQ."
         canonicalPath="/faq"
       />
 
-      <div>
-        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-slate-900 tracking-tight">
-          Frequently Asked Questions
-        </h1>
-      </div>
+      {/* ============================================================ */}
+      {/* DESKTOP UI (md:block) — Clean 3-Column Direct Grid Layout     */}
+      {/* ============================================================ */}
+      <div className="hidden md:block max-w-7xl mx-auto px-6 lg:px-8 space-y-10 lg:space-y-12">
+        {/* Page Header */}
+        <div className="space-y-3">
+          <h1 className="text-3xl lg:text-4xl font-extrabold font-display text-slate-900 tracking-tight">
+            Frequently Asked Questions
+          </h1>
 
-      {/* Search & Category Filter */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.35 }}
-        className="space-y-3 sm:space-y-4"
-      >
-        <div className="relative">
-          <Search className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 absolute left-3.5 sm:left-4 top-2.5 sm:top-3.5" />
-          <input
-            type="text"
-            placeholder="Search questions (e.g. licence, test track, doorstep)..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 sm:pl-12 pr-3.5 sm:pr-4 py-2 sm:py-3 rounded-xl sm:rounded-2xl border border-slate-200 bg-white text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none shadow-xs transition-all"
-          />
-        </div>
-
-        <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
-          <div className="flex flex-wrap gap-1 sm:gap-1.5">
+          {/* Category Filter Tabs */}
+          <div className="flex flex-wrap items-center gap-2 pt-2">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-lg sm:rounded-xl text-[0.7rem] sm:text-xs font-semibold transition-all ${
+                className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
                   selectedCategory === cat
-                    ? 'bg-emerald-600 text-white shadow-xs'
-                    : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                    ? 'bg-slate-900 text-white shadow-sm'
+                    : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                 }`}
               >
                 {cat === 'all' ? 'All Questions' : cat}
               </button>
             ))}
           </div>
+        </div>
 
-          <div className="flex items-center gap-2 text-[0.7rem] sm:text-xs font-semibold text-slate-500">
-            <button onClick={handleExpandAll} className="hover:text-emerald-700 underline transition-colors">
-              Expand All
-            </button>
-            <span>•</span>
-            <button onClick={handleCollapseAll} className="hover:text-emerald-700 underline transition-colors">
-              Collapse All
-            </button>
+        {/* 3-Column Grid of Questions and Direct Answers */}
+        {filteredFAQs.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10">
+            {filteredFAQs.map((faq) => (
+              <div key={faq.id} className="space-y-2">
+                <h3 className="text-base font-bold text-slate-900 leading-snug">
+                  {faq.question}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="p-10 text-center bg-white rounded-3xl border border-slate-200 max-w-md mx-auto space-y-2">
+            <p className="text-sm font-bold text-slate-800">No questions found</p>
+            <p className="text-xs text-slate-500">Try selecting a different category or contact our team directly.</p>
+          </div>
+        )}
+
+        {/* Desktop Bottom CTA Card */}
+        <div className="p-8 lg:p-10 rounded-3xl bg-slate-50 border border-slate-200/80 flex items-center justify-between gap-6">
+          <div className="space-y-1">
+            <h3 className="text-xl font-bold font-display text-slate-900">
+              Still have questions?
+            </h3>
+            <p className="text-sm text-slate-500">
+              We understand. Let's get in touch directly with our team, then.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3 shrink-0">
+            <Button
+              variant="outline"
+              size="md"
+              href={whatsappUrl}
+              isExternal
+              className="rounded-full px-5 py-2.5 font-bold hover-lift"
+              icon={<MessageCircle className="w-4 h-4 text-emerald-600" />}
+            >
+              WhatsApp Us
+            </Button>
+            <Button
+              variant="primary"
+              size="md"
+              to="/contact"
+              className="rounded-full px-6 py-2.5 font-bold shadow-md hover-lift"
+              icon={<ArrowRight className="w-4 h-4" />}
+            >
+              Contact Us
+            </Button>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Accordion FAQ List */}
-      {filteredFAQs.length > 0 ? (
-        <div className="space-y-2 sm:space-y-3">
-          {filteredFAQs.map((faq) => {
-            const isOpen = openItemIds.has(faq.id);
+      {/* ============================================================ */}
+      {/* MOBILE UI (md:hidden) — Clean Help Desk Accordion Layout      */}
+      {/* ============================================================ */}
+      <div className="md:hidden max-w-md mx-auto px-4 space-y-6">
+        {/* Mobile Header */}
+        <div className="space-y-2">
+          <h1 className="text-xl font-bold font-display text-slate-900 tracking-tight">
+            Frequently Asked Questions
+          </h1>
 
-            return (
-              <div
-                key={faq.id}
-                className="rounded-xl sm:rounded-2xl border border-slate-200 bg-white shadow-xs overflow-hidden transition-all hover:border-slate-300"
-              >
-                <button
-                  onClick={() => toggleItem(faq.id)}
-                  className="w-full p-3 sm:p-5 text-left flex items-start justify-between gap-3 hover:bg-slate-50/80 transition-colors"
-                >
-                  <div className="flex items-start gap-2 sm:gap-3">
-                    <HelpCircle className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 shrink-0 mt-0.5" />
-                    <span className="text-xs sm:text-base font-bold text-slate-900 leading-snug">
-                      {faq.question}
-                    </span>
-                  </div>
-                  <ChevronDown
-                    className={`w-4 h-4 sm:w-5 sm:h-5 text-slate-400 transition-transform duration-200 shrink-0 ${
-                      isOpen ? 'rotate-180 text-emerald-600' : ''
-                    }`}
-                  />
-                </button>
+          {/* Search Help Input */}
+          <div className="relative pt-1">
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+            <input
+              type="text"
+              placeholder="Search Help"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-full text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
+            />
+          </div>
+        </div>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: 'easeInOut' }}
-                      className="overflow-hidden"
+        {/* Section Label */}
+        <div className="space-y-2">
+          <div className="text-[0.7rem] uppercase tracking-wider font-extrabold text-slate-500 px-1">
+            FAQ
+          </div>
+
+          {/* Mobile Accordion Card List */}
+          {filteredFAQs.length > 0 ? (
+            <div className="bg-white rounded-2xl border border-slate-200 divide-y divide-slate-100 overflow-hidden shadow-xs">
+              {filteredFAQs.map((faq) => {
+                const isOpen = openMobileId === faq.id;
+
+                return (
+                  <div key={faq.id} className="transition-colors">
+                    <button
+                      onClick={() => toggleMobileFaq(faq.id)}
+                      className="w-full py-3.5 px-4 text-left flex items-center justify-between gap-3 hover:bg-slate-50/50 transition-colors"
                     >
-                      <div className="px-3.5 sm:px-5 pb-3.5 sm:pb-5 pt-1 border-t border-slate-100 bg-slate-50/50">
-                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pl-6 sm:pl-8">
-                          {faq.answer}
-                        </p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        <div className="p-6 sm:p-8 text-center bg-white rounded-2xl sm:rounded-3xl border border-slate-200 max-w-md mx-auto space-y-2">
-          <p className="text-xs sm:text-sm font-bold text-slate-800">No questions found matching your search</p>
-          <p className="text-xs text-slate-500">Try searching a different keyword or chat with us directly.</p>
-        </div>
-      )}
+                      <span className={`text-xs leading-snug ${isOpen ? 'font-bold text-slate-950' : 'font-semibold text-slate-800'}`}>
+                        {faq.question}
+                      </span>
+                      <Plus
+                        className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${
+                          isOpen ? 'rotate-45 text-emerald-600' : ''
+                        }`}
+                      />
+                    </button>
 
-      {/* Still Have Questions? Banner */}
-      <motion.section
-        initial={{ opacity: 0, scale: 0.98 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-30px" }}
-        transition={{ duration: 0.4 }}
-        className="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-slate-900 text-white border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 shadow-xl"
-      >
-        <div className="space-y-1 text-center sm:text-left">
-          <h3 className="text-sm sm:text-lg font-bold font-display text-white">
-            Have a Specific Question About Your RTO Zone?
-          </h3>
-          <p className="text-xs text-slate-300">
-            Our admissions team responds within 15 minutes on WhatsApp.
-          </p>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2, ease: 'easeOut' }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-4 pb-3.5 pt-0 text-xs text-slate-600 leading-relaxed border-t border-slate-50 bg-slate-50/30">
+                            {faq.answer}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="p-6 text-center bg-white rounded-2xl border border-slate-200 space-y-1">
+              <p className="text-xs font-bold text-slate-800">No questions found</p>
+              <p className="text-[0.7rem] text-slate-500">Try searching a different keyword.</p>
+            </div>
+          )}
         </div>
 
-        <Button
-          variant="whatsapp"
-          size="sm"
-          href={whatsappUrl}
-          isExternal
-          className="shrink-0 shadow-md text-xs sm:text-sm py-2 sm:py-2.5 w-full sm:w-auto justify-center hover-lift"
-          icon={<MessageCircle className="w-4 h-4 fill-current" />}
-        >
-          Chat on WhatsApp
-        </Button>
-      </motion.section>
+        {/* Mobile Bottom CTA Card */}
+        <div className="p-5 bg-white rounded-2xl border border-slate-200 text-center space-y-3 shadow-xs">
+          <div className="space-y-0.5">
+            <h4 className="text-sm font-bold font-display text-slate-900">
+              Still stuck? Help is a message away
+            </h4>
+            <p className="text-xs text-slate-500">
+              Chat directly with our instructors on WhatsApp.
+            </p>
+          </div>
+
+          <Button
+            variant="whatsapp"
+            size="md"
+            href={whatsappUrl}
+            isExternal
+            className="w-full justify-center rounded-full font-bold shadow-sm py-2.5 text-xs"
+            icon={<MessageCircle className="w-4 h-4 fill-current" />}
+          >
+            Send a message
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };
+
+export default FAQ;
+
