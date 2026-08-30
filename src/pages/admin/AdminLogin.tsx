@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { Lock, Sparkles, Key, AlertTriangle, ArrowRight, ShieldCheck } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { Logo } from '../../components/common/Logo';
@@ -17,9 +17,9 @@ export const AdminLogin: React.FC = () => {
 
   const from = (location.state as any)?.from?.pathname || '/admin/dashboard';
 
-  // If already logged in, redirect to dashboard
+  // If already logged in, redirect to dashboard cleanly
   if (isAuthenticated) {
-    navigate(from, { replace: true });
+    return <Navigate to={from} replace />;
   }
 
   const handleSubmit = async (e: React.FormEvent) => {

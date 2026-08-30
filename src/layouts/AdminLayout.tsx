@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Outlet, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
+import { Outlet, Link, useLocation, Navigate } from 'react-router-dom';
 import {
   LayoutDashboard,
   Settings,
@@ -20,8 +20,9 @@ import {
   RotateCcw,
   Menu,
   X,
-  FileCode,
   Sparkles,
+  ChevronRight,
+  ShieldCheck,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useContent } from '../context/ContentContext';
@@ -33,27 +34,41 @@ export const AdminLayout: React.FC = () => {
   const { isCustomized, resetToDefaults, exportConfigAsJSON, importConfigFromJSON } = useContent();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
-  // If not authenticated, redirect to /admin/login
+  // If not authenticated, redirect to /admin/login cleanly
   if (!isAuthenticated) {
     return <Navigate to="/admin/login" replace state={{ from: location }} />;
   }
 
-  const adminNavItems = [
-    { label: 'Dashboard', to: '/admin/dashboard', icon: LayoutDashboard },
-    { label: 'General Settings', to: '/admin/settings', icon: Settings },
-    { label: 'Homepage Editor', to: '/admin/homepage', icon: Sparkles },
-    { label: 'Courses Catalog', to: '/admin/courses', icon: BookOpen },
-    { label: 'Licence Roadmap', to: '/admin/roadmap', icon: MapPin },
-    { label: 'Instructors Roster', to: '/admin/instructors', icon: Users },
-    { label: 'Pricing & Packages', to: '/admin/pricing', icon: CreditCard },
-    { label: 'Testimonials', to: '/admin/testimonials', icon: MessageSquare },
-    { label: 'FAQ Manager', to: '/admin/faqs', icon: HelpCircle },
-    { label: 'Contact & Branches', to: '/admin/contact', icon: Phone },
-    { label: 'SEO Metadata', to: '/admin/seo', icon: Search },
-    { label: 'Legal Policies', to: '/admin/legal', icon: Shield },
-    { label: 'Error Templates', to: '/admin/errors', icon: AlertTriangle },
+  const navCategories = [
+    {
+      group: 'Overview',
+      items: [
+        { label: 'Dashboard', to: '/admin/dashboard', icon: LayoutDashboard },
+      ],
+    },
+    {
+      group: 'Content & Catalog',
+      items: [
+        { label: 'Homepage Editor', to: '/admin/homepage', icon: Sparkles },
+        { label: 'Courses Catalog', to: '/admin/courses', icon: BookOpen },
+        { label: 'Licence Roadmap', to: '/admin/roadmap', icon: MapPin },
+        { label: 'Pricing & Packages', to: '/admin/pricing', icon: CreditCard },
+        { label: 'Instructors Roster', to: '/admin/instructors', icon: Users },
+        { label: 'Learner Testimonials', to: '/admin/testimonials', icon: MessageSquare },
+        { label: 'FAQ Manager', to: '/admin/faqs', icon: HelpCircle },
+      ],
+    },
+    {
+      group: 'Settings & Config',
+      items: [
+        { label: 'General Settings', to: '/admin/settings', icon: Settings },
+        { label: 'Contact & Branches', to: '/admin/contact', icon: Phone },
+        { label: 'SEO Metadata', to: '/admin/seo', icon: Search },
+        { label: 'Legal Policies', to: '/admin/legal', icon: Shield },
+        { label: 'Error Templates', to: '/admin/errors', icon: AlertTriangle },
+      ],
+    },
   ];
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,136 +85,159 @@ export const AdminLayout: React.FC = () => {
     }
   };
 
+  // Find active item label
+  const allItems = navCategories.flatMap((c) => c.items);
+  const activeItem = allItems.find((i) => i.to === location.pathname) || {
+    label: 'Dashboard',
+    icon: LayoutDashboard,
+  };
+  const ActiveIcon = activeItem.icon;
+
   return (
-    <div className="min-h-screen flex bg-slate-100 text-slate-900 font-sans">
+    <div className="min-h-screen flex bg-slate-50 text-slate-900 font-sans">
       {/* Mobile Drawer Backdrop */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 z-40 bg-slate-950/60 lg:hidden"
+          className="fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-xs lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
 
       {/* Admin Sidebar */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-slate-900 text-white flex flex-col justify-between border-r border-slate-800 transition-transform duration-300 lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-slate-900 text-white flex flex-col justify-between border-r border-slate-800 shadow-2xl transition-transform duration-300 lg:translate-x-0 ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         {/* Sidebar Header */}
-        <div>
-          <div className="p-5 border-b border-slate-800 flex items-center justify-between">
+        <div className="flex flex-col h-full overflow-hidden">
+          <div className="p-4 sm:p-5 border-b border-slate-800/80 flex items-center justify-between shrink-0">
             <Logo variant="light" size="sm" isLink={false} />
             <button
               onClick={() => setIsSidebarOpen(false)}
-              className="lg:hidden p-1.5 text-slate-400 hover:text-white"
+              className="lg:hidden p-1.5 text-slate-400 hover:text-white rounded-lg"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
-          {/* Quick Notice Badge */}
-          <div className="px-4 pt-3">
-            <div className="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs text-slate-300">
-              <div className="flex items-center justify-between font-bold text-white mb-1">
-                <span>Content Engine</span>
+          {/* Quick Notice Pill */}
+          <div className="px-4 pt-3 pb-1 shrink-0">
+            <div className="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/80 text-xs text-slate-300">
+              <div className="flex items-center justify-between font-bold text-white mb-0.5">
+                <span className="text-[0.72rem] tracking-wide uppercase text-slate-400">Content Engine</span>
                 {isCustomized ? (
-                  <span className="px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 text-[0.65rem]">
-                    Live Draft Active
+                  <span className="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold text-[0.65rem]">
+                    Draft Active
                   </span>
                 ) : (
-                  <span className="px-1.5 py-0.2 rounded bg-slate-700 text-slate-300 text-[0.65rem]">
-                    Factory Default
+                  <span className="px-1.5 py-0.5 rounded bg-slate-700/80 text-slate-300 font-medium text-[0.65rem]">
+                    Default
                   </span>
                 )}
               </div>
               <p className="text-[0.68rem] text-slate-400 leading-tight">
-                Static frontend architecture with reactive local edits. Export JSON to persist into code.
+                Live reactive edits. Export JSON to persist changes into code.
               </p>
             </div>
           </div>
 
-          {/* Navigation Links */}
-          <nav className="p-3 space-y-1 max-h-[calc(100vh-280px)] overflow-y-auto">
-            {adminNavItems.map((item) => {
-              const isActive = location.pathname === item.to;
-              const Icon = item.icon;
+          {/* Categorized Navigation Links */}
+          <nav className="p-3 space-y-4 flex-1 overflow-y-auto custom-scrollbar">
+            {navCategories.map((cat, cIdx) => (
+              <div key={cIdx} className="space-y-1">
+                <div className="px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-slate-400">
+                  {cat.group}
+                </div>
+                {cat.items.map((item) => {
+                  const isActive = location.pathname === item.to;
+                  const Icon = item.icon;
 
-              return (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  onClick={() => setIsSidebarOpen(false)}
-                  className={`flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-colors ${
-                    isActive
-                      ? 'bg-emerald-600 text-white shadow-sm'
-                      : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
-                  }`}
-                >
-                  <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-white' : 'text-slate-400'}`} />
-                  <span>{item.label}</span>
-                </Link>
-              );
-            })}
+                  return (
+                    <Link
+                      key={item.to}
+                      to={item.to}
+                      onClick={() => setIsSidebarOpen(false)}
+                      className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+                        isActive
+                          ? 'bg-emerald-600 text-white shadow-sm font-bold'
+                          : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                      }`}
+                    >
+                      <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-white' : 'text-slate-400'}`} />
+                      <span className="truncate">{item.label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            ))}
           </nav>
-        </div>
 
-        {/* Sidebar Footer Actions */}
-        <div className="p-4 border-t border-slate-800 space-y-2 bg-slate-950/40">
-          <Link
-            to="/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-between w-full px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-emerald-300 transition-colors"
-          >
-            <span className="flex items-center gap-2">
-              <ExternalLink className="w-3.5 h-3.5" />
-              View Live Website
-            </span>
-            <span className="text-[0.65rem] bg-emerald-950 px-1.5 py-0.5 rounded text-emerald-400">Preview</span>
-          </Link>
+          {/* Sidebar Footer Actions */}
+          <div className="p-3 border-t border-slate-800/80 space-y-1.5 bg-slate-950/60 shrink-0">
+            <Link
+              to="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between w-full px-3 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-xs font-semibold text-emerald-300 transition-colors"
+            >
+              <span className="flex items-center gap-2">
+                <ExternalLink className="w-3.5 h-3.5" />
+                Live Website
+              </span>
+              <span className="text-[0.65rem] bg-emerald-950 px-1.5 py-0.5 rounded text-emerald-400 font-mono">
+                Preview ↗
+              </span>
+            </Link>
 
-          <button
-            onClick={logout}
-            className="flex items-center gap-2 w-full px-3 py-2 rounded-xl text-xs font-semibold text-red-400 hover:bg-red-950/40 transition-colors"
-          >
-            <LogOut className="w-3.5 h-3.5" />
-            <span>Sign Out Administrator</span>
-          </button>
+            <button
+              onClick={logout}
+              className="flex items-center gap-2 w-full px-3 py-2 rounded-xl text-xs font-semibold text-red-400 hover:bg-red-950/40 transition-colors text-left"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              <span>Sign Out Admin</span>
+            </button>
+          </div>
         </div>
       </aside>
 
       {/* Main Admin Area */}
       <div className="flex-1 lg:ml-64 flex flex-col min-w-0">
         {/* Admin Top Bar */}
-        <header className="sticky top-0 z-30 bg-white border-b border-slate-200 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-xs">
-          <div className="flex items-center gap-3">
+        <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/90 px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between shadow-xs">
+          <div className="flex items-center gap-3 min-w-0">
             <button
               onClick={() => setIsSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100"
+              className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
               aria-label="Open navigation menu"
             >
               <Menu className="w-5 h-5" />
             </button>
-            <div>
-              <h1 className="text-base sm:text-lg font-bold font-display text-slate-900 leading-tight">
-                DriveCraft Content Control Center
-              </h1>
-              <p className="text-xs text-slate-500 hidden sm:block">
-                Centralized CMS & Live Configuration Manager (No Database Required)
-              </p>
+
+            <div className="flex items-center gap-2 min-w-0">
+              <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center justify-center shrink-0 hidden sm:flex">
+                <ActiveIcon className="w-4 h-4" />
+              </div>
+              <div className="min-w-0">
+                <h1 className="text-sm sm:text-base font-bold font-display text-slate-900 truncate leading-tight">
+                  {activeItem.label}
+                </h1>
+                <p className="text-[0.7rem] text-slate-500 truncate hidden md:block">
+                  DriveCraft CMS & Live Content Engine
+                </p>
+              </div>
             </div>
           </div>
 
           {/* Quick Config Actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <Button
               variant="outline"
               size="sm"
               onClick={exportConfigAsJSON}
-              className="text-xs hidden sm:inline-flex"
+              className="text-xs hidden sm:inline-flex py-1.5"
               icon={<Download className="w-3.5 h-3.5" />}
-              title="Download content data as JSON to save into repository"
+              title="Download content data as JSON backup"
             >
               Export JSON
             </Button>
@@ -211,8 +249,8 @@ export const AdminLayout: React.FC = () => {
                 onChange={handleFileUpload}
                 className="sr-only"
               />
-              <span className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold transition-colors">
-                <Upload className="w-3.5 h-3.5" />
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold transition-colors shadow-xs">
+                <Upload className="w-3.5 h-3.5 text-slate-500" />
                 <span className="hidden sm:inline">Import JSON</span>
               </span>
             </label>
@@ -222,9 +260,9 @@ export const AdminLayout: React.FC = () => {
                 variant="outline"
                 size="sm"
                 onClick={resetToDefaults}
-                className="text-xs border-red-200 text-red-600 hover:bg-red-50"
+                className="text-xs border-red-200 text-red-600 hover:bg-red-50 py-1.5"
                 icon={<RotateCcw className="w-3.5 h-3.5" />}
-                title="Reset all modified fields back to factory code defaults"
+                title="Reset all modified fields back to factory defaults"
               >
                 Reset
               </Button>
@@ -234,7 +272,7 @@ export const AdminLayout: React.FC = () => {
               variant="primary"
               size="sm"
               to="/"
-              className="text-xs"
+              className="text-xs py-1.5"
               icon={<ExternalLink className="w-3.5 h-3.5" />}
             >
               Live Site
@@ -242,8 +280,8 @@ export const AdminLayout: React.FC = () => {
           </div>
         </header>
 
-        {/* Dynamic Admin Body */}
-        <main className="p-4 sm:p-8 flex-1">
+        {/* Dynamic Admin Body with Clean Padding and Spacing */}
+        <main className="p-4 sm:p-6 lg:p-8 flex-1 max-w-7xl w-full mx-auto">
           <Outlet />
         </main>
       </div>

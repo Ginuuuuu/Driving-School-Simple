@@ -32,22 +32,22 @@ import { Error500 } from './pages/errors/Error500';
 import { Error503 } from './pages/errors/Error503';
 import { Offline } from './pages/errors/Offline';
 
-// Admin Suite Pages (Lazy loaded in separate bundle)
-const AdminLayout = lazy(() => import('./layouts/AdminLayout').then(m => ({ default: m.AdminLayout })));
-const AdminLogin = lazy(() => import('./pages/admin/AdminLogin').then(m => ({ default: m.AdminLogin })));
-const Dashboard = lazy(() => import('./pages/admin/Dashboard').then(m => ({ default: m.Dashboard })));
-const SettingsEditor = lazy(() => import('./pages/admin/SettingsEditor').then(m => ({ default: m.SettingsEditor })));
-const HomepageEditor = lazy(() => import('./pages/admin/HomepageEditor').then(m => ({ default: m.HomepageEditor })));
-const CoursesEditor = lazy(() => import('./pages/admin/CoursesEditor').then(m => ({ default: m.CoursesEditor })));
-const RoadmapEditor = lazy(() => import('./pages/admin/RoadmapEditor').then(m => ({ default: m.RoadmapEditor })));
-const InstructorsEditor = lazy(() => import('./pages/admin/InstructorsEditor').then(m => ({ default: m.InstructorsEditor })));
-const PricingEditor = lazy(() => import('./pages/admin/PricingEditor').then(m => ({ default: m.PricingEditor })));
-const TestimonialsEditor = lazy(() => import('./pages/admin/TestimonialsEditor').then(m => ({ default: m.TestimonialsEditor })));
-const FAQEditor = lazy(() => import('./pages/admin/FAQEditor').then(m => ({ default: m.FAQEditor })));
-const ContactEditor = lazy(() => import('./pages/admin/ContactEditor').then(m => ({ default: m.ContactEditor })));
-const SEOEditor = lazy(() => import('./pages/admin/SEOEditor').then(m => ({ default: m.SEOEditor })));
-const LegalEditor = lazy(() => import('./pages/admin/LegalEditor').then(m => ({ default: m.LegalEditor })));
-const ErrorsEditor = lazy(() => import('./pages/admin/ErrorsEditor').then(m => ({ default: m.ErrorsEditor })));
+// Admin Suite Pages (Direct imports for instant zero-delay access)
+import { AdminLayout } from './layouts/AdminLayout';
+import { AdminLogin } from './pages/admin/AdminLogin';
+import { Dashboard } from './pages/admin/Dashboard';
+import { SettingsEditor } from './pages/admin/SettingsEditor';
+import { HomepageEditor } from './pages/admin/HomepageEditor';
+import { CoursesEditor } from './pages/admin/CoursesEditor';
+import { RoadmapEditor } from './pages/admin/RoadmapEditor';
+import { InstructorsEditor } from './pages/admin/InstructorsEditor';
+import { PricingEditor } from './pages/admin/PricingEditor';
+import { TestimonialsEditor } from './pages/admin/TestimonialsEditor';
+import { FAQEditor } from './pages/admin/FAQEditor';
+import { ContactEditor } from './pages/admin/ContactEditor';
+import { SEOEditor } from './pages/admin/SEOEditor';
+import { LegalEditor } from './pages/admin/LegalEditor';
+import { ErrorsEditor } from './pages/admin/ErrorsEditor';
 
 // Scroll to top helper on route transitions
 const ScrollToTop: React.FC = () => {
