@@ -155,7 +155,13 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 2. SLIM MINIMAL TRUST STATS BAR */}
-      <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <motion.section
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-20px" }}
+        transition={{ duration: 0.4 }}
+        className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8"
+      >
         <div className="py-2.5 sm:py-4 px-2 sm:px-6 bg-slate-900 text-white rounded-xl sm:rounded-2xl border border-slate-800 shadow-sm">
           <div className="grid grid-cols-4 divide-x divide-slate-800 text-center items-center">
             <div className="px-1 sm:px-3">
@@ -195,12 +201,18 @@ export const Home: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 3. CORE VALUE HIGHLIGHTS (3 Cards) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-30px" }}
+        transition={{ duration: 0.45 }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         <div className="flex overflow-x-auto gap-3 pb-2 -mx-4 px-4 snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-3 md:gap-6 md:m-0 md:p-0 md:overflow-visible">
-          <div className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between">
+          <div className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between hover-lift">
             <div>
               <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold mb-2">
                 <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -214,7 +226,7 @@ export const Home: React.FC = () => {
             </div>
           </div>
 
-          <div className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between">
+          <div className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between hover-lift">
             <div>
               <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold mb-2">
                 <Award className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -228,7 +240,7 @@ export const Home: React.FC = () => {
             </div>
           </div>
 
-          <div className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between">
+          <div className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between hover-lift">
             <div>
               <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold mb-2">
                 <Compass className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -242,10 +254,16 @@ export const Home: React.FC = () => {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* 4. FEATURED DRIVING COURSES (Minimal 3 Cards) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-30px" }}
+        transition={{ duration: 0.45 }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 sm:gap-4 mb-3 sm:mb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 mb-1 sm:mb-2">
@@ -258,7 +276,7 @@ export const Home: React.FC = () => {
 
           <Link
             to="/courses"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline shrink-0"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline shrink-0 transition-colors"
           >
             Explore All Courses & Curriculum →
           </Link>
@@ -266,7 +284,7 @@ export const Home: React.FC = () => {
 
         <div className="flex overflow-x-auto pb-3 pt-1 -mx-4 px-4 snap-x snap-mandatory scrollbar-none gap-3 md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:p-0 md:m-0">
           {featuredCourses.map((course) => (
-            <div key={course.id} className="w-[84vw] max-w-[330px] shrink-0 snap-center md:w-auto md:max-w-none">
+            <div key={course.id} className="w-[84vw] max-w-[330px] shrink-0 snap-center md:w-auto md:max-w-none hover-lift">
               <CourseCard
                 course={course}
                 onBookNow={(slug) => onOpenBooking(slug)}
@@ -274,10 +292,16 @@ export const Home: React.FC = () => {
             </div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* 5. SIGNATURE FEATURE — SERPENTINE LICENCE ROADMAP */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-30px" }}
+        transition={{ duration: 0.45 }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         <SectionHeading
           pillText="Signature Feature"
           title="Your 6-Step Roadmap to an Indian Driving Licence"
@@ -289,15 +313,21 @@ export const Home: React.FC = () => {
         <div className="mt-4 sm:mt-6 text-center">
           <Link
             to="/roadmap"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline transition-colors"
           >
             View Complete RTO Documentation Checklists & Track Advice →
           </Link>
         </div>
-      </section>
+      </motion.section>
 
       {/* 6. VERIFIED STUDENT STORIES (3 Cards) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-30px" }}
+        transition={{ duration: 0.45 }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 sm:gap-4 mb-3 sm:mb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 mb-1 sm:mb-2">
@@ -310,7 +340,7 @@ export const Home: React.FC = () => {
 
           <Link
             to="/testimonials"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline shrink-0"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline shrink-0 transition-colors"
           >
             Read More Reviews ({testimonials.length}+) →
           </Link>
@@ -319,7 +349,7 @@ export const Home: React.FC = () => {
         {/* HORIZONTALLY SWIPEABLE REVIEWS ON MOBILE */}
         <div className="flex overflow-x-auto pb-3 pt-1 -mx-4 px-4 snap-x snap-mandatory scrollbar-none gap-3 md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:p-0 md:m-0">
           {featuredTestimonials.map((test) => (
-            <div key={test.id} className="w-[82vw] max-w-[320px] shrink-0 snap-center md:w-auto md:max-w-none">
+            <div key={test.id} className="w-[82vw] max-w-[320px] shrink-0 snap-center md:w-auto md:max-w-none hover-lift">
               <TestimonialCard testimonial={test} />
             </div>
           ))}
@@ -327,10 +357,16 @@ export const Home: React.FC = () => {
         <div className="flex items-center justify-center gap-1.5 pt-1.5 text-[0.68rem] text-slate-400 md:hidden">
           <span>← Swipe horizontally to read more reviews →</span>
         </div>
-      </section>
+      </motion.section>
 
       {/* 7. HIGH-CONVERSION WHATSAPP / BOOKING BANNER */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+      <motion.section
+        initial={{ opacity: 0, scale: 0.98 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-30px" }}
+        transition={{ duration: 0.45 }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8"
+      >
         <div className="relative rounded-2xl sm:rounded-3xl bg-slate-900 text-white p-5 sm:p-12 lg:p-14 border border-slate-800 shadow-xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-8">
           <div className="space-y-2 sm:space-y-3 text-center md:text-left max-w-xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
@@ -351,7 +387,7 @@ export const Home: React.FC = () => {
               variant="primary"
               size="lg"
               onClick={() => onOpenBooking()}
-              className="w-full sm:w-auto justify-center shadow-lg text-xs sm:text-sm py-2.5 sm:py-3"
+              className="w-full sm:w-auto justify-center shadow-lg text-xs sm:text-sm py-2.5 sm:py-3 hover-lift"
               icon={<Sparkles className="w-4 h-4 text-amber-300" />}
             >
               Book a Lesson
@@ -362,7 +398,17 @@ export const Home: React.FC = () => {
               size="lg"
               href={whatsappUrl}
               isExternal
-              className="w-full sm:w-auto justify-center text-xs sm:text-sm py-2.5 sm:py-3"
+              className="w-full sm:w-auto justify-center text-xs sm:text-sm py-2.5 sm:py-3 hover-lift"
+              icon={<MessageCircle className="w-4 h-4 fill-current" />}
+            >
+              WhatsApp Us
+            </Button>
+          </div>
+        </div>
+      </motion.section>
+    </div>
+  );
+};
               icon={<MessageCircle className="w-4 h-4 fill-current" />}
             >
               WhatsApp Us
