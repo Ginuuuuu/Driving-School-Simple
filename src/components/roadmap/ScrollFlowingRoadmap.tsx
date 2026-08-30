@@ -39,32 +39,71 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
     offset: ['start 180px', 'end 80%'],
   });
 
-  // Smooth spring physics for natural car movement
+  // Smooth spring physics for natural car movement between checkpoints
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 90,
-    damping: 24,
+    stiffness: 100,
+    damping: 26,
     restDelta: 0.001,
   });
 
-  // Car translation along the vertical path (from Station 1 at top ~2% to Station 6 at ~96%)
-  const carY = useTransform(smoothProgress, [0, 1], ['2%', '96%']);
+  // Track active checkpoint station
+  useEffect(() => {
+    const unsubscribe = smoothProgress.on('change', (v) => {
+      if (v < 0.14) setActiveStationIndex(0);
+      else if (v < 0.32) setActiveStationIndex(1);
+      else if (v < 0.50) setActiveStationIndex(2);
+      else if (v < 0.68) setActiveStationIndex(3);
+      else if (v < 0.86) setActiveStationIndex(4);
+      else setActiveStationIndex(5);
+    });
+    return () => unsubscribe();
+  }, [smoothProgress]);
 
-  // Car gentle horizontal serpentine sway as it drives down
-  const carX = useTransform(
-    smoothProgress,
-    [0, 0.2, 0.4, 0.6, 0.8, 1],
-    ['0px', '22px', '-22px', '22px', '-22px', '0px']
-  );
+  // Discrete checkpoint plateaus: Car stays parked at each station point during scroll
+  const progressCheckpoints = [
+    0, 0.10,
+    0.18, 0.28,
+    0.36, 0.46,
+    0.54, 0.64,
+    0.72, 0.82,
+    0.90, 1.00,
+  ];
 
-  // Car dynamic steering angle into each turn
-  const carRotate = useTransform(
-    smoothProgress,
-    [0, 0.2, 0.4, 0.6, 0.8, 1],
-    [0, 16, -16, 16, -16, 0]
-  );
+  const carYCheckpoints = [
+    '2%', '2%',    // Station 1 Stop
+    '21%', '21%',  // Station 2 Stop
+    '40%', '40%',  // Station 3 Stop
+    '59%', '59%',  // Station 4 Stop
+    '78%', '78%',  // Station 5 Stop
+    '96%', '96%',  // Station 6 Stop
+  ];
 
-  // Road progress line fill height percentage (starts at Station 1)
-  const roadFillHeight = useTransform(smoothProgress, [0, 1], ['4%', '100%']);
+  const roadFillCheckpoints = [
+    '4%', '4%',    // Station 1 Progress
+    '22%', '22%',  // Station 2 Progress
+    '41%', '41%',  // Station 3 Progress
+    '60%', '60%',  // Station 4 Progress
+    '79%', '79%',  // Station 5 Progress
+    '100%', '100%',// Station 6 Progress
+  ];
+
+  const carRotateCheckpoints = [
+    0, 0,          // Station 1: Stopped straight
+    14, 0,         // Drive to Station 2 -> Straighten & Stop
+    -14, 0,        // Drive to Station 3 -> Straighten & Stop
+    14, 0,         // Drive to Station 4 -> Straighten & Stop
+    -14, 0,        // Drive to Station 5 -> Straighten & Stop
+    10, 0,         // Drive to Station 6 -> Straighten & Stop
+  ];
+
+  // Car translation along the vertical path stopping at each checkpoint
+  const carY = useTransform(smoothProgress, progressCheckpoints, carYCheckpoints);
+
+  // Car dynamic steering angle into turns and straightening at each station
+  const carRotate = useTransform(smoothProgress, progressCheckpoints, carRotateCheckpoints);
+
+  // Road progress line fill height percentage syncing with each checkpoint stop
+  const roadFillHeight = useTransform(smoothProgress, progressCheckpoints, roadFillCheckpoints);
 
   const milestoneIcons = [
     { badge: '1. APPLY & E-KYC', icon: FileText, color: 'text-blue-500 bg-blue-50 border-blue-200' },
@@ -95,7 +134,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
         <motion.div
           style={{
             top: carY,
-            x: carX,
+            x: 0,
             rotate: carRotate,
           }}
           className="absolute z-20 -translate-x-1/2 pointer-events-none filter drop-shadow-xl transition-transform"
@@ -116,6 +155,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
           const isEven = idx % 2 === 0;
           const meta = milestoneIcons[idx] || milestoneIcons[0];
           const IconComponent = meta.icon;
+          const isCurrentStation = activeStationIndex === idx;
 
           return (
             <motion.div
@@ -138,6 +178,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                       step={step}
                       meta={meta}
                       IconComponent={IconComponent}
+                      isActive={isCurrentStation}
                       onClick={() => setActiveModalStep(step)}
                     />
                   )}
@@ -147,15 +188,21 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                 <div className="col-span-2 flex justify-center">
                   <button
                     onClick={() => setActiveModalStep(step)}
-                    className="group relative flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border-2 border-slate-800 shadow-md hover:scale-110 hover:border-emerald-500 transition-transform duration-200 z-10 cursor-pointer"
+                    className={`group relative flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 transition-all duration-300 z-10 cursor-pointer shadow-sm ${
+                      isCurrentStation
+                        ? 'bg-emerald-600 border-white text-white scale-110 shadow-lg ring-4 ring-emerald-400/30'
+                        : 'bg-white border-slate-800 text-slate-900 hover:scale-105 hover:border-emerald-500'
+                    }`}
                     title={`Stage ${step.stepNumber}: ${step.title}`}
                   >
-                    <span className="text-xs font-black font-display text-slate-900 group-hover:text-emerald-700">
+                    <span className={`text-xs font-black font-display ${isCurrentStation ? 'text-white' : 'text-slate-900 group-hover:text-emerald-700'}`}>
                       {step.stepNumber}
                     </span>
 
                     {/* Pulsing ring indicator */}
-                    <span className="absolute inset-0 rounded-full bg-emerald-400 opacity-20 group-hover:animate-ping pointer-events-none" />
+                    {isCurrentStation && (
+                      <span className="absolute inset-0 rounded-full bg-emerald-400 opacity-30 animate-ping pointer-events-none" />
+                    )}
                   </button>
                 </div>
 
@@ -170,6 +217,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                       step={step}
                       meta={meta}
                       IconComponent={IconComponent}
+                      isActive={isCurrentStation}
                       onClick={() => setActiveModalStep(step)}
                     />
                   )}
@@ -181,7 +229,11 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                 {/* Station Node Pin over Left Road */}
                 <button
                   onClick={() => setActiveModalStep(step)}
-                  className="w-7 h-7 rounded-full bg-white border-2 border-slate-900 shadow-sm flex items-center justify-center font-black text-[0.7rem] text-slate-900 shrink-0 mt-3 z-10 active:scale-95 transition-transform"
+                  className={`w-7 h-7 rounded-full border-2 shadow-sm flex items-center justify-center font-black text-[0.7rem] shrink-0 mt-3 z-10 transition-all ${
+                    isCurrentStation
+                      ? 'bg-emerald-600 border-white text-white scale-110 shadow-md ring-4 ring-emerald-400/30'
+                      : 'bg-white border-slate-900 text-slate-900'
+                  }`}
                   title={`Stage ${step.stepNumber}: ${step.title}`}
                 >
                   {step.stepNumber}
@@ -193,6 +245,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                     step={step}
                     meta={meta}
                     IconComponent={IconComponent}
+                    isActive={isCurrentStation}
                     onClick={() => setActiveModalStep(step)}
                   />
                 </div>
@@ -327,18 +380,29 @@ interface MilestoneCardProps {
   step: RoadmapStep;
   meta: { badge: string; icon: any; color: string };
   IconComponent: any;
+  isActive?: boolean;
   onClick: () => void;
 }
 
-const MilestoneCard: React.FC<MilestoneCardProps> = ({ step, meta, IconComponent, onClick }) => {
+const MilestoneCard: React.FC<MilestoneCardProps> = ({ step, meta, IconComponent, isActive = false, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="group relative w-full max-w-lg lg:max-w-xl p-3.5 sm:p-4 lg:p-4.5 rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-lg hover:border-emerald-400/80 transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer text-left space-y-2 overflow-hidden"
+      className={`group relative w-full max-w-lg lg:max-w-xl p-3.5 sm:p-4 lg:p-4.5 rounded-2xl bg-white border transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer text-left space-y-2 overflow-hidden ${
+        isActive
+          ? 'border-emerald-500 ring-2 ring-emerald-500/20 shadow-md'
+          : 'border-slate-200 shadow-xs hover:border-slate-300 hover:shadow-md'
+      }`}
     >
       {/* Top Banner & Badge */}
       <div className="flex items-center justify-between gap-2">
-        <span className="px-2.5 py-0.5 sm:px-3 sm:py-0.5 rounded-full text-[0.65rem] sm:text-[0.68rem] font-extrabold uppercase tracking-wider bg-slate-900 text-white group-hover:bg-emerald-600 transition-colors shadow-xs">
+        <span
+          className={`px-2.5 py-0.5 sm:px-3 sm:py-0.5 rounded-full text-[0.65rem] sm:text-[0.68rem] font-extrabold uppercase tracking-wider transition-colors shadow-xs ${
+            isActive
+              ? 'bg-emerald-600 text-white'
+              : 'bg-slate-900 text-white group-hover:bg-emerald-600'
+          }`}
+        >
           {meta.badge}
         </span>
 
