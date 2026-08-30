@@ -8,29 +8,29 @@ import { RouteLoading } from './components/common/RouteLoading';
 // Layouts
 import { PublicLayout } from './layouts/PublicLayout';
 
-// Public Pages (Lazy Loaded for Optimal Bundle Splitting)
-const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })));
-const About = lazy(() => import('./pages/About').then(m => ({ default: m.About })));
-const Courses = lazy(() => import('./pages/Courses').then(m => ({ default: m.Courses })));
-const CourseDetail = lazy(() => import('./pages/CourseDetail').then(m => ({ default: m.CourseDetail })));
-const Roadmap = lazy(() => import('./pages/Roadmap').then(m => ({ default: m.Roadmap })));
-const Instructors = lazy(() => import('./pages/Instructors').then(m => ({ default: m.Instructors })));
-const Pricing = lazy(() => import('./pages/Pricing').then(m => ({ default: m.Pricing })));
-const Testimonials = lazy(() => import('./pages/Testimonials').then(m => ({ default: m.Testimonials })));
-const Resources = lazy(() => import('./pages/Resources').then(m => ({ default: m.Resources })));
-const ResourceDetail = lazy(() => import('./pages/ResourceDetail').then(m => ({ default: m.ResourceDetail })));
-const FAQ = lazy(() => import('./pages/FAQ').then(m => ({ default: m.FAQ })));
-const Contact = lazy(() => import('./pages/Contact').then(m => ({ default: m.Contact })));
-const Book = lazy(() => import('./pages/Book').then(m => ({ default: m.Book })));
-const Privacy = lazy(() => import('./pages/Privacy').then(m => ({ default: m.Privacy })));
-const Terms = lazy(() => import('./pages/Terms').then(m => ({ default: m.Terms })));
+// Public Pages (Direct imports for instant zero-blank first-click navigation)
+import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { Courses } from './pages/Courses';
+import { CourseDetail } from './pages/CourseDetail';
+import { Roadmap } from './pages/Roadmap';
+import { Instructors } from './pages/Instructors';
+import { Pricing } from './pages/Pricing';
+import { Testimonials } from './pages/Testimonials';
+import { Resources } from './pages/Resources';
+import { ResourceDetail } from './pages/ResourceDetail';
+import { FAQ } from './pages/FAQ';
+import { Contact } from './pages/Contact';
+import { Book } from './pages/Book';
+import { Privacy } from './pages/Privacy';
+import { Terms } from './pages/Terms';
 
 // System & Error Pages
-const Error404 = lazy(() => import('./pages/errors/Error404').then(m => ({ default: m.Error404 })));
-const Error403 = lazy(() => import('./pages/errors/Error403').then(m => ({ default: m.Error403 })));
-const Error500 = lazy(() => import('./pages/errors/Error500').then(m => ({ default: m.Error500 })));
-const Error503 = lazy(() => import('./pages/errors/Error503').then(m => ({ default: m.Error503 })));
-const Offline = lazy(() => import('./pages/errors/Offline').then(m => ({ default: m.Offline })));
+import { Error404 } from './pages/errors/Error404';
+import { Error403 } from './pages/errors/Error403';
+import { Error500 } from './pages/errors/Error500';
+import { Error503 } from './pages/errors/Error503';
+import { Offline } from './pages/errors/Offline';
 
 // Admin Suite Pages (Lazy loaded in separate bundle)
 const AdminLayout = lazy(() => import('./layouts/AdminLayout').then(m => ({ default: m.AdminLayout })));
