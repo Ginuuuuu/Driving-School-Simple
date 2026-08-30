@@ -3,7 +3,6 @@ import { useOutletContext } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ShieldCheck, CheckCircle2, MessageSquare, Sparkles } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { TestimonialCard } from '../components/cards/TestimonialCard';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
@@ -35,7 +34,6 @@ export const Testimonials: React.FC = () => {
       />
 
       <div className="space-y-1">
-        <Breadcrumbs items={[{ label: 'Student Reviews' }]} />
         <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
           Student Reviews & Testimonials
         </h1>

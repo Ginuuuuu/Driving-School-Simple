@@ -1,6 +1,5 @@
 import React from 'react';
 import { useContent } from '../context/ContentContext';
-import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { SEO } from '../components/common/SEO';
 
 export const Terms: React.FC = () => {
