@@ -320,27 +320,27 @@ const MilestoneCard: React.FC<MilestoneCardProps> = ({ step, meta, IconComponent
   return (
     <div
       onClick={onClick}
-      className="group relative w-full max-w-md p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-xs hover:shadow-xl hover:border-emerald-400/80 transition-all duration-300 transform hover:-translate-y-1.5 cursor-pointer text-left space-y-2 sm:space-y-3 overflow-hidden"
+      className="group relative w-full max-w-lg lg:max-w-xl p-3.5 sm:p-4 lg:p-4.5 rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-lg hover:border-emerald-400/80 transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer text-left space-y-2 overflow-hidden"
     >
       {/* Top Banner & Badge */}
       <div className="flex items-center justify-between gap-2">
-        <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[0.65rem] sm:text-[0.68rem] font-extrabold uppercase tracking-wider bg-slate-900 text-white group-hover:bg-emerald-600 transition-colors shadow-xs">
+        <span className="px-2.5 py-0.5 sm:px-3 sm:py-0.5 rounded-full text-[0.65rem] sm:text-[0.68rem] font-extrabold uppercase tracking-wider bg-slate-900 text-white group-hover:bg-emerald-600 transition-colors shadow-xs">
           {meta.badge}
         </span>
 
-        <span className="text-[0.65rem] sm:text-[0.7rem] font-bold text-slate-500">
+        <span className="text-[0.65rem] sm:text-[0.7rem] font-bold text-slate-500 font-mono">
           {step.approxDuration}
         </span>
       </div>
 
       {/* Title & Icon Header */}
-      <div className="flex items-start gap-2.5 sm:gap-3.5">
-        <div className={`w-8 h-8 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0 border ${meta.color}`}>
-          <IconComponent className="w-4 h-4 sm:w-5 sm:h-5" />
+      <div className="flex items-start gap-2.5 sm:gap-3">
+        <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center shrink-0 border ${meta.color}`}>
+          <IconComponent className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
         </div>
 
-        <div className="space-y-0.5 sm:space-y-1 min-w-0">
-          <h4 className="text-xs sm:text-base font-bold font-display text-slate-900 group-hover:text-emerald-700 transition-colors leading-snug truncate sm:whitespace-normal">
+        <div className="space-y-0.5 min-w-0 flex-1">
+          <h4 className="text-xs sm:text-sm lg:text-base font-bold font-display text-slate-900 group-hover:text-emerald-700 transition-colors leading-snug">
             {step.title}
           </h4>
           <p className="text-[0.72rem] sm:text-xs text-slate-600 line-clamp-2 leading-relaxed">
@@ -350,9 +350,9 @@ const MilestoneCard: React.FC<MilestoneCardProps> = ({ step, meta, IconComponent
       </div>
 
       {/* Bottom Action Prompt */}
-      <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[0.7rem] sm:text-xs font-bold text-emerald-700 group-hover:text-emerald-800">
+      <div className="pt-1.5 border-t border-slate-100 flex items-center justify-between text-[0.7rem] sm:text-xs font-bold text-emerald-700 group-hover:text-emerald-800">
         <span className="uppercase tracking-wider">Inspect Checklist & Tips</span>
-        <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transform group-hover:translate-x-1 transition-transform" />
+        <ChevronRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
       </div>
     </div>
   );
