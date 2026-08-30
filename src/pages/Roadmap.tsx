@@ -1,5 +1,6 @@
 import React from 'react';
 import { useOutletContext } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import {
   FileText,
   CheckCircle2,
@@ -38,7 +39,12 @@ export const Roadmap: React.FC = () => {
       <Breadcrumbs items={[{ label: 'Licence Roadmap' }]} />
 
       {/* Page Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6">
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6"
+      >
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 mb-2 sm:mb-3">
             Official RTO Process Guide
@@ -56,7 +62,7 @@ export const Roadmap: React.FC = () => {
             variant="outline"
             size="sm"
             onClick={handlePrint}
-            className="hidden sm:inline-flex text-xs"
+            className="hidden sm:inline-flex text-xs hover-lift"
             icon={<Printer className="w-4 h-4" />}
           >
             Print Checklist
@@ -66,21 +72,33 @@ export const Roadmap: React.FC = () => {
             variant="primary"
             size="sm"
             onClick={() => onOpenBooking()}
-            className="text-xs sm:text-sm py-2 sm:py-2.5"
+            className="text-xs sm:text-sm py-2 sm:py-2.5 hover-lift"
             icon={<Sparkles className="w-4 h-4 text-amber-300" />}
           >
             Start Training with Us
           </Button>
         </div>
-      </div>
+      </motion.div>
 
       {/* Interactive Roadmap Simulator (Desktop & Mobile) */}
-      <section className="w-full">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-30px" }}
+        transition={{ duration: 0.45 }}
+        className="w-full"
+      >
         <RoadmapSection steps={roadmap} onOpenBookingModal={() => onOpenBooking()} />
-      </section>
+      </motion.section>
 
       {/* RTO ADTT Automated Track Guide Callout */}
-      <section className="bg-slate-900 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-10 border border-slate-800 space-y-4 sm:space-y-6">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-30px" }}
+        transition={{ duration: 0.45 }}
+        className="bg-slate-900 text-white rounded-2xl sm:rounded-3xl p-4 sm:p-10 border border-slate-800 space-y-4 sm:space-y-6 shadow-xl"
+      >
         <div className="flex items-center gap-2 text-amber-400 font-bold text-[0.7rem] sm:text-xs uppercase tracking-wider">
           <Award className="w-4 h-4" />
           Camera-Monitored Automated Test Tracks (ADTT)
@@ -95,28 +113,28 @@ export const Roadmap: React.FC = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 sm:gap-4 pt-1 sm:pt-2">
-          <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-800/70 border border-slate-700 space-y-1">
+          <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-800/70 border border-slate-700 space-y-1 hover-lift-subtle transition-all">
             <h3 className="text-xs sm:text-sm font-bold text-emerald-400">Figure "8" Track</h3>
             <p className="text-[0.72rem] sm:text-xs text-slate-300">
               Evaluates steering lock timing and constant creep speed without touching yellow boundary lines.
             </p>
           </div>
 
-          <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-800/70 border border-slate-700 space-y-1">
+          <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-800/70 border border-slate-700 space-y-1 hover-lift-subtle transition-all">
             <h3 className="text-xs sm:text-sm font-bold text-amber-400">"H" Box Parking</h3>
             <p className="text-[0.72rem] sm:text-xs text-slate-300">
               Forward entry and tight reverse parking into parallel bay without halting or extra turns.
             </p>
           </div>
 
-          <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-800/70 border border-slate-700 space-y-1">
+          <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-slate-800/70 border border-slate-700 space-y-1 hover-lift-subtle transition-all">
             <h3 className="text-xs sm:text-sm font-bold text-blue-400">Gradient Slope Stop & Go</h3>
             <p className="text-[0.72rem] sm:text-xs text-slate-300">
               Stop on a 15-degree slope and restart within 10 seconds with less than 2 inches of rollback.
             </p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* RTO State Nuances Disclaimer */}
       <div className="p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-amber-50 border border-amber-200 flex items-start gap-2.5 sm:gap-3.5 text-xs text-amber-950">
