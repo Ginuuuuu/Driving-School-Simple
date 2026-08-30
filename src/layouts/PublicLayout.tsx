@@ -63,19 +63,16 @@ export const PublicLayout: React.FC = () => {
         preselectedInstructorId={selectedInstructorForModal}
       />
 
-      {/* Main Page Body with Page Transition Animation */}
+      {/* Main Page Body with Instant Smooth Fade */}
       <main id="main-content" className="flex-1 pt-24 sm:pt-28 lg:pt-36 focus:outline-none overflow-x-hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={location.pathname}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.28, ease: 'easeOut' }}
-          >
-            <Outlet context={{ onOpenBooking: handleOpenBooking }} />
-          </motion.div>
-        </AnimatePresence>
+        <motion.div
+          key={location.pathname}
+          initial={{ opacity: 0, y: 6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
+        >
+          <Outlet context={{ onOpenBooking: handleOpenBooking }} />
+        </motion.div>
       </main>
 
       {/* Floating Bottom-Right Quick WhatsApp Hub */}

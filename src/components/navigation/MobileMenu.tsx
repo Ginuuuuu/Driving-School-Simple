@@ -89,20 +89,11 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenB
                 to={link.to}
                 className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-base font-semibold transition-all ${
                   isActive
-                    ? 'bg-emerald-50 text-emerald-800'
-                    : link.isAdmin
-                    ? 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    ? 'bg-emerald-50 text-emerald-800 font-bold'
                     : 'text-slate-800 hover:bg-slate-50'
                 }`}
               >
-                <div className="flex items-center gap-2">
-                  <span>{link.label}</span>
-                  {link.badge && (
-                    <span className="px-2 py-0.5 rounded-full text-[0.65rem] font-extrabold bg-amber-100 text-amber-900 border border-amber-300">
-                      {link.badge}
-                    </span>
-                  )}
-                </div>
+                <span>{link.label}</span>
                 <ChevronRight className={`w-4 h-4 ${isActive ? 'text-emerald-600' : 'text-slate-400'}`} />
               </Link>
             );
