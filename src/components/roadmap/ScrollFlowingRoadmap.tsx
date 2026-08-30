@@ -40,34 +40,35 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
     offset: ['start 180px', 'end 80%'],
   });
 
-  // Smooth spring physics for natural car movement between checkpoints
+  // Smooth, gentle spring physics for slow and seamless car cruising
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 26,
+    stiffness: 40,
+    damping: 22,
+    mass: 1.1,
     restDelta: 0.001,
   });
 
-  // Track active checkpoint station
+  // Track active checkpoint station with smooth transition thresholds
   useEffect(() => {
     const unsubscribe = smoothProgress.on('change', (v) => {
-      if (v < 0.14) setActiveStationIndex(0);
-      else if (v < 0.32) setActiveStationIndex(1);
-      else if (v < 0.50) setActiveStationIndex(2);
-      else if (v < 0.68) setActiveStationIndex(3);
-      else if (v < 0.86) setActiveStationIndex(4);
+      if (v < 0.16) setActiveStationIndex(0);
+      else if (v < 0.34) setActiveStationIndex(1);
+      else if (v < 0.52) setActiveStationIndex(2);
+      else if (v < 0.70) setActiveStationIndex(3);
+      else if (v < 0.88) setActiveStationIndex(4);
       else setActiveStationIndex(5);
     });
     return () => unsubscribe();
   }, [smoothProgress]);
 
-  // Discrete checkpoint plateaus: Car stays parked at each station point during scroll
+  // Wide, gradual transitions so the car drives slow and steady, then rests at each station
   const progressCheckpoints = [
-    0, 0.10,
-    0.18, 0.28,
-    0.36, 0.46,
-    0.54, 0.64,
-    0.72, 0.82,
-    0.90, 1.00,
+    0.00, 0.05,    // Station 1 Stop
+    0.18, 0.23,    // Smooth cruise & Station 2 Stop
+    0.36, 0.41,    // Smooth cruise & Station 3 Stop
+    0.54, 0.59,    // Smooth cruise & Station 4 Stop
+    0.72, 0.77,    // Smooth cruise & Station 5 Stop
+    0.90, 1.00,    // Smooth cruise & Station 6 Stop
   ];
 
   const carYCheckpoints = [
@@ -90,11 +91,11 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
 
   const carRotateCheckpoints = [
     0, 0,          // Station 1: Stopped straight
-    14, 0,         // Drive to Station 2 -> Straighten & Stop
-    -14, 0,        // Drive to Station 3 -> Straighten & Stop
-    14, 0,         // Drive to Station 4 -> Straighten & Stop
-    -14, 0,        // Drive to Station 5 -> Straighten & Stop
-    10, 0,         // Drive to Station 6 -> Straighten & Stop
+    8, 0,          // Gentle steering to Station 2 -> Straighten & Stop
+    -8, 0,         // Gentle steering to Station 3 -> Straighten & Stop
+    8, 0,          // Gentle steering to Station 4 -> Straighten & Stop
+    -8, 0,         // Gentle steering to Station 5 -> Straighten & Stop
+    6, 0,          // Gentle steering to Station 6 -> Straighten & Stop
   ];
 
   // Car translation along the vertical path stopping at each checkpoint
