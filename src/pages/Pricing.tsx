@@ -1,5 +1,6 @@
 import React from 'react';
 import { useOutletContext } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Check, X, Shield, Clock, Plus, Sparkles, HelpCircle } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { SectionHeading } from '../components/common/SectionHeading';
@@ -29,8 +30,13 @@ export const Pricing: React.FC = () => {
         subtitle="Every package covers fuel, dual-control car maintenance, instructor coaching, and doorstep pickup."
       />
 
-      {/* Main Pricing Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-8">
+      {/* Main Pricing Cards Grid with Staggered Entrance */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45 }}
+        className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-8"
+      >
         {pricing.packages.slice(0, 3).map((pkg) => (
           <PricingCard
             key={pkg.id}
@@ -38,10 +44,16 @@ export const Pricing: React.FC = () => {
             onSelectPackage={(slug) => onOpenBooking(slug)}
           />
         ))}
-      </div>
+      </motion.div>
 
       {/* Add-On Services Grid */}
-      <section className="space-y-6 sm:space-y-8">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-30px" }}
+        transition={{ duration: 0.45 }}
+        className="space-y-6 sm:space-y-8"
+      >
         <div className="text-center max-w-2xl mx-auto space-y-1.5 sm:space-y-2">
           <div className="inline-flex items-center gap-1.5 px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-50 text-amber-800 border border-amber-200">
             <Plus className="w-3.5 h-3.5" /> Extra Services
@@ -58,7 +70,7 @@ export const Pricing: React.FC = () => {
           {pricing.addOns.map((addon) => (
             <div
               key={addon.id}
-              className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between space-y-2.5 sm:space-y-4"
+              className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-xs flex flex-col justify-between space-y-2.5 sm:space-y-4 hover-lift"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-1.5 sm:mb-2">
@@ -77,17 +89,23 @@ export const Pricing: React.FC = () => {
                 variant="outline"
                 size="sm"
                 onClick={() => onOpenBooking()}
-                className="w-full justify-center text-xs py-1.5 sm:py-2"
+                className="w-full justify-center text-xs py-1.5 sm:py-2 hover:border-emerald-600 hover:text-emerald-700"
               >
                 Add to Booking
               </Button>
             </div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* Feature Comparison Table */}
-      <section className="space-y-6">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-30px" }}
+        transition={{ duration: 0.45 }}
+        className="space-y-6"
+      >
         <div className="text-center max-w-2xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold font-display text-slate-900">
             Detailed Package Comparison Matrix
@@ -146,10 +164,16 @@ export const Pricing: React.FC = () => {
             </tbody>
           </table>
         </div>
-      </section>
+      </motion.section>
 
       {/* No Hidden Fee Guarantee Banner */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-emerald-50 border border-emerald-200 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.98 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-30px" }}
+        transition={{ duration: 0.45 }}
+        className="p-6 sm:p-8 rounded-3xl bg-emerald-50 border border-emerald-200 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xs"
+      >
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
             <Shield className="w-6 h-6" />
@@ -164,10 +188,13 @@ export const Pricing: React.FC = () => {
           </div>
         </div>
 
-        <Button variant="primary" size="md" onClick={() => onOpenBooking()}>
+        <Button variant="primary" size="md" onClick={() => onOpenBooking()} className="hover-lift">
           Book With Zero Advance
         </Button>
-      </div>
+      </motion.div>
+    </div>
+  );
+};
     </div>
   );
 };
