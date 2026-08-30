@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useOutletContext } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Globe, ShieldCheck, Star, Users } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { SectionHeading } from '../components/common/SectionHeading';
@@ -50,7 +51,12 @@ export const Instructors: React.FC = () => {
       />
 
       {/* Filter Bar */}
-      <div className="p-3.5 sm:p-6 bg-white rounded-2xl sm:rounded-3xl border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35 }}
+        className="p-3.5 sm:p-6 bg-white rounded-2xl sm:rounded-3xl border border-slate-200 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4"
+      >
         <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
           {/* Language filter */}
           <div className="flex-1 sm:flex-initial">
@@ -60,7 +66,7 @@ export const Instructors: React.FC = () => {
             <select
               value={selectedLanguage}
               onChange={(e) => setSelectedLanguage(e.target.value)}
-              className="w-full sm:w-auto px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-slate-200 text-xs font-semibold focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white"
+              className="w-full sm:w-auto px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-slate-200 text-xs font-semibold focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white transition-all"
             >
               <option value="all">All Languages</option>
               {allLanguages.map((lang) => (
@@ -79,7 +85,7 @@ export const Instructors: React.FC = () => {
             <select
               value={selectedTransmission}
               onChange={(e) => setSelectedTransmission(e.target.value)}
-              className="w-full sm:w-auto px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-slate-200 text-xs font-semibold focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white"
+              className="w-full sm:w-auto px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-slate-200 text-xs font-semibold focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white transition-all"
             >
               <option value="all">All Transmissions</option>
               <option value="manual">Manual Transmission</option>
@@ -91,18 +97,31 @@ export const Instructors: React.FC = () => {
         <div className="text-[0.72rem] sm:text-xs text-slate-500 self-start sm:self-center">
           Showing <span className="font-bold text-slate-900">{filteredInstructors.length}</span> instructors
         </div>
-      </div>
+      </motion.div>
 
-      {/* Instructors Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-8">
-        {filteredInstructors.map((inst) => (
-          <InstructorCard
-            key={inst.id}
-            instructor={inst}
-            onSelectInstructor={(id) => onOpenBooking(undefined, id)}
-          />
-        ))}
-      </div>
+      {/* Instructors Grid with Staggered Entrance */}
+      <motion.div
+        layout
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-8"
+      >
+        <AnimatePresence mode="popLayout">
+          {filteredInstructors.map((inst, idx) => (
+            <motion.div
+              key={inst.id}
+              layout
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.3, delay: idx * 0.05 }}
+            >
+              <InstructorCard
+                instructor={inst}
+                onSelectInstructor={(id) => onOpenBooking(undefined, id)}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 };

@@ -12,7 +12,7 @@ interface PricingCardProps {
 export const PricingCard: React.FC<PricingCardProps> = ({ pkg, onSelectPackage }) => {
   return (
     <div
-      className={`relative flex flex-col justify-between rounded-2xl sm:rounded-3xl bg-white border transition-all duration-300 ${
+      className={`relative flex flex-col justify-between rounded-2xl sm:rounded-3xl bg-white border hover-lift transition-all duration-300 ${
         pkg.popular
           ? 'border-emerald-500 shadow-xl ring-2 ring-emerald-500/20 sm:-translate-y-2'
           : 'border-slate-200/90 shadow-sm hover:shadow-lg'
