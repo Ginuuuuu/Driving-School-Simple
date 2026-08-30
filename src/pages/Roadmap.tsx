@@ -69,7 +69,7 @@ export const Roadmap: React.FC = () => {
             Start Training with Us
           </Button>
         </div>
-      </motion.div>
+      </div>
 
       {/* Interactive Roadmap Simulator (Desktop & Mobile) */}
       <motion.section
