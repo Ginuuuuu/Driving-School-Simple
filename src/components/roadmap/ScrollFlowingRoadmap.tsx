@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import {
   FileText,
@@ -31,6 +31,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
   isCompactPreview = false,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [activeStationIndex, setActiveStationIndex] = useState<number>(0);
   const [activeModalStep, setActiveModalStep] = useState<RoadmapStep | null>(null);
 
   // Scroll Progress binding to the container (starts at station 1 on initial load)
