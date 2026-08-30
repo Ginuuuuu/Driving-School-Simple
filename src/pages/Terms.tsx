@@ -15,8 +15,6 @@ export const Terms: React.FC = () => {
         canonicalPath="/terms"
       />
 
-      <Breadcrumbs items={[{ label: 'Terms & Conditions' }]} />
-
       <div className="space-y-2">
         <h1 className="text-2xl sm:text-4xl font-extrabold font-display text-slate-900 tracking-tight">
           Terms & Conditions

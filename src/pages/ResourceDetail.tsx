@@ -3,7 +3,6 @@ import { useParams, Link, Navigate, useOutletContext } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Clock, CheckCircle2, ArrowLeft, Sparkles, BookOpen } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { Badge } from '../components/common/Badge';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
@@ -26,13 +25,6 @@ export const ResourceDetail: React.FC = () => {
         title={guide.title}
         description={guide.summary}
         canonicalPath={`/resources/${guide.slug}`}
-      />
-
-      <Breadcrumbs
-        items={[
-          { label: 'Resources', to: '/resources' },
-          { label: guide.title },
-        ]}
       />
 
       {/* Article Header */}

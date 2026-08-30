@@ -13,7 +13,6 @@ import {
   HelpCircle,
 } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { RoadmapSection } from '../components/roadmap/RoadmapSection';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
@@ -38,7 +37,6 @@ export const Roadmap: React.FC = () => {
       {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="space-y-1">
-          <Breadcrumbs items={[{ label: 'Licence Roadmap' }]} />
           <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
             Indian Driving Licence Roadmap
           </h1>

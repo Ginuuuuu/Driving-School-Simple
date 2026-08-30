@@ -1,7 +1,6 @@
 import React from 'react';
 import { Shield } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { SEO } from '../components/common/SEO';
 
 export const Privacy: React.FC = () => {
@@ -16,8 +15,6 @@ export const Privacy: React.FC = () => {
         description="DriveCraft Motor Academy privacy policy regarding learner information, WhatsApp communications, and Indian DPDP compliance."
         canonicalPath="/privacy"
       />
-
-      <Breadcrumbs items={[{ label: 'Privacy Policy' }]} />
 
       <div className="space-y-2">
         <h1 className="text-2xl sm:text-4xl font-extrabold font-display text-slate-900 tracking-tight">

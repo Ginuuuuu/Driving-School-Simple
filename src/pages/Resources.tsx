@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { BookOpen, Clock, ArrowRight, Award, Compass, Shield } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { Badge } from '../components/common/Badge';
 import { SEO } from '../components/common/SEO';
 
@@ -20,7 +19,6 @@ export const Resources: React.FC = () => {
       />
 
       <div className="space-y-1">
-        <Breadcrumbs items={[{ label: 'Resources & Guides' }]} />
         <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
           Road Safety & Driving Guides
         </h1>
