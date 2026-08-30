@@ -59,13 +59,15 @@ export const FAQ: React.FC = () => {
         canonicalPath="/faq"
       />
 
-      <Breadcrumbs items={[{ label: 'FAQ' }]} />
-
-      <SectionHeading
-        pillText="Help & Knowledge Base"
-        title="Frequently Asked Questions"
-        subtitle="Everything you need to know about driving lessons, government licence procedures, and dual-control safety."
-      />
+      <div className="space-y-1">
+        <Breadcrumbs items={[{ label: 'FAQ' }]} />
+        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+          Frequently Asked Questions
+        </h1>
+        <p className="text-xs sm:text-sm text-slate-500">
+          Everything you need to know about driving lessons, government licence procedures, and dual-control safety.
+        </p>
+      </div>
 
       {/* Search & Category Filter */}
       <motion.div

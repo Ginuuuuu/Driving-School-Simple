@@ -22,13 +22,15 @@ export const Pricing: React.FC = () => {
         canonicalPath="/pricing"
       />
 
-      <Breadcrumbs items={[{ label: 'Pricing & Packages' }]} />
-
-      <SectionHeading
-        pillText="Clear Pricing"
-        title="Simple, Transparent Packages with Zero Hidden Fees"
-        subtitle="Every package covers fuel, dual-control car maintenance, instructor coaching, and doorstep pickup."
-      />
+      <div className="space-y-1">
+        <Breadcrumbs items={[{ label: 'Pricing & Packages' }]} />
+        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+          Pricing & Lesson Packages
+        </h1>
+        <p className="text-xs sm:text-sm text-slate-500">
+          Transparent rates with fuel, dual-control maintenance, and doorstep pickup included.
+        </p>
+      </div>
 
       {/* Main Pricing Cards Grid with Staggered Entrance */}
       <motion.div

@@ -20,25 +20,15 @@ export const Book: React.FC = () => {
         canonicalPath="/book"
       />
 
-      <Breadcrumbs items={[{ label: 'Book a Lesson' }]} />
-
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="text-center space-y-2 sm:space-y-3"
-      >
-        <div className="inline-flex items-center gap-2 px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200">
-          <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-          Lesson Booking Studio
-        </div>
-        <h1 className="text-2xl sm:text-4xl font-extrabold font-display text-slate-900 tracking-tight">
-          Book Your Driving Lesson
+      <div className="space-y-1">
+        <Breadcrumbs items={[{ label: 'Book a Lesson' }]} />
+        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+          Book a Driving Lesson
         </h1>
-        <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
-          Complete the form below to generate your pre-formatted WhatsApp enquiry for instant scheduling with zero advance payment.
+        <p className="text-xs sm:text-sm text-slate-500">
+          Complete the details below for instant scheduling with doorstep pickup and zero advance payment.
         </p>
-      </motion.div>
+      </div>
 
       {/* Main Form Container */}
       <motion.div

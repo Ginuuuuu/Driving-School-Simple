@@ -20,13 +20,15 @@ export const Resources: React.FC = () => {
         canonicalPath="/resources"
       />
 
-      <Breadcrumbs items={[{ label: 'Resources & Guides' }]} />
-
-      <SectionHeading
-        pillText="Free Driving Guides"
-        title="Essential Road Safety & Driving Guides"
-        subtitle="Practical, step-by-step cheatsheets and technical advice written by our senior instructors."
-      />
+      <div className="space-y-1">
+        <Breadcrumbs items={[{ label: 'Resources & Guides' }]} />
+        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+          Road Safety & Driving Guides
+        </h1>
+        <p className="text-xs sm:text-sm text-slate-500">
+          Practical cheatsheets and technical advice written by our senior instructors.
+        </p>
+      </div>
 
       {/* Guides Grid with Staggered Entrance */}
       <motion.div

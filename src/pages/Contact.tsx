@@ -24,13 +24,15 @@ export const Contact: React.FC = () => {
         canonicalPath="/contact"
       />
 
-      <Breadcrumbs items={[{ label: 'Contact Us' }]} />
-
-      <SectionHeading
-        pillText="Get In Touch"
-        title="We’re Here to Help You Start Driving"
-        subtitle="Enquire about upcoming batches, schedule a trial lesson, or get assistance with your RTO application."
-      />
+      <div className="space-y-1">
+        <Breadcrumbs items={[{ label: 'Contact Us' }]} />
+        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+          Contact Us & Branch Locations
+        </h1>
+        <p className="text-xs sm:text-sm text-slate-500">
+          Enquire about upcoming batches, schedule a trial lesson, or get assistance with your RTO application.
+        </p>
+      </div>
 
       {/* Main Grid: Left Contact Info & Branches, Right Enquiry Form */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-start">

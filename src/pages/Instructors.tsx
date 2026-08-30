@@ -42,13 +42,15 @@ export const Instructors: React.FC = () => {
         canonicalPath="/instructors"
       />
 
-      <Breadcrumbs items={[{ label: 'Instructors' }]} />
-
-      <SectionHeading
-        pillText="Certified Coaches"
-        title="Patient, Experienced & Verified Instructors"
-        subtitle="We maintain a zero-shouting guarantee. Choose your preferred language specialist or female driving coach."
-      />
+      <div className="space-y-1">
+        <Breadcrumbs items={[{ label: 'Instructors' }]} />
+        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+          Certified Driving Instructors
+        </h1>
+        <p className="text-xs sm:text-sm text-slate-500">
+          Patient, verified male & female instructors with a zero-shouting guarantee.
+        </p>
+      </div>
 
       {/* Filter Bar */}
       <motion.div

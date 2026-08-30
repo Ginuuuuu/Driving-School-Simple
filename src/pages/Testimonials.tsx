@@ -35,13 +35,15 @@ export const Testimonials: React.FC = () => {
         canonicalPath="/testimonials"
       />
 
-      <Breadcrumbs items={[{ label: 'Student Reviews' }]} />
-
-      <SectionHeading
-        pillText="Learner Stories"
-        title="Real Stories of Fear Turned Into Pure Confidence"
-        subtitle="Every driver was once a beginner. Discover how our patient coaching method transformed their driving journey."
-      />
+      <div className="space-y-1">
+        <Breadcrumbs items={[{ label: 'Student Reviews' }]} />
+        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+          Student Reviews & Testimonials
+        </h1>
+        <p className="text-xs sm:text-sm text-slate-500">
+          Real stories and experiences from learners who mastered driving with our mentors.
+        </p>
+      </div>
 
       {/* Filter Tabs */}
       <motion.div

@@ -45,13 +45,15 @@ export const Courses: React.FC = () => {
         canonicalPath="/courses"
       />
 
-      <Breadcrumbs items={[{ label: 'Courses' }]} />
-
-      <SectionHeading
-        pillText="Curriculum Catalog"
-        title="Professional Driving Courses for Every Stage"
-        subtitle="From first-time zero-experience learners to seasoned drivers wanting highway and night road-trip mastery."
-      />
+      <div className="space-y-1">
+        <Breadcrumbs items={[{ label: 'Courses' }]} />
+        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+          Driving Courses & Programs
+        </h1>
+        <p className="text-xs sm:text-sm text-slate-500">
+          Structured practical training packages for beginners, automatic cars, and RTO track prep.
+        </p>
+      </div>
 
       {/* Filter and Search Bar */}
       <motion.div
