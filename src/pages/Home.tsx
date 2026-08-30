@@ -409,13 +409,3 @@ export const Home: React.FC = () => {
     </div>
   );
 };
-              icon={<MessageCircle className="w-4 h-4 fill-current" />}
-            >
-              WhatsApp Us
-            </Button>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-};
