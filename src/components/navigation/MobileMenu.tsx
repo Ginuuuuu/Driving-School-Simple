@@ -47,7 +47,6 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenB
     { label: 'Driving Resources & Guides', to: '/resources' },
     { label: 'Frequently Asked Questions', to: '/faq' },
     { label: 'Contact & Service Branches', to: '/contact' },
-    { label: 'Admin Management Panel', to: '/admin/dashboard', isAdmin: true },
   ];
 
   const whatsappUrl = generateDirectWhatsAppChatLink(siteConfig);

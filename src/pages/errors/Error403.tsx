@@ -33,9 +33,6 @@ export const Error403: React.FC = () => {
         <Button variant="primary" size="md" to="/" icon={<Home className="w-4 h-4" />}>
           Back to Safety (Home)
         </Button>
-        <Button variant="outline" size="md" to="/admin/login" icon={<LogIn className="w-4 h-4" />}>
-          Admin Gateway
-        </Button>
       </div>
     </div>
   );

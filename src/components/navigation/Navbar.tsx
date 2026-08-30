@@ -69,15 +69,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
                 <Phone className="w-3.5 h-3.5 text-emerald-600" />
                 {siteConfig.phoneDisplay}
               </a>
-              <Link
-                to="/admin/dashboard"
-                className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-100 text-slate-700 hover:bg-slate-200 text-[0.7rem] font-bold transition-colors"
-                title="Admin Content Manager"
-              >
-                <Sparkles className="w-3 h-3 text-amber-500" />
-                Admin Panel
-                {isCustomized && <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" title="Draft active" />}
-              </Link>
             </div>
           </div>
         </div>

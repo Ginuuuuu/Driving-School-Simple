@@ -177,10 +177,6 @@ export const Footer: React.FC = () => {
             <Link to="/terms" className="hover:text-slate-300 transition-colors">
               Terms & Conditions
             </Link>
-            <span>•</span>
-            <Link to="/admin/dashboard" className="text-slate-400 hover:text-emerald-400 transition-colors font-medium">
-              Admin Portal
-            </Link>
           </div>
         </div>
       </div>

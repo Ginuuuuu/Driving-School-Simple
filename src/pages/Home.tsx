@@ -143,26 +143,45 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. TRUST STATS BAR (4-COLUMN HORIZONTAL ROW ON ALL BREAKPOINTS) */}
-      <section className="max-w-7xl mx-auto px-2 sm:px-8">
-        <div className="bg-slate-900 text-white py-3.5 px-1.5 sm:py-8 sm:px-8 rounded-2xl sm:rounded-3xl border border-slate-800 shadow-lg">
-          <div className="grid grid-cols-4 gap-1 sm:gap-6 text-center divide-x divide-slate-800/80">
-            {siteConfig.trustStats.map((stat, idx) => (
-              <div
-                key={idx}
-                className="px-1 sm:px-4 flex flex-col justify-start items-center text-center space-y-0.5"
-              >
-                <div className="text-sm xs:text-base sm:text-3xl lg:text-4xl font-black font-display text-emerald-400 tracking-tight leading-none mb-0.5">
-                  {stat.value}
-                </div>
-                <div className="text-[0.6rem] sm:text-sm font-bold text-slate-100 leading-snug">
-                  {stat.label}
-                </div>
-                <p className="text-[0.52rem] sm:text-xs text-slate-400 leading-tight">
-                  {stat.subtext}
-                </p>
+      {/* 2. SLIM MINIMAL TRUST STATS BAR */}
+      <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="py-2.5 sm:py-4 px-2 sm:px-6 bg-slate-900 text-white rounded-xl sm:rounded-2xl border border-slate-800 shadow-sm">
+          <div className="grid grid-cols-4 divide-x divide-slate-800 text-center items-center">
+            <div className="px-1 sm:px-3">
+              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-emerald-400 leading-tight">
+                {siteConfig.trustStats[0]?.value || '14,800+'}
               </div>
-            ))}
+              <div className="text-[0.6rem] sm:text-xs text-slate-300 font-medium mt-0.5 truncate">
+                Learners Trained
+              </div>
+            </div>
+
+            <div className="px-1 sm:px-3">
+              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-emerald-400 leading-tight">
+                {siteConfig.trustStats[1]?.value || '98.4%'}
+              </div>
+              <div className="text-[0.6rem] sm:text-xs text-slate-300 font-medium mt-0.5 truncate">
+                RTO Pass Rate
+              </div>
+            </div>
+
+            <div className="px-1 sm:px-3">
+              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-emerald-400 leading-tight">
+                {siteConfig.trustStats[2]?.value || '35+'}
+              </div>
+              <div className="text-[0.6rem] sm:text-xs text-slate-300 font-medium mt-0.5 truncate">
+                Top Mentors
+              </div>
+            </div>
+
+            <div className="px-1 sm:px-3">
+              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-emerald-400 leading-tight">
+                {siteConfig.trustStats[3]?.value || '100%'}
+              </div>
+              <div className="text-[0.6rem] sm:text-xs text-slate-300 font-medium mt-0.5 truncate">
+                Dual-Control
+              </div>
+            </div>
           </div>
         </div>
       </section>
