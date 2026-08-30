@@ -3,7 +3,6 @@ import { Link, useOutletContext } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Award, Heart, CheckCircle2, Sliders, Compass, Sparkles, Users } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { SectionHeading } from '../components/common/SectionHeading';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
