@@ -16,12 +16,12 @@ export const Privacy: React.FC = () => {
         canonicalPath="/privacy"
       />
 
-      <div className="space-y-2">
+      <div className="space-y-1">
         <h1 className="text-2xl sm:text-4xl font-extrabold font-display text-slate-900 tracking-tight">
           Privacy Policy
         </h1>
-        <p className="text-xs text-slate-500">
-          Last Updated: {policy.lastUpdated} • Compliance with DPDP Act, 2023
+        <p className="text-xs text-slate-400 font-mono">
+          Last Updated: {policy.lastUpdated}
         </p>
       </div>
 

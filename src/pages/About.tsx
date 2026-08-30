@@ -96,13 +96,10 @@ export const About: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="space-y-4 sm:space-y-6"
       >
-        <div className="space-y-0.5">
+        <div>
           <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
             Engineered for Safety & Precision
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500">
-            All training vehicles are maintained to stringent safety benchmarks.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">

@@ -263,15 +263,10 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-1 sm:gap-4 mb-3 sm:mb-6">
-          <div className="space-y-0.5">
-            <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
-              Popular Driving Programs
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500">
-              Curated practical packages for beginners, gear shifts, and RTO test readiness.
-            </p>
-          </div>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-3 sm:mb-6">
+          <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+            Popular Driving Programs
+          </h2>
 
           <Link
             to="/courses"
@@ -301,15 +296,10 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-1 sm:gap-4 mb-3 sm:mb-6">
-          <div className="space-y-0.5">
-            <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
-              6-Step Licence Roadmap
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500">
-              Clear visual journey from Sarathi Parivahan online application to automated camera track exam.
-            </p>
-          </div>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-3 sm:mb-6">
+          <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+            6-Step Licence Roadmap
+          </h2>
 
           <Link
             to="/roadmap"
@@ -330,15 +320,10 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-1 sm:gap-4 mb-3 sm:mb-6">
-          <div className="space-y-0.5">
-            <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
-              Student Reviews & Stories
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500">
-              Real feedback from learners who gained confidence with our patient mentors.
-            </p>
-          </div>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-3 sm:mb-6">
+          <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+            Student Reviews & Stories
+          </h2>
 
           <Link
             to="/testimonials"

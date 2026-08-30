@@ -22,13 +22,10 @@ export const Contact: React.FC = () => {
         canonicalPath="/contact"
       />
 
-      <div className="space-y-1">
-        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+      <div>
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-slate-900 tracking-tight">
           Contact Us & Branch Locations
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500">
-          Enquire about upcoming batches, schedule a trial lesson, or get assistance with your RTO application.
-        </p>
       </div>
 
       {/* Main Grid: Left Contact Info & Branches, Right Enquiry Form */}

@@ -18,13 +18,10 @@ export const Book: React.FC = () => {
         canonicalPath="/book"
       />
 
-      <div className="space-y-1">
-        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+      <div>
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-slate-900 tracking-tight">
           Book a Driving Lesson
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500">
-          Complete the details below for instant scheduling with doorstep pickup and zero advance payment.
-        </p>
       </div>
 
       {/* Main Form Container */}

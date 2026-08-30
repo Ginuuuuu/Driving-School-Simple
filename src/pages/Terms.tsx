@@ -15,12 +15,12 @@ export const Terms: React.FC = () => {
         canonicalPath="/terms"
       />
 
-      <div className="space-y-2">
+      <div className="space-y-1">
         <h1 className="text-2xl sm:text-4xl font-extrabold font-display text-slate-900 tracking-tight">
           Terms & Conditions
         </h1>
-        <p className="text-xs text-slate-500">
-          Last Updated: {terms.lastUpdated} • Certified Motor Training Guidelines
+        <p className="text-xs text-slate-400 font-mono">
+          Last Updated: {terms.lastUpdated}
         </p>
       </div>
 

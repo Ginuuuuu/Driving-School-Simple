@@ -18,13 +18,10 @@ export const Resources: React.FC = () => {
         canonicalPath="/resources"
       />
 
-      <div className="space-y-1">
-        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+      <div>
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-slate-900 tracking-tight">
           Road Safety & Driving Guides
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500">
-          Practical cheatsheets and technical advice written by our senior instructors.
-        </p>
       </div>
 
       {/* Guides Grid with Staggered Entrance */}

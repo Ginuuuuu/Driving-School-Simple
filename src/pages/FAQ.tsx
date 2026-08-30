@@ -57,13 +57,10 @@ export const FAQ: React.FC = () => {
         canonicalPath="/faq"
       />
 
-      <div className="space-y-1">
-        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+      <div>
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-slate-900 tracking-tight">
           Frequently Asked Questions
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500">
-          Everything you need to know about driving lessons, government licence procedures, and dual-control safety.
-        </p>
       </div>
 
       {/* Search & Category Filter */}
