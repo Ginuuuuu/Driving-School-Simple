@@ -59,6 +59,40 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
   const [submittedLink, setSubmittedLink] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
+  const validateAll = (): boolean => {
+    const newErrors: Record<string, string> = {};
+
+    if (!formState.fullName.trim()) {
+      newErrors.fullName = 'Please enter your full name.';
+    } else if (formState.fullName.trim().length < 2) {
+      newErrors.fullName = 'Name must be at least 2 characters.';
+    }
+
+    const cleanPhone = formState.phoneNumber.replace(/[^0-9]/g, '');
+    if (!cleanPhone) {
+      newErrors.phoneNumber = 'Phone number is required for lesson coordination.';
+    } else if (cleanPhone.length < 10) {
+      newErrors.phoneNumber = 'Please enter a valid 10-digit mobile number.';
+    } else if (!/^[6-9]\d{9}$/.test(cleanPhone.slice(-10))) {
+      newErrors.phoneNumber = 'Enter a valid 10-digit mobile number.';
+    }
+
+    if (!formState.pickupArea.trim()) {
+      newErrors.pickupArea = 'Please provide your locality/area for doorstep pickup.';
+    }
+
+    if (formState.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email)) {
+      newErrors.email = 'Please enter a valid email address.';
+    }
+
+    if (!formState.agreeToTerms) {
+      newErrors.agreeToTerms = 'Please confirm that you agree to terms & lesson guidelines.';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const validateStep = (step: number): boolean => {
     const newErrors: Record<string, string> = {};
 
@@ -116,11 +150,11 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateStep(1) || !validateStep(3)) {
+    if (!validateAll()) {
       showToast({
         type: 'error',
         title: 'Please check your inputs',
-        message: 'Fill in all required fields to generate your WhatsApp booking.',
+        message: 'Fill in all required fields marked in red to generate your WhatsApp booking.',
       });
       return;
     }
@@ -262,260 +296,259 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4" noValidate>
-      {/* Multi-Step Visual Progress Indicator */}
-      <div className="space-y-1.5 pb-1">
-        <div className="flex items-center justify-between text-xs font-bold text-slate-700">
-          <span className="flex items-center gap-1.5 text-emerald-700 font-bold">
-            <span className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[0.68rem] shadow-xs">
-              {currentStep}
+      {/* ======================================================== */}
+      {/* 1. MOBILE UI: STEP-BY-STEP WIZARD (Visible only on mobile: sm:hidden) */}
+      {/* ======================================================== */}
+      <div className="sm:hidden space-y-3.5">
+        {/* Multi-Step Visual Progress Indicator */}
+        <div className="space-y-1.5 pb-1">
+          <div className="flex items-center justify-between text-xs font-bold text-slate-700">
+            <span className="flex items-center gap-1.5 text-emerald-700 font-bold">
+              <span className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[0.68rem] shadow-xs">
+                {currentStep}
+              </span>
+              {currentStep === 1 && 'Step 1: Contact & Pickup Area'}
+              {currentStep === 2 && 'Step 2: Course & Vehicle Gear'}
+              {currentStep === 3 && 'Step 3: Timing & Review'}
             </span>
-            {currentStep === 1 && 'Step 1: Contact & Pickup Area'}
-            {currentStep === 2 && 'Step 2: Course & Vehicle Gear'}
-            {currentStep === 3 && 'Step 3: Timing & Review'}
-          </span>
-          <span className="text-[0.7rem] text-slate-400 font-medium">
-            Step {currentStep} of 3
-          </span>
+            <span className="text-[0.7rem] text-slate-400 font-medium">
+              Step {currentStep} of 3
+            </span>
+          </div>
+
+          {/* Progress Bar */}
+          <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+            <div
+              className="bg-gradient-to-r from-emerald-500 to-teal-600 h-full transition-all duration-300 rounded-full"
+              style={{ width: `${(currentStep / 3) * 100}%` }}
+            />
+          </div>
         </div>
 
-        {/* Progress Bar */}
-        <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-          <div
-            className="bg-gradient-to-r from-emerald-500 to-teal-600 h-full transition-all duration-300 rounded-full"
-            style={{ width: `${(currentStep / 3) * 100}%` }}
-          />
-        </div>
-      </div>
-
-      {/* STEP 1: CONTACT & LOCATION */}
-      {currentStep === 1 && (
-        <div className="space-y-3 animate-in fade-in zoom-in-95 duration-200">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label htmlFor="fullName" className="block text-xs font-semibold text-slate-700 mb-1">
-                Full Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                id="fullName"
-                type="text"
-                required
-                placeholder="e.g. Rahul Sharma"
-                value={formState.fullName}
-                onChange={(e) => setFormState({ ...formState, fullName: e.target.value })}
-                className={`w-full px-3.5 py-2 sm:py-2.5 rounded-xl border text-xs sm:text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
-                  errors.fullName ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
-                }`}
-              />
-              {errors.fullName && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.fullName}</p>}
-            </div>
-
-            <div>
-              <label htmlFor="phoneNumber" className="block text-xs font-semibold text-slate-700 mb-1">
-                WhatsApp Mobile <span className="text-red-500">*</span>
-              </label>
-              <div className="relative">
-                <span className="absolute left-3 top-2 sm:top-2.5 text-slate-400 text-xs sm:text-sm font-semibold">+91</span>
+        {/* MOBILE STEP 1: CONTACT & LOCATION */}
+        {currentStep === 1 && (
+          <div className="space-y-3 animate-in fade-in zoom-in-95 duration-200">
+            <div className="space-y-3">
+              <div>
+                <label htmlFor="fullName-mobile" className="block text-xs font-semibold text-slate-700 mb-1">
+                  Full Name <span className="text-red-500">*</span>
+                </label>
                 <input
-                  id="phoneNumber"
-                  type="tel"
+                  id="fullName-mobile"
+                  type="text"
                   required
-                  maxLength={10}
-                  placeholder="98765 43210"
-                  value={formState.phoneNumber}
-                  onChange={(e) => setFormState({ ...formState, phoneNumber: e.target.value.replace(/[^0-9]/g, '') })}
-                  className={`w-full pl-11 pr-3.5 py-2 sm:py-2.5 rounded-xl border text-xs sm:text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
-                    errors.phoneNumber ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
+                  placeholder="e.g. Rahul Sharma"
+                  value={formState.fullName}
+                  onChange={(e) => setFormState({ ...formState, fullName: e.target.value })}
+                  className={`w-full px-3.5 py-2 rounded-xl border text-xs transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
+                    errors.fullName ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
                   }`}
                 />
+                {errors.fullName && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.fullName}</p>}
               </div>
-              {errors.phoneNumber && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.phoneNumber}</p>}
-            </div>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label htmlFor="city" className="block text-xs font-semibold text-slate-700 mb-1">
-                City / Metro Area
-              </label>
-              <select
-                id="city"
-                value={formState.city}
-                onChange={(e) => setFormState({ ...formState, city: e.target.value })}
-                className="w-full px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-              >
-                {siteConfig.serviceCities.map((city) => (
-                  <option key={city} value={city}>
-                    {city}
-                  </option>
-                ))}
-              </select>
-            </div>
+              <div>
+                <label htmlFor="phoneNumber-mobile" className="block text-xs font-semibold text-slate-700 mb-1">
+                  WhatsApp Mobile <span className="text-red-500">*</span>
+                </label>
+                <div className="relative">
+                  <span className="absolute left-3 top-2 text-slate-400 text-xs font-semibold">+91</span>
+                  <input
+                    id="phoneNumber-mobile"
+                    type="tel"
+                    required
+                    maxLength={10}
+                    placeholder="98765 43210"
+                    value={formState.phoneNumber}
+                    onChange={(e) => setFormState({ ...formState, phoneNumber: e.target.value.replace(/[^0-9]/g, '') })}
+                    className={`w-full pl-11 pr-3.5 py-2 rounded-xl border text-xs transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
+                      errors.phoneNumber ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
+                    }`}
+                  />
+                </div>
+                {errors.phoneNumber && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.phoneNumber}</p>}
+              </div>
 
-            <div>
-              <label htmlFor="pickupArea" className="block text-xs font-semibold text-slate-700 mb-1">
-                Pickup Locality / Address <span className="text-red-500">*</span>
-              </label>
-              <input
-                id="pickupArea"
-                type="text"
-                required
-                placeholder="e.g. Indiranagar / Sector 62 / Bandra"
-                value={formState.pickupArea}
-                onChange={(e) => setFormState({ ...formState, pickupArea: e.target.value })}
-                className={`w-full px-3.5 py-2 sm:py-2.5 rounded-xl border text-xs sm:text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
-                  errors.pickupArea ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
-                }`}
-              />
-              {errors.pickupArea && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.pickupArea}</p>}
-            </div>
-          </div>
-
-          {/* Next Button */}
-          <div className="pt-2">
-            <Button
-              type="button"
-              variant="primary"
-              size="md"
-              onClick={handleNextStep}
-              className="w-full justify-center text-xs sm:text-sm py-2.5 sm:py-3 shadow-md font-bold"
-              icon={<ArrowRight className="w-4 h-4" />}
-            >
-              Continue to Course Selection
-            </Button>
-          </div>
-        </div>
-      )}
-
-      {/* STEP 2: COURSE & TRANSMISSION */}
-      {currentStep === 2 && (
-        <div className="space-y-3 animate-in fade-in zoom-in-95 duration-200">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label htmlFor="courseSlug" className="block text-xs font-semibold text-slate-700 mb-1">
-                Preferred Driving Program
-              </label>
-              <select
-                id="courseSlug"
-                value={formState.courseSlug}
-                onChange={(e) => setFormState({ ...formState, courseSlug: e.target.value })}
-                className="w-full px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-              >
-                {courses.map((course) => (
-                  <option key={course.slug} value={course.slug}>
-                    {course.shortTitle} (₹{course.price.toLocaleString('en-IN')})
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Vehicle Transmission
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  type="button"
-                  onClick={() => setFormState({ ...formState, transmission: 'manual' })}
-                  className={`py-2 px-2.5 rounded-xl border text-xs font-semibold transition-all ${
-                    formState.transmission === 'manual'
-                      ? 'border-emerald-600 bg-emerald-50 text-emerald-900 shadow-xs font-bold'
-                      : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
-                  }`}
+              <div>
+                <label htmlFor="city-mobile" className="block text-xs font-semibold text-slate-700 mb-1">
+                  City / Metro Area
+                </label>
+                <select
+                  id="city-mobile"
+                  value={formState.city}
+                  onChange={(e) => setFormState({ ...formState, city: e.target.value })}
+                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                 >
-                  Manual Gearbox
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setFormState({ ...formState, transmission: 'automatic' })}
-                  className={`py-2 px-2.5 rounded-xl border text-xs font-semibold transition-all ${
-                    formState.transmission === 'automatic'
-                      ? 'border-emerald-600 bg-emerald-50 text-emerald-900 shadow-xs font-bold'
-                      : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
+                  {siteConfig.serviceCities.map((city) => (
+                    <option key={city} value={city}>
+                      {city}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="pickupArea-mobile" className="block text-xs font-semibold text-slate-700 mb-1">
+                  Pickup Locality / Address <span className="text-red-500">*</span>
+                </label>
+                <input
+                  id="pickupArea-mobile"
+                  type="text"
+                  required
+                  placeholder="e.g. Indiranagar / Sector 62 / Bandra"
+                  value={formState.pickupArea}
+                  onChange={(e) => setFormState({ ...formState, pickupArea: e.target.value })}
+                  className={`w-full px-3.5 py-2 rounded-xl border text-xs transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
+                    errors.pickupArea ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
                   }`}
-                >
-                  Automatic (AT)
-                </button>
+                />
+                {errors.pickupArea && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.pickupArea}</p>}
               </div>
             </div>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label htmlFor="preferredTimeSlot" className="block text-xs font-semibold text-slate-700 mb-1">
-                Preferred Time Slot
-              </label>
-              <select
-                id="preferredTimeSlot"
-                value={formState.preferredTimeSlot}
-                onChange={(e) => setFormState({ ...formState, preferredTimeSlot: e.target.value as TimeSlot })}
-                className="w-full px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+            {/* Next Button */}
+            <div className="pt-2">
+              <Button
+                type="button"
+                variant="primary"
+                size="md"
+                onClick={handleNextStep}
+                className="w-full justify-center text-xs py-2.5 shadow-md font-bold"
+                icon={<ArrowRight className="w-4 h-4" />}
               >
-                <option value="early_morning">Early Morning (6 AM – 8 AM)</option>
-                <option value="morning">Morning (8 AM – 12 PM)</option>
-                <option value="afternoon">Afternoon (12 PM – 4 PM)</option>
-                <option value="evening">Evening (4 PM – 8 PM)</option>
-                <option value="weekend_only">Weekends (Sat/Sun)</option>
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="experienceLevel" className="block text-xs font-semibold text-slate-700 mb-1">
-                Driving Experience Level
-              </label>
-              <select
-                id="experienceLevel"
-                value={formState.experienceLevel}
-                onChange={(e) => setFormState({ ...formState, experienceLevel: e.target.value as ExperienceLevel })}
-                className="w-full px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-              >
-                <option value="absolute_beginner">Absolute Beginner (Never driven)</option>
-                <option value="some_experience">Basic Steering & Clutch Knowledge</option>
-                <option value="test_prep">RTO Test Track Preparation</option>
-                <option value="refresher">Refresher (Need Road Confidence)</option>
-              </select>
+                Continue to Course Selection
+              </Button>
             </div>
           </div>
+        )}
 
-          {/* Stepper Buttons */}
-          <div className="grid grid-cols-2 gap-2.5 pt-2">
-            <Button
-              type="button"
-              variant="outline"
-              size="md"
-              onClick={handlePrevStep}
-              className="justify-center text-xs sm:text-sm"
-            >
-              ← Back
-            </Button>
-            <Button
-              type="button"
-              variant="primary"
-              size="md"
-              onClick={handleNextStep}
-              className="justify-center text-xs sm:text-sm shadow-md font-bold"
-              icon={<ArrowRight className="w-4 h-4" />}
-            >
-              Continue to Review
-            </Button>
+        {/* MOBILE STEP 2: COURSE & TRANSMISSION */}
+        {currentStep === 2 && (
+          <div className="space-y-3 animate-in fade-in zoom-in-95 duration-200">
+            <div className="space-y-3">
+              <div>
+                <label htmlFor="courseSlug-mobile" className="block text-xs font-semibold text-slate-700 mb-1">
+                  Preferred Driving Program
+                </label>
+                <select
+                  id="courseSlug-mobile"
+                  value={formState.courseSlug}
+                  onChange={(e) => setFormState({ ...formState, courseSlug: e.target.value })}
+                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                >
+                  {courses.map((course) => (
+                    <option key={course.slug} value={course.slug}>
+                      {course.shortTitle} (₹{course.price.toLocaleString('en-IN')})
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  Vehicle Transmission
+                </label>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setFormState({ ...formState, transmission: 'manual' })}
+                    className={`py-2 px-2.5 rounded-xl border text-xs font-semibold transition-all ${
+                      formState.transmission === 'manual'
+                        ? 'border-emerald-600 bg-emerald-50 text-emerald-900 shadow-xs font-bold'
+                        : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
+                    }`}
+                  >
+                    Manual Gearbox
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setFormState({ ...formState, transmission: 'automatic' })}
+                    className={`py-2 px-2.5 rounded-xl border text-xs font-semibold transition-all ${
+                      formState.transmission === 'automatic'
+                        ? 'border-emerald-600 bg-emerald-50 text-emerald-900 shadow-xs font-bold'
+                        : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
+                    }`}
+                  >
+                    Automatic (AT)
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="preferredTimeSlot-mobile" className="block text-xs font-semibold text-slate-700 mb-1">
+                  Preferred Time Slot
+                </label>
+                <select
+                  id="preferredTimeSlot-mobile"
+                  value={formState.preferredTimeSlot}
+                  onChange={(e) => setFormState({ ...formState, preferredTimeSlot: e.target.value as TimeSlot })}
+                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                >
+                  <option value="early_morning">Early Morning (6 AM – 8 AM)</option>
+                  <option value="morning">Morning (8 AM – 12 PM)</option>
+                  <option value="afternoon">Afternoon (12 PM – 4 PM)</option>
+                  <option value="evening">Evening (4 PM – 8 PM)</option>
+                  <option value="weekend_only">Weekends (Sat/Sun)</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="experienceLevel-mobile" className="block text-xs font-semibold text-slate-700 mb-1">
+                  Driving Experience Level
+                </label>
+                <select
+                  id="experienceLevel-mobile"
+                  value={formState.experienceLevel}
+                  onChange={(e) => setFormState({ ...formState, experienceLevel: e.target.value as ExperienceLevel })}
+                  className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                >
+                  <option value="absolute_beginner">Absolute Beginner (Never driven)</option>
+                  <option value="some_experience">Basic Steering & Clutch Knowledge</option>
+                  <option value="test_prep">RTO Test Track Preparation</option>
+                  <option value="refresher">Refresher (Need Road Confidence)</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Stepper Buttons */}
+            <div className="grid grid-cols-2 gap-2.5 pt-2">
+              <Button
+                type="button"
+                variant="outline"
+                size="md"
+                onClick={handlePrevStep}
+                className="justify-center text-xs"
+              >
+                ← Back
+              </Button>
+              <Button
+                type="button"
+                variant="primary"
+                size="md"
+                onClick={handleNextStep}
+                className="justify-center text-xs shadow-md font-bold"
+                icon={<ArrowRight className="w-4 h-4" />}
+              >
+                Continue to Review
+              </Button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* STEP 3: CUSTOMIZATION, REVIEW & SUBMIT */}
-      {currentStep === 3 && (
-        <div className="space-y-3 animate-in fade-in zoom-in-95 duration-200">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {/* MOBILE STEP 3: CUSTOMIZATION, REVIEW & SUBMIT */}
+        {currentStep === 3 && (
+          <div className="space-y-3 animate-in fade-in zoom-in-95 duration-200">
             <div>
-              <label htmlFor="email" className="block text-xs font-semibold text-slate-700 mb-1">
+              <label htmlFor="email-mobile" className="block text-xs font-semibold text-slate-700 mb-1">
                 Email Address (Optional)
               </label>
               <input
-                id="email"
+                id="email-mobile"
                 type="email"
                 placeholder="e.g. rahul@example.com"
                 value={formState.email}
                 onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                className={`w-full px-3.5 py-2 sm:py-2.5 rounded-xl border text-xs sm:text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
+                className={`w-full px-3.5 py-2 rounded-xl border text-xs transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
                   errors.email ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
                 }`}
               />
@@ -523,72 +556,312 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-xs font-semibold text-slate-700 mb-1">
+              <label htmlFor="message-mobile" className="block text-xs font-semibold text-slate-700 mb-1">
                 Special Notes / Requests (Optional)
               </label>
               <input
-                id="message"
+                id="message-mobile"
                 type="text"
                 placeholder="e.g. Female instructor, office route"
                 value={formState.message}
                 onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                className="w-full px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                className="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none"
               />
             </div>
-          </div>
 
-          {/* Quick Summary Review Box */}
-          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
-            <div className="flex justify-between items-center text-slate-600 pb-1 border-b border-slate-200/60">
-              <span className="font-semibold">Student & Pickup:</span>
-              <span className="font-bold text-slate-900">{formState.fullName} • {formState.pickupArea || formState.city}</span>
+            {/* Quick Summary Review Box */}
+            <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
+              <div className="flex justify-between items-center text-slate-600 pb-1 border-b border-slate-200/60">
+                <span className="font-semibold">Student & Pickup:</span>
+                <span className="font-bold text-slate-900">{formState.fullName} • {formState.pickupArea || formState.city}</span>
+              </div>
+              <div className="flex justify-between items-center text-slate-600">
+                <span className="font-semibold">Program:</span>
+                <span className="font-bold text-emerald-800">{selectedCourse?.shortTitle} ({formState.transmission})</span>
+              </div>
             </div>
-            <div className="flex justify-between items-center text-slate-600">
-              <span className="font-semibold">Program:</span>
-              <span className="font-bold text-emerald-800">{selectedCourse?.shortTitle} ({formState.transmission})</span>
+
+            {/* Terms Agreement */}
+            <div className="pt-0.5">
+              <label className="flex items-start gap-2.5 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={formState.agreeToTerms}
+                  onChange={(e) => setFormState({ ...formState, agreeToTerms: e.target.checked })}
+                  className="mt-0.5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 w-3.5 h-3.5"
+                />
+                <span className="text-[0.72rem] text-slate-600 leading-snug">
+                  I agree to receive lesson scheduling details via WhatsApp/SMS. 100% dual-control safety.
+                </span>
+              </label>
+              {errors.agreeToTerms && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.agreeToTerms}</p>}
+            </div>
+
+            {/* Action Buttons */}
+            <div className="grid grid-cols-3 gap-2.5 pt-1">
+              <Button
+                type="button"
+                variant="outline"
+                size="md"
+                onClick={handlePrevStep}
+                className="col-span-1 justify-center text-xs"
+              >
+                ← Back
+              </Button>
+              <Button
+                type="submit"
+                variant="primary"
+                size="md"
+                isLoading={isSubmitting}
+                className="col-span-2 justify-center text-xs py-2.5 shadow-md font-bold"
+                icon={<Sparkles className="w-4 h-4 text-amber-300" />}
+              >
+                Send WhatsApp Enquiry
+              </Button>
             </div>
           </div>
+        )}
+      </div>
 
-          {/* Terms Agreement */}
-          <div className="pt-0.5">
-            <label className="flex items-start gap-2.5 cursor-pointer select-none">
-              <input
-                type="checkbox"
-                checked={formState.agreeToTerms}
-                onChange={(e) => setFormState({ ...formState, agreeToTerms: e.target.checked })}
-                className="mt-0.5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 w-3.5 h-3.5 sm:w-4 sm:h-4"
-              />
-              <span className="text-[0.72rem] sm:text-xs text-slate-600 leading-snug">
-                I agree to receive lesson scheduling details via WhatsApp/SMS. 100% dual-control safety.
-              </span>
+      {/* ======================================================== */}
+      {/* 2. DESKTOP UI: SINGLE-PAGE ALL-IN-ONE FORM (hidden on mobile, visible sm:block) */}
+      {/* ======================================================== */}
+      <div className="hidden sm:block space-y-4">
+        {/* Row 1: Name & Phone */}
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="fullName-desktop" className="block text-xs font-semibold text-slate-700 mb-1">
+              Full Name <span className="text-red-500">*</span>
             </label>
-            {errors.agreeToTerms && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.agreeToTerms}</p>}
+            <input
+              id="fullName-desktop"
+              type="text"
+              required
+              placeholder="e.g. Rahul Sharma"
+              value={formState.fullName}
+              onChange={(e) => setFormState({ ...formState, fullName: e.target.value })}
+              className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
+                errors.fullName ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
+              }`}
+            />
+            {errors.fullName && <p className="mt-1 text-xs text-red-600 font-medium">{errors.fullName}</p>}
           </div>
 
-          {/* Action Buttons */}
-          <div className="grid grid-cols-3 gap-2.5 pt-1">
-            <Button
-              type="button"
-              variant="outline"
-              size="md"
-              onClick={handlePrevStep}
-              className="col-span-1 justify-center text-xs sm:text-sm"
-            >
-              ← Back
-            </Button>
-            <Button
-              type="submit"
-              variant="primary"
-              size="md"
-              isLoading={isSubmitting}
-              className="col-span-2 justify-center text-xs sm:text-sm py-2.5 sm:py-3 shadow-md font-bold"
-              icon={<Sparkles className="w-4 h-4 text-amber-300" />}
-            >
-              Send WhatsApp Enquiry
-            </Button>
+          <div>
+            <label htmlFor="phoneNumber-desktop" className="block text-xs font-semibold text-slate-700 mb-1">
+              WhatsApp Mobile <span className="text-red-500">*</span>
+            </label>
+            <div className="relative">
+              <span className="absolute left-3 top-2.5 text-slate-400 text-sm font-semibold">+91</span>
+              <input
+                id="phoneNumber-desktop"
+                type="tel"
+                required
+                maxLength={10}
+                placeholder="98765 43210"
+                value={formState.phoneNumber}
+                onChange={(e) => setFormState({ ...formState, phoneNumber: e.target.value.replace(/[^0-9]/g, '') })}
+                className={`w-full pl-11 pr-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
+                  errors.phoneNumber ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
+                }`}
+              />
+            </div>
+            {errors.phoneNumber && <p className="mt-1 text-xs text-red-600 font-medium">{errors.phoneNumber}</p>}
           </div>
         </div>
-      )}
+
+        {/* Row 2: City & Pickup Area */}
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="city-desktop" className="block text-xs font-semibold text-slate-700 mb-1">
+              City / Metro Area
+            </label>
+            <select
+              id="city-desktop"
+              value={formState.city}
+              onChange={(e) => setFormState({ ...formState, city: e.target.value })}
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+            >
+              {siteConfig.serviceCities.map((city) => (
+                <option key={city} value={city}>
+                  {city}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="pickupArea-desktop" className="block text-xs font-semibold text-slate-700 mb-1">
+              Pickup Locality / Address <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="pickupArea-desktop"
+              type="text"
+              required
+              placeholder="e.g. Indiranagar / Sector 62 / Bandra"
+              value={formState.pickupArea}
+              onChange={(e) => setFormState({ ...formState, pickupArea: e.target.value })}
+              className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
+                errors.pickupArea ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
+              }`}
+            />
+            {errors.pickupArea && <p className="mt-1 text-xs text-red-600 font-medium">{errors.pickupArea}</p>}
+          </div>
+        </div>
+
+        {/* Row 3: Program & Transmission */}
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="courseSlug-desktop" className="block text-xs font-semibold text-slate-700 mb-1">
+              Preferred Driving Program
+            </label>
+            <select
+              id="courseSlug-desktop"
+              value={formState.courseSlug}
+              onChange={(e) => setFormState({ ...formState, courseSlug: e.target.value })}
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+            >
+              {courses.map((course) => (
+                <option key={course.slug} value={course.slug}>
+                  {course.shortTitle} (₹{course.price.toLocaleString('en-IN')})
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-xs font-semibold text-slate-700 mb-1">
+              Vehicle Transmission
+            </label>
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={() => setFormState({ ...formState, transmission: 'manual' })}
+                className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-all ${
+                  formState.transmission === 'manual'
+                    ? 'border-emerald-600 bg-emerald-50 text-emerald-900 shadow-xs font-bold'
+                    : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
+                }`}
+              >
+                Manual Gearbox
+              </button>
+              <button
+                type="button"
+                onClick={() => setFormState({ ...formState, transmission: 'automatic' })}
+                className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-all ${
+                  formState.transmission === 'automatic'
+                    ? 'border-emerald-600 bg-emerald-50 text-emerald-900 shadow-xs font-bold'
+                    : 'border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100'
+                }`}
+              >
+                Automatic (AT)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Row 4: Slot & Experience */}
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="preferredTimeSlot-desktop" className="block text-xs font-semibold text-slate-700 mb-1">
+              Preferred Time Slot
+            </label>
+            <select
+              id="preferredTimeSlot-desktop"
+              value={formState.preferredTimeSlot}
+              onChange={(e) => setFormState({ ...formState, preferredTimeSlot: e.target.value as TimeSlot })}
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+            >
+              <option value="early_morning">Early Morning (6 AM – 8 AM)</option>
+              <option value="morning">Morning (8 AM – 12 PM)</option>
+              <option value="afternoon">Afternoon (12 PM – 4 PM)</option>
+              <option value="evening">Evening (4 PM – 8 PM)</option>
+              <option value="weekend_only">Weekends (Sat/Sun)</option>
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="experienceLevel-desktop" className="block text-xs font-semibold text-slate-700 mb-1">
+              Driving Experience Level
+            </label>
+            <select
+              id="experienceLevel-desktop"
+              value={formState.experienceLevel}
+              onChange={(e) => setFormState({ ...formState, experienceLevel: e.target.value as ExperienceLevel })}
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+            >
+              <option value="absolute_beginner">Absolute Beginner (Never driven)</option>
+              <option value="some_experience">Basic Steering & Clutch Knowledge</option>
+              <option value="test_prep">RTO Test Track Preparation</option>
+              <option value="refresher">Refresher (Need Road Confidence)</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Row 5: Email & Notes (Optional) */}
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="email-desktop" className="block text-xs font-semibold text-slate-700 mb-1">
+              Email Address (Optional)
+            </label>
+            <input
+              id="email-desktop"
+              type="email"
+              placeholder="e.g. rahul@example.com"
+              value={formState.email}
+              onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+              className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none ${
+                errors.email ? 'border-red-400 bg-red-50/50' : 'border-slate-200 bg-white'
+              }`}
+            />
+            {errors.email && <p className="mt-1 text-xs text-red-600 font-medium">{errors.email}</p>}
+          </div>
+
+          <div>
+            <label htmlFor="message-desktop" className="block text-xs font-semibold text-slate-700 mb-1">
+              Special Notes / Requests (Optional)
+            </label>
+            <input
+              id="message-desktop"
+              type="text"
+              placeholder="e.g. Female instructor, office route"
+              value={formState.message}
+              onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        {/* Terms Agreement Checkbox */}
+        <div className="pt-1">
+          <label className="flex items-start gap-2.5 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={formState.agreeToTerms}
+              onChange={(e) => setFormState({ ...formState, agreeToTerms: e.target.checked })}
+              className="mt-0.5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 w-4 h-4"
+            />
+            <span className="text-xs text-slate-600 leading-snug">
+              I agree to receive lesson scheduling details via WhatsApp/SMS. 100% dual-control safety.
+            </span>
+          </label>
+          {errors.agreeToTerms && <p className="mt-1 text-xs text-red-600 font-medium">{errors.agreeToTerms}</p>}
+        </div>
+
+        {/* Desktop Single-Page Submit Button */}
+        <div className="pt-2">
+          <Button
+            type="submit"
+            variant="primary"
+            size="lg"
+            isLoading={isSubmitting}
+            className="w-full justify-center text-sm sm:text-base py-3 shadow-md hover-lift font-bold"
+            icon={<Sparkles className="w-4 h-4 text-amber-300" />}
+          >
+            Send WhatsApp Enquiry
+          </Button>
+        </div>
+      </div>
 
       {/* Security & Response SLA Note */}
       <div className="flex items-center justify-center gap-3 text-[0.68rem] sm:text-xs text-slate-500 pt-0.5">
