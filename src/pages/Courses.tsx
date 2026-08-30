@@ -43,13 +43,10 @@ export const Courses: React.FC = () => {
         canonicalPath="/courses"
       />
 
-      <div className="space-y-1">
-        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+      <div>
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-slate-900 tracking-tight">
           Driving Courses & Programs
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500">
-          Structured practical training packages for beginners, automatic cars, and RTO track prep.
-        </p>
       </div>
 
       {/* Filter and Search Bar */}

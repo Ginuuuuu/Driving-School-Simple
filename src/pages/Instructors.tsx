@@ -40,13 +40,10 @@ export const Instructors: React.FC = () => {
         canonicalPath="/instructors"
       />
 
-      <div className="space-y-1">
-        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+      <div>
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-slate-900 tracking-tight">
           Certified Driving Instructors
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500">
-          Patient, verified male & female instructors with a zero-shouting guarantee.
-        </p>
       </div>
 
       {/* Filter Bar */}

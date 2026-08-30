@@ -20,13 +20,10 @@ export const Pricing: React.FC = () => {
         canonicalPath="/pricing"
       />
 
-      <div className="space-y-1">
-        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+      <div>
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-slate-900 tracking-tight">
           Pricing & Lesson Packages
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500">
-          Transparent rates with fuel, dual-control maintenance, and doorstep pickup included.
-        </p>
       </div>
 
       {/* Main Pricing Cards Grid with Staggered Entrance */}
