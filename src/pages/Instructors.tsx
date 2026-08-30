@@ -3,7 +3,6 @@ import { useOutletContext } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Globe, ShieldCheck, Star, Users } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { InstructorCard } from '../components/cards/InstructorCard';
 import { SEO } from '../components/common/SEO';
 
@@ -42,7 +41,6 @@ export const Instructors: React.FC = () => {
       />
 
       <div className="space-y-1">
-        <Breadcrumbs items={[{ label: 'Instructors' }]} />
         <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
           Certified Driving Instructors
         </h1>

@@ -3,7 +3,6 @@ import { useOutletContext } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Check, X, Shield, Clock, Plus, Sparkles, HelpCircle } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { PricingCard } from '../components/cards/PricingCard';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
@@ -22,7 +21,6 @@ export const Pricing: React.FC = () => {
       />
 
       <div className="space-y-1">
-        <Breadcrumbs items={[{ label: 'Pricing & Packages' }]} />
         <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
           Pricing & Lesson Packages
         </h1>
