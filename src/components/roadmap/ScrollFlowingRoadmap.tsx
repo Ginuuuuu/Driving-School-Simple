@@ -33,38 +33,38 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeModalStep, setActiveModalStep] = useState<RoadmapStep | null>(null);
 
-  // Scroll Progress binding to the container
+  // Scroll Progress binding to the container (starts at station 1 on initial load)
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start 75%', 'end 35%'],
+    offset: ['start 180px', 'end 80%'],
   });
 
   // Smooth spring physics for natural car movement
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 20,
+    stiffness: 90,
+    damping: 24,
     restDelta: 0.001,
   });
 
-  // Car translation along the vertical path (from top 4% to bottom 96%)
+  // Car translation along the vertical path (from Station 1 at top ~2% to Station 6 at ~96%)
   const carY = useTransform(smoothProgress, [0, 1], ['2%', '96%']);
 
   // Car gentle horizontal serpentine sway as it drives down
   const carX = useTransform(
     smoothProgress,
-    [0, 0.18, 0.36, 0.54, 0.72, 0.9, 1],
-    ['0px', '28px', '-28px', '28px', '-28px', '20px', '0px']
+    [0, 0.2, 0.4, 0.6, 0.8, 1],
+    ['0px', '22px', '-22px', '22px', '-22px', '0px']
   );
 
   // Car dynamic steering angle into each turn
   const carRotate = useTransform(
     smoothProgress,
-    [0, 0.18, 0.36, 0.54, 0.72, 0.9, 1],
-    [0, 18, -18, 18, -18, 10, 0]
+    [0, 0.2, 0.4, 0.6, 0.8, 1],
+    [0, 16, -16, 16, -16, 0]
   );
 
-  // Road progress line fill height percentage
-  const roadFillHeight = useTransform(smoothProgress, [0, 1], ['0%', '100%']);
+  // Road progress line fill height percentage (starts at Station 1)
+  const roadFillHeight = useTransform(smoothProgress, [0, 1], ['4%', '100%']);
 
   const milestoneIcons = [
     { badge: '1. APPLY & E-KYC', icon: FileText, color: 'text-blue-500 bg-blue-50 border-blue-200' },
