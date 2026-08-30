@@ -36,24 +36,15 @@ export const Roadmap: React.FC = () => {
         canonicalPath="/roadmap"
       />
 
-      <Breadcrumbs items={[{ label: 'Licence Roadmap' }]} />
-
       {/* Page Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6"
-      >
-        <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 mb-2 sm:mb-3">
-            Official RTO Process Guide
-          </div>
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-display text-slate-900 tracking-tight leading-tight">
-            How to Get Your Driving Licence in India
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="space-y-1">
+          <Breadcrumbs items={[{ label: 'Licence Roadmap' }]} />
+          <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+            Indian Driving Licence Roadmap
           </h1>
-          <p className="mt-2 sm:mt-3 text-xs sm:text-base text-slate-600 leading-relaxed">
-            The complete 6-stage journey from online Learner’s Licence application to automated test track drills and permanent Smart Card delivery.
+          <p className="text-xs sm:text-sm text-slate-500">
+            The 6-stage journey from online LL application to automated RTO track test and Smart Card delivery.
           </p>
         </div>
 

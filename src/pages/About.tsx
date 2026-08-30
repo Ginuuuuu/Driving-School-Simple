@@ -31,16 +31,12 @@ export const About: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center"
       >
-        <div className="lg:col-span-7 space-y-4 sm:space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200">
-            About DriveCraft Academy
-          </div>
-
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-display text-slate-900 tracking-tight leading-tight">
+        <div className="lg:col-span-7 space-y-3 sm:space-y-4">
+          <h1 className="text-xl sm:text-3xl lg:text-4xl font-extrabold font-display text-slate-900 tracking-tight leading-tight">
             {about.missionHeadline}
           </h1>
 
-          <p className="text-xs sm:text-lg text-slate-600 leading-relaxed">
+          <p className="text-xs sm:text-base text-slate-600 leading-relaxed">
             {about.missionBody}
           </p>
 
