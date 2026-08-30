@@ -1,0 +1,102 @@
+import { FAQItem } from '../types';
+
+export const defaultFAQs: FAQItem[] = [
+  {
+    id: 'faq-1',
+    category: 'Licence & RTO',
+    question: 'How do I get my Learner’s Licence (LL) in India?',
+    answer: 'You can apply online via the official Sarathi Parivahan portal (sarathi.parivahan.gov.in) using your Aadhaar card for instant e-KYC. After uploading your age and address proofs and paying the government fee (typically ₹150–₹200 depending on your state), you can take the online computerized test from home. DriveCraft assists you throughout this process.',
+    popular: true,
+  },
+  {
+    id: 'faq-2',
+    category: 'Licence & RTO',
+    question: 'How long is the Learner’s Licence valid before I can take the driving test?',
+    answer: 'A Learner’s Licence is valid for 180 days (6 months) across all of India. Under Section 8 of the Central Motor Vehicles Act, you must hold the LL for at least 30 continuous days before you become eligible to take the Permanent Driving Licence skill test.',
+    popular: true,
+  },
+  {
+    id: 'faq-3',
+    category: 'Licence & RTO',
+    question: 'What is the Automated Driving Test Track (ADTT) test?',
+    answer: 'Modern RTOs across major Indian cities now use Automated Driving Test Tracks equipped with high-definition overhead cameras and sensor boundary poles. You are graded electronically on specific maneuvers: Figure-8 track, Forward & Reverse H-box parking, Parallel parking bay, and Slope gradient stop-and-go with zero rollback.',
+    popular: true,
+  },
+  {
+    id: 'faq-4',
+    category: 'Lessons & Scheduling',
+    question: 'Do you offer doorstep pickup and drop for driving lessons?',
+    answer: 'Yes! All our Standard, Beginner, and Mastery Pro courses include complimentary doorstep pickup and drop from your residence or office within our service radius. You can schedule your daily 1-hour slot between 6:00 AM and 8:00 PM.',
+    popular: true,
+  },
+  {
+    id: 'faq-5',
+    category: 'Lessons & Scheduling',
+    question: 'Can I reschedule a session if I have an urgent work meeting or emergency?',
+    answer: 'Absolutely. You can easily reschedule any lesson with at least 6 hours of prior notice directly through your instructor or our WhatsApp helpline without any cancellation fee.',
+  },
+  {
+    id: 'faq-6',
+    category: 'Lessons & Scheduling',
+    question: 'How many days does it typically take to complete a 20-hour beginner course?',
+    answer: 'Most learners complete their 20-hour course in 3 to 4 weeks (taking 1-hour daily sessions on weekdays or 2-hour sessions on weekends). We also offer fast-track 10-day intensive batches for learners with upcoming travel or test schedules.',
+  },
+  {
+    id: 'faq-7',
+    category: 'Vehicles & Safety',
+    question: 'What makes your dual-control training cars safe for complete beginners?',
+    answer: 'All DriveCraft training vehicles are retrofitted with certified dual-control pedal systems. Your instructor seated in the front passenger seat has direct mechanical control over a secondary clutch and brake pedal. If an unexpected obstacle appears or you freeze, the instructor can stop the car instantly.',
+    popular: true,
+  },
+  {
+    id: 'faq-8',
+    category: 'Vehicles & Safety',
+    question: 'Can I choose between a Manual and an Automatic vehicle?',
+    answer: 'Yes! We have an extensive fleet of modern Hatchbacks, Sedans, and Compact SUVs available in both 5-speed Manual and modern Automatic (CVT, AMT, Torque Converter, EV) transmissions.',
+  },
+  {
+    id: 'faq-9',
+    category: 'Vehicles & Safety',
+    question: 'Can I request a certified female driving instructor?',
+    answer: 'Yes! We have dedicated, certified female instructors on our full-time team. You can specifically request a female instructor when booking online or enquiring via WhatsApp.',
+    popular: true,
+  },
+  {
+    id: 'faq-10',
+    category: 'Pricing & Payments',
+    question: 'Are there any hidden costs (fuel charges, instructor tips, or vehicle wear)?',
+    answer: 'Zero hidden fees. Our package prices are 100% all-inclusive — covering fuel, vehicle maintenance, instructor time, doorstep pickup, and mock test access. We maintain a strict zero-tipping policy.',
+    popular: true,
+  },
+  {
+    id: 'faq-11',
+    category: 'Pricing & Payments',
+    question: 'Do you offer installment or EMI payment options?',
+    answer: 'Yes! For our Standard and Mastery Pro courses, you can pay in two easy 50/50 installments (50% at registration, 50% at the 10th session) or opt for 0% interest 3-month credit card EMIs.',
+  },
+  {
+    id: 'faq-12',
+    category: 'Beginners',
+    question: 'I feel terrified of driving in heavy traffic. How do you help nervous learners?',
+    answer: 'Driving fear is completely normal! We start on wide, empty roads or our private closed training ground until steering and braking feel natural. We never shout, rush, or take you into dense traffic until your fundamentals are rock solid.',
+    popular: true,
+  },
+  {
+    id: 'faq-13',
+    category: 'Beginners',
+    question: 'What is the DSSSM routine that you teach in the first session?',
+    answer: 'DSSSM is the international standard cockpit pre-drive checklist: Doors securely shut, Seat adjusted for pedal reach, Steering adjusted, Seatbelt fastened, and Mirrors (both side mirrors and interior rearview) adjusted for blind-spot elimination.',
+  },
+  {
+    id: 'faq-14',
+    category: 'Beginners',
+    question: 'What is the clutch bite point and why does the car stall?',
+    answer: 'The clutch bite point is the exact friction zone where the rotating engine flywheel connects with the stationary transmission plate. Stalling occurs when the clutch pedal is released too rapidly without sufficient engine throttle. We use specialized low-speed creep drills to make finding this point second nature in just 2 sessions.',
+  },
+  {
+    id: 'faq-15',
+    category: 'Licence & RTO',
+    question: 'Is my Indian Driving Licence valid across all states in India?',
+    answer: 'Yes! Under the Motor Vehicles Act 1988, a Driving Licence issued by any RTO in India is officially valid across all Indian states and Union Territories. It is also valid for driving abroad in countries that accept the 1949 Geneva Convention on Road Traffic (or with an International Driving Permit IDP).',
+  },
+];
