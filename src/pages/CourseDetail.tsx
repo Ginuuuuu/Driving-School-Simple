@@ -16,7 +16,6 @@ import {
   MessageCircle,
 } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { Badge } from '../components/common/Badge';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
@@ -48,13 +47,6 @@ export const CourseDetail: React.FC = () => {
         title={course.title}
         description={course.summary}
         canonicalPath={`/courses/${course.slug}`}
-      />
-
-      <Breadcrumbs
-        items={[
-          { label: 'Courses', to: '/courses' },
-          { label: course.shortTitle },
-        ]}
       />
 
       {/* Course Hero Banner */}

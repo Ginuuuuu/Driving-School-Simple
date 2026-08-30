@@ -3,7 +3,6 @@ import { Link, useOutletContext } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Award, Heart, CheckCircle2, Sliders, Compass, Sparkles, Users } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
 
@@ -19,9 +18,6 @@ export const About: React.FC = () => {
         description="Learn about DriveCraft Motor Academy's mission to transform Indian drivers through dual-control safety cars, patient certified instructors, and structured muscle memory training."
         canonicalPath="/about"
       />
-
-      {/* Breadcrumbs */}
-      <Breadcrumbs items={[{ label: 'About Us' }]} />
 
       {/* Hero Story Section */}
       <motion.section

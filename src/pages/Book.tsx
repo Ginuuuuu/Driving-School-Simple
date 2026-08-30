@@ -2,7 +2,6 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Sparkles, ShieldCheck, Clock, CheckCircle2, Car } from 'lucide-react';
-import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { EnquiryForm } from '../components/forms/EnquiryForm';
 import { SEO } from '../components/common/SEO';
 
@@ -20,7 +19,6 @@ export const Book: React.FC = () => {
       />
 
       <div className="space-y-1">
-        <Breadcrumbs items={[{ label: 'Book a Lesson' }]} />
         <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
           Book a Driving Lesson
         </h1>

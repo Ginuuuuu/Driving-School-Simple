@@ -9,7 +9,6 @@ import {
   ShieldCheck,
   Award,
   Sparkles,
-  Printer,
   HelpCircle,
 } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
@@ -22,10 +21,6 @@ export const Roadmap: React.FC = () => {
   const { roadmap, siteConfig } = siteData;
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string) => void }>();
 
-  const handlePrint = () => {
-    window.print();
-  };
-
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 space-y-6 sm:space-y-12 lg:space-y-16">
       <SEO
@@ -35,37 +30,13 @@ export const Roadmap: React.FC = () => {
       />
 
       {/* Page Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="space-y-1">
-          <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
-            Indian Driving Licence Roadmap
-          </h1>
-          <p className="text-xs sm:text-sm text-slate-500">
-            The 6-stage journey from online LL application to automated RTO track test and Smart Card delivery.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handlePrint}
-            className="hidden sm:inline-flex text-xs hover-lift"
-            icon={<Printer className="w-4 h-4" />}
-          >
-            Print Checklist
-          </Button>
-
-          <Button
-            variant="primary"
-            size="sm"
-            onClick={() => onOpenBooking()}
-            className="text-xs sm:text-sm py-2 sm:py-2.5 hover-lift"
-            icon={<Sparkles className="w-4 h-4 text-amber-300" />}
-          >
-            Start Training with Us
-          </Button>
-        </div>
+      <div className="space-y-1">
+        <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+          Indian Driving Licence Roadmap
+        </h1>
+        <p className="text-xs sm:text-sm text-slate-500">
+          The 6-stage journey from online LL application to automated RTO track test and Smart Card delivery.
+        </p>
       </div>
 
       {/* Interactive Roadmap Simulator (Desktop & Mobile) */}
