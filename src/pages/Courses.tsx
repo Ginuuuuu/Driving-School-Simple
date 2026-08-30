@@ -3,7 +3,6 @@ import { useOutletContext } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Filter, Sparkles, Check, Car, Clock } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { CourseCard } from '../components/cards/CourseCard';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
@@ -45,7 +44,6 @@ export const Courses: React.FC = () => {
       />
 
       <div className="space-y-1">
-        <Breadcrumbs items={[{ label: 'Courses' }]} />
         <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
           Driving Courses & Programs
         </h1>

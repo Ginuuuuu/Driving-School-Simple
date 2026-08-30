@@ -1,8 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ChevronDown, MessageCircle, Phone, HelpCircle } from 'lucide-react';
+import { Search, ChevronDown, MessageCircle, HelpCircle } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
 import { generateDirectWhatsAppChatLink } from '../utils/whatsapp';
@@ -59,7 +58,6 @@ export const FAQ: React.FC = () => {
       />
 
       <div className="space-y-1">
-        <Breadcrumbs items={[{ label: 'FAQ' }]} />
         <h1 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
           Frequently Asked Questions
         </h1>
