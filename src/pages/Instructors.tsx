@@ -3,7 +3,6 @@ import { useOutletContext } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Globe, ShieldCheck, Star, Users } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { SectionHeading } from '../components/common/SectionHeading';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { InstructorCard } from '../components/cards/InstructorCard';
 import { SEO } from '../components/common/SEO';

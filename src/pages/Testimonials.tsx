@@ -3,7 +3,6 @@ import { useOutletContext } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ShieldCheck, CheckCircle2, MessageSquare, Sparkles } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { SectionHeading } from '../components/common/SectionHeading';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { TestimonialCard } from '../components/cards/TestimonialCard';
 import { Button } from '../components/common/Button';

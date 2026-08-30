@@ -15,7 +15,6 @@ import {
 } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { Button } from '../components/common/Button';
-import { SectionHeading } from '../components/common/SectionHeading';
 import { CourseCard } from '../components/cards/CourseCard';
 import { TestimonialCard } from '../components/cards/TestimonialCard';
 import { RoadmapSection } from '../components/roadmap/RoadmapSection';
@@ -264,21 +263,21 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 sm:gap-4 mb-3 sm:mb-8">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 mb-1 sm:mb-2">
-              Featured Courses
-            </div>
-            <h2 className="text-lg sm:text-3xl font-extrabold font-display text-slate-900 tracking-tight">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-1 sm:gap-4 mb-3 sm:mb-6">
+          <div className="space-y-0.5">
+            <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
               Popular Driving Programs
             </h2>
+            <p className="text-xs sm:text-sm text-slate-500">
+              Curated practical packages for beginners, gear shifts, and RTO test readiness.
+            </p>
           </div>
 
           <Link
             to="/courses"
             className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline shrink-0 transition-colors"
           >
-            Explore All Courses & Curriculum →
+            Explore All Courses →
           </Link>
         </div>
 
@@ -302,22 +301,25 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <SectionHeading
-          pillText="Signature Feature"
-          title="Your 6-Step Roadmap to an Indian Driving Licence"
-          subtitle="A clear visual journey from Sarathi Parivahan online application to automated camera track exam and smart card delivery."
-        />
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-1 sm:gap-4 mb-3 sm:mb-6">
+          <div className="space-y-0.5">
+            <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+              6-Step Licence Roadmap
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500">
+              Clear visual journey from Sarathi Parivahan online application to automated camera track exam.
+            </p>
+          </div>
 
-        <RoadmapSection steps={roadmap} onOpenBookingModal={() => onOpenBooking()} isCompactPreview />
-
-        <div className="mt-4 sm:mt-6 text-center">
           <Link
             to="/roadmap"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline shrink-0 transition-colors"
           >
-            View Complete RTO Documentation Checklists & Track Advice →
+            Full RTO Guide →
           </Link>
         </div>
+
+        <RoadmapSection steps={roadmap} onOpenBookingModal={() => onOpenBooking()} isCompactPreview />
       </motion.section>
 
       {/* 6. VERIFIED STUDENT STORIES (3 Cards) */}
@@ -328,21 +330,21 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 sm:gap-4 mb-3 sm:mb-8">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 mb-1 sm:mb-2">
-              Student Reviews
-            </div>
-            <h2 className="text-lg sm:text-3xl font-extrabold font-display text-slate-900 tracking-tight">
-              Real Drivers • Real Confidence
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-1 sm:gap-4 mb-3 sm:mb-6">
+          <div className="space-y-0.5">
+            <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+              Student Reviews & Stories
             </h2>
+            <p className="text-xs sm:text-sm text-slate-500">
+              Real feedback from learners who gained confidence with our patient mentors.
+            </p>
           </div>
 
           <Link
             to="/testimonials"
             className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline shrink-0 transition-colors"
           >
-            Read More Reviews ({testimonials.length}+) →
+            Read All Reviews ({testimonials.length}+) →
           </Link>
         </div>
 
@@ -367,13 +369,9 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8"
       >
-        <div className="relative rounded-2xl sm:rounded-3xl bg-slate-900 text-white p-5 sm:p-12 lg:p-14 border border-slate-800 shadow-xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-8">
-          <div className="space-y-2 sm:space-y-3 text-center md:text-left max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
-              Get Started This Week
-            </div>
-
-            <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold font-display text-white tracking-tight">
+        <div className="relative rounded-2xl sm:rounded-3xl bg-slate-900 text-white p-5 sm:p-10 lg:p-12 border border-slate-800 shadow-xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-8">
+          <div className="space-y-1.5 sm:space-y-2 text-center md:text-left max-w-xl">
+            <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold font-display text-white tracking-tight">
               Ready to Start Your Driving Lessons?
             </h2>
 

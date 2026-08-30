@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { BookOpen, Clock, ArrowRight, Award, Compass, Shield } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { SectionHeading } from '../components/common/SectionHeading';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { Badge } from '../components/common/Badge';
 import { SEO } from '../components/common/SEO';

@@ -74,14 +74,11 @@ export const About: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="bg-slate-900 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-12 lg:p-16 border border-slate-800 shadow-xl space-y-6 sm:space-y-8"
       >
-        <div className="max-w-3xl space-y-2 sm:space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-0.5 sm:py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
-            Zero Accidents • Zero Fear
-          </div>
-          <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold font-display text-white tracking-tight">
+        <div className="max-w-3xl space-y-1.5 sm:space-y-2">
+          <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold font-display text-white tracking-tight">
             Our 5-Point Safety & Dignity Pledge
           </h2>
-          <p className="text-xs sm:text-base text-slate-300 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
             We hold ourselves to the highest standards of safety, instructor empathy, and student respect in the country.
           </p>
         </div>
@@ -102,13 +99,16 @@ export const About: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.45 }}
-        className="space-y-6 sm:space-y-10"
+        className="space-y-4 sm:space-y-6"
       >
-        <SectionHeading
-          pillText="Fleet Excellence"
-          title="Engineered for Safety & Precision"
-          subtitle="All training vehicles are maintained to stringent safety benchmarks."
-        />
+        <div className="space-y-0.5">
+          <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+            Engineered for Safety & Precision
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-500">
+            All training vehicles are maintained to stringent safety benchmarks.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
           {about.fleetStandards.map((std, idx) => (

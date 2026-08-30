@@ -13,7 +13,6 @@ import {
   HelpCircle,
 } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
-import { SectionHeading } from '../components/common/SectionHeading';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { RoadmapSection } from '../components/roadmap/RoadmapSection';
 import { Button } from '../components/common/Button';
