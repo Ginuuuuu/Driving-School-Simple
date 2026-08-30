@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import {
   Sparkles,
   MessageCircle,
@@ -42,15 +43,20 @@ export const Home: React.FC = () => {
       {/* 1. HERO SECTION */}
       <section className="relative overflow-hidden pt-4 pb-6 sm:pt-6 lg:pt-8 lg:pb-16">
         {/* Ambient background glow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-100/50 rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-100/50 rounded-full blur-3xl pointer-events-none -z-10 animate-glow" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
             {/* Hero Left Content (7 Cols) */}
-            <div className="lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className="lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left"
+            >
               {/* Trust Badge Pill */}
               <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-emerald-100/90 border border-emerald-300 text-[0.72rem] sm:text-sm font-bold text-emerald-950 shadow-xs">
-                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
+                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 animate-pulse-subtle" />
                 <span>100% Dual-Control Safety Fleet • Doorstep Pickup</span>
               </div>
 
@@ -70,7 +76,7 @@ export const Home: React.FC = () => {
                   variant="primary"
                   size="xl"
                   onClick={() => onOpenBooking()}
-                  className="w-full sm:w-auto justify-center shadow-md sm:shadow-lg hover:shadow-glow-emerald text-sm sm:text-base py-3 sm:py-3.5"
+                  className="w-full sm:w-auto justify-center shadow-md sm:shadow-lg hover:shadow-glow-emerald text-sm sm:text-base py-3 sm:py-3.5 hover-lift"
                   icon={<Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300" />}
                 >
                   Book a Driving Lesson
@@ -81,7 +87,7 @@ export const Home: React.FC = () => {
                   size="xl"
                   href={whatsappUrl}
                   isExternal
-                  className="w-full sm:w-auto justify-center shadow-xs sm:shadow-md text-sm sm:text-base py-3 sm:py-3.5"
+                  className="w-full sm:w-auto justify-center shadow-xs sm:shadow-md text-sm sm:text-base py-3 sm:py-3.5 hover-lift"
                   icon={<MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />}
                 >
                   WhatsApp Us
@@ -105,20 +111,25 @@ export const Home: React.FC = () => {
                   <span>Manual & Auto</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Hero Right Visual (5 Cols) */}
-            <div className="lg:col-span-5 relative">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.55, delay: 0.15, ease: 'easeOut' }}
+              className="lg:col-span-5 relative"
+            >
               <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-slate-200 bg-white">
                 <img
                   src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80"
                   alt="Student learning to drive in dual control safety car"
-                  className="w-full h-56 sm:h-96 object-cover object-center"
+                  className="w-full h-56 sm:h-96 object-cover object-center transition-transform duration-700 hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
 
                 {/* Floating In-Car Safety Badge */}
-                <div className="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 flex items-center gap-1.5 sm:gap-2 p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-sm text-xs font-bold text-slate-900">
+                <div className="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 flex items-center gap-1.5 sm:gap-2 p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-sm text-xs font-bold text-slate-900 animate-float-slow">
                   <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700">
                     <ShieldCheck className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
                   </div>
@@ -129,7 +140,7 @@ export const Home: React.FC = () => {
                 </div>
 
                 {/* Floating Rating Pill */}
-                <div className="absolute bottom-2.5 right-2.5 sm:bottom-4 sm:right-4 flex items-center gap-1.5 sm:gap-2 p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-700 text-white shadow-sm text-xs">
+                <div className="absolute bottom-2.5 right-2.5 sm:bottom-4 sm:right-4 flex items-center gap-1.5 sm:gap-2 p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-700 text-white shadow-sm text-xs animate-float-delayed">
                   <div className="flex text-amber-400">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" />
@@ -138,7 +149,7 @@ export const Home: React.FC = () => {
                   <span className="font-extrabold text-emerald-400 text-[0.7rem] sm:text-xs">4.95 / 5.0</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
