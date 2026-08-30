@@ -2,7 +2,6 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Sparkles, ShieldCheck, Clock, CheckCircle2, Car } from 'lucide-react';
-import { SectionHeading } from '../components/common/SectionHeading';
 import { Breadcrumbs } from '../components/common/Breadcrumbs';
 import { EnquiryForm } from '../components/forms/EnquiryForm';
 import { SEO } from '../components/common/SEO';
