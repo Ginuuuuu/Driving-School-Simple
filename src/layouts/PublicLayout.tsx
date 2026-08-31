@@ -6,7 +6,7 @@ import { Navbar } from '../components/navigation/Navbar';
 import { MobileMenu } from '../components/navigation/MobileMenu';
 import { Footer } from '../components/navigation/Footer';
 import { EnquiryModal } from '../components/forms/EnquiryModal';
-import { LogoIntro } from '../components/intro/LogoIntro';
+import { WordLogoIntro } from '../components/intro/WordLogoIntro';
 import { useContent } from '../context/ContentContext';
 import { generateDirectWhatsAppChatLink } from '../utils/whatsapp';
 
@@ -31,8 +31,8 @@ export const PublicLayout: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-brand-50 text-brand-900 font-sans selection:bg-safety-500 selection:text-white">
-      {/* Show Logo Intro on initial Homepage visit */}
-      {isHomePage && <LogoIntro />}
+      {/* Show Word Logo Intro on initial Homepage visit */}
+      {isHomePage && <WordLogoIntro />}
 
       {/* Accessible skip link */}
       <a
