@@ -2,6 +2,38 @@ export type TransmissionType = 'manual' | 'automatic' | 'both';
 export type ExperienceLevel = 'absolute_beginner' | 'some_experience' | 'test_prep' | 'refresher';
 export type TimeSlot = 'early_morning' | 'morning' | 'afternoon' | 'evening' | 'weekend_only';
 
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  image: string;
+  social?: {
+    twitter?: string;
+    linkedin?: string;
+    instagram?: string;
+    behance?: string;
+  };
+}
+
+export interface HeroContent {
+  badgeText: string;
+  headlineMain: string;
+  headlineHighlight: string;
+  headlineEnd: string;
+  subtitle: string;
+  bookingButtonText: string;
+  whatsappButtonText: string;
+  heroImageUrl: string;
+  trustChecks: string[];
+}
+
+export interface CoreValueHighlight {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
 export interface SiteConfig {
   brandName: string;
   tagline: string;
@@ -13,6 +45,9 @@ export interface SiteConfig {
   email: string;
   emergencyHelpline: string;
   foundedYear: string;
+  hero: HeroContent;
+  coreValues: CoreValueHighlight[];
+  teamMembers: TeamMember[];
   operatingHours: {
     weekdays: string;
     weekends: string;

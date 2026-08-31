@@ -54,17 +54,19 @@ export const Home: React.FC = () => {
               {/* Trust Badge Pill */}
               <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-emerald-100/90 border border-emerald-300 text-[0.72rem] sm:text-sm font-bold text-emerald-950 shadow-xs">
                 <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 animate-pulse-subtle" />
-                <span>100% Dual-Control Safety Fleet • Doorstep Pickup</span>
+                <span>{siteConfig.hero?.badgeText || '100% Dual-Control Safety Fleet • Doorstep Pickup'}</span>
               </div>
 
               {/* Main Headline */}
               <h1 className="text-2xl sm:text-5xl lg:text-6xl font-extrabold font-display text-slate-900 tracking-tight leading-[1.18] sm:leading-[1.15]">
-                Master Every Mile with <span className="text-gradient-emerald">Confidence</span> & <span className="text-slate-900">Total Safety</span>.
+                {siteConfig.hero?.headlineMain || 'Master Every Mile with '}
+                <span className="text-gradient-emerald">{siteConfig.hero?.headlineHighlight || 'Confidence'}</span>
+                {siteConfig.hero?.headlineEnd || ' & Total Safety.'}
               </h1>
 
               {/* Subtitle */}
               <p className="text-xs sm:text-base lg:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                Learn driving in modern dual-control cars with patient certified mentors, replica automated RTO track training, and zero hidden fees.
+                {siteConfig.hero?.subtitle || 'Learn driving in modern dual-control cars with patient certified mentors, replica automated RTO track training, and zero hidden fees.'}
               </p>
 
               {/* Action Buttons */}
@@ -76,7 +78,7 @@ export const Home: React.FC = () => {
                   className="w-full sm:w-auto justify-center shadow-md sm:shadow-lg hover:shadow-glow-emerald text-sm sm:text-base py-3 sm:py-3.5 hover-lift"
                   icon={<Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-amber-300" />}
                 >
-                  Book a Driving Lesson
+                  {siteConfig.hero?.bookingButtonText || 'Book a Driving Lesson'}
                 </Button>
 
                 <Button
@@ -87,26 +89,21 @@ export const Home: React.FC = () => {
                   className="w-full sm:w-auto justify-center shadow-xs sm:shadow-md text-sm sm:text-base py-3 sm:py-3.5 hover-lift"
                   icon={<MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />}
                 >
-                  WhatsApp Us
+                  {siteConfig.hero?.whatsappButtonText || 'WhatsApp Us'}
                 </Button>
               </div>
 
               {/* Quick Trust Checks */}
               <div className="pt-2 sm:pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-4 text-[0.72rem] sm:text-xs font-semibold text-slate-600">
-                <div className="flex items-center gap-1 sm:gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 shrink-0" />
-                  <span>98.4% First-Attempt RTO Pass</span>
-                </div>
-                <span>•</span>
-                <div className="flex items-center gap-1 sm:gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 shrink-0" />
-                  <span>Female & Male Mentors</span>
-                </div>
-                <span>•</span>
-                <div className="flex items-center gap-1 sm:gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 shrink-0" />
-                  <span>Manual & Auto</span>
-                </div>
+                {(siteConfig.hero?.trustChecks || ['98.4% First-Attempt RTO Pass', 'Female & Male Mentors', 'Manual & Auto']).map((check, idx, arr) => (
+                  <React.Fragment key={idx}>
+                    <div className="flex items-center gap-1 sm:gap-1.5">
+                      <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 shrink-0" />
+                      <span>{check}</span>
+                    </div>
+                    {idx < arr.length - 1 && <span>•</span>}
+                  </React.Fragment>
+                ))}
               </div>
             </motion.div>
 
@@ -119,7 +116,7 @@ export const Home: React.FC = () => {
             >
               <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-slate-200 bg-white">
                 <img
-                  src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80"
+                  src={siteConfig.hero?.heroImageUrl || "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80"}
                   alt="Student learning to drive in dual control safety car"
                   className="w-full h-56 sm:h-96 object-cover object-center transition-transform duration-700 hover:scale-105"
                 />
@@ -209,47 +206,42 @@ export const Home: React.FC = () => {
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
         <div className="flex overflow-x-auto gap-3 pb-2 -mx-4 px-4 snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-3 md:gap-6 md:m-0 md:p-0 md:overflow-visible">
-          <div className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between hover-lift">
-            <div>
-              <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold mb-2">
-                <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />
+          {(siteConfig.coreValues || [
+            {
+              id: 'val-1',
+              title: '100% Dual-Control Safety Fleet',
+              description: 'Every training vehicle is equipped with secondary dual pedals. Your instructor stops the vehicle instantly if any hazard arises.',
+              icon: 'ShieldCheck',
+            },
+            {
+              id: 'val-2',
+              title: 'Automated RTO Track Readiness',
+              description: 'Drills on replica Figure-8, H-box parking, and slope hill-hold tracks ensure high first-attempt pass rates on camera-monitored exams.',
+              icon: 'Award',
+            },
+            {
+              id: 'val-3',
+              title: 'Doorstep Pickup & Calm Coaching',
+              description: 'Daily 1-hour slots scheduled directly from your home or office with background-verified, patient male & female mentors.',
+              icon: 'Compass',
+            },
+          ]).map((item, idx) => (
+            <div key={item.id || idx} className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between hover-lift">
+              <div>
+                <div className={`w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center font-bold mb-2 ${
+                  idx === 0 ? 'bg-emerald-50 text-emerald-600' : idx === 1 ? 'bg-amber-50 text-amber-600' : 'bg-blue-50 text-blue-600'
+                }`}>
+                  {idx === 0 ? <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" /> : idx === 1 ? <Award className="w-5 h-5 sm:w-6 sm:h-6" /> : <Compass className="w-5 h-5 sm:w-6 sm:h-6" />}
+                </div>
+                <h3 className="text-sm sm:text-base font-bold font-display text-slate-900">
+                  {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-1">
+                  {item.description}
+                </p>
               </div>
-              <h3 className="text-sm sm:text-base font-bold font-display text-slate-900">
-                100% Dual-Control Safety Fleet
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-1">
-                Every training vehicle is equipped with secondary dual pedals. Your instructor stops the vehicle instantly if any hazard arises.
-              </p>
             </div>
-          </div>
-
-          <div className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between hover-lift">
-            <div>
-              <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold mb-2">
-                <Award className="w-5 h-5 sm:w-6 sm:h-6" />
-              </div>
-              <h3 className="text-sm sm:text-base font-bold font-display text-slate-900">
-                Automated RTO Track Readiness
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-1">
-                Drills on replica Figure-8, H-box parking, and slope hill-hold tracks ensure high first-attempt pass rates on camera-monitored exams.
-              </p>
-            </div>
-          </div>
-
-          <div className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between hover-lift">
-            <div>
-              <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold mb-2">
-                <Compass className="w-5 h-5 sm:w-6 sm:h-6" />
-              </div>
-              <h3 className="text-sm sm:text-base font-bold font-display text-slate-900">
-                Doorstep Pickup & Calm Coaching
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-1">
-                Daily 1-hour slots scheduled directly from your home or office with background-verified, patient male & female mentors.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </motion.section>
 
@@ -261,7 +253,7 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <TeamShowcase />
+        <TeamShowcase members={siteConfig.teamMembers} />
       </motion.section>
 
       {/* 5. SIGNATURE FEATURE — SERPENTINE LICENCE ROADMAP */}
