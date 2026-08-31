@@ -15,9 +15,9 @@ import {
 } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { Button } from '../components/common/Button';
-import { CourseCard } from '../components/cards/CourseCard';
 import { TestimonialCard } from '../components/cards/TestimonialCard';
 import { RoadmapSection } from '../components/roadmap/RoadmapSection';
+import TeamShowcase from '../components/team/TeamShowcase';
 import { SEO } from '../components/common/SEO';
 import { generateDirectWhatsAppChatLink } from '../utils/whatsapp';
 
@@ -28,8 +28,6 @@ export const Home: React.FC = () => {
 
   const whatsappUrl = generateDirectWhatsAppChatLink(siteConfig);
 
-  // Select top 3 distinct courses for clean minimal preview
-  const featuredCourses = courses.slice(0, 3);
   const featuredTestimonials = testimonials.slice(0, 3);
 
   return (
@@ -255,7 +253,7 @@ export const Home: React.FC = () => {
         </div>
       </motion.section>
 
-      {/* 4. FEATURED DRIVING COURSES (Minimal 3 Cards) */}
+      {/* 4. TEAM SHOWCASE */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -263,29 +261,7 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-3 sm:mb-6">
-          <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
-            Popular Driving Programs
-          </h2>
-
-          <Link
-            to="/courses"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline shrink-0 transition-colors"
-          >
-            Explore All Courses →
-          </Link>
-        </div>
-
-        <div className="flex overflow-x-auto pb-3 pt-1 -mx-4 px-4 snap-x snap-mandatory scrollbar-none gap-3 md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:p-0 md:m-0">
-          {featuredCourses.map((course) => (
-            <div key={course.id} className="w-[84vw] max-w-[330px] shrink-0 snap-center md:w-auto md:max-w-none hover-lift">
-              <CourseCard
-                course={course}
-                onBookNow={(slug) => onOpenBooking(slug)}
-              />
-            </div>
-          ))}
-        </div>
+        <TeamShowcase />
       </motion.section>
 
       {/* 5. SIGNATURE FEATURE — SERPENTINE LICENCE ROADMAP */}
