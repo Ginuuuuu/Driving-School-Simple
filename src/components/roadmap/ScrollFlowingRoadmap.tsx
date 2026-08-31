@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useMemo } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import {
   FileText,
@@ -14,10 +14,20 @@ import {
   Check,
   X,
   Navigation,
+  Compass,
+  Zap,
 } from 'lucide-react';
 import { RoadmapStep } from '../../types';
 import { RoadmapCar } from './RoadmapCar';
 import { Button } from '../common/Button';
+import {
+  Timeline,
+  TimelineDot,
+  TimelineItem,
+  TimelineContent,
+  TimelineHeading,
+  TimelineLine,
+} from '../ui/timeline';
 
 interface ScrollFlowingRoadmapProps {
   steps: RoadmapStep[];
@@ -32,240 +42,349 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeStationIndex, setActiveStationIndex] = useState<number>(0);
+  const [scrollPercent, setScrollPercent] = useState<number>(0);
   const [activeModalStep, setActiveModalStep] = useState<RoadmapStep | null>(null);
+  const [isMobileView, setIsMobileView] = useState<boolean>(false);
 
-  // Scroll Progress binding to the container (starts at station 1 on initial load)
+  // Detect mobile screen for responsive layout
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Scroll Progress binding to the container
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start 180px', 'end 80%'],
+    offset: ['start 65%', 'end 75%'],
   });
 
-  // Smooth, gentle spring physics for slow and seamless car cruising
+  // Smooth, tactile spring physics for scroll synchronization
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 40,
-    damping: 22,
-    mass: 1.1,
+    stiffness: 55,
+    damping: 24,
+    mass: 1,
     restDelta: 0.001,
   });
 
-  // Track active checkpoint station with smooth transition thresholds
+  // Dynamic step thresholds
+  const totalSteps = steps.length || 6;
+  const stepThresholds = useMemo(() => {
+    return steps.map((_, idx) => idx / Math.max(1, totalSteps - 1));
+  }, [steps, totalSteps]);
+
+  // Track active checkpoint station and percentage
   useEffect(() => {
     const unsubscribe = smoothProgress.on('change', (v) => {
-      if (v < 0.16) setActiveStationIndex(0);
-      else if (v < 0.34) setActiveStationIndex(1);
-      else if (v < 0.52) setActiveStationIndex(2);
-      else if (v < 0.70) setActiveStationIndex(3);
-      else if (v < 0.88) setActiveStationIndex(4);
-      else setActiveStationIndex(5);
+      const clamped = Math.max(0, Math.min(1, v));
+      setScrollPercent(Math.round(clamped * 100));
+
+      // Calculate nearest active step
+      const stepFraction = 1 / totalSteps;
+      let currentIndex = 0;
+      for (let i = 0; i < totalSteps; i++) {
+        if (clamped >= i * stepFraction - 0.04) {
+          currentIndex = i;
+        }
+      }
+      setActiveStationIndex(currentIndex);
     });
     return () => unsubscribe();
-  }, [smoothProgress]);
+  }, [smoothProgress, totalSteps]);
 
-  // Wide, gradual transitions so the car drives slow and steady, then rests at each station
-  const progressCheckpoints = [
-    0.00, 0.05,    // Station 1 Stop
-    0.18, 0.23,    // Smooth cruise & Station 2 Stop
-    0.36, 0.41,    // Smooth cruise & Station 3 Stop
-    0.54, 0.59,    // Smooth cruise & Station 4 Stop
-    0.72, 0.77,    // Smooth cruise & Station 5 Stop
-    0.90, 1.00,    // Smooth cruise & Station 6 Stop
-  ];
-
-  const carYCheckpoints = [
-    '2%', '2%',    // Station 1 Stop
-    '21%', '21%',  // Station 2 Stop
-    '40%', '40%',  // Station 3 Stop
-    '59%', '59%',  // Station 4 Stop
-    '78%', '78%',  // Station 5 Stop
-    '96%', '96%',  // Station 6 Stop
-  ];
-
-  const roadFillCheckpoints = [
-    '4%', '4%',    // Station 1 Progress
-    '22%', '22%',  // Station 2 Progress
-    '41%', '41%',  // Station 3 Progress
-    '60%', '60%',  // Station 4 Progress
-    '79%', '79%',  // Station 5 Progress
-    '100%', '100%',// Station 6 Progress
-  ];
-
-  const carRotateCheckpoints = [
-    0, 0,          // Station 1: Stopped straight
-    8, 0,          // Gentle steering to Station 2 -> Straighten & Stop
-    -8, 0,         // Gentle steering to Station 3 -> Straighten & Stop
-    8, 0,          // Gentle steering to Station 4 -> Straighten & Stop
-    -8, 0,         // Gentle steering to Station 5 -> Straighten & Stop
-    6, 0,          // Gentle steering to Station 6 -> Straighten & Stop
-  ];
-
-  // Car translation along the vertical path stopping at each checkpoint
-  const carY = useTransform(smoothProgress, progressCheckpoints, carYCheckpoints);
-
-  // Car dynamic steering angle into turns and straightening at each station
-  const carRotate = useTransform(smoothProgress, progressCheckpoints, carRotateCheckpoints);
-
-  // Road progress line fill height percentage syncing with each checkpoint stop
-  const roadFillHeight = useTransform(smoothProgress, progressCheckpoints, roadFillCheckpoints);
+  // Car animation mappings along vertical spine
+  const carY = useTransform(smoothProgress, [0, 1], ['0%', '94%']);
+  const carRotate = useTransform(
+    smoothProgress,
+    [0, 0.2, 0.4, 0.6, 0.8, 1],
+    [0, 10, -10, 10, -10, 0]
+  );
+  const roadFillHeight = useTransform(smoothProgress, [0, 1], ['0%', '100%']);
 
   const milestoneIcons = [
-    { badge: '1. APPLY & E-KYC', icon: FileText, color: 'text-blue-500 bg-blue-50 border-blue-200' },
-    { badge: '2. THEORY LL TEST', icon: ShieldCheck, color: 'text-amber-500 bg-amber-50 border-amber-200' },
-    { badge: '3. DUAL-CONTROL LESSONS', icon: Car, color: 'text-emerald-500 bg-emerald-50 border-emerald-300' },
-    { badge: '4. 30-DAY PRACTICE GAP', icon: Sparkles, color: 'text-purple-500 bg-purple-50 border-purple-200' },
-    { badge: '5. AUTOMATED RTO TEST', icon: Award, color: 'text-indigo-500 bg-indigo-50 border-indigo-200' },
-    { badge: '6. SMART CARD DL LAUNCH', icon: CheckCircle2, color: 'text-emerald-600 bg-emerald-100 border-emerald-400' },
+    { badge: 'Stage 1 • Registration', icon: FileText, color: 'text-blue-500 bg-blue-50 border-blue-200' },
+    { badge: 'Stage 2 • Theory Test', icon: ShieldCheck, color: 'text-amber-500 bg-amber-50 border-amber-200' },
+    { badge: 'Stage 3 • Dual-Control', icon: Car, color: 'text-emerald-500 bg-emerald-50 border-emerald-300' },
+    { badge: 'Stage 4 • Legal Gap', icon: Sparkles, color: 'text-purple-500 bg-purple-50 border-purple-200' },
+    { badge: 'Stage 5 • ADTT Track', icon: Award, color: 'text-indigo-500 bg-indigo-50 border-indigo-200' },
+    { badge: 'Stage 6 • Smart Card DL', icon: CheckCircle2, color: 'text-emerald-600 bg-emerald-100 border-emerald-400' },
   ];
 
-  return (
-    <div ref={containerRef} className="relative w-full py-4 lg:py-6 select-none">
-      {/* FLOWING CENTRAL ROAD SPINE (Left on mobile, Center on desktop) */}
-      <div className="absolute left-[1.125rem] md:left-1/2 top-4 bottom-4 -translate-x-1/2 w-6 md:w-10 z-0 flex flex-col items-center">
-        {/* Outer Asphalt Road Layer */}
-        <div className="relative w-full h-full bg-slate-900 rounded-full border-2 border-slate-700 shadow-md overflow-hidden flex justify-center">
-          {/* Dashed Center Road Line */}
-          <div className="absolute inset-y-0 w-0.5 border-r-2 border-dashed border-slate-600/70" />
+  // Quick jump function
+  const scrollToMilestone = (idx: number) => {
+    setActiveStationIndex(idx);
+    const element = document.getElementById(`timeline-step-${idx}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
 
-          {/* Dynamic Scroll-Linked Road Highlight Fill */}
+  return (
+    <div ref={containerRef} className="relative w-full py-4 lg:py-6 select-none space-y-6">
+      {/* SCROLL PROGRESS HEADER & LIVE STAGE TRACKER */}
+      <div className="bg-white/80 backdrop-blur-md border border-slate-200/80 rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-sm space-y-3 sticky top-16 sm:top-20 z-20">
+        <div className="flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm">
+          <div className="flex items-center gap-2">
+            <div className="p-1.5 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200">
+              <Compass className="w-4 h-4 animate-spin-slow" />
+            </div>
+            <div>
+              <span className="font-bold text-slate-900 font-display">
+                Licence Journey: Stage {activeStationIndex + 1} of {totalSteps}
+              </span>
+              <span className="hidden sm:inline text-slate-500 ml-2">
+                ({steps[activeStationIndex]?.title || ''})
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-900 text-white shadow-xs">
+              {scrollPercent}% Completed
+            </span>
+          </div>
+        </div>
+
+        {/* Horizontal Mini Progress Bar */}
+        <div className="relative w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
           <motion.div
-            style={{ height: roadFillHeight }}
-            className="absolute top-0 inset-x-0 bg-gradient-to-b from-emerald-500 via-emerald-400 to-amber-400 opacity-90 rounded-full"
+            style={{ width: `${Math.max(scrollPercent, ((activeStationIndex + 1) / totalSteps) * 100 * 0.2)}%` }}
+            className="h-full bg-gradient-to-r from-emerald-500 via-emerald-400 to-amber-400 rounded-full transition-all duration-300"
           />
         </div>
 
-        {/* SMALL MOVING CAR (Follows Scroll Dynamically) */}
-        <motion.div
-          style={{
-            top: carY,
-            x: 0,
-            rotate: carRotate,
-          }}
-          className="absolute z-20 -translate-x-1/2 pointer-events-none filter drop-shadow-xl transition-transform"
-        >
-          {/* Headlights Glow Beam */}
-          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-8 h-8 bg-amber-300/30 rounded-full blur-sm" />
+        {/* Milestone Fast-Jump Pills */}
+        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none pt-1">
+          {steps.map((step, idx) => {
+            const isPassed = scrollPercent >= (stepThresholds[idx] || 0) * 100;
+            const isCurrent = activeStationIndex === idx;
 
-          {/* Illustrated Top-Down Learner Car */}
-          <div className="w-6 h-10 md:w-8 md:h-14 relative">
-            <RoadmapCar isCompact />
-          </div>
-        </motion.div>
+            return (
+              <button
+                key={step.id}
+                onClick={() => scrollToMilestone(idx)}
+                className={`px-3 py-1 rounded-xl text-[0.7rem] sm:text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 cursor-pointer ${
+                  isCurrent
+                    ? 'bg-emerald-600 text-white shadow-sm ring-2 ring-emerald-400/30 scale-105'
+                    : isPassed
+                    ? 'bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100'
+                    : 'bg-slate-50 text-slate-600 border border-slate-200 hover:bg-slate-100'
+                }`}
+              >
+                {isPassed && !isCurrent ? (
+                  <Check className="w-3 h-3 text-emerald-600" />
+                ) : (
+                  <span>{idx + 1}</span>
+                )}
+                <span>Stage {step.stepNumber}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* MILESTONE STATIONS LIST */}
-      <div className="relative z-10 space-y-4 sm:space-y-7 lg:space-y-9">
-        {steps.map((step, idx) => {
-          const isEven = idx % 2 === 0;
-          const meta = milestoneIcons[idx] || milestoneIcons[0];
-          const IconComponent = meta.icon;
-          const isCurrentStation = activeStationIndex === idx;
-
-          return (
+      {/* TIMELINE CONTAINER WITH CENTRAL/LEFT SPINE & SCROLL EFFECT */}
+      <div className="relative py-4 sm:py-6">
+        {/* ANIMATED CRUISING CAR & GLOW ALONG TIMELINE SPINE */}
+        <div
+          className={`absolute top-6 bottom-8 pointer-events-none z-10 hidden sm:flex flex-col items-center ${
+            isMobileView
+              ? 'left-[10px] -translate-x-1/2'
+              : 'left-1/2 -translate-x-1/2'
+          }`}
+        >
+          {/* Vertical dynamic road highlight bar */}
+          <div className="relative w-1.5 h-full bg-transparent overflow-hidden">
             <motion.div
-              key={step.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.4, delay: idx * 0.04 }}
-            >
-              {/* DESKTOP LAYOUT (md:grid) — Alternating Left & Right Cards */}
-              <div className="hidden md:grid grid-cols-12 gap-3 lg:gap-6 items-center">
-                {/* Desktop Left Side Card (if Even) */}
-                <div
-                  className={`flex col-span-5 ${
-                    isEven ? 'justify-end' : 'justify-end invisible pointer-events-none'
-                  }`}
-                >
-                  {isEven && (
-                    <MilestoneCard
-                      step={step}
-                      meta={meta}
-                      IconComponent={IconComponent}
-                      isActive={isCurrentStation}
-                      onClick={() => setActiveModalStep(step)}
-                    />
-                  )}
-                </div>
+              style={{ height: roadFillHeight }}
+              className="absolute top-0 inset-x-0 bg-gradient-to-b from-emerald-500 via-emerald-400 to-amber-400 opacity-90 rounded-full"
+            />
+          </div>
 
-                {/* Center Node Pin (Station Marker on the Road) */}
-                <div className="col-span-2 flex justify-center">
-                  <button
-                    onClick={() => setActiveModalStep(step)}
-                    className={`group relative flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-full border-2 transition-all duration-300 z-10 cursor-pointer shadow-sm ${
-                      isCurrentStation
-                        ? 'bg-emerald-600 border-white text-white scale-110 shadow-lg ring-4 ring-emerald-400/30'
-                        : 'bg-white border-slate-800 text-slate-900 hover:scale-105 hover:border-emerald-500'
-                    }`}
-                    title={`Stage ${step.stepNumber}: ${step.title}`}
-                  >
-                    <span className={`text-xs font-black font-display ${isCurrentStation ? 'text-white' : 'text-slate-900 group-hover:text-emerald-700'}`}>
-                      {step.stepNumber}
-                    </span>
+          {/* Mini Driving Learner Car following scroll */}
+          <motion.div
+            style={{
+              top: carY,
+              rotate: carRotate,
+            }}
+            className="absolute z-30 filter drop-shadow-xl transition-transform"
+          >
+            {/* Front Headlights Beam Effect */}
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-6 h-6 bg-amber-300/40 rounded-full blur-[3px]" />
+            <div className="w-6 h-10 relative">
+              <RoadmapCar isCompact />
+            </div>
+          </motion.div>
+        </div>
 
-                    {/* Pulsing ring indicator */}
-                    {isCurrentStation && (
-                      <span className="absolute inset-0 rounded-full bg-emerald-400 opacity-30 animate-ping pointer-events-none" />
-                    )}
-                  </button>
-                </div>
+        {/* CORE TIMELINE COMPONENT */}
+        <Timeline
+          positions={isMobileView ? 'left' : 'center'}
+          className="relative z-0 space-y-2 sm:space-y-4"
+        >
+          {steps.map((step, idx) => {
+            const isEven = idx % 2 === 0;
+            const side = isMobileView ? 'right' : isEven ? 'left' : 'right';
+            const meta = milestoneIcons[idx] || milestoneIcons[0];
+            const IconComponent = meta.icon;
 
-                {/* Desktop Right Side Card (if Odd) */}
-                <div
-                  className={`flex col-span-5 ${
-                    !isEven ? 'justify-start' : 'justify-start invisible pointer-events-none'
-                  }`}
-                >
-                  {!isEven && (
-                    <MilestoneCard
-                      step={step}
-                      meta={meta}
-                      IconComponent={IconComponent}
-                      isActive={isCurrentStation}
-                      onClick={() => setActiveModalStep(step)}
-                    />
-                  )}
-                </div>
-              </div>
+            // Compute status based on scroll
+            const threshold = stepThresholds[idx] || (idx / totalSteps);
+            const progressRatio = scrollPercent / 100;
+            const isDone = progressRatio > threshold + 0.12;
+            const isCurrent = activeStationIndex === idx;
 
-              {/* MOBILE LAYOUT (md:hidden) — Clean Flex Row without Any Pin Overlap */}
-              <div className="flex md:hidden items-start gap-3 pl-1 pr-0.5">
-                {/* Station Node Pin over Left Road */}
-                <button
+            const status = isDone
+              ? 'done'
+              : isCurrent
+              ? 'current'
+              : 'default';
+
+            return (
+              <TimelineItem
+                key={step.id}
+                id={`timeline-step-${idx}`}
+                status={status}
+                className="transition-all duration-300"
+              >
+                {/* Timeline Heading with stage badge */}
+                <TimelineHeading
+                  side={side}
+                  variant="primary"
+                  className="cursor-pointer group flex items-center gap-2 mb-1"
                   onClick={() => setActiveModalStep(step)}
-                  className={`w-7 h-7 rounded-full border-2 shadow-sm flex items-center justify-center font-black text-[0.7rem] shrink-0 mt-3 z-10 transition-all ${
-                    isCurrentStation
-                      ? 'bg-emerald-600 border-white text-white scale-110 shadow-md ring-4 ring-emerald-400/30'
-                      : 'bg-white border-slate-900 text-slate-900'
+                >
+                  <span
+                    className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[0.65rem] sm:text-xs font-bold uppercase tracking-wider transition-colors ${
+                      isCurrent
+                        ? 'bg-emerald-600 text-white'
+                        : isDone
+                        ? 'bg-emerald-100 text-emerald-800'
+                        : 'bg-slate-100 text-slate-700 group-hover:bg-slate-200'
+                    }`}
+                  >
+                    Stage {step.stepNumber}
+                  </span>
+                  <span className="text-xs sm:text-sm font-semibold text-slate-800 truncate">
+                    {step.title}
+                  </span>
+                </TimelineHeading>
+
+                {/* Timeline Dot (Interactive Clickable Checkpoint Pin) */}
+                <TimelineDot
+                  status={status}
+                  onClick={() => scrollToMilestone(idx)}
+                  className={`cursor-pointer transition-all duration-300 ${
+                    isCurrent
+                      ? 'ring-4 ring-emerald-400/30 scale-125 border-emerald-500 bg-emerald-50 text-emerald-600'
+                      : isDone
+                      ? 'hover:scale-110 shadow-sm border-emerald-600 text-emerald-600'
+                      : 'hover:scale-105 border-slate-300 text-slate-400'
                   }`}
                   title={`Stage ${step.stepNumber}: ${step.title}`}
-                >
-                  {step.stepNumber}
-                </button>
+                />
 
-                {/* Mobile Card */}
-                <div className="flex-1 min-w-0">
-                  <MilestoneCard
-                    step={step}
-                    meta={meta}
-                    IconComponent={IconComponent}
-                    isActive={isCurrentStation}
-                    onClick={() => setActiveModalStep(step)}
+                {/* Timeline Connecting Line */}
+                {idx < steps.length - 1 && (
+                  <TimelineLine
+                    done={isDone}
+                    className={`transition-colors duration-300 ${
+                      isDone ? 'bg-emerald-500' : 'bg-slate-200'
+                    }`}
                   />
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
+                )}
+
+                {/* Timeline Content Card */}
+                <TimelineContent side={side} className="w-full pb-8">
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-30px' }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <div
+                      onClick={() => setActiveModalStep(step)}
+                      className={`group relative w-full max-w-lg lg:max-w-xl p-4 sm:p-5 rounded-2xl sm:rounded-3xl border transition-all duration-300 cursor-pointer text-left space-y-3 overflow-hidden ${
+                        isCurrent
+                          ? 'bg-white border-emerald-500 ring-2 ring-emerald-500/20 shadow-lg -translate-y-0.5'
+                          : isDone
+                          ? 'bg-white/90 border-emerald-200 shadow-xs hover:border-emerald-300 hover:shadow-md'
+                          : 'bg-white/80 border-slate-200 shadow-xs hover:border-slate-300 hover:shadow-md'
+                      } ${side === 'left' ? 'ml-auto' : 'mr-auto'}`}
+                    >
+                      {/* Top Header with Icon & Duration */}
+                      <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-2.5">
+                        <div className="flex items-center gap-2.5">
+                          <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 border ${meta.color}`}>
+                            <IconComponent className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <span className="text-[0.68rem] sm:text-xs font-bold text-slate-500 uppercase tracking-wider block">
+                              {step.subtitle || meta.badge}
+                            </span>
+                          </div>
+                        </div>
+
+                        <span className="px-2.5 py-0.5 rounded-full text-[0.65rem] sm:text-xs font-mono font-bold bg-slate-100 text-slate-700">
+                          {step.approxDuration}
+                        </span>
+                      </div>
+
+                      {/* Title & Description Summary */}
+                      <div className="space-y-1">
+                        <h4 className="text-sm sm:text-base font-bold font-display text-slate-900 group-hover:text-emerald-700 transition-colors leading-snug">
+                          {step.title}
+                        </h4>
+                        <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                          {step.summary}
+                        </p>
+                      </div>
+
+                      {/* Required Documents / Key Highlight Tags */}
+                      {step.requiredDocuments && step.requiredDocuments.length > 0 && (
+                        <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[0.65rem] sm:text-[0.7rem] font-medium bg-slate-50 border border-slate-200 text-slate-600">
+                            <FileText className="w-3 h-3 text-emerald-600" />
+                            {step.requiredDocuments.length} Documents Required
+                          </span>
+
+                          {step.instructorProTip && (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[0.65rem] sm:text-[0.7rem] font-medium bg-emerald-50 border border-emerald-200 text-emerald-800">
+                              <Lightbulb className="w-3 h-3 text-emerald-600" />
+                              Instructor Tip Included
+                            </span>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Bottom Action Footer */}
+                      <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-700 group-hover:text-emerald-800">
+                        <span className="uppercase tracking-wider text-[0.7rem] sm:text-xs">
+                          Inspect Checklist & Procedures
+                        </span>
+                        <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </div>
+                  </motion.div>
+                </TimelineContent>
+              </TimelineItem>
+            );
+          })}
+        </Timeline>
       </div>
 
-      {/* INTERACTIVE MILESTONE DETAILS MODAL / DRAWER */}
+      {/* DETAILED MODAL DIALOG ON MILESTONE SELECTION */}
       {activeModalStep && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm overflow-y-auto"
           role="dialog"
           aria-modal="true"
         >
-          <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 sm:p-8 my-8 max-h-[85vh] overflow-y-auto space-y-6 animate-in zoom-in-95 duration-200">
-            {/* Header */}
+          <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 sm:p-8 my-8 max-h-[88vh] overflow-y-auto space-y-6 animate-in zoom-in-95 duration-200">
+            {/* Modal Header */}
             <div className="flex items-start justify-between border-b border-slate-100 pb-4">
               <div>
                 <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 inline-block mb-1.5">
@@ -279,17 +398,18 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
               <button
                 onClick={() => setActiveModalStep(null)}
                 className="p-2 rounded-xl text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+                aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Content Details */}
+            {/* Modal Content Details */}
             <div className="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
               <p className="text-slate-600">{activeModalStep.details}</p>
 
-              {/* Required Documents */}
-              {activeModalStep.requiredDocuments.length > 0 && (
+              {/* Required Documents Checklist */}
+              {activeModalStep.requiredDocuments && activeModalStep.requiredDocuments.length > 0 && (
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
                   <h4 className="font-bold text-slate-900 flex items-center gap-2 text-xs uppercase tracking-wider">
                     <FileText className="w-4 h-4 text-emerald-600" />
@@ -306,7 +426,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                 </div>
               )}
 
-              {/* RTO ADTT Track Maneuvers (if applicable) */}
+              {/* ADTT Automated Track Maneuvers (if applicable) */}
               {activeModalStep.rtoTrackManeuvers && (
                 <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 space-y-2">
                   <h4 className="font-bold text-amber-950 flex items-center gap-2 text-xs uppercase tracking-wider">
@@ -324,20 +444,22 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
               )}
 
               {/* Instructor Pro-Tip */}
-              <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-start gap-3">
-                <Lightbulb className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-bold text-emerald-950 block text-xs uppercase tracking-wider mb-0.5">
-                    DriveCraft Instructor Pro-Tip:
-                  </span>
-                  <p className="text-xs text-emerald-900 italic">
-                    "{activeModalStep.instructorProTip}"
-                  </p>
+              {activeModalStep.instructorProTip && (
+                <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-start gap-3">
+                  <Lightbulb className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold text-emerald-950 block text-xs uppercase tracking-wider mb-0.5">
+                      DriveCraft Instructor Pro-Tip:
+                    </span>
+                    <p className="text-xs text-emerald-900 italic">
+                      "{activeModalStep.instructorProTip}"
+                    </p>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
-            {/* Actions */}
+            {/* Modal Actions */}
             <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
               {activeModalStep.rtoPortalUrl ? (
                 <a
@@ -346,7 +468,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:underline"
                 >
-                  Visit Parivahan Sarathi Gov Portal <ExternalLink className="w-3.5 h-3.5" />
+                  Official Sarathi Portal <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               ) : (
                 <div />
@@ -373,67 +495,6 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
           </div>
         </div>
       )}
-    </div>
-  );
-};
-
-// Subcomponent: Milestone Card with Micro-interactions
-interface MilestoneCardProps {
-  step: RoadmapStep;
-  meta: { badge: string; icon: any; color: string };
-  IconComponent: any;
-  isActive?: boolean;
-  onClick: () => void;
-}
-
-const MilestoneCard: React.FC<MilestoneCardProps> = ({ step, meta, IconComponent, isActive = false, onClick }) => {
-  return (
-    <div
-      onClick={onClick}
-      className={`group relative w-full max-w-lg lg:max-w-xl p-3.5 sm:p-4 lg:p-4.5 rounded-2xl bg-white border transition-all duration-300 transform hover:-translate-y-0.5 cursor-pointer text-left space-y-2 overflow-hidden ${
-        isActive
-          ? 'border-emerald-500 ring-2 ring-emerald-500/20 shadow-md'
-          : 'border-slate-200 shadow-xs hover:border-slate-300 hover:shadow-md'
-      }`}
-    >
-      {/* Top Banner & Badge */}
-      <div className="flex items-center justify-between gap-2">
-        <span
-          className={`px-2.5 py-0.5 sm:px-3 sm:py-0.5 rounded-full text-[0.65rem] sm:text-[0.68rem] font-extrabold uppercase tracking-wider transition-colors shadow-xs ${
-            isActive
-              ? 'bg-emerald-600 text-white'
-              : 'bg-slate-900 text-white group-hover:bg-emerald-600'
-          }`}
-        >
-          {meta.badge}
-        </span>
-
-        <span className="text-[0.65rem] sm:text-[0.7rem] font-bold text-slate-500 font-mono">
-          {step.approxDuration}
-        </span>
-      </div>
-
-      {/* Title & Icon Header */}
-      <div className="flex items-start gap-2.5 sm:gap-3">
-        <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center shrink-0 border ${meta.color}`}>
-          <IconComponent className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
-        </div>
-
-        <div className="space-y-0.5 min-w-0 flex-1">
-          <h4 className="text-xs sm:text-sm lg:text-base font-bold font-display text-slate-900 group-hover:text-emerald-700 transition-colors leading-snug">
-            {step.title}
-          </h4>
-          <p className="text-[0.72rem] sm:text-xs text-slate-600 line-clamp-2 leading-relaxed">
-            {step.summary}
-          </p>
-        </div>
-      </div>
-
-      {/* Bottom Action Prompt */}
-      <div className="pt-1.5 border-t border-slate-100 flex items-center justify-between text-[0.7rem] sm:text-xs font-bold text-emerald-700 group-hover:text-emerald-800">
-        <span className="uppercase tracking-wider">Inspect Checklist & Tips</span>
-        <ChevronRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
-      </div>
     </div>
   );
 };
