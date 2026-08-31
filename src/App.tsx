@@ -38,11 +38,13 @@ import { AdminLogin } from './pages/admin/AdminLogin';
 import { Dashboard } from './pages/admin/Dashboard';
 import { SettingsEditor } from './pages/admin/SettingsEditor';
 import { HomepageEditor } from './pages/admin/HomepageEditor';
+import { AboutEditor } from './pages/admin/AboutEditor';
 import { CoursesEditor } from './pages/admin/CoursesEditor';
 import { RoadmapEditor } from './pages/admin/RoadmapEditor';
 import { InstructorsEditor } from './pages/admin/InstructorsEditor';
 import { PricingEditor } from './pages/admin/PricingEditor';
 import { TestimonialsEditor } from './pages/admin/TestimonialsEditor';
+import { ResourcesEditor } from './pages/admin/ResourcesEditor';
 import { FAQEditor } from './pages/admin/FAQEditor';
 import { ContactEditor } from './pages/admin/ContactEditor';
 import { SEOEditor } from './pages/admin/SEOEditor';
@@ -107,11 +109,13 @@ export function App() {
                   <Route path="dashboard" element={<Dashboard />} />
                   <Route path="settings" element={<SettingsEditor />} />
                   <Route path="homepage" element={<HomepageEditor />} />
+                  <Route path="about" element={<AboutEditor />} />
                   <Route path="courses" element={<CoursesEditor />} />
                   <Route path="roadmap" element={<RoadmapEditor />} />
                   <Route path="instructors" element={<InstructorsEditor />} />
                   <Route path="pricing" element={<PricingEditor />} />
                   <Route path="testimonials" element={<TestimonialsEditor />} />
+                  <Route path="resources" element={<ResourcesEditor />} />
                   <Route path="faqs" element={<FAQEditor />} />
                   <Route path="contact" element={<ContactEditor />} />
                   <Route path="seo" element={<SEOEditor />} />
