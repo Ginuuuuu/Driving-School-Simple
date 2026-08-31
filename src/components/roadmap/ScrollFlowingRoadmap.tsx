@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 import {
   ExternalLink,
   Lightbulb,
@@ -9,6 +9,7 @@ import {
   Award,
 } from 'lucide-react';
 import { RoadmapStep } from '../../types';
+import { RoadmapCar } from './RoadmapCar';
 import {
   Timeline,
   TimelineDot,
@@ -64,10 +65,33 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
     return () => unsubscribe();
   }, [smoothProgress, totalSteps]);
 
+  // Reactive car animations along the vertical timeline line
+  const carY = useTransform(smoothProgress, [0, 1], ['0%', '96%']);
+  const carRotate = useTransform(
+    smoothProgress,
+    [0, 0.2, 0.4, 0.6, 0.8, 1],
+    [0, 8, -8, 8, -8, 0]
+  );
+
   const displaySteps = isCompactPreview ? steps.slice(0, 6) : steps;
 
   return (
     <div ref={containerRef} className="relative w-full max-w-4xl mx-auto py-6 sm:py-10 space-y-8 select-none">
+      {/* SMALL REACTIVE CAR ON THE TIMELINE LINE */}
+      <div className="absolute top-8 sm:top-12 bottom-12 left-2 pointer-events-none z-20">
+        <motion.div
+          style={{
+            top: carY,
+            rotate: carRotate,
+          }}
+          className="absolute -translate-x-1/2 select-none filter drop-shadow-md transition-transform"
+        >
+          {/* Subtle headlight glow beam */}
+          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-amber-300/40 rounded-full blur-[2px]" />
+          <RoadmapCar isCompact className="scale-75 origin-top" />
+        </motion.div>
+      </div>
+
       {/* FLOWING ONE-SIDED TIMELINE */}
       <Timeline positions="left" className="relative z-0">
         {displaySteps.map((step, idx) => {
