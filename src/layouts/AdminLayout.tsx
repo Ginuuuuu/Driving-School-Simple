@@ -23,6 +23,7 @@ import {
   Sparkles,
   ChevronRight,
   ShieldCheck,
+  Info,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useContent } from '../context/ContentContext';
@@ -48,21 +49,23 @@ export const AdminLayout: React.FC = () => {
       ],
     },
     {
-      group: 'Content & Catalog',
+      group: 'Page Editors',
       items: [
         { label: 'Homepage Editor', to: '/admin/homepage', icon: Sparkles },
+        { label: 'About Us Editor', to: '/admin/about', icon: Info },
         { label: 'Courses Catalog', to: '/admin/courses', icon: BookOpen },
         { label: 'Licence Roadmap', to: '/admin/roadmap', icon: MapPin },
         { label: 'Pricing & Packages', to: '/admin/pricing', icon: CreditCard },
         { label: 'Instructors Roster', to: '/admin/instructors', icon: Users },
         { label: 'Learner Testimonials', to: '/admin/testimonials', icon: MessageSquare },
+        { label: 'Resources Hub', to: '/admin/resources', icon: BookOpen },
         { label: 'FAQ Manager', to: '/admin/faqs', icon: HelpCircle },
       ],
     },
     {
-      group: 'Settings & Config',
+      group: 'Site & System',
       items: [
-        { label: 'General Settings', to: '/admin/settings', icon: Settings },
+        { label: 'Brand & Identity', to: '/admin/settings', icon: Settings },
         { label: 'Contact & Branches', to: '/admin/contact', icon: Phone },
         { label: 'SEO Metadata', to: '/admin/seo', icon: Search },
         { label: 'Legal Policies', to: '/admin/legal', icon: Shield },
