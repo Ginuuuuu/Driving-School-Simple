@@ -10,9 +10,11 @@ import { RoadmapSection } from '../components/roadmap/RoadmapSection';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
 
+import { defaultRoadmap } from '../content/roadmap';
+
 export const Roadmap: React.FC = () => {
   const { siteData } = useContent();
-  const { roadmap } = siteData;
+  const roadmap = siteData?.roadmap || defaultRoadmap;
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string) => void }>();
 
   return (
