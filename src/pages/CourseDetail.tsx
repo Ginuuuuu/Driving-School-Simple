@@ -54,9 +54,11 @@ export const CourseDetail: React.FC = () => {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
-        className="bg-[#39340F] text-white rounded-2xl sm:rounded-3xl p-5 sm:p-10 lg:p-14 border border-[#5F1618] shadow-xl sm:shadow-2xl relative overflow-hidden"
+        className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-14 bg-gradient-to-br from-[#2D0A14] via-[#481320] to-[#1E060D] border border-[#BC2639]/30 text-white shadow-2xl"
       >
-        <div className="absolute right-0 bottom-0 w-96 h-96 bg-[#BC2639]/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Ambient Flowing Light Glow Orbs */}
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#BC2639]/25 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#FFC5DC]/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center relative z-10">
           <div className="lg:col-span-8 space-y-3 sm:space-y-4">
@@ -78,30 +80,30 @@ export const CourseDetail: React.FC = () => {
               {course.title}
             </h1>
 
-            <p className="text-xs sm:text-base text-[#D4E2DF] leading-relaxed max-w-2xl">
+            <p className="text-xs sm:text-base text-[#FFC5DC]/90 leading-relaxed max-w-2xl">
               {course.description}
             </p>
 
             {/* Quick Metrics */}
             <div className="pt-1 sm:pt-2 flex flex-wrap gap-2.5 sm:gap-6 text-[0.72rem] sm:text-sm font-semibold text-[#FAF6F8]">
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#BC2639]" />
+                <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFC5DC]" />
                 <span>{course.durationHours} Practical Hours</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <Car className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#BC2639]" />
+                <Car className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFC5DC]" />
                 <span>{course.sessionsCount} Daily Sessions</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#BC2639]" />
+                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFC5DC]" />
                 <span>Dual-Control Safety</span>
               </div>
             </div>
           </div>
 
-          {/* Pricing & Booking Card (4 cols) */}
-          <div className="lg:col-span-4 p-4 sm:p-7 rounded-xl sm:rounded-2xl bg-[#26230A]/90 border border-[#5F1618] shadow-lg space-y-3 sm:space-y-4">
-            <div className="text-[0.65rem] sm:text-xs uppercase font-bold text-[#D4E2DF] tracking-wider">
+          {/* Pricing & Booking Glass Card (4 cols) */}
+          <div className="lg:col-span-4 p-5 sm:p-7 rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 shadow-xl space-y-3 sm:space-y-4">
+            <div className="text-[0.65rem] sm:text-xs uppercase font-bold text-[#FFC5DC] tracking-wider">
               All-Inclusive Course Fee
             </div>
 
@@ -116,7 +118,7 @@ export const CourseDetail: React.FC = () => {
               )}
             </div>
 
-            <p className="text-[0.68rem] sm:text-[0.7rem] text-[#D4E2DF] leading-relaxed">
+            <p className="text-[0.68rem] sm:text-[0.7rem] text-[#FAF6F8] leading-relaxed">
               Includes fuel, vehicle maintenance, doorstep pickup, and mock RTO testing. Zero hidden fees.
             </p>
 
