@@ -33,12 +33,12 @@ export const Dashboard: React.FC = () => {
   const { siteConfig, courses, roadmap, instructors, pricing, testimonials, faqs, resources } = siteData;
 
   const quickStats = [
-    { label: 'Courses Catalog', count: courses.length, to: '/admin/courses', icon: BookOpen, color: 'text-emerald-700 bg-emerald-50 border-emerald-200' },
+    { label: 'Courses Catalog', count: courses.length, to: '/admin/courses', icon: BookOpen, color: 'text-[#BC2639] bg-[#FDF2F5] border-[#FFC5DC]' },
     { label: 'Licence Milestones', count: roadmap.length, to: '/admin/roadmap', icon: MapPin, color: 'text-amber-700 bg-amber-50 border-amber-200' },
     { label: 'Certified Mentors', count: instructors.length, to: '/admin/instructors', icon: Users, color: 'text-blue-700 bg-blue-50 border-blue-200' },
     { label: 'Pricing Packages', count: pricing.packages.length, to: '/admin/pricing', icon: CreditCard, color: 'text-purple-700 bg-purple-50 border-purple-200' },
     { label: 'Student Reviews', count: testimonials.length, to: '/admin/testimonials', icon: MessageSquare, color: 'text-pink-700 bg-pink-50 border-pink-200' },
-    { label: 'Learning Guides', count: resources.length, to: '/admin/resources', icon: BookOpen, color: 'text-teal-700 bg-teal-50 border-teal-200' },
+    { label: 'Learning Guides', count: resources.length, to: '/admin/resources', icon: BookOpen, color: 'text-[#404D68] bg-[#FAF6F8] border-[#D4E2DF]' },
     { label: 'Active FAQs', count: faqs.length, to: '/admin/faqs', icon: HelpCircle, color: 'text-indigo-700 bg-indigo-50 border-indigo-200' },
     { label: 'Branch Hubs', count: siteConfig.branches.length, to: '/admin/contact', icon: Phone, color: 'text-rose-700 bg-rose-50 border-rose-200' },
   ];
@@ -85,8 +85,8 @@ export const Dashboard: React.FC = () => {
       {/* Welcome Banner */}
       <div className="relative overflow-hidden p-6 sm:p-8 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-2 relative z-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
-            <Sparkles className="w-3.5 h-3.5" /> Content Control Center
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#BC2639]/20 text-[#FFC5DC] border border-[#BC2639]/30">
+            <Sparkles className="w-3.5 h-3.5 text-[#BC2639]" /> Content Control Center
           </div>
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-white">
             Welcome, {siteConfig.brandName} Administrator
