@@ -4,10 +4,12 @@ import { useContent } from '../../context/ContentContext';
 import { Button } from '../../components/common/Button';
 import { SEO } from '../../components/common/SEO';
 
+import { defaultErrors } from '../../content/errors';
+
 export const Error503: React.FC = () => {
   const { siteData } = useContent();
-  const { errors } = siteData;
-  const e503 = errors.error503;
+  const errors = siteData?.errors || defaultErrors;
+  const e503 = errors?.error503 || defaultErrors.error503;
 
   return (
     <div className="max-w-xl mx-auto px-4 py-16 text-center space-y-6">
