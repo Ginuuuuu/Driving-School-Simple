@@ -146,23 +146,23 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                 {/* Mobile Heading (< md): STAGE on top, 2-line title below */}
                 <div className="block md:hidden pr-2">
                   <div className="flex items-center justify-between gap-1 mb-0.5">
-                    <span className="font-mono text-[0.68rem] uppercase tracking-wider font-bold text-emerald-600">
+                    <span className="font-mono text-[0.68rem] uppercase tracking-wider font-bold text-[#42B7A7]">
                       Stage {step.stepNumber}
                     </span>
                     {step.approxDuration && (
-                      <span className="text-[0.65rem] text-slate-400 font-mono">
+                      <span className="text-[0.65rem] text-[#56776A] font-mono">
                         {step.approxDuration}
                       </span>
                     )}
                   </div>
                   <div className="flex items-start justify-between gap-2">
-                    <h3 className="text-sm font-bold font-display text-slate-900 leading-snug break-words max-w-[calc(100vw-85px)] group-hover:text-emerald-800 transition-colors">
+                    <h3 className="text-sm font-bold font-display text-[#26423E] leading-snug break-words max-w-[calc(100vw-85px)] group-hover:text-[#42B7A7] transition-colors">
                       {step.title}
                     </h3>
                     {!isCompactPreview && (
                       <ChevronDown
-                        className={`w-4 h-4 shrink-0 text-slate-400 transition-transform duration-200 mt-0.5 ${
-                          isExpanded ? 'rotate-180 text-emerald-600' : ''
+                        className={`w-4 h-4 shrink-0 text-[#56776A] transition-transform duration-200 mt-0.5 ${
+                          isExpanded ? 'rotate-180 text-[#42B7A7]' : ''
                         }`}
                       />
                     )}
@@ -171,14 +171,14 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
 
                 {/* Desktop Heading (>= md): Inline Stage + Title + Duration */}
                 <div className="hidden md:flex items-center gap-2.5">
-                  <span className="font-mono text-xs uppercase tracking-wider font-bold text-emerald-600">
+                  <span className="font-mono text-xs uppercase tracking-wider font-bold text-[#42B7A7]">
                     Stage {step.stepNumber}
                   </span>
-                  <span className="text-base sm:text-lg font-semibold font-display text-slate-900 group-hover:text-emerald-800 transition-colors">
+                  <span className="text-base sm:text-lg font-semibold font-display text-[#26423E] group-hover:text-[#42B7A7] transition-colors">
                     {step.title}
                   </span>
                   {step.approxDuration && (
-                    <span className="text-xs text-slate-400 font-mono">
+                    <span className="text-xs text-[#56776A] font-mono">
                       • {step.approxDuration}
                     </span>
                   )}
@@ -190,10 +190,10 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                 status={status}
                 className={`transition-all duration-300 ${
                   isCurrent
-                    ? 'ring-4 ring-emerald-400/30 scale-125 border-emerald-600 text-emerald-600'
+                    ? 'ring-4 ring-[#42B7A7]/30 scale-125 border-[#42B7A7] text-[#42B7A7]'
                     : isDone
-                    ? 'border-emerald-600 text-emerald-600'
-                    : 'border-slate-300 text-slate-400'
+                    ? 'border-[#42B7A7] text-[#42B7A7]'
+                    : 'border-[#C2D3D0] text-[#56776A]'
                 }`}
               />
 
@@ -202,7 +202,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                 <TimelineLine
                   done={isDone}
                   className={`transition-colors duration-300 ${
-                    isDone ? 'bg-emerald-500' : 'bg-slate-200'
+                    isDone ? 'bg-[#42B7A7]' : 'bg-[#C2D3D0]'
                   }`}
                 />
               )}
@@ -215,19 +215,19 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                 <div className="hidden md:block space-y-3 pb-8">
                   {/* Subtitle / Stage name */}
                   {step.subtitle && (
-                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-[#56776A]">
                       {step.subtitle}
                     </p>
                   )}
 
                   {/* Summary text */}
-                  <p className="text-sm text-slate-700 leading-relaxed">
+                  <p className="text-sm text-[#26423E] leading-relaxed">
                     {step.summary}
                   </p>
 
                   {/* Additional Details */}
                   {!isCompactPreview && step.details && (
-                    <p className="text-xs text-slate-600 leading-relaxed pt-1">
+                    <p className="text-xs text-[#56776A] leading-relaxed pt-1">
                       {step.details}
                     </p>
                   )}
@@ -235,14 +235,14 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                   {/* Checklist & Key Rules */}
                   {!isCompactPreview && step.requiredDocuments && step.requiredDocuments.length > 0 && (
                     <div className="pt-2 space-y-1.5">
-                      <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5 uppercase tracking-wider">
-                        <FileText className="w-3.5 h-3.5 text-emerald-600" />
+                      <span className="text-xs font-bold text-[#26423E] flex items-center gap-1.5 uppercase tracking-wider">
+                        <FileText className="w-3.5 h-3.5 text-[#42B7A7]" />
                         Key Requirements:
                       </span>
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs text-slate-600 pl-1">
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs text-[#56776A] pl-1">
                         {step.requiredDocuments.slice(0, 4).map((doc, docIdx) => (
                           <li key={docIdx} className="flex items-start gap-1.5">
-                            <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                            <Check className="w-3.5 h-3.5 text-[#42B7A7] shrink-0 mt-0.5" />
                             <span>{doc}</span>
                           </li>
                         ))}
@@ -253,15 +253,15 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                   {/* ADTT Automated Track Maneuvers */}
                   {!isCompactPreview && step.rtoTrackManeuvers && (
                     <div className="pt-2 space-y-1.5">
-                      <span className="text-xs font-bold text-amber-900 flex items-center gap-1.5 uppercase tracking-wider">
-                        <Award className="w-3.5 h-3.5 text-amber-600" />
+                      <span className="text-xs font-bold text-[#26423E] flex items-center gap-1.5 uppercase tracking-wider">
+                        <Award className="w-3.5 h-3.5 text-[#42B7A7]" />
                         Track Drills:
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {step.rtoTrackManeuvers.map((drill, drillIdx) => (
                           <span
                             key={drillIdx}
-                            className="px-2.5 py-1 rounded-lg bg-amber-50/80 border border-amber-200/80 text-[0.72rem] text-amber-900"
+                            className="px-2.5 py-1 rounded-lg bg-[#E2F3F0] border border-[#C2D3D0] text-[0.72rem] text-[#26423E]"
                           >
                             {drill}
                           </span>
@@ -272,8 +272,8 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
 
                   {/* Instructor Pro-Tip */}
                   {!isCompactPreview && step.instructorProTip && (
-                    <div className="pt-2 flex items-start gap-2 text-xs text-emerald-900 bg-emerald-50/70 border border-emerald-200/70 p-2.5 rounded-xl">
-                      <Lightbulb className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <div className="pt-2 flex items-start gap-2 text-xs text-[#26423E] bg-[#E2F3F0] border border-[#C2D3D0] p-2.5 rounded-xl">
+                      <Lightbulb className="w-4 h-4 text-[#42B7A7] shrink-0 mt-0.5" />
                       <p className="italic">
                         <strong className="not-italic font-bold">Instructor Tip: </strong>
                         "{step.instructorProTip}"
@@ -288,7 +288,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                         href={step.rtoPortalUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-emerald-700 font-semibold hover:underline"
+                        className="inline-flex items-center gap-1 text-[#42B7A7] font-semibold hover:underline"
                       >
                         Official Sarathi Portal <ExternalLink className="w-3 h-3" />
                       </a>
@@ -297,7 +297,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                     {onOpenBookingModal && (
                       <button
                         onClick={onOpenBookingModal}
-                        className="text-slate-800 font-bold hover:text-emerald-700 underline transition-colors cursor-pointer"
+                        className="text-[#26423E] font-bold hover:text-[#42B7A7] underline transition-colors cursor-pointer"
                       >
                         Book Training for this Stage →
                       </button>
@@ -317,26 +317,26 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                           transition={{ duration: 0.25 }}
                           className="space-y-2.5 pt-1 pb-4"
                         >
-                          <p className="text-xs text-slate-700 leading-relaxed">
+                          <p className="text-xs text-[#26423E] leading-relaxed">
                             {step.summary}
                           </p>
 
                           {step.details && (
-                            <p className="text-[0.75rem] text-slate-600 leading-relaxed">
+                            <p className="text-[0.75rem] text-[#56776A] leading-relaxed">
                               {step.details}
                             </p>
                           )}
 
                           {step.requiredDocuments && step.requiredDocuments.length > 0 && (
-                            <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
-                              <span className="text-[0.68rem] font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1">
-                                <FileText className="w-3 h-3 text-emerald-600" />
+                            <div className="p-2.5 rounded-xl bg-white/90 border border-[#C2D3D0] space-y-1">
+                              <span className="text-[0.68rem] font-bold text-[#26423E] uppercase tracking-wider flex items-center gap-1">
+                                <FileText className="w-3 h-3 text-[#42B7A7]" />
                                 Requirements:
                               </span>
-                              <ul className="space-y-1 text-xs text-slate-600">
+                              <ul className="space-y-1 text-xs text-[#56776A]">
                                 {step.requiredDocuments.slice(0, 3).map((doc, docIdx) => (
                                   <li key={docIdx} className="flex items-start gap-1.5">
-                                    <Check className="w-3 h-3 text-emerald-500 shrink-0 mt-0.5" />
+                                    <Check className="w-3 h-3 text-[#42B7A7] shrink-0 mt-0.5" />
                                     <span>{doc}</span>
                                   </li>
                                 ))}
@@ -345,8 +345,8 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                           )}
 
                           {step.instructorProTip && (
-                            <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-950 flex items-start gap-2">
-                              <Lightbulb className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                            <div className="p-2.5 rounded-xl bg-[#E2F3F0] border border-[#C2D3D0] text-xs text-[#26423E] flex items-start gap-2">
+                              <Lightbulb className="w-3.5 h-3.5 text-[#42B7A7] shrink-0 mt-0.5" />
                               <p className="italic text-[0.75rem]">"{step.instructorProTip}"</p>
                             </div>
                           )}
@@ -357,18 +357,21 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                                 href={step.rtoPortalUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 text-xs text-emerald-700 font-bold hover:underline"
+                                className="inline-flex items-center gap-1 text-xs text-[#42B7A7] font-bold hover:underline"
                               >
                                 Sarathi Portal <ExternalLink className="w-3 h-3" />
                               </a>
                             )}
                             {onOpenBookingModal && (
-                              <button
+                              <Button
+                                variant="primary"
+                                size="sm"
                                 onClick={onOpenBookingModal}
-                                className="inline-flex items-center justify-center gap-1 px-3 py-1.5 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow-xs"
+                                className="w-full justify-center shadow-xs"
+                                icon={<Sparkles className="w-3 h-3 text-amber-300" />}
                               >
-                                <Sparkles className="w-3 h-3 text-amber-300" /> Book for Stage {step.stepNumber}
-                              </button>
+                                Book for Stage {step.stepNumber}
+                              </Button>
                             )}
                           </div>
                         </motion.div>
