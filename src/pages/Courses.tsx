@@ -44,7 +44,7 @@ export const Courses: React.FC = () => {
       />
 
       <div>
-        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-slate-900 tracking-tight">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-[#26423E] tracking-tight">
           Driving Courses & Programs
         </h1>
       </div>
@@ -54,18 +54,18 @@ export const Courses: React.FC = () => {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
-        className="p-3.5 sm:p-6 bg-white rounded-2xl sm:rounded-3xl border border-slate-200 shadow-xs space-y-3 sm:space-y-4"
+        className="p-3.5 sm:p-6 bg-white rounded-2xl sm:rounded-3xl border border-[#C2D3D0] shadow-xs space-y-3 sm:space-y-4"
       >
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-2.5 sm:gap-4 items-center">
           {/* Search Box (6 cols) */}
           <div className="sm:col-span-6 relative">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-2.5 sm:top-3.5" />
+            <Search className="w-4 h-4 text-[#56776A] absolute left-3.5 top-2.5 sm:top-3.5" />
             <input
               type="text"
               placeholder="Search courses, parking, highway, RTO..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 sm:pl-10 pr-3.5 sm:pr-4 py-2 sm:py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none transition-all"
+              className="w-full pl-9 sm:pl-10 pr-3.5 sm:pr-4 py-2 sm:py-2.5 rounded-xl border border-[#C2D3D0] text-xs sm:text-sm text-[#26423E] focus:ring-2 focus:ring-[#42B7A7] focus:outline-none transition-all"
             />
           </div>
 
@@ -74,7 +74,7 @@ export const Courses: React.FC = () => {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white transition-all"
+              className="w-full px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-[#C2D3D0] text-xs sm:text-sm text-[#26423E] focus:ring-2 focus:ring-[#42B7A7] focus:outline-none bg-white transition-all"
             >
               <option value="all">All Categories</option>
               <option value="beginner">Beginner Complete</option>
@@ -90,7 +90,7 @@ export const Courses: React.FC = () => {
             <select
               value={selectedTransmission}
               onChange={(e) => setSelectedTransmission(e.target.value)}
-              className="w-full px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-slate-200 text-xs sm:text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white transition-all"
+              className="w-full px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-[#C2D3D0] text-xs sm:text-sm text-[#26423E] focus:ring-2 focus:ring-[#42B7A7] focus:outline-none bg-white transition-all"
             >
               <option value="all">All Transmissions</option>
               <option value="manual">Manual Transmission</option>
@@ -101,7 +101,7 @@ export const Courses: React.FC = () => {
 
         {/* Active Filters summary */}
         {(searchQuery || selectedCategory !== 'all' || selectedTransmission !== 'all') && (
-          <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-xs text-slate-500">
+          <div className="flex items-center justify-between pt-2 border-t border-[#C2D3D0]/60 text-xs text-[#56776A]">
             <span>
               Showing {filteredCourses.length} of {courses.length} courses
             </span>
@@ -111,7 +111,7 @@ export const Courses: React.FC = () => {
                 setSelectedCategory('all');
                 setSelectedTransmission('all');
               }}
-              className="text-emerald-700 font-bold hover:underline transition-colors"
+              className="text-[#42B7A7] font-bold hover:underline transition-colors"
             >
               Reset Filters
             </button>
@@ -145,10 +145,10 @@ export const Courses: React.FC = () => {
         </motion.div>
       ) : (
         /* Empty State */
-        <div className="p-12 text-center bg-white rounded-3xl border border-slate-200 shadow-xs max-w-md mx-auto space-y-3">
-          <Car className="w-12 h-12 text-slate-300 mx-auto" />
-          <h3 className="text-base font-bold text-slate-900">No courses match your filter</h3>
-          <p className="text-xs text-slate-500">
+        <div className="p-12 text-center bg-white rounded-3xl border border-[#C2D3D0] shadow-xs max-w-md mx-auto space-y-3">
+          <Car className="w-12 h-12 text-[#C2D3D0] mx-auto" />
+          <h3 className="text-base font-bold text-[#26423E]">No courses match your filter</h3>
+          <p className="text-xs text-[#56776A]">
             Try adjusting your search query or reset filters to see all available driving packages.
           </p>
           <Button
@@ -166,18 +166,18 @@ export const Courses: React.FC = () => {
       )}
 
       {/* Custom Training Enquiry Callout */}
-      <section className="p-8 sm:p-12 rounded-3xl bg-slate-900 text-white border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
+      <section className="p-8 sm:p-12 rounded-3xl bg-[#26423E] text-white border border-[#3D6357] flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-2 text-center md:text-left">
           <h3 className="text-xl sm:text-2xl font-bold font-display text-white">
             Need a Customized Lesson Plan or Hourly Batch?
           </h3>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
+          <p className="text-xs sm:text-sm text-[#C2D3D0] max-w-xl">
             We can customize lesson hours around your specific office timings, personal car model, or tricky basement parking slot.
           </p>
         </div>
 
         <Button
-          variant="amber"
+          variant="primary"
           size="lg"
           onClick={() => onOpenBooking()}
           className="shrink-0 shadow-md"
