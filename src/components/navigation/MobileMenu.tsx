@@ -55,19 +55,19 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenB
     <div className="fixed inset-0 z-50 flex justify-end" role="dialog" aria-modal="true">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-[#26230A]/60 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-[#082B4C]/60 backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Drawer */}
-      <div className="relative w-full max-w-sm bg-[#FAF6F8] h-full shadow-2xl flex flex-col justify-between overflow-y-auto z-10 animate-in slide-in-from-right duration-300">
+      <div className="relative w-full max-w-sm bg-white h-full shadow-2xl flex flex-col justify-between overflow-y-auto z-10 animate-in slide-in-from-right duration-300">
         {/* Drawer Header */}
-        <div className="p-5 border-b border-[#D4E2DF] flex items-center justify-between">
+        <div className="p-5 border-b border-[#E5E7EB] flex items-center justify-between">
           <Logo size="md" />
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-[#404D68] hover:text-[#39340F] hover:bg-[#FFF5F8] transition-colors"
+            className="p-2 rounded-xl text-[#6B7280] hover:text-[#202B33] hover:bg-[#F5F6F7] transition-colors"
             aria-label="Close menu"
           >
             <X className="w-6 h-6" />
@@ -76,7 +76,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenB
 
         {/* Navigation List */}
         <div className="p-5 space-y-1.5 flex-1">
-          <div className="text-[0.7rem] uppercase tracking-wider font-bold text-[#404D68] mb-2 px-3">
+          <div className="text-[0.7rem] uppercase tracking-wider font-bold text-[#6B7280] mb-2 px-3">
             Menu Navigation
           </div>
 
@@ -89,39 +89,39 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenB
                 to={link.to}
                 className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-base font-semibold transition-all ${
                   isActive
-                    ? 'bg-[#FDF2F5] text-[#BC2639] font-bold border border-[#FFC5DC]'
-                    : 'text-[#39340F] hover:bg-[#FFF5F8]'
+                    ? 'bg-[#F4C400]/20 text-[#082B4C] font-bold border border-[#F4C400]/30'
+                    : 'text-[#202B33] hover:bg-[#F5F6F7]'
                 }`}
               >
                 <span>{link.label}</span>
-                <ChevronRight className={`w-4 h-4 ${isActive ? 'text-[#BC2639]' : 'text-[#404D68]'}`} />
+                <ChevronRight className={`w-4 h-4 ${isActive ? 'text-[#082B4C]' : 'text-[#9CA3AF]'}`} />
               </Link>
             );
           })}
 
           {/* Service Areas Note */}
-          <div className="mt-4 p-3 rounded-xl bg-white/90 border border-[#D4E2DF] text-xs text-[#404D68]">
-            <div className="flex items-center gap-1.5 font-bold text-[#39340F] mb-1">
-              <MapPin className="w-3.5 h-3.5 text-[#BC2639]" />
+          <div className="mt-4 p-3 rounded-xl bg-[#F5F6F7] border border-[#E5E7EB] text-xs text-[#6B7280]">
+            <div className="flex items-center gap-1.5 font-bold text-[#202B33] mb-1">
+              <MapPin className="w-3.5 h-3.5 text-[#082B4C]" />
               Doorstep Pickup Available in:
             </div>
-            <p className="leading-relaxed text-[#404D68]">
+            <p className="leading-relaxed text-[#6B7280]">
               {siteConfig.serviceCities.join(' • ')}
             </p>
           </div>
         </div>
 
         {/* Bottom Drawer Actions */}
-        <div className="p-5 border-t border-[#D4E2DF] bg-[#FAF6F8] space-y-3">
+        <div className="p-5 border-t border-[#E5E7EB] bg-white space-y-3">
           <Button
             variant="primary"
             size="lg"
-            className="w-full justify-center shadow-md"
+            className="w-full justify-center shadow-md text-[#082B4C] font-bold"
             onClick={() => {
               onClose();
               onOpenBookingModal();
             }}
-            icon={<Sparkles className="w-5 h-5 text-[#FFC5DC]" />}
+            icon={<Sparkles className="w-5 h-5 text-[#082B4C]" />}
           >
             Book a Driving Lesson
           </Button>
