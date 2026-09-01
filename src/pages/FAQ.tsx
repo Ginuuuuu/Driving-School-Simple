@@ -7,9 +7,13 @@ import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
 import { generateDirectWhatsAppChatLink } from '../utils/whatsapp';
 
+import { defaultFAQs } from '../content/faqs';
+import { defaultSiteConfig } from '../content/siteConfig';
+
 export const FAQ: React.FC = () => {
   const { siteData } = useContent();
-  const { faqs, siteConfig } = siteData;
+  const faqs = siteData?.faqs || defaultFAQs;
+  const siteConfig = siteData?.siteConfig || defaultSiteConfig;
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');

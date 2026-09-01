@@ -7,10 +7,12 @@ import { Badge } from '../components/common/Badge';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
 
+import { defaultResources } from '../content/resources';
+
 export const ResourceDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const { siteData } = useContent();
-  const { resources } = siteData;
+  const resources = siteData?.resources || defaultResources;
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string) => void }>();
 
   const guide = resources.find((r) => r.slug === slug);
