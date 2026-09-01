@@ -340,18 +340,22 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8"
       >
-        <div className="relative rounded-2xl sm:rounded-3xl bg-[#39340F] text-white p-5 sm:p-10 lg:p-12 border border-[#5F1618] shadow-xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-8">
-          <div className="space-y-1.5 sm:space-y-2 text-center md:text-left max-w-xl">
+        <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#2D0A14] via-[#481320] to-[#1E060D] text-white p-6 sm:p-10 lg:p-12 border border-[#BC2639]/30 shadow-2xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-8">
+          {/* Ambient Flowing Light Glow Orbs */}
+          <div className="absolute -top-20 -right-20 w-80 h-80 bg-[#BC2639]/25 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-[#FFC5DC]/15 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 space-y-1.5 sm:space-y-2 text-center md:text-left max-w-xl">
             <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold font-display text-white tracking-tight">
               Ready to Start Your Driving Lessons?
             </h2>
 
-            <p className="text-xs sm:text-sm text-[#D4E2DF] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#FFC5DC]/90 leading-relaxed">
               Doorstep pickup, zero-stall training, and patient mentors. Enquire online or chat with our admissions team on WhatsApp.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3 shrink-0 w-full md:w-auto">
+          <div className="relative z-10 flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3 shrink-0 w-full md:w-auto">
             <Button
               variant="primary"
               size="lg"
