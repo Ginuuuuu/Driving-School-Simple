@@ -21,10 +21,14 @@ import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
 import { generateDirectWhatsAppChatLink } from '../utils/whatsapp';
 
+import { defaultCourses } from '../content/courses';
+import { defaultSiteConfig } from '../content/siteConfig';
+
 export const CourseDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const { siteData } = useContent();
-  const { courses, siteConfig } = siteData;
+  const courses = siteData?.courses || defaultCourses;
+  const siteConfig = siteData?.siteConfig || defaultSiteConfig;
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string) => void }>();
 
   const [openModuleIndex, setOpenModuleIndex] = useState<number | null>(0);
