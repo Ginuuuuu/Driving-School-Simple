@@ -5,15 +5,20 @@ import { Button } from '../../components/common/Button';
 import { SEO } from '../../components/common/SEO';
 import { LegalContent } from '../../types';
 
+import { defaultLegal } from '../../content/legal';
+
 export const LegalEditor: React.FC = () => {
   const { siteData, updateLegal } = useContent();
-  const { legal } = siteData;
+  const legal = siteData?.legal || defaultLegal;
 
   const [activeTab, setActiveTab] = useState<'privacy' | 'terms'>('privacy');
-  const [legalData, setLegalData] = useState<LegalContent>(JSON.parse(JSON.stringify(legal)));
+  const [legalData, setLegalData] = useState<LegalContent>(() => {
+    const raw = legal || defaultLegal;
+    return JSON.parse(JSON.stringify(raw));
+  });
 
-  const handlePrivacySectionChange = (index: number, field: 'heading' | 'content', val: string) => {
-    const updated = [...legalData.privacyPolicy.sections];
+  const handlePrivacySectionChange = (index: number, field: 'heading' | 'body', val: string) => {
+    const updated = [...(legalData.privacyPolicy?.sections || [])];
     updated[index] = { ...updated[index], [field]: val };
     setLegalData({
       ...legalData,
@@ -27,8 +32,8 @@ export const LegalEditor: React.FC = () => {
       privacyPolicy: {
         ...legalData.privacyPolicy,
         sections: [
-          ...legalData.privacyPolicy.sections,
-          { heading: 'New Privacy Clause', content: 'Clause details...' },
+          ...(legalData.privacyPolicy?.sections || []),
+          { heading: 'New Privacy Clause', body: 'Clause details...' },
         ],
       },
     });
@@ -39,13 +44,13 @@ export const LegalEditor: React.FC = () => {
       ...legalData,
       privacyPolicy: {
         ...legalData.privacyPolicy,
-        sections: legalData.privacyPolicy.sections.filter((_, i) => i !== index),
+        sections: (legalData.privacyPolicy?.sections || []).filter((_, i) => i !== index),
       },
     });
   };
 
-  const handleTermsSectionChange = (index: number, field: 'heading' | 'content', val: string) => {
-    const updated = [...legalData.termsAndConditions.sections];
+  const handleTermsSectionChange = (index: number, field: 'heading' | 'body', val: string) => {
+    const updated = [...(legalData.termsAndConditions?.sections || [])];
     updated[index] = { ...updated[index], [field]: val };
     setLegalData({
       ...legalData,
@@ -59,8 +64,8 @@ export const LegalEditor: React.FC = () => {
       termsAndConditions: {
         ...legalData.termsAndConditions,
         sections: [
-          ...legalData.termsAndConditions.sections,
-          { heading: 'New Terms Clause', content: 'Clause terms and student agreement...' },
+          ...(legalData.termsAndConditions?.sections || []),
+          { heading: 'New Terms Clause', body: 'Clause terms and student agreement...' },
         ],
       },
     });
@@ -71,7 +76,7 @@ export const LegalEditor: React.FC = () => {
       ...legalData,
       termsAndConditions: {
         ...legalData.termsAndConditions,
-        sections: legalData.termsAndConditions.sections.filter((_, i) => i !== index),
+        sections: (legalData.termsAndConditions?.sections || []).filter((_, i) => i !== index),
       },
     });
   };
