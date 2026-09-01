@@ -33,12 +33,12 @@ export const Dashboard: React.FC = () => {
   const { siteConfig, courses, roadmap, instructors, pricing, testimonials, faqs, resources } = siteData;
 
   const quickStats = [
-    { label: 'Courses Catalog', count: courses.length, to: '/admin/courses', icon: BookOpen, color: 'text-[#BC2639] bg-[#FDF2F5] border-[#FFC5DC]' },
+    { label: 'Courses Catalog', count: courses.length, to: '/admin/courses', icon: BookOpen, color: 'text-[#082B4C] bg-[#F4C400]/20 border-[#F4C400]/40' },
     { label: 'Licence Milestones', count: roadmap.length, to: '/admin/roadmap', icon: MapPin, color: 'text-amber-700 bg-amber-50 border-amber-200' },
     { label: 'Certified Mentors', count: instructors.length, to: '/admin/instructors', icon: Users, color: 'text-blue-700 bg-blue-50 border-blue-200' },
     { label: 'Pricing Packages', count: pricing.packages.length, to: '/admin/pricing', icon: CreditCard, color: 'text-purple-700 bg-purple-50 border-purple-200' },
     { label: 'Student Reviews', count: testimonials.length, to: '/admin/testimonials', icon: MessageSquare, color: 'text-pink-700 bg-pink-50 border-pink-200' },
-    { label: 'Learning Guides', count: resources.length, to: '/admin/resources', icon: BookOpen, color: 'text-[#404D68] bg-[#FAF6F8] border-[#D4E2DF]' },
+    { label: 'Learning Guides', count: resources.length, to: '/admin/resources', icon: BookOpen, color: 'text-[#082B4C] bg-[#F5F6F7] border-[#E5E7EB]' },
     { label: 'Active FAQs', count: faqs.length, to: '/admin/faqs', icon: HelpCircle, color: 'text-indigo-700 bg-indigo-50 border-indigo-200' },
     { label: 'Branch Hubs', count: siteConfig.branches.length, to: '/admin/contact', icon: Phone, color: 'text-rose-700 bg-rose-50 border-rose-200' },
   ];
@@ -83,15 +83,15 @@ export const Dashboard: React.FC = () => {
       <SEO title="Admin Dashboard | DriveCraft Content Control Center" />
 
       {/* Welcome Banner */}
-      <div className="relative overflow-hidden p-6 sm:p-8 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="relative overflow-hidden p-6 sm:p-8 rounded-3xl bg-[#082B4C] text-white border border-[#061F36] shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-2 relative z-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#BC2639]/20 text-[#FFC5DC] border border-[#BC2639]/30">
-            <Sparkles className="w-3.5 h-3.5 text-[#BC2639]" /> Content Control Center
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#F4C400]/20 text-[#F4C400] border border-[#F4C400]/40">
+            <Sparkles className="w-3.5 h-3.5 text-[#F4C400]" /> Content Control Center
           </div>
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-white">
             Welcome, {siteConfig.brandName} Administrator
           </h2>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-200 max-w-xl leading-relaxed">
             Every page across your website is fully editable in real time. Use the structured editors below to customize hero copy, team members, courses, milestones, and branch hubs.
           </p>
         </div>
@@ -112,7 +112,7 @@ export const Dashboard: React.FC = () => {
             to="/"
             target="_blank"
             rel="noopener noreferrer"
-            className="border-slate-700 text-slate-200 hover:text-white"
+            className="border-slate-500 text-slate-100 hover:text-white"
             icon={<ExternalLink className="w-4 h-4" />}
           >
             View Live Site
@@ -141,7 +141,7 @@ export const Dashboard: React.FC = () => {
                   <Icon className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <div className="text-xl font-bold font-display text-slate-900 group-hover:text-emerald-700 transition-colors">
+                  <div className="text-xl font-bold font-display text-slate-900 group-hover:text-[#082B4C] transition-colors">
                     {stat.count}
                   </div>
                   <div className="text-[0.7rem] font-semibold text-slate-600 truncate">
@@ -183,10 +183,10 @@ export const Dashboard: React.FC = () => {
                     <Link
                       key={lIdx}
                       to={link.to}
-                      className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 text-slate-700 hover:text-emerald-800 border border-slate-100 hover:border-emerald-200 transition-all group"
+                      className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 hover:bg-[#F4C400]/10 text-slate-700 hover:text-[#082B4C] border border-slate-100 hover:border-[#F4C400]/40 transition-all group"
                     >
                       <div className="flex items-center gap-2.5 min-w-0">
-                        <LinkIcon className="w-4 h-4 text-slate-400 group-hover:text-emerald-600 shrink-0 transition-colors" />
+                        <LinkIcon className="w-4 h-4 text-slate-400 group-hover:text-[#082B4C] shrink-0 transition-colors" />
                         <span className="text-xs font-semibold truncate">{link.name}</span>
                       </div>
                       <div className="flex items-center gap-1.5 shrink-0">
@@ -195,7 +195,7 @@ export const Dashboard: React.FC = () => {
                             {link.count}
                           </span>
                         )}
-                        <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-700 group-hover:translate-x-0.5 transition-transform" />
+                        <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#082B4C] group-hover:translate-x-0.5 transition-transform" />
                       </div>
                     </Link>
                   );
@@ -210,7 +210,7 @@ export const Dashboard: React.FC = () => {
       <div className="p-5 sm:p-6 rounded-3xl bg-slate-100 border border-slate-200 text-xs text-slate-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="space-y-1 max-w-2xl">
           <div className="font-bold text-sm text-slate-900 flex items-center gap-2">
-            <FileCode className="w-4 h-4 text-emerald-600" />
+            <FileCode className="w-4 h-4 text-[#082B4C]" />
             Instant Browser State & Repository Sync
           </div>
           <p className="text-slate-600 leading-relaxed">

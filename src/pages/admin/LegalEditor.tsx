@@ -93,7 +93,7 @@ export const LegalEditor: React.FC = () => {
       {/* Header with Title and Global Save CTA */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
         <div>
-          <div className="flex items-center gap-2 text-[#BC2639] font-bold text-xs uppercase tracking-wider mb-1">
+          <div className="flex items-center gap-2 text-[#082B4C] font-bold text-xs uppercase tracking-wider mb-1">
             <Shield className="w-4 h-4" />
             <span>Compliance & Legal</span>
           </div>
@@ -122,7 +122,7 @@ export const LegalEditor: React.FC = () => {
               : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
           }`}
         >
-          <FileText className="w-3.5 h-3.5 text-[#BC2639]" />
+          <FileText className="w-3.5 h-3.5 text-[#082B4C]" />
           Privacy Policy ({(legalData.privacyPolicy?.sections || []).length} Clauses)
         </button>
 
@@ -134,7 +134,7 @@ export const LegalEditor: React.FC = () => {
               : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
           }`}
         >
-          <Shield className="w-3.5 h-3.5 text-[#BC2639]" />
+          <Shield className="w-3.5 h-3.5 text-[#082B4C]" />
           Terms & Conditions ({(legalData.termsAndConditions?.sections || []).length} Clauses)
         </button>
       </div>
@@ -155,7 +155,7 @@ export const LegalEditor: React.FC = () => {
             <button
               type="button"
               onClick={addPrivacySection}
-              className="px-3.5 py-1.5 rounded-xl bg-[#FDF2F5] text-[#BC2639] border border-[#FFC5DC] font-bold text-xs hover:bg-[#FCE7EF] flex items-center gap-1.5"
+              className="px-3.5 py-1.5 rounded-xl bg-[#F4C400]/20 text-[#082B4C] border border-[#F4C400]/40 font-bold text-xs hover:bg-[#F4C400]/30 flex items-center gap-1.5"
             >
               <Plus className="w-3.5 h-3.5" /> Add Clause
             </button>
@@ -243,7 +243,7 @@ export const LegalEditor: React.FC = () => {
             <button
               type="button"
               onClick={addTermsSection}
-              className="px-3.5 py-1.5 rounded-xl bg-[#FDF2F5] text-[#BC2639] border border-[#FFC5DC] font-bold text-xs hover:bg-[#FCE7EF] flex items-center gap-1.5"
+              className="px-3.5 py-1.5 rounded-xl bg-[#F4C400]/20 text-[#082B4C] border border-[#F4C400]/40 font-bold text-xs hover:bg-[#F4C400]/30 flex items-center gap-1.5"
             >
               <Plus className="w-3.5 h-3.5" /> Add Clause
             </button>
