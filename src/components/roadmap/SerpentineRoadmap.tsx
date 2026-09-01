@@ -336,7 +336,7 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
             {/* Header */}
             <div className="flex items-start justify-between border-b border-slate-100 pb-4">
               <div>
-                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 inline-block mb-1.5">
+                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FDF2F5] text-[#39340F] border border-[#FFC5DC] inline-block mb-1.5">
                   Stage {activeStep.stepNumber} • {activeStep.approxDuration}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold font-display text-slate-900 leading-tight">
@@ -360,13 +360,13 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
               {activeStep.requiredDocuments.length > 0 && (
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
                   <h4 className="font-bold text-slate-900 flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-emerald-600" />
+                    <FileText className="w-4 h-4 text-[#BC2639]" />
                     Required Documents Checklist:
                   </h4>
                   <ul className="space-y-1.5 text-xs text-slate-600">
                     {activeStep.requiredDocuments.map((doc, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 shrink-0" />
+                        <Check className="w-3.5 h-3.5 text-[#BC2639] mt-0.5 shrink-0" />
                         <span>{doc}</span>
                       </li>
                     ))}
@@ -392,13 +392,13 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
               )}
 
               {/* Instructor Pro-Tip */}
-              <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-start gap-3">
-                <Lightbulb className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+              <div className="p-4 rounded-2xl bg-[#FDF2F5] border border-[#FFC5DC] flex items-start gap-3">
+                <Lightbulb className="w-5 h-5 text-[#BC2639] shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold text-emerald-950 block text-xs uppercase tracking-wider mb-0.5">
+                  <span className="font-bold text-[#39340F] block text-xs uppercase tracking-wider mb-0.5">
                     DriveCraft Instructor Pro-Tip:
                   </span>
-                  <p className="text-xs text-emerald-900 italic">
+                  <p className="text-xs text-[#39340F] italic">
                     "{activeStep.instructorProTip}"
                   </p>
                 </div>
@@ -412,7 +412,7 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
                   href={activeStep.rtoPortalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 hover:underline"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#BC2639] hover:underline"
                 >
                   Visit Parivahan Sarathi Gov Portal <ExternalLink className="w-3.5 h-3.5" />
                 </a>
