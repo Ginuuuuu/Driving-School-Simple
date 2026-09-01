@@ -8,9 +8,11 @@ import { Badge } from '../components/common/Badge';
 import { SEO } from '../components/common/SEO';
 import { generateDirectWhatsAppChatLink } from '../utils/whatsapp';
 
+import { defaultSiteConfig } from '../content/siteConfig';
+
 export const Contact: React.FC = () => {
   const { siteData } = useContent();
-  const { siteConfig } = siteData;
+  const siteConfig = siteData?.siteConfig || defaultSiteConfig;
 
   const whatsappUrl = generateDirectWhatsAppChatLink(siteConfig);
 
