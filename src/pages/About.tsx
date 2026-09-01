@@ -61,28 +61,41 @@ export const About: React.FC = () => {
         </motion.div>
       </motion.section>
 
-      {/* Safety Pledge Section */}
+      {/* Safety Pledge Section — Flowing Deep Burgundy-Crimson Gradient with Glass Cards */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.45 }}
-        className="bg-[#39340F] text-white rounded-2xl sm:rounded-3xl p-5 sm:p-12 lg:p-16 border border-[#5F1618] shadow-xl space-y-6 sm:space-y-8"
+        className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-6 sm:p-12 lg:p-16 bg-gradient-to-br from-[#2D0A14] via-[#481320] to-[#1E060D] border border-[#BC2639]/30 text-white shadow-2xl space-y-6 sm:space-y-8"
       >
-        <div className="max-w-3xl space-y-1.5 sm:space-y-2">
-          <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold font-display text-white tracking-tight">
+        {/* Ambient Flowing Light Glow Orbs */}
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#BC2639]/25 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#FFC5DC]/15 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 max-w-3xl space-y-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[0.7rem] sm:text-xs font-bold uppercase tracking-wider text-[#FFC5DC]">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#FFC5DC]" />
+            <span>Safety & Dignity Guarantee</span>
+          </div>
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold font-display text-white tracking-tight">
             Our 5-Point Safety & Dignity Pledge
           </h2>
-          <p className="text-xs sm:text-sm text-[#D4E2DF] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#FFC5DC]/90 leading-relaxed">
             We hold ourselves to the highest standards of safety, instructor empathy, and student respect in the country.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-4 text-xs sm:text-sm text-[#FAF6F8]">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm text-white">
           {about.safetyPledge.map((item, idx) => (
-            <div key={idx} className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#26230A]/60 border border-[#5F1618]/60 hover-lift-subtle transition-all">
-              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#BC2639] shrink-0 mt-0.5" />
-              <span className="leading-relaxed text-[0.75rem] sm:text-sm">{item}</span>
+            <div
+              key={idx}
+              className="flex items-start gap-3 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 hover:bg-white/[0.14] hover:border-[#FFC5DC]/40 hover-lift-subtle transition-all"
+            >
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#BC2639]/40 border border-[#BC2639]/50 flex items-center justify-center shrink-0 mt-0.5 text-[#FFC5DC]">
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FFC5DC]" />
+              </div>
+              <span className="leading-relaxed text-[0.78rem] sm:text-sm font-medium text-[#FAF6F8] pt-0.5">{item}</span>
             </div>
           ))}
         </div>
