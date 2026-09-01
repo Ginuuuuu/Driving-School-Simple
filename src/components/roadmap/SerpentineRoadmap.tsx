@@ -58,7 +58,7 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
       badge: '3. DUAL-CONTROL LESSONS',
       subtext: '1-on-1 In-Car Road Training',
       illustration: (
-        <div className="w-16 h-16 rounded-2xl bg-emerald-50 border-2 border-emerald-300 flex items-center justify-center text-emerald-600 shadow-sm">
+        <div className="w-16 h-16 rounded-2xl bg-[#FDF2F5] border-2 border-[#FFC5DC] flex items-center justify-center text-[#BC2639] shadow-sm">
           <Car className="w-8 h-8" />
         </div>
       ),
@@ -85,7 +85,7 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
       badge: '6. SMART CARD DL LAUNCH',
       subtext: 'Speed Post & DigiLocker Delivery',
       illustration: (
-        <div className="w-16 h-16 rounded-2xl bg-emerald-100 border-2 border-emerald-400 flex items-center justify-center text-emerald-700 shadow-md">
+        <div className="w-16 h-16 rounded-2xl bg-[#FDF2F5] border-2 border-[#FFC5DC] flex items-center justify-center text-[#BC2639] shadow-md">
           <CheckCircle2 className="w-9 h-9" />
         </div>
       ),
