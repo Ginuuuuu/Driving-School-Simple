@@ -30,14 +30,14 @@ export const PublicLayout: React.FC = () => {
   const whatsappUrl = generateDirectWhatsAppChatLink(siteConfig);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#EDEFF4] text-[#26423E] font-sans selection:bg-[#42B7A7] selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#FAF6F8] text-[#39340F] font-sans selection:bg-[#BC2639] selection:text-white">
       {/* Show Word Logo Intro on initial Homepage visit */}
       {isHomePage && <WordLogoIntro />}
 
       {/* Accessible skip link */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-[#42B7A7] text-white rounded-lg font-bold shadow-lg"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-[#BC2639] text-white rounded-lg font-bold shadow-lg"
       >
         Skip to main content
       </a>
