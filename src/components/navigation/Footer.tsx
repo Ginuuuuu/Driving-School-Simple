@@ -12,30 +12,30 @@ export const Footer: React.FC = () => {
   const whatsappUrl = generateDirectWhatsAppChatLink(siteConfig);
 
   return (
-    <footer className="bg-[#39340F] text-[#FAF6F8] pt-8 pb-6 sm:pt-16 sm:pb-12 border-t border-[#5F1618]">
+    <footer className="bg-gradient-to-b from-[#24060E] to-[#140207] text-[#FAF6F8] pt-8 pb-6 sm:pt-16 sm:pb-12 border-t border-[#BC2639]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-10 lg:gap-8 mb-6 sm:mb-12">
           {/* Column 1: Brand & Safety Bio */}
           <div className="lg:col-span-2 space-y-2.5 sm:space-y-4">
             <Logo variant="light" size="sm" showTagline />
-            <p className="text-xs sm:text-sm text-[#D4E2DF] leading-relaxed max-w-sm line-clamp-2 sm:line-clamp-none">
+            <p className="text-xs sm:text-sm text-[#FFC5DC]/90 leading-relaxed max-w-sm line-clamp-2 sm:line-clamp-none">
               {siteConfig.shortDescription}
             </p>
 
             {/* Trust Badges */}
             <div className="pt-0.5 sm:pt-2 flex flex-wrap gap-2">
-              <div className="flex items-center gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-md sm:rounded-lg bg-[#26230A]/80 border border-[#5F1618]/60 text-[0.68rem] sm:text-xs font-semibold text-[#FFC5DC]">
+              <div className="flex items-center gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-md sm:rounded-lg bg-white/[0.08] backdrop-blur-md border border-white/15 text-[0.68rem] sm:text-xs font-semibold text-[#FFC5DC]">
                 <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#BC2639]" />
                 100% Dual-Control Fleet
               </div>
-              <div className="flex items-center gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-md sm:rounded-lg bg-[#26230A]/80 border border-[#5F1618]/60 text-[0.68rem] sm:text-xs font-semibold text-[#D4E2DF]">
+              <div className="flex items-center gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-md sm:rounded-lg bg-white/[0.08] backdrop-blur-md border border-white/15 text-[0.68rem] sm:text-xs font-semibold text-[#FAF6F8]">
                 <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#BC2639]" />
                 MoRTH & RTO Aligned
               </div>
             </div>
 
-            <div className="pt-0.5 text-[0.7rem] sm:text-xs text-[#D4E2DF]/80">
+            <div className="pt-0.5 text-[0.7rem] sm:text-xs text-[#FAF6F8]/80">
               Hours: {siteConfig.operatingHours.weekdays}
             </div>
           </div>
