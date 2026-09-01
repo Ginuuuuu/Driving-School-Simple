@@ -215,35 +215,35 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
     const selectedCourse = courses.find((c) => c.slug === formState.courseSlug);
 
     return (
-      <div className="p-5 sm:p-8 bg-[#E2F3F0]/60 rounded-2xl border border-[#C2D3D0] text-center animate-in fade-in zoom-in-95 duration-300">
-        <div className="w-14 h-14 bg-[#E2F3F0] text-[#42B7A7] rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
+      <div className="p-5 sm:p-8 bg-[#FDF2F5]/60 rounded-2xl border border-[#FFC5DC] text-center animate-in fade-in zoom-in-95 duration-300">
+        <div className="w-14 h-14 bg-[#FDF2F5] text-[#BC2639] rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
           <CheckCircle2 className="w-7 h-7" />
         </div>
 
-        <h3 className="text-lg sm:text-2xl font-bold font-display text-[#26423E]">
+        <h3 className="text-lg sm:text-2xl font-bold font-display text-[#39340F]">
           Your Lesson Enquiry is Ready!
         </h3>
-        <p className="mt-1.5 text-xs sm:text-sm text-[#56776A] max-w-md mx-auto leading-relaxed">
+        <p className="mt-1.5 text-xs sm:text-sm text-[#404D68] max-w-md mx-auto leading-relaxed">
           We have generated your structured booking request. Click below to open WhatsApp and send it directly to our admissions team for immediate confirmation.
         </p>
 
         {/* Enquiry Summary Card */}
-        <div className="mt-4 p-3.5 rounded-xl bg-white border border-[#C2D3D0] text-left text-xs text-[#26423E] space-y-2 shadow-sm max-w-md mx-auto">
-          <div className="flex justify-between border-b border-[#C2D3D0]/50 pb-1.5">
-            <span className="font-semibold text-[#56776A]">Student:</span>
-            <span className="font-bold text-[#26423E]">{formState.fullName}</span>
+        <div className="mt-4 p-3.5 rounded-xl bg-white border border-[#D4E2DF] text-left text-xs text-[#39340F] space-y-2 shadow-sm max-w-md mx-auto">
+          <div className="flex justify-between border-b border-[#D4E2DF]/50 pb-1.5">
+            <span className="font-semibold text-[#404D68]">Student:</span>
+            <span className="font-bold text-[#39340F]">{formState.fullName}</span>
           </div>
-          <div className="flex justify-between border-b border-[#C2D3D0]/50 pb-1.5">
-            <span className="font-semibold text-[#56776A]">Course:</span>
-            <span className="font-bold text-[#42B7A7]">{selectedCourse?.shortTitle || formState.courseSlug}</span>
+          <div className="flex justify-between border-b border-[#D4E2DF]/50 pb-1.5">
+            <span className="font-semibold text-[#404D68]">Course:</span>
+            <span className="font-bold text-[#BC2639]">{selectedCourse?.shortTitle || formState.courseSlug}</span>
           </div>
-          <div className="flex justify-between border-b border-[#C2D3D0]/50 pb-1.5">
-            <span className="font-semibold text-[#56776A]">Pickup Area:</span>
-            <span className="font-medium text-[#26423E]">{formState.pickupArea}, {formState.city}</span>
+          <div className="flex justify-between border-b border-[#D4E2DF]/50 pb-1.5">
+            <span className="font-semibold text-[#404D68]">Pickup Area:</span>
+            <span className="font-medium text-[#39340F]">{formState.pickupArea}, {formState.city}</span>
           </div>
           <div className="flex justify-between">
-            <span className="font-semibold text-[#56776A]">Slot & Gear:</span>
-            <span className="font-medium text-[#26423E] capitalize">
+            <span className="font-semibold text-[#404D68]">Slot & Gear:</span>
+            <span className="font-medium text-[#39340F] capitalize">
               {formState.preferredTimeSlot.replace('_', ' ')} • {formState.transmission}
             </span>
           </div>
@@ -274,16 +274,16 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
         </div>
 
         {/* Fallback assistance */}
-        <div className="mt-5 pt-3 border-t border-emerald-200/60 text-[0.72rem] text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="mt-5 pt-3 border-t border-[#D4E2DF]/60 text-[0.72rem] text-[#404D68] flex flex-col sm:flex-row items-center justify-between gap-2">
           <button
             onClick={handleReset}
-            className="text-slate-600 hover:text-slate-900 underline flex items-center gap-1 mx-auto"
+            className="text-[#404D68] hover:text-[#39340F] underline flex items-center gap-1 mx-auto"
           >
             <RefreshCw className="w-3 h-3" /> Edit details / Make another enquiry
           </button>
           <a
             href={`tel:${siteConfig.phoneDial}`}
-            className="text-emerald-700 hover:underline font-semibold flex items-center gap-1 mx-auto"
+            className="text-[#BC2639] hover:underline font-semibold flex items-center gap-1 mx-auto"
           >
             <Phone className="w-3.5 h-3.5" /> Call directly: {siteConfig.phoneDisplay}
           </a>
@@ -302,24 +302,24 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
       <div className="sm:hidden space-y-3.5">
         {/* Multi-Step Visual Progress Indicator */}
         <div className="space-y-1.5 pb-1">
-          <div className="flex items-center justify-between text-xs font-bold text-[#26423E]">
-            <span className="flex items-center gap-1.5 text-[#26423E] font-bold">
-              <span className="w-5 h-5 rounded-full bg-[#42B7A7] text-white flex items-center justify-center text-[0.68rem] shadow-xs">
+          <div className="flex items-center justify-between text-xs font-bold text-[#39340F]">
+            <span className="flex items-center gap-1.5 text-[#39340F] font-bold">
+              <span className="w-5 h-5 rounded-full bg-[#BC2639] text-white flex items-center justify-center text-[0.68rem] shadow-xs">
                 {currentStep}
               </span>
               {currentStep === 1 && 'Step 1: Contact & Pickup Area'}
               {currentStep === 2 && 'Step 2: Course & Vehicle Gear'}
               {currentStep === 3 && 'Step 3: Timing & Review'}
             </span>
-            <span className="text-[0.7rem] text-[#56776A] font-medium">
+            <span className="text-[0.7rem] text-[#404D68] font-medium">
               Step {currentStep} of 3
             </span>
           </div>
 
           {/* Progress Bar */}
-          <div className="w-full bg-[#C2D3D0]/50 h-1.5 rounded-full overflow-hidden">
+          <div className="w-full bg-[#D4E2DF]/50 h-1.5 rounded-full overflow-hidden">
             <div
-              className="bg-gradient-to-r from-[#42B7A7] to-[#56776A] h-full transition-all duration-300 rounded-full"
+              className="bg-gradient-to-r from-[#BC2639] to-[#5F1618] h-full transition-all duration-300 rounded-full"
               style={{ width: `${(currentStep / 3) * 100}%` }}
             />
           </div>
@@ -330,7 +330,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
           <div className="space-y-3 animate-in fade-in zoom-in-95 duration-200">
             <div className="space-y-3">
               <div>
-                <label htmlFor="fullName-mobile" className="block text-xs font-semibold text-[#26423E] mb-1">
+                <label htmlFor="fullName-mobile" className="block text-xs font-semibold text-[#39340F] mb-1">
                   Full Name <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -340,19 +340,19 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                   placeholder="e.g. Rahul Sharma"
                   value={formState.fullName}
                   onChange={(e) => setFormState({ ...formState, fullName: e.target.value })}
-                  className={`w-full px-3.5 py-2 rounded-xl border text-xs transition-colors focus:ring-2 focus:ring-[#42B7A7] focus:outline-none ${
-                    errors.fullName ? 'border-red-400 bg-red-50/50' : 'border-[#C2D3D0] bg-white text-[#26423E]'
+                  className={`w-full px-3.5 py-2 rounded-xl border text-xs transition-colors focus:ring-2 focus:ring-[#BC2639] focus:outline-none ${
+                    errors.fullName ? 'border-red-400 bg-red-50/50' : 'border-[#D4E2DF] bg-white text-[#39340F]'
                   }`}
                 />
                 {errors.fullName && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.fullName}</p>}
               </div>
 
               <div>
-                <label htmlFor="phoneNumber-mobile" className="block text-xs font-semibold text-[#26423E] mb-1">
+                <label htmlFor="phoneNumber-mobile" className="block text-xs font-semibold text-[#39340F] mb-1">
                   WhatsApp Mobile <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                  <span className="absolute left-3 top-2 text-[#56776A] text-xs font-semibold">+91</span>
+                  <span className="absolute left-3 top-2 text-[#404D68] text-xs font-semibold">+91</span>
                   <input
                     id="phoneNumber-mobile"
                     type="tel"
@@ -361,8 +361,8 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                     placeholder="98765 43210"
                     value={formState.phoneNumber}
                     onChange={(e) => setFormState({ ...formState, phoneNumber: e.target.value.replace(/[^0-9]/g, '') })}
-                    className={`w-full pl-11 pr-3.5 py-2 rounded-xl border text-xs transition-colors focus:ring-2 focus:ring-[#42B7A7] focus:outline-none ${
-                      errors.phoneNumber ? 'border-red-400 bg-red-50/50' : 'border-[#C2D3D0] bg-white text-[#26423E]'
+                    className={`w-full pl-11 pr-3.5 py-2 rounded-xl border text-xs transition-colors focus:ring-2 focus:ring-[#BC2639] focus:outline-none ${
+                      errors.phoneNumber ? 'border-red-400 bg-red-50/50' : 'border-[#D4E2DF] bg-white text-[#39340F]'
                     }`}
                   />
                 </div>
@@ -370,14 +370,14 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               </div>
 
               <div>
-                <label htmlFor="city-mobile" className="block text-xs font-semibold text-[#26423E] mb-1">
+                <label htmlFor="city-mobile" className="block text-xs font-semibold text-[#39340F] mb-1">
                   City / Metro Area
                 </label>
                 <select
                   id="city-mobile"
                   value={formState.city}
                   onChange={(e) => setFormState({ ...formState, city: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-[#C2D3D0] bg-white text-[#26423E] text-xs focus:ring-2 focus:ring-[#42B7A7] focus:outline-none"
+                  className="w-full px-3.5 py-2 rounded-xl border border-[#D4E2DF] bg-white text-[#39340F] text-xs focus:ring-2 focus:ring-[#BC2639] focus:outline-none"
                 >
                   {siteConfig.serviceCities.map((city) => (
                     <option key={city} value={city}>
@@ -388,7 +388,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               </div>
 
               <div>
-                <label htmlFor="pickupArea-mobile" className="block text-xs font-semibold text-[#26423E] mb-1">
+                <label htmlFor="pickupArea-mobile" className="block text-xs font-semibold text-[#39340F] mb-1">
                   Pickup Locality / Address <span className="text-red-500">*</span>
                 </label>
                 <input
@@ -398,8 +398,8 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                   placeholder="e.g. Indiranagar / Sector 62 / Bandra"
                   value={formState.pickupArea}
                   onChange={(e) => setFormState({ ...formState, pickupArea: e.target.value })}
-                  className={`w-full px-3.5 py-2 rounded-xl border text-xs transition-colors focus:ring-2 focus:ring-[#42B7A7] focus:outline-none ${
-                    errors.pickupArea ? 'border-red-400 bg-red-50/50' : 'border-[#C2D3D0] bg-white text-[#26423E]'
+                  className={`w-full px-3.5 py-2 rounded-xl border text-xs transition-colors focus:ring-2 focus:ring-[#BC2639] focus:outline-none ${
+                    errors.pickupArea ? 'border-red-400 bg-red-50/50' : 'border-[#D4E2DF] bg-white text-[#39340F]'
                   }`}
                 />
                 {errors.pickupArea && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.pickupArea}</p>}
@@ -427,14 +427,14 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
           <div className="space-y-3 animate-in fade-in zoom-in-95 duration-200">
             <div className="space-y-3">
               <div>
-                <label htmlFor="courseSlug-mobile" className="block text-xs font-semibold text-[#26423E] mb-1">
+                <label htmlFor="courseSlug-mobile" className="block text-xs font-semibold text-[#39340F] mb-1">
                   Preferred Driving Program
                 </label>
                 <select
                   id="courseSlug-mobile"
                   value={formState.courseSlug}
                   onChange={(e) => setFormState({ ...formState, courseSlug: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-[#C2D3D0] bg-white text-[#26423E] text-xs focus:ring-2 focus:ring-[#42B7A7] focus:outline-none"
+                  className="w-full px-3.5 py-2 rounded-xl border border-[#D4E2DF] bg-white text-[#39340F] text-xs focus:ring-2 focus:ring-[#BC2639] focus:outline-none"
                 >
                   {courses.map((course) => (
                     <option key={course.slug} value={course.slug}>
@@ -445,7 +445,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#26423E] mb-1">
+                <label className="block text-xs font-semibold text-[#39340F] mb-1">
                   Vehicle Transmission
                 </label>
                 <div className="grid grid-cols-2 gap-2">
@@ -454,8 +454,8 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                     onClick={() => setFormState({ ...formState, transmission: 'manual' })}
                     className={`py-2 px-2.5 rounded-xl border text-xs font-semibold transition-all ${
                       formState.transmission === 'manual'
-                        ? 'border-[#42B7A7] bg-[#E2F3F0] text-[#26423E] shadow-xs font-bold'
-                        : 'border-[#C2D3D0] bg-[#EDEFF4] text-[#56776A] hover:bg-white'
+                        ? 'border-[#BC2639] bg-[#FDF2F5] text-[#39340F] shadow-xs font-bold'
+                        : 'border-[#D4E2DF] bg-[#FAF6F8] text-[#404D68] hover:bg-white'
                     }`}
                   >
                     Manual Gearbox
@@ -465,8 +465,8 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                     onClick={() => setFormState({ ...formState, transmission: 'automatic' })}
                     className={`py-2 px-2.5 rounded-xl border text-xs font-semibold transition-all ${
                       formState.transmission === 'automatic'
-                        ? 'border-[#42B7A7] bg-[#E2F3F0] text-[#26423E] shadow-xs font-bold'
-                        : 'border-[#C2D3D0] bg-[#EDEFF4] text-[#56776A] hover:bg-white'
+                        ? 'border-[#BC2639] bg-[#FDF2F5] text-[#39340F] shadow-xs font-bold'
+                        : 'border-[#D4E2DF] bg-[#FAF6F8] text-[#404D68] hover:bg-white'
                     }`}
                   >
                     Automatic (AT)
@@ -475,14 +475,14 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               </div>
 
               <div>
-                <label htmlFor="preferredTimeSlot-mobile" className="block text-xs font-semibold text-[#26423E] mb-1">
+                <label htmlFor="preferredTimeSlot-mobile" className="block text-xs font-semibold text-[#39340F] mb-1">
                   Preferred Time Slot
                 </label>
                 <select
                   id="preferredTimeSlot-mobile"
                   value={formState.preferredTimeSlot}
                   onChange={(e) => setFormState({ ...formState, preferredTimeSlot: e.target.value as TimeSlot })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-[#C2D3D0] bg-white text-[#26423E] text-xs focus:ring-2 focus:ring-[#42B7A7] focus:outline-none"
+                  className="w-full px-3.5 py-2 rounded-xl border border-[#D4E2DF] bg-white text-[#39340F] text-xs focus:ring-2 focus:ring-[#BC2639] focus:outline-none"
                 >
                   <option value="early_morning">Early Morning (6 AM – 8 AM)</option>
                   <option value="morning">Morning (8 AM – 12 PM)</option>
@@ -493,14 +493,14 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               </div>
 
               <div>
-                <label htmlFor="experienceLevel-mobile" className="block text-xs font-semibold text-[#26423E] mb-1">
+                <label htmlFor="experienceLevel-mobile" className="block text-xs font-semibold text-[#39340F] mb-1">
                   Driving Experience Level
                 </label>
                 <select
                   id="experienceLevel-mobile"
                   value={formState.experienceLevel}
                   onChange={(e) => setFormState({ ...formState, experienceLevel: e.target.value as ExperienceLevel })}
-                  className="w-full px-3.5 py-2 rounded-xl border border-[#C2D3D0] bg-white text-[#26423E] text-xs focus:ring-2 focus:ring-[#42B7A7] focus:outline-none"
+                  className="w-full px-3.5 py-2 rounded-xl border border-[#D4E2DF] bg-white text-[#39340F] text-xs focus:ring-2 focus:ring-[#BC2639] focus:outline-none"
                 >
                   <option value="absolute_beginner">Absolute Beginner (Never driven)</option>
                   <option value="some_experience">Basic Steering & Clutch Knowledge</option>
@@ -539,7 +539,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
         {currentStep === 3 && (
           <div className="space-y-3 animate-in fade-in zoom-in-95 duration-200">
             <div>
-              <label htmlFor="email-mobile" className="block text-xs font-semibold text-[#26423E] mb-1">
+              <label htmlFor="email-mobile" className="block text-xs font-semibold text-[#39340F] mb-1">
                 Email Address (Optional)
               </label>
               <input
@@ -548,15 +548,15 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 placeholder="e.g. rahul@example.com"
                 value={formState.email}
                 onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                className={`w-full px-3.5 py-2 rounded-xl border text-xs transition-colors focus:ring-2 focus:ring-[#42B7A7] focus:outline-none ${
-                  errors.email ? 'border-red-400 bg-red-50/50' : 'border-[#C2D3D0] bg-white text-[#26423E]'
+                className={`w-full px-3.5 py-2 rounded-xl border text-xs transition-colors focus:ring-2 focus:ring-[#BC2639] focus:outline-none ${
+                  errors.email ? 'border-red-400 bg-red-50/50' : 'border-[#D4E2DF] bg-white text-[#39340F]'
                 }`}
               />
               {errors.email && <p className="mt-1 text-[0.7rem] text-red-600 font-medium">{errors.email}</p>}
             </div>
 
             <div>
-              <label htmlFor="message-mobile" className="block text-xs font-semibold text-[#26423E] mb-1">
+              <label htmlFor="message-mobile" className="block text-xs font-semibold text-[#39340F] mb-1">
                 Special Notes / Requests (Optional)
               </label>
               <input
@@ -565,19 +565,19 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 placeholder="e.g. Female instructor, office route"
                 value={formState.message}
                 onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                className="w-full px-3.5 py-2 rounded-xl border border-[#C2D3D0] bg-white text-[#26423E] text-xs focus:ring-2 focus:ring-[#42B7A7] focus:outline-none"
+                className="w-full px-3.5 py-2 rounded-xl border border-[#D4E2DF] bg-white text-[#39340F] text-xs focus:ring-2 focus:ring-[#BC2639] focus:outline-none"
               />
             </div>
 
             {/* Quick Summary Review Box */}
-            <div className="p-3 rounded-xl bg-[#EDEFF4] border border-[#C2D3D0] text-xs space-y-1.5">
-              <div className="flex justify-between items-center text-[#56776A] pb-1 border-b border-[#C2D3D0]">
+            <div className="p-3 rounded-xl bg-[#FAF6F8] border border-[#D4E2DF] text-xs space-y-1.5">
+              <div className="flex justify-between items-center text-[#404D68] pb-1 border-b border-[#D4E2DF]">
                 <span className="font-semibold">Student & Pickup:</span>
-                <span className="font-bold text-[#26423E]">{formState.fullName} • {formState.pickupArea || formState.city}</span>
+                <span className="font-bold text-[#39340F]">{formState.fullName} • {formState.pickupArea || formState.city}</span>
               </div>
-              <div className="flex justify-between items-center text-[#56776A]">
+              <div className="flex justify-between items-center text-[#404D68]">
                 <span className="font-semibold">Program:</span>
-                <span className="font-bold text-[#42B7A7]">{selectedCourse?.shortTitle} ({formState.transmission})</span>
+                <span className="font-bold text-[#BC2639]">{selectedCourse?.shortTitle} ({formState.transmission})</span>
               </div>
             </div>
 
@@ -588,9 +588,9 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                   type="checkbox"
                   checked={formState.agreeToTerms}
                   onChange={(e) => setFormState({ ...formState, agreeToTerms: e.target.checked })}
-                  className="mt-0.5 rounded border-[#C2D3D0] text-[#42B7A7] focus:ring-[#42B7A7] w-3.5 h-3.5"
+                  className="mt-0.5 rounded border-[#D4E2DF] text-[#BC2639] focus:ring-[#BC2639] w-3.5 h-3.5"
                 />
-                <span className="text-[0.72rem] text-[#56776A] leading-snug">
+                <span className="text-[0.72rem] text-[#404D68] leading-snug">
                   I agree to receive lesson scheduling details via WhatsApp/SMS. 100% dual-control safety.
                 </span>
               </label>
@@ -614,7 +614,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 size="md"
                 isLoading={isSubmitting}
                 className="col-span-2 justify-center text-xs py-2.5 shadow-md font-bold"
-                icon={<Sparkles className="w-4 h-4 text-amber-300" />}
+                icon={<Sparkles className="w-4 h-4 text-[#FFC5DC]" />}
               >
                 Send WhatsApp Enquiry
               </Button>
@@ -630,7 +630,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
         {/* Row 1: Name & Phone */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="fullName-desktop" className="block text-xs font-semibold text-[#26423E] mb-1">
+            <label htmlFor="fullName-desktop" className="block text-xs font-semibold text-[#39340F] mb-1">
               Full Name <span className="text-red-500">*</span>
             </label>
             <input
@@ -640,19 +640,19 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               placeholder="e.g. Rahul Sharma"
               value={formState.fullName}
               onChange={(e) => setFormState({ ...formState, fullName: e.target.value })}
-              className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-[#42B7A7] focus:outline-none ${
-                errors.fullName ? 'border-red-400 bg-red-50/50' : 'border-[#C2D3D0] bg-white text-[#26423E]'
+              className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-[#BC2639] focus:outline-none ${
+                errors.fullName ? 'border-red-400 bg-red-50/50' : 'border-[#D4E2DF] bg-white text-[#39340F]'
               }`}
             />
             {errors.fullName && <p className="mt-1 text-xs text-red-600 font-medium">{errors.fullName}</p>}
           </div>
 
           <div>
-            <label htmlFor="phoneNumber-desktop" className="block text-xs font-semibold text-[#26423E] mb-1">
+            <label htmlFor="phoneNumber-desktop" className="block text-xs font-semibold text-[#39340F] mb-1">
               WhatsApp Mobile <span className="text-red-500">*</span>
             </label>
             <div className="relative">
-              <span className="absolute left-3 top-2.5 text-[#56776A] text-sm font-semibold">+91</span>
+              <span className="absolute left-3 top-2.5 text-[#404D68] text-sm font-semibold">+91</span>
               <input
                 id="phoneNumber-desktop"
                 type="tel"
@@ -661,8 +661,8 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 placeholder="98765 43210"
                 value={formState.phoneNumber}
                 onChange={(e) => setFormState({ ...formState, phoneNumber: e.target.value.replace(/[^0-9]/g, '') })}
-                className={`w-full pl-11 pr-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-[#42B7A7] focus:outline-none ${
-                  errors.phoneNumber ? 'border-red-400 bg-red-50/50' : 'border-[#C2D3D0] bg-white text-[#26423E]'
+                className={`w-full pl-11 pr-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-[#BC2639] focus:outline-none ${
+                  errors.phoneNumber ? 'border-red-400 bg-red-50/50' : 'border-[#D4E2DF] bg-white text-[#39340F]'
                 }`}
               />
             </div>
@@ -673,14 +673,14 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
         {/* Row 2: City & Pickup Area */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="city-desktop" className="block text-xs font-semibold text-[#26423E] mb-1">
+            <label htmlFor="city-desktop" className="block text-xs font-semibold text-[#39340F] mb-1">
               City / Metro Area
             </label>
             <select
               id="city-desktop"
               value={formState.city}
               onChange={(e) => setFormState({ ...formState, city: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl border border-[#C2D3D0] bg-white text-[#26423E] text-sm focus:ring-2 focus:ring-[#42B7A7] focus:outline-none"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#D4E2DF] bg-white text-[#39340F] text-sm focus:ring-2 focus:ring-[#BC2639] focus:outline-none"
             >
               {siteConfig.serviceCities.map((city) => (
                 <option key={city} value={city}>
@@ -691,7 +691,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
           </div>
 
           <div>
-            <label htmlFor="pickupArea-desktop" className="block text-xs font-semibold text-[#26423E] mb-1">
+            <label htmlFor="pickupArea-desktop" className="block text-xs font-semibold text-[#39340F] mb-1">
               Pickup Locality / Address <span className="text-red-500">*</span>
             </label>
             <input
@@ -701,8 +701,8 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               placeholder="e.g. Indiranagar / Sector 62 / Bandra"
               value={formState.pickupArea}
               onChange={(e) => setFormState({ ...formState, pickupArea: e.target.value })}
-              className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-[#42B7A7] focus:outline-none ${
-                errors.pickupArea ? 'border-red-400 bg-red-50/50' : 'border-[#C2D3D0] bg-white text-[#26423E]'
+              className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-[#BC2639] focus:outline-none ${
+                errors.pickupArea ? 'border-red-400 bg-red-50/50' : 'border-[#D4E2DF] bg-white text-[#39340F]'
               }`}
             />
             {errors.pickupArea && <p className="mt-1 text-xs text-red-600 font-medium">{errors.pickupArea}</p>}
@@ -712,14 +712,14 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
         {/* Row 3: Program & Transmission */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="courseSlug-desktop" className="block text-xs font-semibold text-[#26423E] mb-1">
+            <label htmlFor="courseSlug-desktop" className="block text-xs font-semibold text-[#39340F] mb-1">
               Preferred Driving Program
             </label>
             <select
               id="courseSlug-desktop"
               value={formState.courseSlug}
               onChange={(e) => setFormState({ ...formState, courseSlug: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl border border-[#C2D3D0] bg-white text-[#26423E] text-sm focus:ring-2 focus:ring-[#42B7A7] focus:outline-none"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#D4E2DF] bg-white text-[#39340F] text-sm focus:ring-2 focus:ring-[#BC2639] focus:outline-none"
             >
               {courses.map((course) => (
                 <option key={course.slug} value={course.slug}>
@@ -730,7 +730,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#26423E] mb-1">
+            <label className="block text-xs font-semibold text-[#39340F] mb-1">
               Vehicle Transmission
             </label>
             <div className="grid grid-cols-2 gap-2">
@@ -739,8 +739,8 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 onClick={() => setFormState({ ...formState, transmission: 'manual' })}
                 className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-all ${
                   formState.transmission === 'manual'
-                    ? 'border-[#42B7A7] bg-[#E2F3F0] text-[#26423E] shadow-xs font-bold'
-                    : 'border-[#C2D3D0] bg-[#EDEFF4] text-[#56776A] hover:bg-white'
+                    ? 'border-[#BC2639] bg-[#FDF2F5] text-[#39340F] shadow-xs font-bold'
+                    : 'border-[#D4E2DF] bg-[#FAF6F8] text-[#404D68] hover:bg-white'
                 }`}
               >
                 Manual Gearbox
@@ -750,8 +750,8 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
                 onClick={() => setFormState({ ...formState, transmission: 'automatic' })}
                 className={`py-2 px-3 rounded-xl border text-xs font-semibold transition-all ${
                   formState.transmission === 'automatic'
-                    ? 'border-[#42B7A7] bg-[#E2F3F0] text-[#26423E] shadow-xs font-bold'
-                    : 'border-[#C2D3D0] bg-[#EDEFF4] text-[#56776A] hover:bg-white'
+                    ? 'border-[#BC2639] bg-[#FDF2F5] text-[#39340F] shadow-xs font-bold'
+                    : 'border-[#D4E2DF] bg-[#FAF6F8] text-[#404D68] hover:bg-white'
                 }`}
               >
                 Automatic (AT)
@@ -763,14 +763,14 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
         {/* Row 4: Slot & Experience */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="preferredTimeSlot-desktop" className="block text-xs font-semibold text-[#26423E] mb-1">
+            <label htmlFor="preferredTimeSlot-desktop" className="block text-xs font-semibold text-[#39340F] mb-1">
               Preferred Time Slot
             </label>
             <select
               id="preferredTimeSlot-desktop"
               value={formState.preferredTimeSlot}
               onChange={(e) => setFormState({ ...formState, preferredTimeSlot: e.target.value as TimeSlot })}
-              className="w-full px-3.5 py-2.5 rounded-xl border border-[#C2D3D0] bg-white text-[#26423E] text-sm focus:ring-2 focus:ring-[#42B7A7] focus:outline-none"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#D4E2DF] bg-white text-[#39340F] text-sm focus:ring-2 focus:ring-[#BC2639] focus:outline-none"
             >
               <option value="early_morning">Early Morning (6 AM – 8 AM)</option>
               <option value="morning">Morning (8 AM – 12 PM)</option>
@@ -781,14 +781,14 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
           </div>
 
           <div>
-            <label htmlFor="experienceLevel-desktop" className="block text-xs font-semibold text-[#26423E] mb-1">
+            <label htmlFor="experienceLevel-desktop" className="block text-xs font-semibold text-[#39340F] mb-1">
               Driving Experience Level
             </label>
             <select
               id="experienceLevel-desktop"
               value={formState.experienceLevel}
               onChange={(e) => setFormState({ ...formState, experienceLevel: e.target.value as ExperienceLevel })}
-              className="w-full px-3.5 py-2.5 rounded-xl border border-[#C2D3D0] bg-white text-[#26423E] text-sm focus:ring-2 focus:ring-[#42B7A7] focus:outline-none"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#D4E2DF] bg-white text-[#39340F] text-sm focus:ring-2 focus:ring-[#BC2639] focus:outline-none"
             >
               <option value="absolute_beginner">Absolute Beginner (Never driven)</option>
               <option value="some_experience">Basic Steering & Clutch Knowledge</option>
@@ -801,7 +801,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
         {/* Row 5: Email & Notes (Optional) */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="email-desktop" className="block text-xs font-semibold text-[#26423E] mb-1">
+            <label htmlFor="email-desktop" className="block text-xs font-semibold text-[#39340F] mb-1">
               Email Address (Optional)
             </label>
             <input
@@ -810,15 +810,15 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               placeholder="e.g. rahul@example.com"
               value={formState.email}
               onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-              className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-[#42B7A7] focus:outline-none ${
-                errors.email ? 'border-red-400 bg-red-50/50' : 'border-[#C2D3D0] bg-white text-[#26423E]'
+              className={`w-full px-3.5 py-2.5 rounded-xl border text-sm transition-colors focus:ring-2 focus:ring-[#BC2639] focus:outline-none ${
+                errors.email ? 'border-red-400 bg-red-50/50' : 'border-[#D4E2DF] bg-white text-[#39340F]'
               }`}
             />
             {errors.email && <p className="mt-1 text-xs text-red-600 font-medium">{errors.email}</p>}
           </div>
 
           <div>
-            <label htmlFor="message-desktop" className="block text-xs font-semibold text-[#26423E] mb-1">
+            <label htmlFor="message-desktop" className="block text-xs font-semibold text-[#39340F] mb-1">
               Special Notes / Requests (Optional)
             </label>
             <input
@@ -827,7 +827,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               placeholder="e.g. Female instructor, office route"
               value={formState.message}
               onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl border border-[#C2D3D0] bg-white text-[#26423E] text-sm focus:ring-2 focus:ring-[#42B7A7] focus:outline-none"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-[#D4E2DF] bg-white text-[#39340F] text-sm focus:ring-2 focus:ring-[#BC2639] focus:outline-none"
             />
           </div>
         </div>
@@ -839,9 +839,9 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
               type="checkbox"
               checked={formState.agreeToTerms}
               onChange={(e) => setFormState({ ...formState, agreeToTerms: e.target.checked })}
-              className="mt-0.5 rounded border-[#C2D3D0] text-[#42B7A7] focus:ring-[#42B7A7] w-4 h-4"
+              className="mt-0.5 rounded border-[#D4E2DF] text-[#BC2639] focus:ring-[#BC2639] w-4 h-4"
             />
-            <span className="text-xs text-[#56776A] leading-snug">
+            <span className="text-xs text-[#404D68] leading-snug">
               I agree to receive lesson scheduling details via WhatsApp/SMS. 100% dual-control safety.
             </span>
           </label>
@@ -856,7 +856,7 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
             size="lg"
             isLoading={isSubmitting}
             className="w-full justify-center text-sm sm:text-base py-3 shadow-md hover-lift font-bold"
-            icon={<Sparkles className="w-4 h-4 text-amber-300" />}
+            icon={<Sparkles className="w-4 h-4 text-[#FFC5DC]" />}
           >
             Send WhatsApp Enquiry
           </Button>
@@ -864,13 +864,13 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
       </div>
 
       {/* Security & Response SLA Note */}
-      <div className="flex items-center justify-center gap-3 text-[0.68rem] sm:text-xs text-[#56776A] pt-0.5">
+      <div className="flex items-center justify-center gap-3 text-[0.68rem] sm:text-xs text-[#404D68] pt-0.5">
         <span className="flex items-center gap-1">
-          <Shield className="w-3.5 h-3.5 text-[#42B7A7]" /> No Advance Payment Required
+          <Shield className="w-3.5 h-3.5 text-[#BC2639]" /> No Advance Payment Required
         </span>
         <span>•</span>
         <span className="flex items-center gap-1">
-          <Clock className="w-3.5 h-3.5 text-[#42B7A7]" /> Instant Response on WhatsApp
+          <Clock className="w-3.5 h-3.5 text-[#BC2639]" /> Instant Response on WhatsApp
         </span>
       </div>
     </form>
