@@ -215,35 +215,35 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
     const selectedCourse = courses.find((c) => c.slug === formState.courseSlug);
 
     return (
-      <div className="p-5 sm:p-8 bg-[#FDF2F5]/60 rounded-2xl border border-[#FFC5DC] text-center animate-in fade-in zoom-in-95 duration-300">
-        <div className="w-14 h-14 bg-[#FDF2F5] text-[#BC2639] rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
+      <div className="p-5 sm:p-8 bg-emerald-50/60 rounded-2xl border border-emerald-200 text-center animate-in fade-in zoom-in-95 duration-300">
+        <div className="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
           <CheckCircle2 className="w-7 h-7" />
         </div>
 
-        <h3 className="text-lg sm:text-2xl font-bold font-display text-[#39340F]">
+        <h3 className="text-lg sm:text-2xl font-bold font-display text-[#202B33]">
           Your Lesson Enquiry is Ready!
         </h3>
-        <p className="mt-1.5 text-xs sm:text-sm text-[#404D68] max-w-md mx-auto leading-relaxed">
+        <p className="mt-1.5 text-xs sm:text-sm text-[#6B7280] max-w-md mx-auto leading-relaxed">
           We have generated your structured booking request. Click below to open WhatsApp and send it directly to our admissions team for immediate confirmation.
         </p>
 
         {/* Enquiry Summary Card */}
-        <div className="mt-4 p-3.5 rounded-xl bg-white border border-[#D4E2DF] text-left text-xs text-[#39340F] space-y-2 shadow-sm max-w-md mx-auto">
-          <div className="flex justify-between border-b border-[#D4E2DF]/50 pb-1.5">
-            <span className="font-semibold text-[#404D68]">Student:</span>
-            <span className="font-bold text-[#39340F]">{formState.fullName}</span>
+        <div className="mt-4 p-3.5 rounded-xl bg-white border border-[#E5E7EB] text-left text-xs text-[#202B33] space-y-2 shadow-sm max-w-md mx-auto">
+          <div className="flex justify-between border-b border-[#E5E7EB] pb-1.5">
+            <span className="font-semibold text-[#6B7280]">Student:</span>
+            <span className="font-bold text-[#202B33]">{formState.fullName}</span>
           </div>
-          <div className="flex justify-between border-b border-[#D4E2DF]/50 pb-1.5">
-            <span className="font-semibold text-[#404D68]">Course:</span>
-            <span className="font-bold text-[#BC2639]">{selectedCourse?.shortTitle || formState.courseSlug}</span>
+          <div className="flex justify-between border-b border-[#E5E7EB] pb-1.5">
+            <span className="font-semibold text-[#6B7280]">Course:</span>
+            <span className="font-bold text-[#082B4C]">{selectedCourse?.shortTitle || formState.courseSlug}</span>
           </div>
-          <div className="flex justify-between border-b border-[#D4E2DF]/50 pb-1.5">
-            <span className="font-semibold text-[#404D68]">Pickup Area:</span>
-            <span className="font-medium text-[#39340F]">{formState.pickupArea}, {formState.city}</span>
+          <div className="flex justify-between border-b border-[#E5E7EB] pb-1.5">
+            <span className="font-semibold text-[#6B7280]">Pickup Area:</span>
+            <span className="font-medium text-[#202B33]">{formState.pickupArea}, {formState.city}</span>
           </div>
           <div className="flex justify-between">
-            <span className="font-semibold text-[#404D68]">Slot & Gear:</span>
-            <span className="font-medium text-[#39340F] capitalize">
+            <span className="font-semibold text-[#6B7280]">Slot & Gear:</span>
+            <span className="font-medium text-[#202B33] capitalize">
               {formState.preferredTimeSlot.replace('_', ' ')} • {formState.transmission}
             </span>
           </div>
@@ -274,16 +274,16 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
         </div>
 
         {/* Fallback assistance */}
-        <div className="mt-5 pt-3 border-t border-[#D4E2DF]/60 text-[0.72rem] text-[#404D68] flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="mt-5 pt-3 border-t border-[#E5E7EB] text-[0.72rem] text-[#6B7280] flex flex-col sm:flex-row items-center justify-between gap-2">
           <button
             onClick={handleReset}
-            className="text-[#404D68] hover:text-[#39340F] underline flex items-center gap-1 mx-auto"
+            className="text-[#6B7280] hover:text-[#202B33] underline flex items-center gap-1 mx-auto"
           >
             <RefreshCw className="w-3 h-3" /> Edit details / Make another enquiry
           </button>
           <a
             href={`tel:${siteConfig.phoneDial}`}
-            className="text-[#BC2639] hover:underline font-semibold flex items-center gap-1 mx-auto"
+            className="text-[#082B4C] hover:underline font-semibold flex items-center gap-1 mx-auto"
           >
             <Phone className="w-3.5 h-3.5" /> Call directly: {siteConfig.phoneDisplay}
           </a>
