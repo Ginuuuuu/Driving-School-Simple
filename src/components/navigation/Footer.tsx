@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
   const whatsappUrl = generateDirectWhatsAppChatLink(siteConfig);
 
   return (
-    <footer className="bg-[#39340F] text-[#EDEFF4] pt-8 pb-6 sm:pt-16 sm:pb-12 border-t border-[#5F1618]">
+    <footer className="bg-[#39340F] text-[#FAF6F8] pt-8 pb-6 sm:pt-16 sm:pb-12 border-t border-[#5F1618]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-10 lg:gap-8 mb-6 sm:mb-12">
@@ -127,7 +127,7 @@ export const Footer: React.FC = () => {
               >
                 <Phone className="w-3.5 h-3.5 text-[#BC2639] shrink-0" />
                 <div className="min-w-0">
-                  <span className="font-semibold text-[#EDEFF4] block text-xs truncate">{siteConfig.phoneDisplay}</span>
+                  <span className="font-semibold text-[#FAF6F8] block text-xs truncate">{siteConfig.phoneDisplay}</span>
                   <span className="text-[0.62rem] text-[#D4E2DF]/70 block truncate">6 AM – 9 PM</span>
                 </div>
               </a>
@@ -140,7 +140,7 @@ export const Footer: React.FC = () => {
               >
                 <MessageCircle className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
                 <div className="min-w-0">
-                  <span className="font-semibold text-[#EDEFF4] block text-xs truncate">WhatsApp</span>
+                  <span className="font-semibold text-[#FAF6F8] block text-xs truncate">WhatsApp</span>
                   <span className="text-[0.62rem] text-[#25D366] block truncate">Instant Reply</span>
                 </div>
               </a>
