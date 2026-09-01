@@ -38,13 +38,13 @@ export const AdminLogin: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col justify-center items-center px-4 py-12 text-slate-100">
+    <div className="min-h-screen bg-[#182B28] flex flex-col justify-center items-center px-4 py-12 text-[#EDEFF4]">
       <SEO title="Admin Login | DriveCraft Content Gateway" />
 
       {/* Grid texture */}
-      <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#334155_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+      <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#3D6357_1px,transparent_1px),linear-gradient(to_bottom,#3D6357_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
 
-      <div className="relative w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl space-y-6">
+      <div className="relative w-full max-w-md bg-[#26423E] border border-[#3D6357] rounded-3xl p-8 shadow-2xl space-y-6">
         {/* Header */}
         <div className="text-center space-y-3">
           <div className="flex justify-center">
@@ -53,7 +53,7 @@ export const AdminLogin: React.FC = () => {
           <h1 className="text-xl font-bold font-display text-white">
             Administrative Content Gateway
           </h1>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-[#C2D3D0]">
             Enter master administrative passphrase to manage website content, courses, and settings.
           </p>
         </div>
@@ -79,11 +79,11 @@ export const AdminLogin: React.FC = () => {
         {/* Login Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="passphrase" className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+            <label htmlFor="passphrase" className="block text-xs font-bold text-[#C2D3D0] uppercase tracking-wider mb-1.5">
               Master Admin Passphrase
             </label>
             <div className="relative">
-              <Key className="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5" />
+              <Key className="w-4 h-4 text-[#56776A] absolute left-3.5 top-3.5" />
               <input
                 id="passphrase"
                 type="password"
@@ -93,7 +93,7 @@ export const AdminLogin: React.FC = () => {
                 value={passphrase}
                 onChange={(e) => setPassphrase(e.target.value)}
                 disabled={lockoutRemainingSeconds > 0}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none placeholder:text-slate-500"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#182B28] border border-[#3D6357] text-white text-sm focus:ring-2 focus:ring-[#42B7A7] focus:outline-none placeholder:text-[#56776A]"
               />
             </div>
           </div>
@@ -112,19 +112,19 @@ export const AdminLogin: React.FC = () => {
         </form>
 
         {/* Static Architecture Disclosure */}
-        <div className="pt-4 border-t border-slate-800 text-center space-y-2">
-          <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800 text-[0.72rem] text-slate-400 leading-relaxed">
-            <span className="font-semibold text-emerald-400 block mb-0.5">Architecture Notice:</span>
+        <div className="pt-4 border-t border-[#3D6357] text-center space-y-2">
+          <div className="p-3 rounded-xl bg-[#182B28]/60 border border-[#3D6357] text-[0.72rem] text-[#C2D3D0] leading-relaxed">
+            <span className="font-semibold text-[#42B7A7] block mb-0.5">Architecture Notice:</span>
             Client-side content management with reactive draft sync and JSON backup for zero-database deployment.
           </div>
 
-          <div className="text-[0.7rem] text-slate-500">
-            Demo Passphrase: <code className="text-emerald-400 font-mono bg-slate-800 px-1.5 py-0.5 rounded">drivecraft2024</code> or <code className="text-emerald-400 font-mono bg-slate-800 px-1.5 py-0.5 rounded">admin123</code>
+          <div className="text-[0.7rem] text-[#56776A]">
+            Demo Passphrase: <code className="text-[#42B7A7] font-mono bg-[#182B28] px-1.5 py-0.5 rounded">drivecraft2024</code> or <code className="text-[#42B7A7] font-mono bg-[#182B28] px-1.5 py-0.5 rounded">admin123</code>
           </div>
         </div>
 
         <div className="text-center pt-2">
-          <Button variant="ghost" size="sm" to="/" className="text-xs text-slate-400 hover:text-white">
+          <Button variant="ghost" size="sm" to="/" className="text-xs text-[#C2D3D0] hover:text-white">
             ← Back to Public Website
           </Button>
         </div>
