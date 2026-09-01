@@ -58,7 +58,7 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
       badge: '3. DUAL-CONTROL LESSONS',
       subtext: '1-on-1 In-Car Road Training',
       illustration: (
-        <div className="w-16 h-16 rounded-2xl bg-[#FDF2F5] border-2 border-[#FFC5DC] flex items-center justify-center text-[#BC2639] shadow-sm">
+        <div className="w-16 h-16 rounded-2xl bg-[#F4C400]/20 border-2 border-[#F4C400]/40 flex items-center justify-center text-[#082B4C] shadow-sm">
           <Car className="w-8 h-8" />
         </div>
       ),
@@ -85,7 +85,7 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
       badge: '6. SMART CARD DL LAUNCH',
       subtext: 'Speed Post & DigiLocker Delivery',
       illustration: (
-        <div className="w-16 h-16 rounded-2xl bg-[#FDF2F5] border-2 border-[#FFC5DC] flex items-center justify-center text-[#BC2639] shadow-md">
+        <div className="w-16 h-16 rounded-2xl bg-[#F4C400]/20 border-2 border-[#F4C400]/40 flex items-center justify-center text-[#082B4C] shadow-md">
           <CheckCircle2 className="w-9 h-9" />
         </div>
       ),
@@ -102,16 +102,16 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
       {/* Header Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-100">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 mb-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#F4C400]/20 text-[#082B4C] border border-[#F4C400]/40 mb-1.5">
+            <Sparkles className="w-3.5 h-3.5 text-[#082B4C]" />
             Indian Licence Roadmap
           </div>
-          <h3 className="text-xl sm:text-2xl font-extrabold font-display text-slate-900">
+          <h3 className="text-xl sm:text-2xl font-extrabold font-display text-[#202B33]">
             The Complete Step-by-Step Driving Journey
           </h3>
         </div>
 
-        <div className="text-xs text-slate-500 flex items-center gap-2">
+        <div className="text-xs text-[#6B7280] flex items-center gap-2">
           <span>Click any stage for official RTO rules & checklist</span>
         </div>
       </div>
@@ -121,12 +121,12 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
         {/* ROW 1: Stages 1 & 2 (Left to Right) */}
         <div className="relative">
           {/* Top Horizontal Road Track */}
-          <div className="absolute top-[108px] left-8 right-24 h-4 bg-slate-800 rounded-full z-0 flex items-center">
-            <div className="w-full border-t-2 border-dashed border-amber-400/80 mx-2" />
+          <div className="absolute top-[108px] left-8 right-24 h-4 bg-[#082B4C] rounded-full z-0 flex items-center">
+            <div className="w-full border-t-2 border-dashed border-[#F4C400]/80 mx-2" />
           </div>
 
           {/* Right Curve Downward Connector */}
-          <div className="absolute top-[108px] right-8 w-24 h-[180px] border-r-[16px] border-b-[16px] border-slate-800 rounded-tr-[48px] rounded-br-[48px] z-0 pointer-events-none" />
+          <div className="absolute top-[108px] right-8 w-24 h-[180px] border-r-[16px] border-b-[16px] border-[#082B4C] rounded-tr-[48px] rounded-br-[48px] z-0 pointer-events-none" />
 
           {/* Stage Nodes Row 1 */}
           <div className="relative z-10 grid grid-cols-2 gap-20 pr-32">
@@ -150,16 +150,16 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
                   <div
                     className={`px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm flex items-center gap-2 ${
                       isActive
-                        ? 'bg-emerald-600 text-white shadow-glow-emerald scale-105'
-                        : 'bg-slate-900 text-white group-hover:bg-slate-800'
+                        ? 'bg-[#082B4C] text-[#F4C400] ring-2 ring-[#F4C400]/40 scale-105'
+                        : 'bg-[#082B4C] text-white group-hover:bg-[#061F36]'
                     }`}
                   >
                     <span>{iconMeta.badge}</span>
-                    <ChevronRight className="w-3.5 h-3.5 text-emerald-400" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#F4C400]" />
                   </div>
 
                   {/* Subtext */}
-                  <span className="text-xs text-slate-600 font-semibold mt-2.5 max-w-[200px]">
+                  <span className="text-xs text-[#6B7280] font-semibold mt-2.5 max-w-[200px]">
                     {step?.title || iconMeta.subtext}
                   </span>
                 </div>
@@ -171,12 +171,12 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
         {/* ROW 2: Stages 3 & 4 (Right to Left) */}
         <div className="relative">
           {/* Middle Horizontal Road Track */}
-          <div className="absolute top-[108px] left-24 right-8 h-4 bg-slate-800 rounded-full z-0 flex items-center">
-            <div className="w-full border-t-2 border-dashed border-amber-400/80 mx-2" />
+          <div className="absolute top-[108px] left-24 right-8 h-4 bg-[#082B4C] rounded-full z-0 flex items-center">
+            <div className="w-full border-t-2 border-dashed border-[#F4C400]/80 mx-2" />
           </div>
 
           {/* Left Curve Downward Connector */}
-          <div className="absolute top-[108px] left-8 w-24 h-[180px] border-l-[16px] border-b-[16px] border-slate-800 rounded-tl-[48px] rounded-bl-[48px] z-0 pointer-events-none" />
+          <div className="absolute top-[108px] left-8 w-24 h-[180px] border-l-[16px] border-b-[16px] border-[#082B4C] rounded-tl-[48px] rounded-bl-[48px] z-0 pointer-events-none" />
 
           {/* Stage Nodes Row 2 (Reversed Order for flow) */}
           <div className="relative z-10 grid grid-cols-2 gap-20 pl-32">
@@ -200,16 +200,16 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
                   <div
                     className={`px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm flex items-center gap-2 ${
                       isActive
-                        ? 'bg-emerald-600 text-white shadow-glow-emerald scale-105'
-                        : 'bg-slate-900 text-white group-hover:bg-slate-800'
+                        ? 'bg-[#082B4C] text-[#F4C400] ring-2 ring-[#F4C400]/40 scale-105'
+                        : 'bg-[#082B4C] text-white group-hover:bg-[#061F36]'
                     }`}
                   >
                     <span>{iconMeta.badge}</span>
-                    <ChevronRight className="w-3.5 h-3.5 text-emerald-400" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#F4C400]" />
                   </div>
 
                   {/* Subtext */}
-                  <span className="text-xs text-slate-600 font-semibold mt-2.5 max-w-[200px]">
+                  <span className="text-xs text-[#6B7280] font-semibold mt-2.5 max-w-[200px]">
                     {step?.title || iconMeta.subtext}
                   </span>
                 </div>
@@ -221,8 +221,8 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
         {/* ROW 3: Stages 5 & 6 (Left to Right - Launch!) */}
         <div className="relative">
           {/* Bottom Horizontal Road Track */}
-          <div className="absolute top-[108px] left-8 right-8 h-4 bg-slate-800 rounded-full z-0 flex items-center">
-            <div className="w-full border-t-2 border-dashed border-amber-400/80 mx-2" />
+          <div className="absolute top-[108px] left-8 right-8 h-4 bg-[#082B4C] rounded-full z-0 flex items-center">
+            <div className="w-full border-t-2 border-dashed border-[#F4C400]/80 mx-2" />
           </div>
 
           {/* Stage Nodes Row 3 */}
@@ -247,18 +247,18 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
                   <div
                     className={`px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition-all duration-200 shadow-sm flex items-center gap-2 ${
                       isActive
-                        ? 'bg-emerald-600 text-white shadow-glow-emerald scale-105'
+                        ? 'bg-[#082B4C] text-[#F4C400] ring-2 ring-[#F4C400]/40 scale-105'
                         : idx === 5
-                        ? 'bg-gradient-to-r from-emerald-600 to-amber-500 text-slate-950 font-black shadow-md'
-                        : 'bg-slate-900 text-white group-hover:bg-slate-800'
+                        ? 'bg-[#F4C400] text-[#082B4C] font-black shadow-md'
+                        : 'bg-[#082B4C] text-white group-hover:bg-[#061F36]'
                     }`}
                   >
                     <span>{iconMeta.badge}</span>
-                    <ChevronRight className="w-3.5 h-3.5 text-emerald-400" />
+                    <ChevronRight className="w-3.5 h-3.5 text-[#F4C400]" />
                   </div>
 
                   {/* Subtext */}
-                  <span className="text-xs text-slate-600 font-semibold mt-2.5 max-w-[200px]">
+                  <span className="text-xs text-[#6B7280] font-semibold mt-2.5 max-w-[200px]">
                     {step?.title || iconMeta.subtext}
                   </span>
                 </div>
@@ -271,8 +271,8 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
       {/* SERPENTINE ROADMAP MOBILE VIEW (Visible on small screens) */}
       <div className="block md:hidden relative pl-6 space-y-8 my-4">
         {/* Continuous Vertical Ribbon Track */}
-        <div className="absolute left-[19px] top-4 bottom-4 w-3 bg-slate-800 rounded-full z-0 flex justify-center">
-          <div className="h-full border-r border-dashed border-amber-400/80" />
+        <div className="absolute left-[19px] top-4 bottom-4 w-3 bg-[#082B4C] rounded-full z-0 flex justify-center">
+          <div className="h-full border-r border-dashed border-[#F4C400]/80" />
         </div>
 
         {steps.map((step, idx) => {
@@ -289,8 +289,8 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
               <div
                 className={`-ml-7 w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 border shadow-xs transition-all ${
                   isSelected
-                    ? 'bg-emerald-600 text-white border-emerald-300 ring-4 ring-emerald-500/20 scale-110'
-                    : 'bg-slate-900 text-white border-slate-700'
+                    ? 'bg-[#082B4C] text-[#F4C400] border-[#F4C400] ring-4 ring-[#F4C400]/20 scale-110'
+                    : 'bg-[#082B4C] text-white border-slate-700'
                 }`}
               >
                 {step.stepNumber}
@@ -300,23 +300,23 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
               <div
                 className={`flex-1 p-4 rounded-2xl border transition-all ${
                   isSelected
-                    ? 'bg-emerald-50/80 border-emerald-300 shadow-sm'
-                    : 'bg-slate-50 border-slate-200'
+                    ? 'bg-[#F4C400]/10 border-[#F4C400]/40 shadow-sm'
+                    : 'bg-[#F5F6F7] border-[#E5E7EB]'
                 }`}
               >
                 <div className="flex items-center justify-between gap-1 mb-1">
-                  <span className="text-[0.65rem] font-bold uppercase tracking-wider text-emerald-700">
+                  <span className="text-[0.65rem] font-bold uppercase tracking-wider text-[#082B4C]">
                     {iconMeta.badge}
                   </span>
-                  <span className="text-[0.65rem] text-slate-500 font-medium">
+                  <span className="text-[0.65rem] text-[#6B7280] font-medium">
                     {step.approxDuration}
                   </span>
                 </div>
 
-                <h4 className="text-sm font-bold text-slate-900 leading-snug">
+                <h4 className="text-sm font-bold text-[#202B33] leading-snug">
                   {step.title}
                 </h4>
-                <p className="text-xs text-slate-600 mt-1 line-clamp-2">
+                <p className="text-xs text-[#6B7280] mt-1 line-clamp-2">
                   {step.summary}
                 </p>
               </div>
@@ -328,18 +328,18 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
       {/* INTERACTIVE MILESTONE DETAIL DRAWER / POPUP */}
       {isModalOpen && activeStep && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm overflow-y-auto"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#082B4C]/70 backdrop-blur-sm overflow-y-auto"
           role="dialog"
           aria-modal="true"
         >
-          <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 sm:p-8 my-8 max-h-[85vh] overflow-y-auto space-y-6 animate-in zoom-in-95 duration-200">
+          <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-[#E5E7EB] p-6 sm:p-8 my-8 max-h-[85vh] overflow-y-auto space-y-6 animate-in zoom-in-95 duration-200">
             {/* Header */}
             <div className="flex items-start justify-between border-b border-slate-100 pb-4">
               <div>
-                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#FDF2F5] text-[#39340F] border border-[#FFC5DC] inline-block mb-1.5">
+                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#F4C400]/20 text-[#082B4C] border border-[#F4C400]/40 inline-block mb-1.5">
                   Stage {activeStep.stepNumber} • {activeStep.approxDuration}
                 </span>
-                <h3 className="text-xl sm:text-2xl font-bold font-display text-slate-900 leading-tight">
+                <h3 className="text-xl sm:text-2xl font-bold font-display text-[#202B33] leading-tight">
                   {activeStep.title}
                 </h3>
               </div>
@@ -359,14 +359,14 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
               {/* Required Documents */}
               {activeStep.requiredDocuments.length > 0 && (
                 <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                  <h4 className="font-bold text-slate-900 flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-[#BC2639]" />
+                  <h4 className="font-bold text-[#202B33] flex items-center gap-2">
+                    <FileText className="w-4 h-4 text-[#082B4C]" />
                     Required Documents Checklist:
                   </h4>
-                  <ul className="space-y-1.5 text-xs text-slate-600">
+                  <ul className="space-y-1.5 text-xs text-[#6B7280]">
                     {activeStep.requiredDocuments.map((doc, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <Check className="w-3.5 h-3.5 text-[#BC2639] mt-0.5 shrink-0" />
+                        <Check className="w-3.5 h-3.5 text-emerald-600 mt-0.5 shrink-0" />
                         <span>{doc}</span>
                       </li>
                     ))}
@@ -392,13 +392,13 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
               )}
 
               {/* Instructor Pro-Tip */}
-              <div className="p-4 rounded-2xl bg-[#FDF2F5] border border-[#FFC5DC] flex items-start gap-3">
-                <Lightbulb className="w-5 h-5 text-[#BC2639] shrink-0 mt-0.5" />
+              <div className="p-4 rounded-2xl bg-[#F4C400]/15 border border-[#F4C400]/30 flex items-start gap-3">
+                <Lightbulb className="w-5 h-5 text-[#082B4C] shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold text-[#39340F] block text-xs uppercase tracking-wider mb-0.5">
+                  <span className="font-bold text-[#202B33] block text-xs uppercase tracking-wider mb-0.5">
                     DriveCraft Instructor Pro-Tip:
                   </span>
-                  <p className="text-xs text-[#39340F] italic">
+                  <p className="text-xs text-[#202B33] italic">
                     "{activeStep.instructorProTip}"
                   </p>
                 </div>
@@ -412,7 +412,7 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
                   href={activeStep.rtoPortalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#BC2639] hover:underline"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#082B4C] hover:underline"
                 >
                   Visit Parivahan Sarathi Gov Portal <ExternalLink className="w-3.5 h-3.5" />
                 </a>

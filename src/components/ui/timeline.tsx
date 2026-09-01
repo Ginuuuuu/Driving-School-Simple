@@ -71,8 +71,8 @@ const timelineDotVariants = cva(
          status: {
             default: '[&>*]:hidden',
             current:
-          '[&>*:not(.lucide-circle)]:hidden [&>.lucide-circle]:fill-[#BC2639] [&>.lucide-circle]:text-[#BC2639]',
-            done: 'bg-[#BC2639] border-[#BC2639] text-white [&>*:not(.lucide-check)]:hidden [&>.lucide-check]:text-white',
+          '[&>*:not(.lucide-circle)]:hidden [&>.lucide-circle]:fill-[#082B4C] [&>.lucide-circle]:text-[#082B4C]',
+            done: 'bg-[#082B4C] border-[#082B4C] text-white [&>*:not(.lucide-check)]:hidden [&>.lucide-check]:text-white',
             error:
           'border-destructive bg-destructive [&>*:not(.lucide-x)]:hidden [&>.lucide-x]:text-background',
             custom: '[&>*:not(:nth-child(4))]:hidden [&>*:nth-child(4)]:block',

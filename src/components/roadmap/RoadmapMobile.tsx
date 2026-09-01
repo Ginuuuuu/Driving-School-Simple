@@ -55,16 +55,16 @@ export const RoadmapMobile: React.FC<RoadmapMobileProps> = ({
   return (
     <div className="w-full space-y-4">
       {/* Mobile Top Control Bar */}
-      <div className="flex items-center justify-between gap-2 px-1 py-1 text-xs text-[#404D68]">
-        <div className="flex items-center gap-1.5 font-medium text-[#39340F]">
-          <Layers className="w-3.5 h-3.5 text-[#BC2639]" />
+      <div className="flex items-center justify-between gap-2 px-1 py-1 text-xs text-[#6B7280]">
+        <div className="flex items-center gap-1.5 font-medium text-[#202B33]">
+          <Layers className="w-3.5 h-3.5 text-[#082B4C]" />
           <span>{displaySteps.length} Step Process</span>
-          <span className="text-[#404D68]/60">• Tap title for details</span>
+          <span className="text-[#6B7280]/60">• Tap title for details</span>
         </div>
 
         <button
           onClick={toggleAll}
-          className="font-semibold text-[#BC2639] hover:text-[#5F1618] underline transition-colors cursor-pointer py-1 px-1.5 rounded"
+          className="font-semibold text-[#082B4C] hover:text-[#061F36] underline transition-colors cursor-pointer py-1 px-1.5 rounded"
           aria-label={allExpanded ? 'Collapse all stages' : 'Expand all stages'}
         >
           {allExpanded ? 'Collapse All' : 'Expand All'}
@@ -81,8 +81,8 @@ export const RoadmapMobile: React.FC<RoadmapMobileProps> = ({
               key={step.id || idx}
               className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                 isExpanded
-                  ? 'bg-white border-[#BC2639]/60 shadow-md ring-2 ring-[#FFC5DC]/30'
-                  : 'bg-white/90 border-[#D4E2DF] hover:border-[#BC2639]/40 hover:bg-white shadow-2xs'
+                  ? 'bg-white border-[#F4C400] shadow-md ring-2 ring-[#F4C400]/25'
+                  : 'bg-white/90 border-[#E5E7EB] hover:border-[#082B4C]/40 hover:bg-white shadow-2xs'
               }`}
             >
               {/* Accordion Header Button — Title Only Focus */}
@@ -97,8 +97,8 @@ export const RoadmapMobile: React.FC<RoadmapMobileProps> = ({
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shrink-0 transition-all duration-200 ${
                       isExpanded
-                        ? 'bg-[#BC2639] text-white shadow-xs'
-                        : 'bg-[#FAF6F8] text-[#39340F] group-hover:bg-[#FDF2F5] group-hover:text-[#BC2639]'
+                        ? 'bg-[#082B4C] text-[#F4C400] shadow-xs'
+                        : 'bg-[#F5F6F7] text-[#202B33] group-hover:bg-[#F4C400]/20 group-hover:text-[#082B4C]'
                     }`}
                   >
                     {step.stepNumber < 10 ? `0${step.stepNumber}` : step.stepNumber}
@@ -107,16 +107,16 @@ export const RoadmapMobile: React.FC<RoadmapMobileProps> = ({
                   {/* Title & Duration Pill */}
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#BC2639]">
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#082B4C]">
                         Stage {step.stepNumber}
                       </span>
                       {step.approxDuration && (
-                        <span className="inline-flex items-center gap-1 text-[0.68rem] text-[#404D68] font-medium">
-                          • <Clock className="w-2.5 h-2.5 inline text-[#BC2639]" /> {step.approxDuration}
+                        <span className="inline-flex items-center gap-1 text-[0.68rem] text-[#6B7280] font-medium">
+                          • <Clock className="w-2.5 h-2.5 inline text-[#082B4C]" /> {step.approxDuration}
                         </span>
                       )}
                     </div>
-                    <h3 className="text-sm sm:text-base font-bold font-display text-[#39340F] leading-snug mt-0.5 group-hover:text-[#BC2639] transition-colors">
+                    <h3 className="text-sm sm:text-base font-bold font-display text-[#202B33] leading-snug mt-0.5 group-hover:text-[#082B4C] transition-colors">
                       {step.title}
                     </h3>
                   </div>
@@ -126,13 +126,13 @@ export const RoadmapMobile: React.FC<RoadmapMobileProps> = ({
                 <div
                   className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 ${
                     isExpanded
-                      ? 'bg-[#FDF2F5] text-[#BC2639]'
+                      ? 'bg-[#F4C400]/20 text-[#082B4C]'
                       : 'bg-slate-100 text-slate-500 group-hover:bg-slate-200'
                   }`}
                 >
                   <ChevronDown
                     className={`w-4 h-4 transition-transform duration-300 ease-out ${
-                      isExpanded ? 'rotate-180 text-[#BC2639]' : 'text-slate-500'
+                      isExpanded ? 'rotate-180 text-[#082B4C]' : 'text-slate-500'
                     }`}
                   />
                 </div>
@@ -148,38 +148,38 @@ export const RoadmapMobile: React.FC<RoadmapMobileProps> = ({
                     transition={{ duration: 0.28, ease: [0.04, 0.62, 0.23, 0.98] }}
                     className="overflow-hidden"
                   >
-                    <div className="px-3.5 pb-4 pt-1 sm:px-4 sm:pb-5 space-y-3.5 border-t border-[#D4E2DF]/60 bg-[#FAF6F8]/50">
+                    <div className="px-3.5 pb-4 pt-1 sm:px-4 sm:pb-5 space-y-3.5 border-t border-[#E5E7EB] bg-[#F5F6F7]/50">
                       {/* Subtitle & Summary */}
                       {step.subtitle && (
                         <div className="pt-1">
-                          <span className="text-[0.68rem] font-bold uppercase tracking-wider text-[#404D68]">
+                          <span className="text-[0.68rem] font-bold uppercase tracking-wider text-[#6B7280]">
                             {step.subtitle}
                           </span>
                         </div>
                       )}
 
-                      <p className="text-xs sm:text-sm text-[#39340F] leading-relaxed font-normal">
+                      <p className="text-xs sm:text-sm text-[#202B33] leading-relaxed font-normal">
                         {step.summary}
                       </p>
 
                       {/* Deep-Dive Operational Details */}
                       {step.details && (
-                        <p className="text-[0.78rem] sm:text-xs text-[#404D68] leading-relaxed">
+                        <p className="text-[0.78rem] sm:text-xs text-[#6B7280] leading-relaxed">
                           {step.details}
                         </p>
                       )}
 
                       {/* Required Documents Checklist */}
                       {step.requiredDocuments && step.requiredDocuments.length > 0 && (
-                        <div className="p-3 rounded-xl bg-white border border-[#D4E2DF] space-y-2">
-                          <span className="text-[0.7rem] font-bold text-[#39340F] uppercase tracking-wider flex items-center gap-1.5">
-                            <FileText className="w-3.5 h-3.5 text-[#BC2639]" />
+                        <div className="p-3 rounded-xl bg-white border border-[#E5E7EB] space-y-2">
+                          <span className="text-[0.7rem] font-bold text-[#202B33] uppercase tracking-wider flex items-center gap-1.5">
+                            <FileText className="w-3.5 h-3.5 text-[#082B4C]" />
                             Required Documents & Formalities:
                           </span>
-                          <ul className="space-y-1.5 text-xs text-[#404D68]">
+                          <ul className="space-y-1.5 text-xs text-[#6B7280]">
                             {step.requiredDocuments.map((doc, docIdx) => (
                               <li key={docIdx} className="flex items-start gap-2">
-                                <CheckCircle2 className="w-3.5 h-3.5 text-[#BC2639] shrink-0 mt-0.5" />
+                                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                                 <span>{doc}</span>
                               </li>
                             ))}
@@ -189,16 +189,16 @@ export const RoadmapMobile: React.FC<RoadmapMobileProps> = ({
 
                       {/* RTO ADTT Track Maneuvers (if present) */}
                       {step.rtoTrackManeuvers && step.rtoTrackManeuvers.length > 0 && (
-                        <div className="p-3 rounded-xl bg-[#FDF2F5] border border-[#FFC5DC] space-y-1.5">
-                          <span className="text-[0.7rem] font-bold text-[#39340F] uppercase tracking-wider flex items-center gap-1.5">
-                            <Award className="w-3.5 h-3.5 text-[#BC2639]" />
+                        <div className="p-3 rounded-xl bg-[#F4C400]/15 border border-[#F4C400]/30 space-y-1.5">
+                          <span className="text-[0.7rem] font-bold text-[#202B33] uppercase tracking-wider flex items-center gap-1.5">
+                            <Award className="w-3.5 h-3.5 text-[#082B4C]" />
                             Automated Camera Track Drills:
                           </span>
                           <div className="flex flex-wrap gap-1.5 pt-0.5">
                             {step.rtoTrackManeuvers.map((drill, drillIdx) => (
                               <span
                                 key={drillIdx}
-                                className="px-2 py-1 rounded-lg bg-white border border-[#FFC5DC] text-[0.7rem] text-[#39340F] font-medium shadow-2xs"
+                                className="px-2 py-1 rounded-lg bg-white border border-[#F4C400]/30 text-[0.7rem] text-[#202B33] font-medium shadow-2xs"
                               >
                                 {drill}
                               </span>
@@ -209,13 +209,13 @@ export const RoadmapMobile: React.FC<RoadmapMobileProps> = ({
 
                       {/* Instructor Pro-Tip */}
                       {step.instructorProTip && (
-                        <div className="p-3 rounded-xl bg-[#FDF2F5] border border-[#FFC5DC] flex items-start gap-2.5 text-xs text-[#39340F]">
-                          <Lightbulb className="w-4 h-4 text-[#BC2639] shrink-0 mt-0.5" />
+                        <div className="p-3 rounded-xl bg-[#F4C400]/15 border border-[#F4C400]/30 flex items-start gap-2.5 text-xs text-[#202B33]">
+                          <Lightbulb className="w-4 h-4 text-[#082B4C] shrink-0 mt-0.5" />
                           <div>
-                            <span className="font-bold text-[0.68rem] uppercase tracking-wider text-[#39340F] block">
+                            <span className="font-bold text-[0.68rem] uppercase tracking-wider text-[#202B33] block">
                               Instructor Pro-Tip:
                             </span>
-                            <p className="mt-0.5 italic text-[#404D68] leading-snug">
+                            <p className="mt-0.5 italic text-[#6B7280] leading-snug">
                               "{step.instructorProTip}"
                             </p>
                           </div>
@@ -229,7 +229,7 @@ export const RoadmapMobile: React.FC<RoadmapMobileProps> = ({
                             href={step.rtoPortalUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-1.5 text-xs text-[#BC2639] hover:text-[#5F1618] font-bold hover:underline py-1.5"
+                            className="inline-flex items-center justify-center gap-1.5 text-xs text-[#082B4C] hover:text-[#061F36] font-bold hover:underline py-1.5"
                           >
                             <span>Sarathi Parivahan Portal</span>
                             <ExternalLink className="w-3 h-3" />
@@ -242,7 +242,7 @@ export const RoadmapMobile: React.FC<RoadmapMobileProps> = ({
                             size="sm"
                             onClick={onOpenBookingModal}
                             className="w-full sm:w-auto justify-center text-xs py-2 shadow-2xs font-bold"
-                            icon={<Sparkles className="w-3.5 h-3.5 text-[#FFC5DC]" />}
+                            icon={<Sparkles className="w-3.5 h-3.5 text-[#082B4C]" />}
                           >
                             Book Training for Stage {step.stepNumber}
                           </Button>
@@ -261,11 +261,11 @@ export const RoadmapMobile: React.FC<RoadmapMobileProps> = ({
       {onOpenBookingModal && (
         <div className="pt-3 text-center">
           <Button
-            variant="amber"
+            variant="primary"
             size="md"
             className="w-full justify-center shadow-sm text-xs font-bold py-2.5"
             onClick={onOpenBookingModal}
-            icon={<Sparkles className="w-4 h-4 text-slate-950" />}
+            icon={<Sparkles className="w-4 h-4 text-[#082B4C]" />}
           >
             Book Full RTO Driving Program
           </Button>
