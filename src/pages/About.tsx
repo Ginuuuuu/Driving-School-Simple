@@ -27,11 +27,11 @@ export const About: React.FC = () => {
         className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center"
       >
         <div className="lg:col-span-7 space-y-3 sm:space-y-4">
-          <h1 className="text-xl sm:text-3xl lg:text-4xl font-extrabold font-display text-[#26423E] tracking-tight leading-tight">
+          <h1 className="text-xl sm:text-3xl lg:text-4xl font-extrabold font-display text-[#39340F] tracking-tight leading-tight">
             {about.missionHeadline}
           </h1>
 
-          <p className="text-xs sm:text-base text-[#56776A] leading-relaxed">
+          <p className="text-xs sm:text-base text-[#404D68] leading-relaxed">
             {about.missionBody}
           </p>
 
@@ -51,7 +51,7 @@ export const About: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="lg:col-span-5 relative"
         >
-          <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#C2D3D0] bg-white">
+          <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#D4E2DF] bg-white">
             <img
               src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80"
               alt="DriveCraft training fleet and certified mentors"
@@ -67,21 +67,21 @@ export const About: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.45 }}
-        className="bg-[#26423E] text-white rounded-2xl sm:rounded-3xl p-5 sm:p-12 lg:p-16 border border-[#3D6357] shadow-xl space-y-6 sm:space-y-8"
+        className="bg-[#39340F] text-white rounded-2xl sm:rounded-3xl p-5 sm:p-12 lg:p-16 border border-[#5F1618] shadow-xl space-y-6 sm:space-y-8"
       >
         <div className="max-w-3xl space-y-1.5 sm:space-y-2">
           <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold font-display text-white tracking-tight">
             Our 5-Point Safety & Dignity Pledge
           </h2>
-          <p className="text-xs sm:text-sm text-[#C2D3D0] leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#D4E2DF] leading-relaxed">
             We hold ourselves to the highest standards of safety, instructor empathy, and student respect in the country.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-4 text-xs sm:text-sm text-[#EDEFF4]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 sm:gap-4 text-xs sm:text-sm text-[#FAF6F8]">
           {about.safetyPledge.map((item, idx) => (
-            <div key={idx} className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#182B28]/60 border border-[#3D6357]/60 hover-lift-subtle transition-all">
-              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#42B7A7] shrink-0 mt-0.5" />
+            <div key={idx} className="flex items-start gap-2.5 sm:gap-3 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#26230A]/60 border border-[#5F1618]/60 hover-lift-subtle transition-all">
+              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#BC2639] shrink-0 mt-0.5" />
               <span className="leading-relaxed text-[0.75rem] sm:text-sm">{item}</span>
             </div>
           ))}
@@ -97,21 +97,21 @@ export const About: React.FC = () => {
         className="space-y-4 sm:space-y-6"
       >
         <div>
-          <h2 className="text-lg sm:text-2xl font-bold font-display text-[#26423E] tracking-tight">
+          <h2 className="text-lg sm:text-2xl font-bold font-display text-[#39340F] tracking-tight">
             Engineered for Safety & Precision
           </h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
           {about.fleetStandards.map((std, idx) => (
-            <div key={idx} className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#C2D3D0] shadow-xs space-y-1.5 sm:space-y-2 hover-lift">
-              <div className="text-xl sm:text-2xl font-black font-display text-[#42B7A7]">
+            <div key={idx} className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#D4E2DF] shadow-xs space-y-1.5 sm:space-y-2 hover-lift">
+              <div className="text-xl sm:text-2xl font-black font-display text-[#BC2639]">
                 {std.metric}
               </div>
-              <h3 className="text-sm sm:text-base font-bold font-display text-[#26423E]">
+              <h3 className="text-sm sm:text-base font-bold font-display text-[#39340F]">
                 {std.title}
               </h3>
-              <p className="text-xs text-[#56776A] leading-relaxed">
+              <p className="text-xs text-[#404D68] leading-relaxed">
                 {std.description}
               </p>
             </div>
@@ -125,12 +125,12 @@ export const About: React.FC = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.45 }}
-        className="bg-[#E2F3F0]/60 rounded-2xl sm:rounded-3xl p-5 sm:p-12 border border-[#C2D3D0] text-center max-w-4xl mx-auto space-y-3 sm:space-y-4 shadow-sm"
+        className="bg-[#FDF2F5]/60 rounded-2xl sm:rounded-3xl p-5 sm:p-12 border border-[#FFC5DC] text-center max-w-4xl mx-auto space-y-3 sm:space-y-4 shadow-sm"
       >
-        <h2 className="text-xl sm:text-3xl font-extrabold font-display text-[#26423E]">
+        <h2 className="text-xl sm:text-3xl font-extrabold font-display text-[#39340F]">
           {about.visionHeadline}
         </h2>
-        <p className="text-xs sm:text-base text-[#56776A] leading-relaxed max-w-2xl mx-auto">
+        <p className="text-xs sm:text-base text-[#404D68] leading-relaxed max-w-2xl mx-auto">
           {about.visionBody}
         </p>
         <div className="pt-2 sm:pt-4">
