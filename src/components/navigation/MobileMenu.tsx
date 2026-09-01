@@ -55,19 +55,19 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenB
     <div className="fixed inset-0 z-50 flex justify-end" role="dialog" aria-modal="true">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-slate-950/60 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-[#26230A]/60 backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Drawer */}
-      <div className="relative w-full max-w-sm bg-[#EDEFF4] h-full shadow-2xl flex flex-col justify-between overflow-y-auto z-10 animate-in slide-in-from-right duration-300">
+      <div className="relative w-full max-w-sm bg-[#FAF6F8] h-full shadow-2xl flex flex-col justify-between overflow-y-auto z-10 animate-in slide-in-from-right duration-300">
         {/* Drawer Header */}
-        <div className="p-5 border-b border-[#C2D3D0] flex items-center justify-between">
+        <div className="p-5 border-b border-[#D4E2DF] flex items-center justify-between">
           <Logo size="md" />
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-[#56776A] hover:text-[#26423E] hover:bg-[#C2D3D0]/40 transition-colors"
+            className="p-2 rounded-xl text-[#404D68] hover:text-[#39340F] hover:bg-[#FFF5F8] transition-colors"
             aria-label="Close menu"
           >
             <X className="w-6 h-6" />
@@ -76,7 +76,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenB
 
         {/* Navigation List */}
         <div className="p-5 space-y-1.5 flex-1">
-          <div className="text-[0.7rem] uppercase tracking-wider font-bold text-[#56776A] mb-2 px-3">
+          <div className="text-[0.7rem] uppercase tracking-wider font-bold text-[#404D68] mb-2 px-3">
             Menu Navigation
           </div>
 
@@ -89,30 +89,30 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenB
                 to={link.to}
                 className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-base font-semibold transition-all ${
                   isActive
-                    ? 'bg-[#C2D3D0]/70 text-[#26423E] font-bold border border-[#C2D3D0]'
-                    : 'text-[#26423E] hover:bg-[#C2D3D0]/30'
+                    ? 'bg-[#FDF2F5] text-[#BC2639] font-bold border border-[#FFC5DC]'
+                    : 'text-[#39340F] hover:bg-[#FFF5F8]'
                 }`}
               >
                 <span>{link.label}</span>
-                <ChevronRight className={`w-4 h-4 ${isActive ? 'text-[#42B7A7]' : 'text-[#56776A]'}`} />
+                <ChevronRight className={`w-4 h-4 ${isActive ? 'text-[#BC2639]' : 'text-[#404D68]'}`} />
               </Link>
             );
           })}
 
           {/* Service Areas Note */}
-          <div className="mt-4 p-3 rounded-xl bg-white/80 border border-[#C2D3D0] text-xs text-[#56776A]">
-            <div className="flex items-center gap-1.5 font-bold text-[#26423E] mb-1">
-              <MapPin className="w-3.5 h-3.5 text-[#42B7A7]" />
+          <div className="mt-4 p-3 rounded-xl bg-white/90 border border-[#D4E2DF] text-xs text-[#404D68]">
+            <div className="flex items-center gap-1.5 font-bold text-[#39340F] mb-1">
+              <MapPin className="w-3.5 h-3.5 text-[#BC2639]" />
               Doorstep Pickup Available in:
             </div>
-            <p className="leading-relaxed text-[#56776A]">
+            <p className="leading-relaxed text-[#404D68]">
               {siteConfig.serviceCities.join(' • ')}
             </p>
           </div>
         </div>
 
         {/* Bottom Drawer Actions */}
-        <div className="p-5 border-t border-[#C2D3D0] bg-[#EDEFF4] space-y-3">
+        <div className="p-5 border-t border-[#D4E2DF] bg-[#FAF6F8] space-y-3">
           <Button
             variant="primary"
             size="lg"
@@ -121,7 +121,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenB
               onClose();
               onOpenBookingModal();
             }}
-            icon={<Sparkles className="w-5 h-5 text-amber-300" />}
+            icon={<Sparkles className="w-5 h-5 text-[#FFC5DC]" />}
           >
             Book a Driving Lesson
           </Button>
