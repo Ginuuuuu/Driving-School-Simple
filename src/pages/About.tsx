@@ -31,11 +31,11 @@ export const About: React.FC = () => {
         className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center"
       >
         <div className="lg:col-span-7 space-y-3 sm:space-y-4">
-          <h1 className="text-xl sm:text-3xl lg:text-4xl font-extrabold font-display text-[#39340F] tracking-tight leading-tight">
+          <h1 className="text-xl sm:text-3xl lg:text-4xl font-extrabold font-display text-[#202B33] tracking-tight leading-tight">
             {about.missionHeadline}
           </h1>
 
-          <p className="text-xs sm:text-base text-[#404D68] leading-relaxed">
+          <p className="text-xs sm:text-base text-[#6B7280] leading-relaxed">
             {about.missionBody}
           </p>
 
@@ -55,7 +55,7 @@ export const About: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="lg:col-span-5 relative"
         >
-          <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#D4E2DF] bg-white">
+          <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#E5E7EB] bg-white">
             <img
               src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80"
               alt="DriveCraft training fleet and certified mentors"
@@ -65,27 +65,27 @@ export const About: React.FC = () => {
         </motion.div>
       </motion.section>
 
-      {/* Safety Pledge Section — Flowing Deep Burgundy-Crimson Gradient with Glass Cards */}
+      {/* Safety Pledge Section — Flowing Deep Navy Gradient with Glass Cards */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.45 }}
-        className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-6 sm:p-12 lg:p-16 bg-gradient-to-br from-[#2D0A14] via-[#481320] to-[#1E060D] border border-[#BC2639]/30 text-white shadow-2xl space-y-6 sm:space-y-8"
+        className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-6 sm:p-12 lg:p-16 bg-gradient-to-br from-[#082B4C] via-[#061F36] to-[#041424] border border-white/10 text-white shadow-2xl space-y-6 sm:space-y-8"
       >
         {/* Ambient Flowing Light Glow Orbs */}
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#BC2639]/25 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#FFC5DC]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#F4C400]/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#082B4C]/30 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative z-10 max-w-3xl space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[0.7rem] sm:text-xs font-bold uppercase tracking-wider text-[#FFC5DC]">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#FFC5DC]" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-[0.7rem] sm:text-xs font-bold uppercase tracking-wider text-[#F4C400]">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#F4C400]" />
             <span>Safety & Dignity Guarantee</span>
           </div>
           <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold font-display text-white tracking-tight">
             Our 5-Point Safety & Dignity Pledge
           </h2>
-          <p className="text-xs sm:text-sm text-[#FFC5DC]/90 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
             We hold ourselves to the highest standards of safety, instructor empathy, and student respect in the country.
           </p>
         </div>
@@ -94,12 +94,12 @@ export const About: React.FC = () => {
           {about.safetyPledge.map((item, idx) => (
             <div
               key={idx}
-              className="flex items-start gap-3 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 hover:bg-white/[0.14] hover:border-[#FFC5DC]/40 hover-lift-subtle transition-all"
+              className="flex items-start gap-3 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 hover:bg-white/[0.14] hover:border-[#F4C400]/40 hover-lift-subtle transition-all"
             >
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#BC2639]/40 border border-[#BC2639]/50 flex items-center justify-center shrink-0 mt-0.5 text-[#FFC5DC]">
-                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#FFC5DC]" />
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#F4C400]/20 border border-[#F4C400]/40 flex items-center justify-center shrink-0 mt-0.5 text-[#F4C400]">
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#F4C400]" />
               </div>
-              <span className="leading-relaxed text-[0.78rem] sm:text-sm font-medium text-[#FAF6F8] pt-0.5">{item}</span>
+              <span className="leading-relaxed text-[0.78rem] sm:text-sm font-medium text-slate-100 pt-0.5">{item}</span>
             </div>
           ))}
         </div>
@@ -114,21 +114,21 @@ export const About: React.FC = () => {
         className="space-y-4 sm:space-y-6"
       >
         <div>
-          <h2 className="text-lg sm:text-2xl font-bold font-display text-[#39340F] tracking-tight">
+          <h2 className="text-lg sm:text-2xl font-bold font-display text-[#202B33] tracking-tight">
             Engineered for Safety & Precision
           </h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
           {about.fleetStandards.map((std, idx) => (
-            <div key={idx} className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#D4E2DF] shadow-xs space-y-1.5 sm:space-y-2 hover-lift">
-              <div className="text-xl sm:text-2xl font-black font-display text-[#BC2639]">
+            <div key={idx} className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-1.5 sm:space-y-2 hover-lift">
+              <div className="text-xl sm:text-2xl font-black font-display text-[#082B4C]">
                 {std.metric}
               </div>
-              <h3 className="text-sm sm:text-base font-bold font-display text-[#39340F]">
+              <h3 className="text-sm sm:text-base font-bold font-display text-[#202B33]">
                 {std.title}
               </h3>
-              <p className="text-xs text-[#404D68] leading-relaxed">
+              <p className="text-xs text-[#6B7280] leading-relaxed">
                 {std.description}
               </p>
             </div>
@@ -142,12 +142,12 @@ export const About: React.FC = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.45 }}
-        className="bg-[#FDF2F5]/60 rounded-2xl sm:rounded-3xl p-5 sm:p-12 border border-[#FFC5DC] text-center max-w-4xl mx-auto space-y-3 sm:space-y-4 shadow-sm"
+        className="bg-[#F5F6F7] rounded-2xl sm:rounded-3xl p-5 sm:p-12 border border-[#E5E7EB] text-center max-w-4xl mx-auto space-y-3 sm:space-y-4 shadow-sm"
       >
-        <h2 className="text-xl sm:text-3xl font-extrabold font-display text-[#39340F]">
+        <h2 className="text-xl sm:text-3xl font-extrabold font-display text-[#202B33]">
           {about.visionHeadline}
         </h2>
-        <p className="text-xs sm:text-base text-[#404D68] leading-relaxed max-w-2xl mx-auto">
+        <p className="text-xs sm:text-base text-[#6B7280] leading-relaxed max-w-2xl mx-auto">
           {about.visionBody}
         </p>
         <div className="pt-2 sm:pt-4">

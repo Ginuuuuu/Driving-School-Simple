@@ -139,24 +139,24 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
                   onClick={() => setMobileSelectedId(inst.id)}
                   className={`flex flex-col items-center gap-1.5 shrink-0 snap-center p-2 rounded-2xl transition-all duration-200 cursor-pointer min-w-[76px] ${
                     isSelected
-                      ? 'bg-[#FDF2F5] border-2 border-[#BC2639] shadow-sm scale-105'
-                      : 'bg-white border border-[#D4E2DF] opacity-80 hover:opacity-100'
+                      ? 'bg-[#F4C400]/15 border-2 border-[#082B4C] shadow-sm scale-105'
+                      : 'bg-white border border-[#E5E7EB] opacity-80 hover:opacity-100'
                   }`}
                 >
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden border border-[#D4E2DF]">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border border-[#E5E7EB]">
                     <img
                       src={inst.photoUrl}
                       alt={inst.name}
                       className="w-full h-full object-cover object-top"
                     />
                     {isSelected && (
-                      <span className="absolute bottom-0 right-0 w-3 h-3 bg-[#BC2639] border-2 border-white rounded-full" />
+                      <span className="absolute bottom-0 right-0 w-3 h-3 bg-[#082B4C] border-2 border-white rounded-full" />
                     )}
                   </div>
 
                   <span
                     className={`text-[0.68rem] font-bold text-center leading-tight truncate w-16 ${
-                      isSelected ? 'text-[#39340F] font-extrabold' : 'text-[#404D68]'
+                      isSelected ? 'text-[#082B4C] font-extrabold' : 'text-[#6B7280]'
                     }`}
                   >
                     {inst.name.split(' ')[0]}
@@ -168,28 +168,28 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
         </div>
 
         {/* Featured Mentor Mobile Card (Clean, Concise & Professional UX) */}
-        <div className="rounded-2xl bg-white border border-[#D4E2DF] shadow-sm overflow-hidden">
+        <div className="rounded-2xl bg-white border border-[#E5E7EB] shadow-sm overflow-hidden">
           {/* Header Photo Banner */}
-          <div className="relative h-44 w-full bg-[#FAF6F8]">
+          <div className="relative h-44 w-full bg-[#F5F6F7]">
             <img
               src={activeMobileInstructor.photoUrl}
               alt={activeMobileInstructor.name}
               className="w-full h-full object-cover object-[center_20%]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#39340F]/80 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#082B4C]/80 via-transparent to-transparent" />
 
             {/* Rating Pill */}
-            <div className="absolute top-2.5 right-2.5 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 text-[#39340F] text-[0.72rem] font-extrabold shadow-sm">
-              <Star className="w-3 h-3 fill-[#BC2639] text-[#BC2639]" />
+            <div className="absolute top-2.5 right-2.5 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 text-[#202B33] text-[0.72rem] font-extrabold shadow-sm">
+              <Star className="w-3 h-3 fill-[#F4C400] text-[#F4C400]" />
               <span>{activeMobileInstructor.rating.toFixed(2)}</span>
-              <span className="text-[0.62rem] text-[#404D68] font-normal">
+              <span className="text-[0.62rem] text-[#6B7280] font-normal">
                 ({activeMobileInstructor.studentCount}+)
               </span>
             </div>
 
             {/* Experience Badge */}
             <div className="absolute bottom-2.5 left-2.5 flex items-center gap-1.5">
-              <span className="px-2 py-0.5 rounded-md bg-[#BC2639] text-white font-bold text-[0.68rem] shadow-xs flex items-center gap-1">
+              <span className="px-2 py-0.5 rounded-md bg-[#082B4C] text-white font-bold text-[0.68rem] shadow-xs flex items-center gap-1">
                 <ShieldCheck className="w-3 h-3" />
                 {activeMobileInstructor.experienceYears}+ Yrs Coaching
               </span>
@@ -199,10 +199,10 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
           {/* Body: Concise & UX-friendly */}
           <div className="p-3.5 space-y-2.5">
             <div className="flex items-baseline justify-between gap-2">
-              <h3 className="text-base font-bold font-display text-[#39340F] leading-tight">
+              <h3 className="text-base font-bold font-display text-[#202B33] leading-tight">
                 {activeMobileInstructor.name}
               </h3>
-              <span className="text-[0.7rem] font-bold text-[#BC2639] truncate shrink-0">
+              <span className="text-[0.7rem] font-bold text-[#082B4C] truncate shrink-0">
                 {activeMobileInstructor.role.split('&')[0]}
               </span>
             </div>
@@ -212,13 +212,13 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
               {activeMobileInstructor.specialties.slice(0, 2).map((spec, i) => (
                 <span
                   key={i}
-                  className="px-2 py-0.5 rounded-md bg-[#FAF6F8] text-[#39340F] border border-[#D4E2DF] text-[0.68rem] font-medium"
+                  className="px-2 py-0.5 rounded-md bg-[#F5F6F7] text-[#202B33] border border-[#E5E7EB] text-[0.68rem] font-medium"
                 >
                   {spec}
                 </span>
               ))}
-              <span className="px-2 py-0.5 rounded-md bg-[#FDF2F5] text-[#39340F] border border-[#FFC5DC]/60 text-[0.68rem] font-medium flex items-center gap-1">
-                <Globe className="w-2.5 h-2.5 text-[#BC2639]" />
+              <span className="px-2 py-0.5 rounded-md bg-[#F4C400]/15 text-[#082B4C] border border-[#F4C400]/40 text-[0.68rem] font-medium flex items-center gap-1">
+                <Globe className="w-2.5 h-2.5 text-[#082B4C]" />
                 {activeMobileInstructor.languages.slice(0, 2).join(', ')}
               </span>
             </div>
@@ -230,7 +230,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
                 size="md"
                 onClick={() => onSelectInstructor?.(activeMobileInstructor.id)}
                 className="w-full justify-center shadow-xs font-bold text-xs py-2.5"
-                icon={<Sparkles className="w-3.5 h-3.5 text-[#FFC5DC]" />}
+                icon={<Sparkles className="w-3.5 h-3.5 text-[#082B4C]" />}
               >
                 Request Lessons with {activeMobileInstructor.name.split(' ')[0]}
               </Button>
@@ -315,13 +315,13 @@ function MemberRow({
         <span
           className={cn(
             'w-4 h-3 rounded-[5px] flex-shrink-0 transition-all duration-300',
-            isActive ? 'bg-[#BC2639] w-5' : 'bg-[#404D68]/30',
+            isActive ? 'bg-[#F4C400] w-5' : 'bg-[#6B7280]/30',
           )}
         />
         <span
           className={cn(
             'text-base md:text-[18px] font-semibold leading-none tracking-tight transition-colors duration-300',
-            isActive ? 'text-[#39340F] font-bold' : 'text-[#404D68]',
+            isActive ? 'text-[#082B4C] font-bold' : 'text-[#6B7280]',
           )}
         >
           {member.name}
@@ -343,7 +343,7 @@ function MemberRow({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-1 rounded text-[#404D68] hover:text-[#39340F] hover:bg-[#FFC5DC]/30 transition-all duration-150 hover:scale-110"
+                className="p-1 rounded text-[#6B7280] hover:text-[#082B4C] hover:bg-[#E5E7EB] transition-all duration-150 hover:scale-110"
                 title="X / Twitter"
               >
                 <FaTwitter size={10} />
@@ -355,7 +355,7 @@ function MemberRow({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-1 rounded text-[#404D68] hover:text-[#39340F] hover:bg-[#FFC5DC]/30 transition-all duration-150 hover:scale-110"
+                className="p-1 rounded text-[#6B7280] hover:text-[#082B4C] hover:bg-[#E5E7EB] transition-all duration-150 hover:scale-110"
                 title="LinkedIn"
               >
                 <FaLinkedinIn size={10} />
@@ -367,7 +367,7 @@ function MemberRow({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-1 rounded text-[#404D68] hover:text-[#39340F] hover:bg-[#FFC5DC]/30 transition-all duration-150 hover:scale-110"
+                className="p-1 rounded text-[#6B7280] hover:text-[#082B4C] hover:bg-[#E5E7EB] transition-all duration-150 hover:scale-110"
                 title="Instagram"
               >
                 <FaInstagram size={10} />
@@ -379,7 +379,7 @@ function MemberRow({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-1 rounded text-[#404D68] hover:text-[#39340F] hover:bg-[#FFC5DC]/30 transition-all duration-150 hover:scale-110"
+                className="p-1 rounded text-[#6B7280] hover:text-[#082B4C] hover:bg-[#E5E7EB] transition-all duration-150 hover:scale-110"
                 title="Behance"
               >
                 <FaBehance size={10} />
@@ -390,7 +390,7 @@ function MemberRow({
       </div>
 
       {/* Role */}
-      <p className="mt-1.5 pl-[27px] text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-[#BC2639]">
+      <p className="mt-1.5 pl-[27px] text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-[#082B4C]">
         {member.role}
       </p>
     </div>

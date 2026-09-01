@@ -16,21 +16,21 @@ export const Error404: React.FC = () => {
       <SEO title="404 - Page Not Found" description="The page you are looking for does not exist." />
 
       {/* Visual illustration */}
-      <div className="w-24 h-24 rounded-full bg-[#FDF2F5] text-[#BC2639] flex items-center justify-center mx-auto shadow-inner">
+      <div className="w-24 h-24 rounded-full bg-[#F4C400]/20 text-[#082B4C] flex items-center justify-center mx-auto shadow-inner">
         <Compass className="w-12 h-12 animate-pulse" />
       </div>
 
       <div className="space-y-3">
-        <span className="text-xs uppercase font-extrabold tracking-widest text-[#39340F] bg-[#FDF2F5] px-3 py-1 rounded-full border border-[#FFC5DC]">
+        <span className="text-xs uppercase font-extrabold tracking-widest text-[#082B4C] bg-[#F4C400]/20 px-3 py-1 rounded-full border border-[#F4C400]/40">
           Navigation Detour
         </span>
-        <h1 className="text-3xl sm:text-5xl font-black font-display text-[#39340F]">
+        <h1 className="text-3xl sm:text-5xl font-black font-display text-[#202B33]">
           {e404.title}
         </h1>
-        <p className="text-base text-[#39340F] font-semibold">
+        <p className="text-base text-[#202B33] font-semibold">
           {e404.subtitle}
         </p>
-        <p className="text-xs sm:text-sm text-[#404D68] max-w-md mx-auto leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#6B7280] max-w-md mx-auto leading-relaxed">
           {e404.description}
         </p>
       </div>

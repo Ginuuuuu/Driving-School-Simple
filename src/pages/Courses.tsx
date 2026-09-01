@@ -46,7 +46,7 @@ export const Courses: React.FC = () => {
       />
 
       <div>
-        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-[#39340F] tracking-tight">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-[#202B33] tracking-tight">
           Driving Courses & Programs
         </h1>
       </div>
@@ -56,18 +56,18 @@ export const Courses: React.FC = () => {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
-        className="p-3.5 sm:p-6 bg-white rounded-2xl sm:rounded-3xl border border-[#D4E2DF] shadow-xs space-y-3 sm:space-y-4"
+        className="p-3.5 sm:p-6 bg-white rounded-2xl sm:rounded-3xl border border-[#E5E7EB] shadow-xs space-y-3 sm:space-y-4"
       >
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-2.5 sm:gap-4 items-center">
           {/* Search Box (6 cols) */}
           <div className="sm:col-span-6 relative">
-            <Search className="w-4 h-4 text-[#404D68] absolute left-3.5 top-2.5 sm:top-3.5" />
+            <Search className="w-4 h-4 text-[#6B7280] absolute left-3.5 top-2.5 sm:top-3.5" />
             <input
               type="text"
               placeholder="Search courses, parking, highway, RTO..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 sm:pl-10 pr-3.5 sm:pr-4 py-2 sm:py-2.5 rounded-xl border border-[#D4E2DF] text-xs sm:text-sm text-[#39340F] focus:ring-2 focus:ring-[#BC2639] focus:outline-none transition-all"
+              className="w-full pl-9 sm:pl-10 pr-3.5 sm:pr-4 py-2 sm:py-2.5 rounded-xl border border-[#E5E7EB] text-xs sm:text-sm text-[#202B33] focus:ring-2 focus:ring-[#F4C400] focus:outline-none transition-all"
             />
           </div>
 
@@ -76,7 +76,7 @@ export const Courses: React.FC = () => {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-[#D4E2DF] text-xs sm:text-sm text-[#39340F] focus:ring-2 focus:ring-[#BC2639] focus:outline-none bg-white transition-all"
+              className="w-full px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-[#E5E7EB] text-xs sm:text-sm text-[#202B33] focus:ring-2 focus:ring-[#F4C400] focus:outline-none bg-white transition-all"
             >
               <option value="all">All Categories</option>
               <option value="beginner">Beginner Complete</option>
@@ -92,7 +92,7 @@ export const Courses: React.FC = () => {
             <select
               value={selectedTransmission}
               onChange={(e) => setSelectedTransmission(e.target.value)}
-              className="w-full px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-[#D4E2DF] text-xs sm:text-sm text-[#39340F] focus:ring-2 focus:ring-[#BC2639] focus:outline-none bg-white transition-all"
+              className="w-full px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl border border-[#E5E7EB] text-xs sm:text-sm text-[#202B33] focus:ring-2 focus:ring-[#F4C400] focus:outline-none bg-white transition-all"
             >
               <option value="all">All Transmissions</option>
               <option value="manual">Manual Transmission</option>
@@ -103,7 +103,7 @@ export const Courses: React.FC = () => {
 
         {/* Active Filters summary */}
         {(searchQuery || selectedCategory !== 'all' || selectedTransmission !== 'all') && (
-          <div className="flex items-center justify-between pt-2 border-t border-[#D4E2DF]/60 text-xs text-[#404D68]">
+          <div className="flex items-center justify-between pt-2 border-t border-[#E5E7EB] text-xs text-[#6B7280]">
             <span>
               Showing {filteredCourses.length} of {courses.length} courses
             </span>
@@ -113,7 +113,7 @@ export const Courses: React.FC = () => {
                 setSelectedCategory('all');
                 setSelectedTransmission('all');
               }}
-              className="text-[#BC2639] font-bold hover:underline transition-colors"
+              className="text-[#082B4C] font-bold hover:underline transition-colors"
             >
               Reset Filters
             </button>
@@ -147,10 +147,10 @@ export const Courses: React.FC = () => {
         </motion.div>
       ) : (
         /* Empty State */
-        <div className="p-12 text-center bg-white rounded-3xl border border-[#D4E2DF] shadow-xs max-w-md mx-auto space-y-3">
-          <Car className="w-12 h-12 text-[#D4E2DF] mx-auto" />
-          <h3 className="text-base font-bold text-[#39340F]">No courses match your filter</h3>
-          <p className="text-xs text-[#404D68]">
+        <div className="p-12 text-center bg-white rounded-3xl border border-[#E5E7EB] shadow-xs max-w-md mx-auto space-y-3">
+          <Car className="w-12 h-12 text-slate-300 mx-auto" />
+          <h3 className="text-base font-bold text-[#202B33]">No courses match your filter</h3>
+          <p className="text-xs text-[#6B7280]">
             Try adjusting your search query or reset filters to see all available driving packages.
           </p>
           <Button
@@ -168,12 +168,12 @@ export const Courses: React.FC = () => {
       )}
 
       {/* Custom Training Enquiry Callout */}
-      <section className="p-8 sm:p-12 rounded-3xl bg-[#39340F] text-white border border-[#5F1618] flex flex-col md:flex-row items-center justify-between gap-6">
+      <section className="p-8 sm:p-12 rounded-3xl bg-[#082B4C] text-white border border-[#061F36] flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-2 text-center md:text-left">
           <h3 className="text-xl sm:text-2xl font-bold font-display text-white">
             Need a Customized Lesson Plan or Hourly Batch?
           </h3>
-          <p className="text-xs sm:text-sm text-[#D4E2DF] max-w-xl">
+          <p className="text-xs sm:text-sm text-slate-200 max-w-xl">
             We can customize lesson hours around your specific office timings, personal car model, or tricky basement parking slot.
           </p>
         </div>
