@@ -7,9 +7,11 @@ import { TestimonialCard } from '../components/cards/TestimonialCard';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
 
+import { defaultTestimonials } from '../content/testimonials';
+
 export const Testimonials: React.FC = () => {
   const { siteData } = useContent();
-  const { testimonials } = siteData;
+  const testimonials = siteData?.testimonials || defaultTestimonials;
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string) => void }>();
 
   const [selectedTag, setSelectedTag] = useState<string>('all');

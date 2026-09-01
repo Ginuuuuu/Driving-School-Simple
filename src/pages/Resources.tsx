@@ -6,9 +6,11 @@ import { useContent } from '../context/ContentContext';
 import { Badge } from '../components/common/Badge';
 import { SEO } from '../components/common/SEO';
 
+import { defaultResources } from '../content/resources';
+
 export const Resources: React.FC = () => {
   const { siteData } = useContent();
-  const { resources } = siteData;
+  const resources = siteData?.resources || defaultResources;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 space-y-6 sm:space-y-12">
