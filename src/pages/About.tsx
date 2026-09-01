@@ -6,9 +6,13 @@ import { useContent } from '../context/ContentContext';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
 
+import { defaultAbout } from '../content/about';
+import { defaultSiteConfig } from '../content/siteConfig';
+
 export const About: React.FC = () => {
   const { siteData } = useContent();
-  const { about, siteConfig } = siteData;
+  const about = siteData?.about || defaultAbout;
+  const siteConfig = siteData?.siteConfig || defaultSiteConfig;
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string) => void }>();
 
   return (
