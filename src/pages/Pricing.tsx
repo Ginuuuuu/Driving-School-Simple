@@ -7,9 +7,15 @@ import { PricingCard } from '../components/cards/PricingCard';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
 
+import { defaultPricingPackages, defaultPricingAddOns, defaultComparisonCategories } from '../content/pricing';
+
 export const Pricing: React.FC = () => {
   const { siteData } = useContent();
-  const { pricing } = siteData;
+  const pricing = {
+    packages: siteData?.pricing?.packages || defaultPricingPackages,
+    addOns: siteData?.pricing?.addOns || defaultPricingAddOns,
+    comparisonFeatures: siteData?.pricing?.comparisonFeatures || defaultComparisonCategories,
+  };
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string) => void }>();
 
   return (
