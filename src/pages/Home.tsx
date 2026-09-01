@@ -49,20 +49,20 @@ export const Home: React.FC = () => {
               className="lg:col-span-7 space-y-3 sm:space-y-6 text-center lg:text-left"
             >
               {/* Trust Badge Pill */}
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-emerald-100/90 border border-emerald-300 text-[0.68rem] xs:text-[0.72rem] sm:text-sm font-bold text-emerald-950 shadow-2xs max-w-full">
-                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 shrink-0 animate-pulse-subtle" />
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#E2F3F0] border border-[#C2D3D0] text-[0.68rem] xs:text-[0.72rem] sm:text-sm font-bold text-[#26423E] shadow-2xs max-w-full">
+                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#42B7A7] shrink-0 animate-pulse-subtle" />
                 <span className="leading-snug">{siteConfig.hero?.badgeText || '100% Dual-Control Safety Fleet • Doorstep Pickup'}</span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-2xl sm:text-5xl lg:text-6xl font-extrabold font-display text-slate-900 tracking-tight leading-[1.18] sm:leading-[1.15]">
+              <h1 className="text-2xl sm:text-5xl lg:text-6xl font-extrabold font-display text-[#26423E] tracking-tight leading-[1.18] sm:leading-[1.15]">
                 {siteConfig.hero?.headlineMain || 'Master Every Mile with '}
                 <span className="text-gradient-emerald">{siteConfig.hero?.headlineHighlight || 'Confidence'}</span>
                 {siteConfig.hero?.headlineEnd || ' & Total Safety.'}
               </h1>
 
               {/* Subtitle */}
-              <p className="text-xs sm:text-base lg:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="text-xs sm:text-base lg:text-lg text-[#56776A] leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 {siteConfig.hero?.subtitle || 'Learn driving in modern dual-control cars with patient certified mentors, replica automated RTO track training, and zero hidden fees.'}
               </p>
 
@@ -91,14 +91,14 @@ export const Home: React.FC = () => {
               </div>
 
               {/* Quick Trust Checks */}
-              <div className="pt-2 sm:pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-4 text-[0.72rem] sm:text-xs font-semibold text-slate-600">
+              <div className="pt-2 sm:pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-4 text-[0.72rem] sm:text-xs font-semibold text-[#56776A]">
                 {(siteConfig.hero?.trustChecks || ['98.4% First-Attempt RTO Pass', 'Female & Male Mentors', 'Manual & Auto']).map((check, idx, arr) => (
                   <React.Fragment key={idx}>
                     <div className="flex items-center gap-1 sm:gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 shrink-0" />
-                      <span>{check}</span>
+                      <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#42B7A7] shrink-0" />
+                      <span className="text-[#26423E]">{check}</span>
                     </div>
-                    {idx < arr.length - 1 && <span>•</span>}
+                    {idx < arr.length - 1 && <span className="text-[#C2D3D0]">•</span>}
                   </React.Fragment>
                 ))}
               </div>
@@ -111,33 +111,33 @@ export const Home: React.FC = () => {
               transition={{ duration: 0.55, delay: 0.15, ease: 'easeOut' }}
               className="lg:col-span-5 relative"
             >
-              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-slate-200 bg-white">
+              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#C2D3D0] bg-white">
                 <img
                   src={siteConfig.hero?.heroImageUrl || "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80"}
                   alt="Student learning to drive in dual control safety car"
                   className="w-full h-56 sm:h-96 object-cover object-center transition-transform duration-700 hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#26423E]/80 via-transparent to-transparent pointer-events-none" />
 
                 {/* Floating In-Car Safety Badge */}
-                <div className="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 flex items-center gap-1.5 sm:gap-2 p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-sm text-xs font-bold text-slate-900 animate-float-slow">
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700">
+                <div className="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 flex items-center gap-1.5 sm:gap-2 p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-white/95 backdrop-blur-md border border-[#C2D3D0] shadow-sm text-xs font-bold text-[#26423E] animate-float-slow">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-[#E2F3F0] flex items-center justify-center text-[#42B7A7]">
                     <ShieldCheck className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
                   </div>
                   <div>
-                    <span className="block leading-tight font-extrabold text-emerald-900 text-[0.7rem] sm:text-xs">Dual-Control Safe</span>
-                    <span className="text-[0.6rem] sm:text-[0.65rem] text-slate-500 font-normal">Secondary brake</span>
+                    <span className="block leading-tight font-extrabold text-[#26423E] text-[0.7rem] sm:text-xs">Dual-Control Safe</span>
+                    <span className="text-[0.6rem] sm:text-[0.65rem] text-[#56776A] font-normal">Secondary brake</span>
                   </div>
                 </div>
 
                 {/* Floating Rating Pill */}
-                <div className="absolute bottom-2.5 right-2.5 sm:bottom-4 sm:right-4 flex items-center gap-1.5 sm:gap-2 p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-700 text-white shadow-sm text-xs animate-float-delayed">
-                  <div className="flex text-amber-400">
+                <div className="absolute bottom-2.5 right-2.5 sm:bottom-4 sm:right-4 flex items-center gap-1.5 sm:gap-2 p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-[#26423E]/95 backdrop-blur-md border border-[#56776A]/50 text-white shadow-sm text-xs animate-float-delayed">
+                  <div className="flex text-[#42B7A7]">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" />
                     ))}
                   </div>
-                  <span className="font-extrabold text-emerald-400 text-[0.7rem] sm:text-xs">4.95 / 5.0</span>
+                  <span className="font-extrabold text-[#42B7A7] text-[0.7rem] sm:text-xs">4.95 / 5.0</span>
                 </div>
               </div>
             </motion.div>
@@ -153,40 +153,40 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.4 }}
         className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8"
       >
-        <div className="py-2.5 sm:py-4 px-2 sm:px-6 bg-slate-900 text-white rounded-xl sm:rounded-2xl border border-slate-800 shadow-sm">
-          <div className="grid grid-cols-4 divide-x divide-slate-800 text-center items-center">
+        <div className="py-2.5 sm:py-4 px-2 sm:px-6 bg-[#26423E] text-white rounded-xl sm:rounded-2xl border border-[#3D6357] shadow-sm">
+          <div className="grid grid-cols-4 divide-x divide-[#3D6357] text-center items-center">
             <div className="px-1 sm:px-3">
-              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-emerald-400 leading-tight">
+              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-[#42B7A7] leading-tight">
                 {siteConfig.trustStats[0]?.value || '14,800+'}
               </div>
-              <div className="text-[0.6rem] sm:text-xs text-slate-300 font-medium mt-0.5 truncate">
+              <div className="text-[0.6rem] sm:text-xs text-[#C2D3D0] font-medium mt-0.5 truncate">
                 Learners Trained
               </div>
             </div>
 
             <div className="px-1 sm:px-3">
-              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-emerald-400 leading-tight">
+              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-[#42B7A7] leading-tight">
                 {siteConfig.trustStats[1]?.value || '98.4%'}
               </div>
-              <div className="text-[0.6rem] sm:text-xs text-slate-300 font-medium mt-0.5 truncate">
+              <div className="text-[0.6rem] sm:text-xs text-[#C2D3D0] font-medium mt-0.5 truncate">
                 RTO Pass Rate
               </div>
             </div>
 
             <div className="px-1 sm:px-3">
-              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-emerald-400 leading-tight">
+              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-[#42B7A7] leading-tight">
                 {siteConfig.trustStats[2]?.value || '35+'}
               </div>
-              <div className="text-[0.6rem] sm:text-xs text-slate-300 font-medium mt-0.5 truncate">
+              <div className="text-[0.6rem] sm:text-xs text-[#C2D3D0] font-medium mt-0.5 truncate">
                 Top Mentors
               </div>
             </div>
 
             <div className="px-1 sm:px-3">
-              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-emerald-400 leading-tight">
+              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-[#42B7A7] leading-tight">
                 {siteConfig.trustStats[3]?.value || '100%'}
               </div>
-              <div className="text-[0.6rem] sm:text-xs text-slate-300 font-medium mt-0.5 truncate">
+              <div className="text-[0.6rem] sm:text-xs text-[#C2D3D0] font-medium mt-0.5 truncate">
                 Dual-Control
               </div>
             </div>
@@ -223,17 +223,15 @@ export const Home: React.FC = () => {
               icon: 'Compass',
             },
           ]).map((item, idx) => (
-            <div key={item.id || idx} className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between hover-lift">
+            <div key={item.id || idx} className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#C2D3D0] shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between hover-lift">
               <div>
-                <div className={`w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center font-bold mb-2 ${
-                  idx === 0 ? 'bg-emerald-50 text-emerald-600' : idx === 1 ? 'bg-amber-50 text-amber-600' : 'bg-blue-50 text-blue-600'
-                }`}>
+                <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center font-bold mb-2 bg-[#E2F3F0] text-[#42B7A7]">
                   {idx === 0 ? <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" /> : idx === 1 ? <Award className="w-5 h-5 sm:w-6 sm:h-6" /> : <Compass className="w-5 h-5 sm:w-6 sm:h-6" />}
                 </div>
-                <h3 className="text-sm sm:text-base font-bold font-display text-slate-900">
+                <h3 className="text-sm sm:text-base font-bold font-display text-[#26423E]">
                   {item.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-1">
+                <p className="text-xs sm:text-sm text-[#56776A] leading-relaxed mt-1">
                   {item.description}
                 </p>
               </div>
@@ -252,18 +250,18 @@ export const Home: React.FC = () => {
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-4 sm:mb-6">
           <div>
-            <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-700 mb-1">
-              <Award className="w-3.5 h-3.5 text-emerald-600" />
+            <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#42B7A7] mb-1">
+              <Award className="w-3.5 h-3.5 text-[#42B7A7]" />
               MoRTH Certified Safety Mentors
             </div>
-            <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+            <h2 className="text-lg sm:text-2xl font-bold font-display text-[#26423E] tracking-tight">
               Learn From Patient, Background-Verified Instructors
             </h2>
           </div>
 
           <Link
             to="/instructors"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline shrink-0 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#42B7A7] hover:text-[#56776A] underline shrink-0 transition-colors"
           >
             View All Mentors ({instructors?.length || 9}) →
           </Link>
@@ -285,13 +283,13 @@ export const Home: React.FC = () => {
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-3 sm:mb-6">
-          <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+          <h2 className="text-lg sm:text-2xl font-bold font-display text-[#26423E] tracking-tight">
             6-Step Licence Roadmap
           </h2>
 
           <Link
             to="/roadmap"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline shrink-0 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#42B7A7] hover:text-[#56776A] underline shrink-0 transition-colors"
           >
             Full RTO Guide →
           </Link>
@@ -309,13 +307,13 @@ export const Home: React.FC = () => {
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-3 sm:mb-6">
-          <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+          <h2 className="text-lg sm:text-2xl font-bold font-display text-[#26423E] tracking-tight">
             Student Reviews & Stories
           </h2>
 
           <Link
             to="/testimonials"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline shrink-0 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#42B7A7] hover:text-[#56776A] underline shrink-0 transition-colors"
           >
             Read All Reviews ({testimonials.length}+) →
           </Link>
@@ -329,7 +327,7 @@ export const Home: React.FC = () => {
             </div>
           ))}
         </div>
-        <div className="flex items-center justify-center gap-1.5 pt-1.5 text-[0.68rem] text-slate-400 md:hidden">
+        <div className="flex items-center justify-center gap-1.5 pt-1.5 text-[0.68rem] text-[#56776A] md:hidden">
           <span>← Swipe horizontally to read more reviews →</span>
         </div>
       </motion.section>
@@ -342,13 +340,13 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8"
       >
-        <div className="relative rounded-2xl sm:rounded-3xl bg-slate-900 text-white p-5 sm:p-10 lg:p-12 border border-slate-800 shadow-xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-8">
+        <div className="relative rounded-2xl sm:rounded-3xl bg-[#26423E] text-white p-5 sm:p-10 lg:p-12 border border-[#3D6357] shadow-xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-8">
           <div className="space-y-1.5 sm:space-y-2 text-center md:text-left max-w-xl">
             <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold font-display text-white tracking-tight">
               Ready to Start Your Driving Lessons?
             </h2>
 
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#C2D3D0] leading-relaxed">
               Doorstep pickup, zero-stall training, and patient mentors. Enquire online or chat with our admissions team on WhatsApp.
             </p>
           </div>
