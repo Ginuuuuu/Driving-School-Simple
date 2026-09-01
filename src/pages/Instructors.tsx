@@ -5,9 +5,11 @@ import { useContent } from '../context/ContentContext';
 import { InstructorCard } from '../components/cards/InstructorCard';
 import { SEO } from '../components/common/SEO';
 
+import { defaultInstructors } from '../content/instructors';
+
 export const Instructors: React.FC = () => {
   const { siteData } = useContent();
-  const { instructors } = siteData;
+  const instructors = siteData?.instructors || defaultInstructors;
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string, instructorId?: string) => void }>();
 
   return (
