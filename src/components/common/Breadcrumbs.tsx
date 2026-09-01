@@ -19,7 +19,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' 
         <li className="flex items-center">
           <Link
             to="/"
-            className="flex items-center gap-1 hover:text-[#BC2639] transition-colors font-medium text-slate-600"
+            className="flex items-center gap-1 hover:text-[#082B4C] transition-colors font-medium text-[#6B7280]"
           >
             <Home className="w-3.5 h-3.5" />
             <span>Home</span>
@@ -31,15 +31,15 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' 
 
           return (
             <li key={index} className="flex items-center gap-1.5 sm:gap-2">
-              <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+              <ChevronRight className="w-3.5 h-3.5 text-[#9CA3AF] shrink-0" />
               {isLast || !item.to ? (
-                <span className="font-semibold text-slate-900 truncate max-w-[200px] sm:max-w-none" aria-current="page">
+                <span className="font-semibold text-[#202B33] truncate max-w-[200px] sm:max-w-none" aria-current="page">
                   {item.label}
                 </span>
               ) : (
                 <Link
                   to={item.to}
-                  className="hover:text-[#BC2639] transition-colors font-medium text-slate-600 truncate max-w-[150px] sm:max-w-none"
+                  className="hover:text-[#082B4C] transition-colors font-medium text-[#6B7280] truncate max-w-[150px] sm:max-w-none"
                 >
                   {item.label}
                 </Link>
