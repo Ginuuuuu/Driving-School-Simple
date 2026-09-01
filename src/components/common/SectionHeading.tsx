@@ -24,23 +24,23 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
       {pillText && (
         <div className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase mb-3.5 ${
           isLight
-            ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/30'
-            : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+            ? 'bg-[#42B7A7]/20 text-[#EDEFF4] border border-[#42B7A7]/40'
+            : 'bg-[#E2F3F0] text-[#26423E] border border-[#C2D3D0]'
         }`}>
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#42B7A7] animate-pulse" />
           {pillText}
         </div>
       )}
 
       <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight font-display leading-[1.2] ${
-        isLight ? 'text-white' : 'text-slate-900'
+        isLight ? 'text-white' : 'text-[#26423E]'
       }`}>
         {title}
       </h2>
 
       {subtitle && (
         <p className={`mt-4 text-sm sm:text-base lg:text-lg leading-relaxed ${
-          isLight ? 'text-slate-300' : 'text-slate-600'
+          isLight ? 'text-[#C2D3D0]' : 'text-[#56776A]'
         }`}>
           {subtitle}
         </p>
