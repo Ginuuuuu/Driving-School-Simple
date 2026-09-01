@@ -190,10 +190,10 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                 status={status}
                 className={`transition-all duration-300 ${
                   isCurrent
-                    ? 'ring-4 ring-[#BC2639]/30 scale-125 border-[#BC2639] text-[#BC2639]'
+                    ? 'ring-4 ring-[#FFC5DC] scale-125 border-[#BC2639] bg-[#BC2639] text-white shadow-sm'
                     : isDone
-                    ? 'border-[#BC2639] text-[#BC2639]'
-                    : 'border-[#D4E2DF] text-[#404D68]'
+                    ? 'border-[#BC2639] bg-[#BC2639] text-white shadow-xs'
+                    : 'border-[#D4E2DF] bg-white text-[#404D68]'
                 }`}
               />
 
