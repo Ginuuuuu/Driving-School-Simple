@@ -9,13 +9,13 @@ interface TestimonialCardProps {
 
 export const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => {
   return (
-    <div className="flex flex-col justify-between h-full rounded-2xl sm:rounded-3xl bg-white border border-[#C2D3D0] p-3.5 sm:p-7 shadow-xs hover:shadow-md hover-lift transition-all duration-300">
+    <div className="flex flex-col justify-between h-full rounded-2xl sm:rounded-3xl bg-white border border-[#D4E2DF] p-3.5 sm:p-7 shadow-xs hover:shadow-md hover-lift transition-all duration-300">
       <div>
         {/* Rating Stars & Verified Tag */}
         <div className="flex items-center justify-between gap-2 mb-2.5 sm:mb-4">
           <div className="flex items-center gap-0.5 sm:gap-1">
             {[...Array(testimonial.rating)].map((_, i) => (
-              <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#42B7A7] text-[#42B7A7]" />
+              <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#BC2639] text-[#BC2639]" />
             ))}
           </div>
 
@@ -25,13 +25,13 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial })
         </div>
 
         {/* Quote Story */}
-        <p className="text-[#56776A] text-xs sm:text-sm leading-relaxed italic line-clamp-3 sm:line-clamp-4">
+        <p className="text-[#404D68] text-xs sm:text-sm leading-relaxed italic line-clamp-3 sm:line-clamp-4">
           "{testimonial.story}"
         </p>
 
         {/* Course & Vehicle tag */}
-        <div className="mt-2.5 sm:mt-4 pt-2 sm:pt-3 border-t border-[#C2D3D0]/60 flex flex-wrap items-center gap-1.5 sm:gap-2 text-[0.7rem] sm:text-xs text-[#56776A]">
-          <span className="font-semibold text-[#26423E] bg-[#E2F3F0] px-1.5 sm:px-2 py-0.5 rounded">
+        <div className="mt-2.5 sm:mt-4 pt-2 sm:pt-3 border-t border-[#D4E2DF]/60 flex flex-wrap items-center gap-1.5 sm:gap-2 text-[0.7rem] sm:text-xs text-[#404D68]">
+          <span className="font-semibold text-[#39340F] bg-[#FDF2F5] px-1.5 sm:px-2 py-0.5 rounded border border-[#FFC5DC]/50">
             {testimonial.courseTitle}
           </span>
           <span>•</span>
@@ -45,13 +45,13 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial })
           src={testimonial.avatarUrl}
           alt={testimonial.name}
           loading="lazy"
-          className="w-9 h-9 sm:w-11 sm:h-11 rounded-full object-cover border border-[#C2D3D0] shadow-xs shrink-0"
+          className="w-9 h-9 sm:w-11 sm:h-11 rounded-full object-cover border border-[#D4E2DF] shadow-xs shrink-0"
         />
         <div className="flex-1 min-w-0">
-          <h4 className="text-xs sm:text-sm font-bold text-[#26423E] truncate">
+          <h4 className="text-xs sm:text-sm font-bold text-[#39340F] truncate">
             {testimonial.name}
           </h4>
-          <p className="text-[0.68rem] sm:text-xs text-[#56776A] truncate">
+          <p className="text-[0.68rem] sm:text-xs text-[#404D68] truncate">
             {testimonial.city} • Coached by {testimonial.instructorName}
           </p>
         </div>
