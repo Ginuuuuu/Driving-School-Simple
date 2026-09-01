@@ -19,7 +19,7 @@ export const Resources: React.FC = () => {
       />
 
       <div>
-        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-[#26423E] tracking-tight">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-[#39340F] tracking-tight">
           Road Safety & Driving Guides
         </h1>
       </div>
@@ -37,38 +37,38 @@ export const Resources: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, delay: idx * 0.08 }}
-            className="p-3.5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#C2D3D0] shadow-xs hover:shadow-md hover-lift transition-all flex flex-col justify-between space-y-3 sm:space-y-4"
+            className="p-3.5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#D4E2DF] shadow-xs hover:shadow-md hover-lift transition-all flex flex-col justify-between space-y-3 sm:space-y-4"
           >
             <div>
               <div className="flex items-center justify-between gap-2 mb-2 sm:mb-3">
                 <Badge variant="emerald" size="sm">
                   {guide.category}
                 </Badge>
-                <span className="text-[0.7rem] sm:text-xs text-[#56776A] flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5 text-[#42B7A7]" />
+                <span className="text-[0.7rem] sm:text-xs text-[#404D68] flex items-center gap-1">
+                  <Clock className="w-3.5 h-3.5 text-[#BC2639]" />
                   {guide.readTimeMinutes} min read
                 </span>
               </div>
 
-              <h2 className="text-base sm:text-xl font-bold font-display text-[#26423E] leading-snug">
-                <Link to={`/resources/${guide.slug}`} className="hover:text-[#42B7A7] transition-colors">
+              <h2 className="text-base sm:text-xl font-bold font-display text-[#39340F] leading-snug">
+                <Link to={`/resources/${guide.slug}`} className="hover:text-[#BC2639] transition-colors">
                   {guide.title}
                 </Link>
               </h2>
 
-              <p className="mt-1.5 sm:mt-2.5 text-xs sm:text-sm text-[#56776A] leading-relaxed">
+              <p className="mt-1.5 sm:mt-2.5 text-xs sm:text-sm text-[#404D68] leading-relaxed">
                 {guide.summary}
               </p>
 
               {/* Key Takeaway Bullet preview */}
-              <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-[#C2D3D0]/60 space-y-1 sm:space-y-1.5">
-                <span className="text-[0.65rem] sm:text-[0.7rem] uppercase font-bold text-[#56776A] tracking-wider">
+              <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-[#D4E2DF]/60 space-y-1 sm:space-y-1.5">
+                <span className="text-[0.65rem] sm:text-[0.7rem] uppercase font-bold text-[#404D68] tracking-wider">
                   Highlights:
                 </span>
-                <ul className="text-xs text-[#26423E] space-y-1">
+                <ul className="text-xs text-[#39340F] space-y-1">
                   {guide.keyTakeaways.slice(0, 2).map((takeaway, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#42B7A7] mt-1.5 shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#BC2639] mt-1.5 shrink-0" />
                       <span className="line-clamp-1 text-[0.72rem] sm:text-xs">{takeaway}</span>
                     </li>
                   ))}
@@ -79,7 +79,7 @@ export const Resources: React.FC = () => {
             <div className="pt-1.5 sm:pt-2">
               <Link
                 to={`/resources/${guide.slug}`}
-                className="inline-flex items-center gap-2 text-xs font-bold text-[#42B7A7] hover:text-[#56776A] transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-bold text-[#BC2639] hover:text-[#5F1618] transition-colors"
               >
                 Read Complete Guide →
               </Link>
