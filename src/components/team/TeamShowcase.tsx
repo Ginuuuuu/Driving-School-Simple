@@ -139,24 +139,24 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
                   onClick={() => setMobileSelectedId(inst.id)}
                   className={`flex flex-col items-center gap-1.5 shrink-0 snap-center p-2 rounded-2xl transition-all duration-200 cursor-pointer min-w-[76px] ${
                     isSelected
-                      ? 'bg-emerald-50 border-2 border-emerald-500 shadow-sm scale-105'
-                      : 'bg-white border border-slate-200 opacity-80 hover:opacity-100'
+                      ? 'bg-[#E2F3F0] border-2 border-[#42B7A7] shadow-sm scale-105'
+                      : 'bg-white border border-[#C2D3D0] opacity-80 hover:opacity-100'
                   }`}
                 >
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden border border-slate-200">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border border-[#C2D3D0]">
                     <img
                       src={inst.photoUrl}
                       alt={inst.name}
                       className="w-full h-full object-cover object-top"
                     />
                     {isSelected && (
-                      <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-white rounded-full" />
+                      <span className="absolute bottom-0 right-0 w-3 h-3 bg-[#42B7A7] border-2 border-white rounded-full" />
                     )}
                   </div>
 
                   <span
                     className={`text-[0.68rem] font-bold text-center leading-tight truncate w-16 ${
-                      isSelected ? 'text-emerald-950 font-extrabold' : 'text-slate-700'
+                      isSelected ? 'text-[#26423E] font-extrabold' : 'text-[#56776A]'
                     }`}
                   >
                     {inst.name.split(' ')[0]}
@@ -168,28 +168,28 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
         </div>
 
         {/* Featured Mentor Mobile Card (Clean, Concise & Professional UX) */}
-        <div className="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
+        <div className="rounded-2xl bg-white border border-[#C2D3D0] shadow-sm overflow-hidden">
           {/* Header Photo Banner */}
-          <div className="relative h-44 w-full bg-slate-100">
+          <div className="relative h-44 w-full bg-[#EDEFF4]">
             <img
               src={activeMobileInstructor.photoUrl}
               alt={activeMobileInstructor.name}
               className="w-full h-full object-cover object-[center_20%]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#26423E]/80 via-transparent to-transparent" />
 
             {/* Rating Pill */}
-            <div className="absolute top-2.5 right-2.5 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 text-slate-900 text-[0.72rem] font-extrabold shadow-sm">
-              <Star className="w-3 h-3 fill-amber-400 text-amber-500" />
+            <div className="absolute top-2.5 right-2.5 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-white/95 text-[#26423E] text-[0.72rem] font-extrabold shadow-sm">
+              <Star className="w-3 h-3 fill-[#42B7A7] text-[#42B7A7]" />
               <span>{activeMobileInstructor.rating.toFixed(2)}</span>
-              <span className="text-[0.62rem] text-slate-500 font-normal">
+              <span className="text-[0.62rem] text-[#56776A] font-normal">
                 ({activeMobileInstructor.studentCount}+)
               </span>
             </div>
 
             {/* Experience Badge */}
             <div className="absolute bottom-2.5 left-2.5 flex items-center gap-1.5">
-              <span className="px-2 py-0.5 rounded-md bg-emerald-600 text-white font-bold text-[0.68rem] shadow-xs flex items-center gap-1">
+              <span className="px-2 py-0.5 rounded-md bg-[#42B7A7] text-white font-bold text-[0.68rem] shadow-xs flex items-center gap-1">
                 <ShieldCheck className="w-3 h-3" />
                 {activeMobileInstructor.experienceYears}+ Yrs Coaching
               </span>
@@ -199,10 +199,10 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
           {/* Body: Concise & UX-friendly */}
           <div className="p-3.5 space-y-2.5">
             <div className="flex items-baseline justify-between gap-2">
-              <h3 className="text-base font-bold font-display text-slate-900 leading-tight">
+              <h3 className="text-base font-bold font-display text-[#26423E] leading-tight">
                 {activeMobileInstructor.name}
               </h3>
-              <span className="text-[0.7rem] font-bold text-emerald-700 truncate shrink-0">
+              <span className="text-[0.7rem] font-bold text-[#42B7A7] truncate shrink-0">
                 {activeMobileInstructor.role.split('&')[0]}
               </span>
             </div>
@@ -212,13 +212,13 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
               {activeMobileInstructor.specialties.slice(0, 2).map((spec, i) => (
                 <span
                   key={i}
-                  className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[0.68rem] font-medium"
+                  className="px-2 py-0.5 rounded-md bg-[#EDEFF4] text-[#26423E] border border-[#C2D3D0]/60 text-[0.68rem] font-medium"
                 >
                   {spec}
                 </span>
               ))}
-              <span className="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 text-[0.68rem] font-medium flex items-center gap-1">
-                <Globe className="w-2.5 h-2.5" />
+              <span className="px-2 py-0.5 rounded-md bg-[#E2F3F0] text-[#26423E] text-[0.68rem] font-medium flex items-center gap-1">
+                <Globe className="w-2.5 h-2.5 text-[#42B7A7]" />
                 {activeMobileInstructor.languages.slice(0, 2).join(', ')}
               </span>
             </div>
@@ -315,13 +315,13 @@ function MemberRow({
         <span
           className={cn(
             'w-4 h-3 rounded-[5px] flex-shrink-0 transition-all duration-300',
-            isActive ? 'bg-slate-900 w-5' : 'bg-slate-900/25',
+            isActive ? 'bg-[#42B7A7] w-5' : 'bg-[#56776A]/30',
           )}
         />
         <span
           className={cn(
             'text-base md:text-[18px] font-semibold leading-none tracking-tight transition-colors duration-300',
-            isActive ? 'text-slate-900 font-bold' : 'text-slate-700',
+            isActive ? 'text-[#26423E] font-bold' : 'text-[#56776A]',
           )}
         >
           {member.name}
@@ -343,7 +343,7 @@ function MemberRow({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-1 rounded text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all duration-150 hover:scale-110"
+                className="p-1 rounded text-[#56776A] hover:text-[#26423E] hover:bg-[#C2D3D0]/30 transition-all duration-150 hover:scale-110"
                 title="X / Twitter"
               >
                 <FaTwitter size={10} />
@@ -355,7 +355,7 @@ function MemberRow({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-1 rounded text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all duration-150 hover:scale-110"
+                className="p-1 rounded text-[#56776A] hover:text-[#26423E] hover:bg-[#C2D3D0]/30 transition-all duration-150 hover:scale-110"
                 title="LinkedIn"
               >
                 <FaLinkedinIn size={10} />
@@ -367,7 +367,7 @@ function MemberRow({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-1 rounded text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all duration-150 hover:scale-110"
+                className="p-1 rounded text-[#56776A] hover:text-[#26423E] hover:bg-[#C2D3D0]/30 transition-all duration-150 hover:scale-110"
                 title="Instagram"
               >
                 <FaInstagram size={10} />
@@ -379,7 +379,7 @@ function MemberRow({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="p-1 rounded text-slate-400 hover:text-slate-900 hover:bg-slate-100 transition-all duration-150 hover:scale-110"
+                className="p-1 rounded text-[#56776A] hover:text-[#26423E] hover:bg-[#C2D3D0]/30 transition-all duration-150 hover:scale-110"
                 title="Behance"
               >
                 <FaBehance size={10} />
@@ -390,7 +390,7 @@ function MemberRow({
       </div>
 
       {/* Role */}
-      <p className="mt-1.5 pl-[27px] text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-700">
+      <p className="mt-1.5 pl-[27px] text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-[#42B7A7]">
         {member.role}
       </p>
     </div>
