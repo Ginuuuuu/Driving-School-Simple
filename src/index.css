@@ -4,81 +4,104 @@
 
 @layer base {
   :root {
-    --color-primary: 15 23 42;
-    --color-emerald: 16 185 129;
-    --color-amber: 245 158 11;
+    --color-primary: #42B7A7;
+    --color-primary-hover: #56776A;
+    --color-dark: #26423E;
+    --color-secondary: #56776A;
+    --color-soft: #C2D3D0;
+    --color-background: #EDEFF4;
+
+    --color-emerald: 66 183 167;
+    --color-amber: 86 119 106;
   }
 
   html {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    color: #0F172A;
-    background-color: #F8FAFC;
+    color: #26423E;
+    background-color: #EDEFF4;
     scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #EDEFF4;
+    color: #26423E;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
     letter-spacing: -0.02em;
+    color: #26423E;
   }
 
-  /* Accessible focus indicators */
+  p {
+    color: #56776A;
+  }
+
+  /* Accessible focus indicators with primary #42B7A7 */
   :focus-visible {
-    outline: 2px solid #10B981;
+    outline: 2px solid #42B7A7;
     outline-offset: 3px;
     border-radius: 4px;
   }
 
-  /* Smooth custom scrollbars */
+  /* Smooth custom scrollbars in new palette */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #F1F5F9;
+    background: #EDEFF4;
   }
   ::-webkit-scrollbar-thumb {
-    background: #CBD5E1;
+    background: #C2D3D0;
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #94A3B8;
+    background: #56776A;
   }
 }
 
 @layer utilities {
   /* Subtle glass card effects */
   .glass-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(237, 239, 244, 0.92);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(226, 232, 240, 0.8);
+    border: 1px solid rgba(194, 211, 208, 0.8);
   }
 
   .glass-card-dark {
-    background: rgba(15, 23, 42, 0.92);
+    background: rgba(38, 66, 62, 0.94);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(51, 65, 85, 0.6);
+    border: 1px solid rgba(86, 119, 106, 0.6);
   }
 
   /* Textured road patterns */
   .road-pattern {
-    background-color: #1E293B;
-    background-image: radial-gradient(#334155 1.5px, transparent 1.5px);
+    background-color: #26423E;
+    background-image: radial-gradient(#56776A 1.5px, transparent 1.5px);
     background-size: 16px 16px;
   }
 
   .road-asphalt {
-    background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%);
+    background: linear-gradient(180deg, #26423E 0%, #182B28 100%);
   }
 
   /* Text gradient helper */
-  .text-gradient-emerald {
-    background: linear-gradient(135deg, #0D9488 0%, #10B981 100%);
+  .text-gradient-emerald,
+  .text-gradient-teal {
+    background: linear-gradient(135deg, #42B7A7 0%, #349B8D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-dark {
+    background: linear-gradient(135deg, #26423E 0%, #56776A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .text-gradient-amber {
-    background: linear-gradient(135deg, #D97706 0%, #F59E0B 100%);
+    background: linear-gradient(135deg, #42B7A7 0%, #56776A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -142,7 +165,7 @@
   }
   body {
     background: #FFFFFF !important;
-    color: #000000 !important;
+    color: #26423E !important;
   }
 }
 
