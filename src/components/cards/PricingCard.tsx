@@ -14,8 +14,8 @@ export const PricingCard: React.FC<PricingCardProps> = ({ pkg, onSelectPackage }
     <div
       className={`relative flex flex-col justify-between rounded-2xl sm:rounded-3xl bg-white border hover-lift transition-all duration-300 ${
         pkg.popular
-          ? 'border-emerald-500 shadow-xl ring-2 ring-emerald-500/20 sm:-translate-y-2'
-          : 'border-slate-200/90 shadow-sm hover:shadow-lg'
+          ? 'border-[#42B7A7] shadow-xl ring-2 ring-[#42B7A7]/20 sm:-translate-y-2'
+          : 'border-[#C2D3D0] shadow-sm hover:shadow-lg'
       }`}
     >
       {/* Popular Flag Header */}
@@ -28,33 +28,33 @@ export const PricingCard: React.FC<PricingCardProps> = ({ pkg, onSelectPackage }
       )}
 
       {/* Package Header */}
-      <div className="p-4 sm:p-8 pb-3.5 sm:pb-6 border-b border-slate-100">
-        <h3 className="text-lg sm:text-xl font-bold font-display text-slate-900 leading-tight">
+      <div className="p-4 sm:p-8 pb-3.5 sm:pb-6 border-b border-[#C2D3D0]">
+        <h3 className="text-lg sm:text-xl font-bold font-display text-[#26423E] leading-tight">
           {pkg.name}
         </h3>
-        <p className="mt-1 text-xs text-slate-500 leading-relaxed">
+        <p className="mt-1 text-xs text-[#56776A] leading-relaxed">
           {pkg.tagline}
         </p>
 
         {/* Pricing Figures */}
         <div className="mt-3 sm:mt-5 flex items-baseline gap-1.5 sm:gap-2">
-          <span className="text-2xl sm:text-4xl font-extrabold text-slate-900 font-display">
+          <span className="text-2xl sm:text-4xl font-extrabold text-[#26423E] font-display">
             ₹{pkg.price.toLocaleString('en-IN')}
           </span>
           {pkg.originalPrice && (
-            <span className="text-xs sm:text-sm text-slate-400 line-through">
+            <span className="text-xs sm:text-sm text-[#56776A] line-through">
               ₹{pkg.originalPrice.toLocaleString('en-IN')}
             </span>
           )}
-          <span className="text-[0.7rem] sm:text-xs text-slate-600 font-medium ml-auto">
+          <span className="text-[0.7rem] sm:text-xs text-[#56776A] font-medium ml-auto">
             All-Inclusive
           </span>
         </div>
 
         {/* Package Highlights */}
-        <div className="mt-3 sm:mt-4 flex items-center justify-between text-[0.72rem] sm:text-xs font-semibold text-emerald-800 bg-emerald-50 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border border-emerald-200/60">
+        <div className="mt-3 sm:mt-4 flex items-center justify-between text-[0.72rem] sm:text-xs font-semibold text-[#26423E] bg-[#E2F3F0] px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border border-[#C2D3D0]">
           <span className="flex items-center gap-1.5">
-            <Clock className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+            <Clock className="w-3.5 h-3.5 text-[#42B7A7] shrink-0" />
             {pkg.durationHours} Hours Practical
           </span>
           <span>{pkg.sessionsCount} Sessions</span>
@@ -63,21 +63,21 @@ export const PricingCard: React.FC<PricingCardProps> = ({ pkg, onSelectPackage }
 
       {/* Feature Inclusions List */}
       <div className="p-4 sm:p-8 py-3.5 sm:py-6 space-y-2 sm:space-y-3.5 flex-1">
-        <div className="text-[0.65rem] sm:text-[0.7rem] uppercase tracking-wider font-bold text-slate-600">
+        <div className="text-[0.65rem] sm:text-[0.7rem] uppercase tracking-wider font-bold text-[#56776A]">
           What’s Included:
         </div>
 
         <ul className="space-y-1.5 sm:space-y-2.5">
           {pkg.featuresIncluded.map((feat, idx) => (
-            <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700">
-              <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 shrink-0 mt-0.5" />
+            <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-[#26423E]">
+              <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#42B7A7] shrink-0 mt-0.5" />
               <span className="leading-snug">{feat}</span>
             </li>
           ))}
 
           {pkg.featuresExcluded.map((feat, idx) => (
-            <li key={idx} className="flex items-start gap-2 text-xs text-slate-400 opacity-60">
-              <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400 shrink-0 mt-0.5" />
+            <li key={idx} className="flex items-start gap-2 text-xs text-[#56776A] opacity-60">
+              <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#56776A] shrink-0 mt-0.5" />
               <span className="leading-snug line-through">{feat}</span>
             </li>
           ))}
