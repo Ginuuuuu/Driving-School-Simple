@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { RoadmapStep } from '../../types';
 import { RoadmapCar } from './RoadmapCar';
+import { Button } from '../common/Button';
 import {
   Timeline,
   TimelineDot,
