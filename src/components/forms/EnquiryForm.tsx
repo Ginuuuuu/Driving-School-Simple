@@ -215,35 +215,35 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
     const selectedCourse = courses.find((c) => c.slug === formState.courseSlug);
 
     return (
-      <div className="p-5 sm:p-8 bg-emerald-50/50 rounded-2xl border border-emerald-200 text-center animate-in fade-in zoom-in-95 duration-300">
-        <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
+      <div className="p-5 sm:p-8 bg-[#E2F3F0]/60 rounded-2xl border border-[#C2D3D0] text-center animate-in fade-in zoom-in-95 duration-300">
+        <div className="w-14 h-14 bg-[#E2F3F0] text-[#42B7A7] rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
           <CheckCircle2 className="w-7 h-7" />
         </div>
 
-        <h3 className="text-lg sm:text-2xl font-bold font-display text-slate-900">
+        <h3 className="text-lg sm:text-2xl font-bold font-display text-[#26423E]">
           Your Lesson Enquiry is Ready!
         </h3>
-        <p className="mt-1.5 text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+        <p className="mt-1.5 text-xs sm:text-sm text-[#56776A] max-w-md mx-auto leading-relaxed">
           We have generated your structured booking request. Click below to open WhatsApp and send it directly to our admissions team for immediate confirmation.
         </p>
 
         {/* Enquiry Summary Card */}
-        <div className="mt-4 p-3.5 rounded-xl bg-white border border-slate-200 text-left text-xs text-slate-700 space-y-2 shadow-sm max-w-md mx-auto">
-          <div className="flex justify-between border-b border-slate-100 pb-1.5">
-            <span className="font-semibold text-slate-500">Student:</span>
-            <span className="font-bold text-slate-900">{formState.fullName}</span>
+        <div className="mt-4 p-3.5 rounded-xl bg-white border border-[#C2D3D0] text-left text-xs text-[#26423E] space-y-2 shadow-sm max-w-md mx-auto">
+          <div className="flex justify-between border-b border-[#C2D3D0]/50 pb-1.5">
+            <span className="font-semibold text-[#56776A]">Student:</span>
+            <span className="font-bold text-[#26423E]">{formState.fullName}</span>
           </div>
-          <div className="flex justify-between border-b border-slate-100 pb-1.5">
-            <span className="font-semibold text-slate-500">Course:</span>
-            <span className="font-bold text-emerald-800">{selectedCourse?.shortTitle || formState.courseSlug}</span>
+          <div className="flex justify-between border-b border-[#C2D3D0]/50 pb-1.5">
+            <span className="font-semibold text-[#56776A]">Course:</span>
+            <span className="font-bold text-[#42B7A7]">{selectedCourse?.shortTitle || formState.courseSlug}</span>
           </div>
-          <div className="flex justify-between border-b border-slate-100 pb-1.5">
-            <span className="font-semibold text-slate-500">Pickup Area:</span>
-            <span className="font-medium text-slate-900">{formState.pickupArea}, {formState.city}</span>
+          <div className="flex justify-between border-b border-[#C2D3D0]/50 pb-1.5">
+            <span className="font-semibold text-[#56776A]">Pickup Area:</span>
+            <span className="font-medium text-[#26423E]">{formState.pickupArea}, {formState.city}</span>
           </div>
           <div className="flex justify-between">
-            <span className="font-semibold text-slate-500">Slot & Gear:</span>
-            <span className="font-medium text-slate-900 capitalize">
+            <span className="font-semibold text-[#56776A]">Slot & Gear:</span>
+            <span className="font-medium text-[#26423E] capitalize">
               {formState.preferredTimeSlot.replace('_', ' ')} • {formState.transmission}
             </span>
           </div>
