@@ -34,7 +34,7 @@ export const Testimonials: React.FC = () => {
       />
 
       <div>
-        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-slate-900 tracking-tight">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-[#26423E] tracking-tight">
           Student Reviews & Testimonials
         </h1>
       </div>
@@ -44,12 +44,12 @@ export const Testimonials: React.FC = () => {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
-        className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1 sm:p-1.5 bg-slate-100 rounded-xl sm:rounded-2xl max-w-2xl mx-auto text-[0.7rem] sm:text-xs font-bold"
+        className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1 sm:p-1.5 bg-[#EDEFF4] border border-[#C2D3D0] rounded-xl sm:rounded-2xl max-w-2xl mx-auto text-[0.7rem] sm:text-xs font-bold"
       >
         <button
           onClick={() => setSelectedTag('all')}
           className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl transition-all ${
-            selectedTag === 'all' ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
+            selectedTag === 'all' ? 'bg-white text-[#26423E] border border-[#C2D3D0] shadow-xs' : 'text-[#56776A] hover:text-[#26423E]'
           }`}
         >
           All ({testimonials.length})
@@ -59,7 +59,7 @@ export const Testimonials: React.FC = () => {
             key={tag}
             onClick={() => setSelectedTag(tag)}
             className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg sm:rounded-xl transition-all ${
-              selectedTag === tag ? 'bg-white text-slate-900 shadow-xs' : 'text-slate-600 hover:text-slate-900'
+              selectedTag === tag ? 'bg-white text-[#26423E] border border-[#C2D3D0] shadow-xs' : 'text-[#56776A] hover:text-[#26423E]'
             }`}
           >
             {tag}
@@ -94,21 +94,21 @@ export const Testimonials: React.FC = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.45 }}
-        className="bg-slate-900 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-12 text-center max-w-3xl mx-auto border border-slate-800 space-y-3 sm:space-y-4 shadow-xl"
+        className="bg-[#26423E] text-white rounded-2xl sm:rounded-3xl p-5 sm:p-12 text-center max-w-3xl mx-auto border border-[#3D6357] space-y-3 sm:space-y-4 shadow-xl"
       >
         <h2 className="text-xl sm:text-3xl font-bold font-display text-white">
           Ready to Write Your Own Driving Success Story?
         </h2>
-        <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
+        <p className="text-xs sm:text-sm text-[#C2D3D0] max-w-xl mx-auto">
           Start with a zero-pressure trial lesson. Doorstep pickup, dual-control safety, and patient certified mentors.
         </p>
         <div className="pt-2">
           <Button
-            variant="amber"
+            variant="primary"
             size="md"
             onClick={() => onOpenBooking()}
             className="text-xs sm:text-sm py-2.5 sm:py-3 hover-lift"
-            icon={<Sparkles className="w-4 h-4 text-slate-950" />}
+            icon={<Sparkles className="w-4 h-4 text-amber-300" />}
           >
             Book Your First Lesson
           </Button>
