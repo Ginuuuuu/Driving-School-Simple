@@ -210,8 +210,8 @@ export const LegalEditor: React.FC = () => {
                   </label>
                   <textarea
                     rows={3}
-                    value={sec.content}
-                    onChange={(e) => handlePrivacySectionChange(idx, 'content', e.target.value)}
+                    value={sec.body || (sec as any).content || ''}
+                    onChange={(e) => handlePrivacySectionChange(idx, 'body', e.target.value)}
                     className="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs text-slate-800 bg-white"
                   />
                 </div>
@@ -236,14 +236,14 @@ export const LegalEditor: React.FC = () => {
                 Terms & Conditions Clauses
               </h3>
               <p className="text-xs text-slate-500">
-                Last Updated: {legalData.termsAndConditions.lastUpdated}
+                Last Updated: {legalData.termsAndConditions?.lastUpdated}
               </p>
             </div>
 
             <button
               type="button"
               onClick={addTermsSection}
-              className="px-3.5 py-1.5 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-xs hover:bg-emerald-100 flex items-center gap-1.5"
+              className="px-3.5 py-1.5 rounded-xl bg-[#FDF2F5] text-[#BC2639] border border-[#FFC5DC] font-bold text-xs hover:bg-[#FCE7EF] flex items-center gap-1.5"
             >
               <Plus className="w-3.5 h-3.5" /> Add Clause
             </button>
@@ -255,7 +255,7 @@ export const LegalEditor: React.FC = () => {
             </label>
             <input
               type="text"
-              value={legalData.termsAndConditions.lastUpdated}
+              value={legalData.termsAndConditions?.lastUpdated || ''}
               onChange={(e) =>
                 setLegalData({
                   ...legalData,
@@ -267,7 +267,7 @@ export const LegalEditor: React.FC = () => {
           </div>
 
           <div className="space-y-4">
-            {legalData.termsAndConditions.sections.map((sec, idx) => (
+            {(legalData.termsAndConditions?.sections || []).map((sec, idx) => (
               <div key={idx} className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-slate-600 uppercase">CLAUSE #{idx + 1}</span>
@@ -298,8 +298,8 @@ export const LegalEditor: React.FC = () => {
                   </label>
                   <textarea
                     rows={3}
-                    value={sec.content}
-                    onChange={(e) => handleTermsSectionChange(idx, 'content', e.target.value)}
+                    value={sec.body || (sec as any).content || ''}
+                    onChange={(e) => handleTermsSectionChange(idx, 'body', e.target.value)}
                     className="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs text-slate-800 bg-white"
                   />
                 </div>
