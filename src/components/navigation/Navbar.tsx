@@ -46,30 +46,30 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-[#D4E2DF]/80 py-2 sm:py-3'
-          : 'bg-white/90 backdrop-blur-md border-b border-[#D4E2DF]/60 py-2.5 sm:py-4'
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-[#E5E7EB] py-2 sm:py-3'
+          : 'bg-white/90 backdrop-blur-md border-b border-[#E5E7EB]/80 py-2.5 sm:py-4'
       }`}
     >
       {/* Top Announcement Micro-Bar (Only when top) */}
       {!isScrolled && (
-        <div className="hidden lg:block border-b border-[#D4E2DF]/60 pb-2 mb-2">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs text-[#404D68]">
+        <div className="hidden lg:block border-b border-[#E5E7EB] pb-2 mb-2">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs text-[#6B7280]">
             <div className="flex items-center gap-4">
-              <span className="flex items-center gap-1.5 text-[#BC2639] font-semibold">
-                <Shield className="w-3.5 h-3.5 text-[#BC2639]" />
+              <span className="flex items-center gap-1.5 text-[#082B4C] font-semibold">
+                <Shield className="w-3.5 h-3.5 text-[#F4C400]" />
                 Govt. Certified Training Fleet & Doorstep Pickup
               </span>
-              <span className="text-[#9FBAB4]">•</span>
+              <span className="text-[#D1D5DB]">•</span>
               <span>Available in {siteConfig.serviceCities.slice(0, 4).join(', ')} & more</span>
             </div>
 
             <div className="flex items-center gap-5">
               <a
                 href={`tel:${siteConfig.phoneDial}`}
-                className="flex items-center gap-1.5 hover:text-[#BC2639] font-semibold text-[#39340F] transition-colors"
+                className="flex items-center gap-1.5 hover:text-[#082B4C] font-semibold text-[#202B33] transition-colors"
                 aria-label={`Call ${siteConfig.phoneDisplay}`}
               >
-                <Phone className="w-3.5 h-3.5 text-[#BC2639]" />
+                <Phone className="w-3.5 h-3.5 text-[#F4C400]" />
                 {siteConfig.phoneDisplay}
               </a>
             </div>
@@ -84,7 +84,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
           <Logo size="md" showTagline={!isScrolled} />
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden xl:flex items-center gap-1 text-sm font-medium text-[#39340F]">
+          <nav className="hidden xl:flex items-center gap-1 text-sm font-medium text-[#202B33]">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.to;
 
@@ -94,8 +94,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
                   to={link.to}
                   className={`px-3 py-2 rounded-lg transition-colors whitespace-nowrap text-sm font-medium ${
                     isActive
-                      ? 'text-[#BC2639] font-bold bg-[#FDF2F5]'
-                      : 'hover:text-[#BC2639] hover:bg-[#FFF5F8] text-[#39340F]'
+                      ? 'text-[#082B4C] font-bold bg-[#F4C400]/25'
+                      : 'hover:text-[#082B4C] hover:bg-[#F5F6F7] text-[#202B33]'
                   }`}
                 >
                   {link.label}
@@ -121,10 +121,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
             {/* Quick Call Button */}
             <a
               href={`tel:${siteConfig.phoneDial}`}
-              className="hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-[#39340F] bg-[#FAF6F8] hover:bg-[#FDF2F5] border border-[#D4E2DF] transition-colors"
+              className="hidden md:inline-flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-[#202B33] bg-[#F5F6F7] hover:bg-[#E5E7EB] border border-[#E5E7EB] transition-colors"
               aria-label={`Call us at ${siteConfig.phoneDisplay}`}
             >
-              <Phone className="w-3.5 h-3.5 text-[#BC2639]" />
+              <Phone className="w-3.5 h-3.5 text-[#082B4C]" />
               <span>Call Us</span>
             </a>
 
@@ -133,8 +133,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
               variant="primary"
               size="sm"
               onClick={onOpenBookingModal}
-              className="text-xs sm:text-sm px-2.5 sm:px-4 py-2 sm:py-2.5 shadow-sm font-bold shrink-0"
-              icon={<Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFC5DC] shrink-0" />}
+              className="text-xs sm:text-sm px-2.5 sm:px-4 py-2 sm:py-2.5 shadow-sm font-bold shrink-0 text-[#082B4C]"
+              icon={<Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#082B4C] shrink-0" />}
             >
               <span className="hidden sm:inline">Book a Lesson</span>
               <span className="sm:hidden">Book</span>
@@ -144,7 +144,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
             <button
               type="button"
               onClick={onOpenMobileMenu}
-              className="xl:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-[#FAF6F8] hover:bg-[#FDF2F5] text-[#39340F] border border-[#D4E2DF] focus:ring-2 focus:ring-[#BC2639] active:scale-95 transition-all shrink-0 cursor-pointer"
+              className="xl:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-[#F5F6F7] hover:bg-[#E5E7EB] text-[#202B33] border border-[#E5E7EB] focus:ring-2 focus:ring-[#F4C400] active:scale-95 transition-all shrink-0 cursor-pointer"
               aria-label="Open Mobile Navigation Menu"
             >
               <Menu className="w-5 h-5" />
