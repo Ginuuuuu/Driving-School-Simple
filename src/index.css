@@ -4,43 +4,50 @@
 
 @layer base {
   :root {
-    --color-primary: #BC2639;
-    --color-primary-hover: #5F1618;
-    --color-dark: #39340F;
-    --color-secondary: #404D68;
-    --color-soft: #FFC5DC;
-    --color-muted: #9FBAB4;
-    --color-background: #FAF6F8;
+    --color-primary: #082B4C;
+    --color-primary-hover: #061F36;
 
-    --color-emerald: 188 38 57;
-    --color-amber: 188 38 57;
+    --color-accent: #F4C400;
+    --color-accent-hover: #DFAF00;
+    --color-accent-light: #FFD21A;
+
+    --color-background: #FFFFFF;
+    --color-background-muted: #F5F6F7;
+
+    --color-text-primary: #202B33;
+    --color-text-secondary: #6B7280;
+
+    --color-border: #E5E7EB;
+
+    --color-emerald: 16 185 129;
+    --color-amber: 244 196 0;
   }
 
   html {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    color: #39340F;
-    background-color: #FAF6F8;
+    color: #202B33;
+    background-color: #FFFFFF;
     scroll-behavior: smooth;
   }
 
   body {
-    background-color: #FAF6F8;
-    color: #39340F;
+    background-color: #FFFFFF;
+    color: #202B33;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
     letter-spacing: -0.02em;
-    color: #39340F;
+    color: #202B33;
   }
 
   p {
-    color: #404D68;
+    color: #6B7280;
   }
 
-  /* Accessible focus indicators with primary #BC2639 */
+  /* Accessible focus indicators with accent yellow #F4C400 or navy #082B4C */
   :focus-visible {
-    outline: 2px solid #BC2639;
+    outline: 2px solid #F4C400;
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -51,59 +58,59 @@
     height: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #FAF6F8;
+    background: #F5F6F7;
   }
   ::-webkit-scrollbar-thumb {
-    background: #FFC5DC;
+    background: #D1D5DB;
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #BC2639;
+    background: #F4C400;
   }
 }
 
 @layer utilities {
   /* Subtle glass card effects */
   .glass-card {
-    background: rgba(250, 246, 248, 0.92);
+    background: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(212, 226, 223, 0.8);
+    border: 1px solid rgba(229, 231, 235, 0.8);
   }
 
   .glass-card-dark {
-    background: rgba(57, 52, 15, 0.94);
+    background: rgba(8, 43, 76, 0.94);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(95, 22, 24, 0.6);
+    border: 1px solid rgba(244, 196, 0, 0.25);
   }
 
   /* Textured road patterns */
   .road-pattern {
-    background-color: #39340F;
-    background-image: radial-gradient(#5F1618 1.5px, transparent 1.5px);
+    background-color: #082B4C;
+    background-image: radial-gradient(#061F36 1.5px, transparent 1.5px);
     background-size: 16px 16px;
   }
 
   .road-asphalt {
-    background: linear-gradient(180deg, #39340F 0%, #26230A 100%);
+    background: linear-gradient(180deg, #202B33 0%, #082B4C 100%);
   }
 
   /* Text gradient helper */
   .text-gradient-emerald,
   .text-gradient-teal,
   .text-gradient-crimson {
-    background: linear-gradient(135deg, #BC2639 0%, #5F1618 100%);
+    background: linear-gradient(135deg, #082B4C 0%, #F4C400 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .text-gradient-dark {
-    background: linear-gradient(135deg, #39340F 0%, #5F1618 100%);
+    background: linear-gradient(135deg, #082B4C 0%, #202B33 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .text-gradient-amber {
-    background: linear-gradient(135deg, #BC2639 0%, #FFC5DC 100%);
+    background: linear-gradient(135deg, #F4C400 0%, #FFD21A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -167,7 +174,7 @@
   }
   body {
     background: #FFFFFF !important;
-    color: #39340F !important;
+    color: #202B33 !important;
   }
 }
 
