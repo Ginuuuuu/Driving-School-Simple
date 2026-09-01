@@ -35,7 +35,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
   const [activeStepIndex, setActiveStepIndex] = useState<number>(0);
   const [scrollProgressRatio, setScrollProgressRatio] = useState<number>(0);
 
-  // For non-compact view on mobile: tap-to-expand details
+  // For mobile full roadmap: tap-to-expand details
   const [expandedIndices, setExpandedIndices] = useState<Set<number>>(new Set([0]));
 
   const toggleStep = (idx: number) => {
@@ -95,7 +95,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
     <div
       ref={containerRef}
       className={`relative w-full max-w-4xl mx-auto select-none ${
-        isCompactPreview ? 'py-2 sm:py-4' : 'py-6 sm:py-10 space-y-8'
+        isCompactPreview ? 'py-3 sm:py-6' : 'py-6 sm:py-10 space-y-8'
       }`}
     >
       {/* ANIMATED REACTIVE CAR ON THE TIMELINE LINE (MOBILE & DESKTOP) */}
@@ -133,40 +133,56 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
               key={step.id || idx}
               status={status}
               className={`transition-colors duration-300 group ${
-                isCompactPreview ? 'pb-2 sm:pb-3' : ''
+                isCompactPreview ? 'pb-4 sm:pb-6' : 'pb-6 sm:pb-10'
               }`}
             >
-              {/* Heading — Title-First Scannability */}
+              {/* Heading — Two-Line Mobile Title Layout & Full Desktop Title */}
               <TimelineHeading
                 side="right"
                 variant={isCurrent || isDone ? 'primary' : 'secondary'}
-                className="flex items-center justify-between gap-2 mb-1 cursor-pointer select-none"
+                className="mb-1 cursor-pointer select-none"
                 onClick={() => !isCompactPreview && toggleStep(idx)}
               >
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
+                {/* Mobile Heading (< md): STAGE on top, 2-line title below */}
+                <div className="block md:hidden pr-2">
+                  <div className="flex items-center justify-between gap-1 mb-0.5">
+                    <span className="font-mono text-[0.68rem] uppercase tracking-wider font-bold text-emerald-600">
+                      Stage {step.stepNumber}
+                    </span>
+                    {step.approxDuration && (
+                      <span className="text-[0.65rem] text-slate-400 font-mono">
+                        {step.approxDuration}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-start justify-between gap-2">
+                    <h3 className="text-sm font-bold font-display text-slate-900 leading-snug break-words max-w-[calc(100vw-85px)] group-hover:text-emerald-800 transition-colors">
+                      {step.title}
+                    </h3>
+                    {!isCompactPreview && (
+                      <ChevronDown
+                        className={`w-4 h-4 shrink-0 text-slate-400 transition-transform duration-200 mt-0.5 ${
+                          isExpanded ? 'rotate-180 text-emerald-600' : ''
+                        }`}
+                      />
+                    )}
+                  </div>
+                </div>
+
+                {/* Desktop Heading (>= md): Inline Stage + Title + Duration */}
+                <div className="hidden md:flex items-center gap-2.5">
                   <span className="font-mono text-xs uppercase tracking-wider font-bold text-emerald-600">
                     Stage {step.stepNumber}
                   </span>
-                  <span className="text-sm sm:text-base font-bold font-display text-slate-900 group-hover:text-emerald-800 transition-colors">
+                  <span className="text-base sm:text-lg font-semibold font-display text-slate-900 group-hover:text-emerald-800 transition-colors">
                     {step.title}
                   </span>
                   {step.approxDuration && (
-                    <span className="text-xs text-slate-400 font-mono hidden sm:inline">
+                    <span className="text-xs text-slate-400 font-mono">
                       • {step.approxDuration}
                     </span>
                   )}
                 </div>
-
-                {/* Chevron for mobile tap-to-expand in full roadmap page */}
-                {!isCompactPreview && (
-                  <div className="md:hidden pr-2 text-slate-400">
-                    <ChevronDown
-                      className={`w-4 h-4 transition-transform duration-200 ${
-                        isExpanded ? 'rotate-180 text-emerald-600' : ''
-                      }`}
-                    />
-                  </div>
-                )}
               </TimelineHeading>
 
               {/* Dot */}
@@ -191,105 +207,106 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                 />
               )}
 
-              {/* Content: ONLY rendered on the full Roadmap page (!isCompactPreview).
-                  On the Home page (isCompactPreview), extra stuff is excluded per UX rules */}
-              {!isCompactPreview && (
-                <TimelineContent side="right" className="pb-8 pt-1 space-y-3 max-w-3xl">
-                  {/* Desktop view shows details; Mobile view shows details when tapped/expanded */}
-                  <div className="hidden md:block space-y-3">
-                    {/* Subtitle / Stage name */}
-                    {step.subtitle && (
-                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                        {step.subtitle}
-                      </p>
-                    )}
-
-                    {/* Summary text */}
-                    <p className="text-sm text-slate-700 leading-relaxed">
-                      {step.summary}
+              {/* Content Section:
+                  - On Desktop (>= md): Always shows previous rich layout.
+                  - On Mobile (< md): Only shows details on full /roadmap page when expanded. */}
+              <TimelineContent side="right" className="pt-1 max-w-3xl">
+                {/* ── DESKTOP CONTENT (>= md): PREVIOUS COMPLETE RICH LAYOUT ── */}
+                <div className="hidden md:block space-y-3 pb-8">
+                  {/* Subtitle / Stage name */}
+                  {step.subtitle && (
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                      {step.subtitle}
                     </p>
+                  )}
 
-                    {/* Additional Details */}
-                    {step.details && (
-                      <p className="text-xs text-slate-600 leading-relaxed pt-1">
-                        {step.details}
-                      </p>
-                    )}
+                  {/* Summary text */}
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    {step.summary}
+                  </p>
 
-                    {/* Checklist & Key Rules */}
-                    {step.requiredDocuments && step.requiredDocuments.length > 0 && (
-                      <div className="pt-2 space-y-1.5">
-                        <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5 uppercase tracking-wider">
-                          <FileText className="w-3.5 h-3.5 text-emerald-600" />
-                          Key Requirements:
-                        </span>
-                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs text-slate-600 pl-1">
-                          {step.requiredDocuments.slice(0, 4).map((doc, docIdx) => (
-                            <li key={docIdx} className="flex items-start gap-1.5">
-                              <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                              <span>{doc}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                  {/* Additional Details */}
+                  {!isCompactPreview && step.details && (
+                    <p className="text-xs text-slate-600 leading-relaxed pt-1">
+                      {step.details}
+                    </p>
+                  )}
 
-                    {/* ADTT Automated Track Maneuvers */}
-                    {step.rtoTrackManeuvers && (
-                      <div className="pt-2 space-y-1.5">
-                        <span className="text-xs font-bold text-amber-900 flex items-center gap-1.5 uppercase tracking-wider">
-                          <Award className="w-3.5 h-3.5 text-amber-600" />
-                          Track Drills:
-                        </span>
-                        <div className="flex flex-wrap gap-1.5">
-                          {step.rtoTrackManeuvers.map((drill, drillIdx) => (
-                            <span
-                              key={drillIdx}
-                              className="px-2.5 py-1 rounded-lg bg-amber-50/80 border border-amber-200/80 text-[0.72rem] text-amber-900"
-                            >
-                              {drill}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Instructor Pro-Tip */}
-                    {step.instructorProTip && (
-                      <div className="pt-2 flex items-start gap-2 text-xs text-emerald-900 bg-emerald-50/70 border border-emerald-200/70 p-2.5 rounded-xl">
-                        <Lightbulb className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                        <p className="italic">
-                          <strong className="not-italic font-bold">Instructor Tip: </strong>
-                          "{step.instructorProTip}"
-                        </p>
-                      </div>
-                    )}
-
-                    {/* Action Link & CTA */}
-                    <div className="pt-2 flex items-center gap-4 text-xs">
-                      {step.rtoPortalUrl && (
-                        <a
-                          href={step.rtoPortalUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-emerald-700 font-semibold hover:underline"
-                        >
-                          Official Sarathi Portal <ExternalLink className="w-3 h-3" />
-                        </a>
-                      )}
-
-                      {onOpenBookingModal && (
-                        <button
-                          onClick={onOpenBookingModal}
-                          className="text-slate-800 font-bold hover:text-emerald-700 underline transition-colors cursor-pointer"
-                        >
-                          Book Training for this Stage →
-                        </button>
-                      )}
+                  {/* Checklist & Key Rules */}
+                  {!isCompactPreview && step.requiredDocuments && step.requiredDocuments.length > 0 && (
+                    <div className="pt-2 space-y-1.5">
+                      <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5 uppercase tracking-wider">
+                        <FileText className="w-3.5 h-3.5 text-emerald-600" />
+                        Key Requirements:
+                      </span>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs text-slate-600 pl-1">
+                        {step.requiredDocuments.slice(0, 4).map((doc, docIdx) => (
+                          <li key={docIdx} className="flex items-start gap-1.5">
+                            <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+                            <span>{doc}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
+                  )}
 
-                  {/* Mobile Tap-to-Expand Accordion Details */}
+                  {/* ADTT Automated Track Maneuvers */}
+                  {!isCompactPreview && step.rtoTrackManeuvers && (
+                    <div className="pt-2 space-y-1.5">
+                      <span className="text-xs font-bold text-amber-900 flex items-center gap-1.5 uppercase tracking-wider">
+                        <Award className="w-3.5 h-3.5 text-amber-600" />
+                        Track Drills:
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {step.rtoTrackManeuvers.map((drill, drillIdx) => (
+                          <span
+                            key={drillIdx}
+                            className="px-2.5 py-1 rounded-lg bg-amber-50/80 border border-amber-200/80 text-[0.72rem] text-amber-900"
+                          >
+                            {drill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Instructor Pro-Tip */}
+                  {!isCompactPreview && step.instructorProTip && (
+                    <div className="pt-2 flex items-start gap-2 text-xs text-emerald-900 bg-emerald-50/70 border border-emerald-200/70 p-2.5 rounded-xl">
+                      <Lightbulb className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                      <p className="italic">
+                        <strong className="not-italic font-bold">Instructor Tip: </strong>
+                        "{step.instructorProTip}"
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Action Link & CTA */}
+                  <div className="pt-2 flex items-center gap-4 text-xs">
+                    {step.rtoPortalUrl && (
+                      <a
+                        href={step.rtoPortalUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-emerald-700 font-semibold hover:underline"
+                      >
+                        Official Sarathi Portal <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
+
+                    {onOpenBookingModal && (
+                      <button
+                        onClick={onOpenBookingModal}
+                        className="text-slate-800 font-bold hover:text-emerald-700 underline transition-colors cursor-pointer"
+                      >
+                        Book Training for this Stage →
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {/* ── MOBILE CONTENT (< md): TAP-TO-EXPAND ONLY IN FULL ROADMAP PAGE ── */}
+                {!isCompactPreview && (
                   <div className="block md:hidden">
                     <AnimatePresence initial={false}>
                       {isExpanded && (
@@ -298,7 +315,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.25 }}
-                          className="space-y-3 pt-1"
+                          className="space-y-2.5 pt-1 pb-4"
                         >
                           <p className="text-xs text-slate-700 leading-relaxed">
                             {step.summary}
@@ -311,7 +328,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                           )}
 
                           {step.requiredDocuments && step.requiredDocuments.length > 0 && (
-                            <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+                            <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
                               <span className="text-[0.68rem] font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1">
                                 <FileText className="w-3 h-3 text-emerald-600" />
                                 Requirements:
@@ -358,8 +375,8 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
                       )}
                     </AnimatePresence>
                   </div>
-                </TimelineContent>
-              )}
+                )}
+              </TimelineContent>
             </TimelineItem>
           );
         })}

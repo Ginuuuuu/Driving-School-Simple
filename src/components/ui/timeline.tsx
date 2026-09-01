@@ -138,7 +138,7 @@ const TimelineContent = React.forwardRef<HTMLDivElement, TimelineContentProps>(
 TimelineContent.displayName = 'TimelineContent'
 
 const timelineHeadingVariants = cva(
-   'row-start-1 row-end-1 line-clamp-1 max-w-full truncate',
+   'row-start-1 row-end-1 max-w-full',
    {
       variants: {
          side: {
