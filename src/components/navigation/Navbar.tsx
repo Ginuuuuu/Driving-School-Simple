@@ -6,6 +6,8 @@ import { Button } from '../common/Button';
 import { useContent } from '../../context/ContentContext';
 import { generateDirectWhatsAppChatLink } from '../../utils/whatsapp';
 
+import { defaultSiteConfig } from '../../content/siteConfig';
+
 interface NavbarProps {
   onOpenMobileMenu: () => void;
   onOpenBookingModal: () => void;
@@ -15,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const { siteData } = useContent();
-  const { siteConfig } = siteData;
+  const siteConfig = siteData?.siteConfig || defaultSiteConfig;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
     { label: 'Roadmap', to: '/roadmap' },
     { label: 'Instructors', to: '/instructors' },
     { label: 'Pricing', to: '/pricing' },
+    { label: 'Reviews', to: '/testimonials' },
     { label: 'Resources', to: '/resources' },
     { label: 'FAQ', to: '/faq' },
     { label: 'Contact', to: '/contact' },
