@@ -3,10 +3,12 @@ import { Shield } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { SEO } from '../components/common/SEO';
 
+import { defaultLegal } from '../content/legal';
+
 export const Privacy: React.FC = () => {
   const { siteData } = useContent();
-  const { legal } = siteData;
-  const policy = legal.privacyPolicy;
+  const legal = siteData?.legal || defaultLegal;
+  const policy = legal?.privacyPolicy || defaultLegal.privacyPolicy;
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
@@ -26,13 +28,13 @@ export const Privacy: React.FC = () => {
       </div>
 
       <div className="p-6 sm:p-10 bg-white rounded-3xl border border-[#D4E2DF] shadow-sm space-y-8 text-[#39340F]">
-        {policy.sections.map((section, idx) => (
+        {(policy.sections || []).map((section, idx) => (
           <section key={idx} className="space-y-2">
             <h2 className="text-base sm:text-lg font-bold font-display text-[#39340F]">
               {section.heading}
             </h2>
             <p className="text-xs sm:text-sm text-[#404D68] leading-relaxed">
-              {section.body}
+              {section.body || (section as any).content || ''}
             </p>
           </section>
         ))}
