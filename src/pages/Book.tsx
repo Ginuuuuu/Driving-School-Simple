@@ -19,7 +19,7 @@ export const Book: React.FC = () => {
       />
 
       <div>
-        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-slate-900 tracking-tight">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-[#26423E] tracking-tight">
           Book a Driving Lesson
         </h1>
       </div>
@@ -29,7 +29,7 @@ export const Book: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, delay: 0.1 }}
-        className="p-3.5 sm:p-10 bg-white rounded-2xl sm:rounded-3xl border border-slate-200 shadow-xs"
+        className="p-3.5 sm:p-10 bg-white rounded-2xl sm:rounded-3xl border border-[#C2D3D0] shadow-xs"
       >
         <EnquiryForm
           preselectedCourseSlug={courseParam}
@@ -44,22 +44,22 @@ export const Book: React.FC = () => {
         transition={{ duration: 0.4, delay: 0.2 }}
         className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 text-center"
       >
-        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs space-y-1 hover-lift">
-          <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 mx-auto" />
-          <h4 className="text-xs font-bold text-slate-900">100% Dual-Control</h4>
-          <p className="text-[0.65rem] sm:text-[0.7rem] text-slate-500">Secondary instructor safety pedals</p>
+        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-[#C2D3D0] shadow-xs space-y-1 hover-lift">
+          <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#42B7A7] mx-auto" />
+          <h4 className="text-xs font-bold text-[#26423E]">100% Dual-Control</h4>
+          <p className="text-[0.65rem] sm:text-[0.7rem] text-[#56776A]">Secondary instructor safety pedals</p>
         </div>
 
-        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs space-y-1 hover-lift">
-          <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 mx-auto" />
-          <h4 className="text-xs font-bold text-slate-900">Flexible Scheduling</h4>
-          <p className="text-[0.65rem] sm:text-[0.7rem] text-slate-500">Daily 1-hour slots from 6 AM to 8 PM</p>
+        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-[#C2D3D0] shadow-xs space-y-1 hover-lift">
+          <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#42B7A7] mx-auto" />
+          <h4 className="text-xs font-bold text-[#26423E]">Flexible Scheduling</h4>
+          <p className="text-[0.65rem] sm:text-[0.7rem] text-[#56776A]">Daily 1-hour slots from 6 AM to 8 PM</p>
         </div>
 
-        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-slate-200 shadow-xs space-y-1 hover-lift">
-          <Car className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600 mx-auto" />
-          <h4 className="text-xs font-bold text-slate-900">Doorstep Pickup</h4>
-          <p className="text-[0.65rem] sm:text-[0.7rem] text-slate-500">Directly from your home or office</p>
+        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-[#C2D3D0] shadow-xs space-y-1 hover-lift">
+          <Car className="w-4 h-4 sm:w-5 sm:h-5 text-[#42B7A7] mx-auto" />
+          <h4 className="text-xs font-bold text-[#26423E]">Doorstep Pickup</h4>
+          <p className="text-[0.65rem] sm:text-[0.7rem] text-[#56776A]">Directly from your home or office</p>
         </div>
       </motion.div>
     </div>
