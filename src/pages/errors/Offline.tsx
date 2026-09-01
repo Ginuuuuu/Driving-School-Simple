@@ -4,10 +4,14 @@ import { useContent } from '../../context/ContentContext';
 import { Button } from '../../components/common/Button';
 import { SEO } from '../../components/common/SEO';
 
+import { defaultErrors } from '../../content/errors';
+import { defaultSiteConfig } from '../../content/siteConfig';
+
 export const Offline: React.FC = () => {
   const { siteData } = useContent();
-  const { errors, siteConfig } = siteData;
-  const off = errors.offline;
+  const errors = siteData?.errors || defaultErrors;
+  const siteConfig = siteData?.siteConfig || defaultSiteConfig;
+  const off = errors?.offline || defaultErrors.offline;
 
   return (
     <div className="max-w-xl mx-auto px-4 py-16 text-center space-y-6">
