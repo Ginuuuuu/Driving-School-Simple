@@ -16,21 +16,21 @@ export const Terms: React.FC = () => {
       />
 
       <div className="space-y-1">
-        <h1 className="text-2xl sm:text-4xl font-extrabold font-display text-slate-900 tracking-tight">
+        <h1 className="text-2xl sm:text-4xl font-extrabold font-display text-[#26423E] tracking-tight">
           Terms & Conditions
         </h1>
-        <p className="text-xs text-slate-400 font-mono">
+        <p className="text-xs text-[#56776A] font-mono">
           Last Updated: {terms.lastUpdated}
         </p>
       </div>
 
-      <div className="p-6 sm:p-10 bg-white rounded-3xl border border-slate-200 shadow-sm space-y-8 text-slate-800">
+      <div className="p-6 sm:p-10 bg-white rounded-3xl border border-[#C2D3D0] shadow-sm space-y-8 text-[#26423E]">
         {terms.sections.map((section, idx) => (
           <section key={idx} className="space-y-2">
-            <h2 className="text-base sm:text-lg font-bold font-display text-slate-900">
+            <h2 className="text-base sm:text-lg font-bold font-display text-[#26423E]">
               {section.heading}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#56776A] leading-relaxed">
               {section.body}
             </p>
           </section>
