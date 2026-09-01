@@ -58,15 +58,16 @@ export const ResourceDetail: React.FC = () => {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.1 }}
-        className="p-6 rounded-3xl bg-[#39340F] text-white border border-[#5F1618] space-y-3 shadow-md"
+        className="relative overflow-hidden p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#2D0A14] via-[#481320] to-[#1E060D] text-white border border-[#BC2639]/30 space-y-3 shadow-xl"
       >
-        <h2 className="text-sm uppercase tracking-wider font-bold text-[#FFC5DC]">
+        <div className="absolute -top-16 -right-16 w-60 h-60 bg-[#BC2639]/20 rounded-full blur-2xl pointer-events-none" />
+        <h2 className="relative z-10 text-sm uppercase tracking-wider font-bold text-[#FFC5DC]">
           Key Takeaways & Golden Rules:
         </h2>
-        <ul className="space-y-2 text-xs sm:text-sm text-[#FAF6F8]">
+        <ul className="relative z-10 space-y-2 text-xs sm:text-sm text-[#FAF6F8]">
           {guide.keyTakeaways.map((takeaway, idx) => (
             <li key={idx} className="flex items-start gap-2.5">
-              <CheckCircle2 className="w-4 h-4 text-[#BC2639] mt-0.5 shrink-0" />
+              <CheckCircle2 className="w-4 h-4 text-[#FFC5DC] mt-0.5 shrink-0" />
               <span className="leading-relaxed">{takeaway}</span>
             </li>
           ))}
