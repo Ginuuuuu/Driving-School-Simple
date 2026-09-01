@@ -97,28 +97,28 @@ export const AdminLayout: React.FC = () => {
   const ActiveIcon = activeItem.icon;
 
   return (
-    <div className="min-h-screen flex bg-[#EDEFF4] text-[#26423E] font-sans">
+    <div className="min-h-screen flex bg-[#FAF6F8] text-[#39340F] font-sans">
       {/* Mobile Drawer Backdrop */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 z-40 bg-[#182B28]/60 backdrop-blur-xs lg:hidden"
+          className="fixed inset-0 z-40 bg-[#39340F]/60 backdrop-blur-xs lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
 
       {/* Admin Sidebar */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-[#26423E] text-white flex flex-col justify-between border-r border-[#3D6357] shadow-2xl transition-transform duration-300 lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-[#39340F] text-white flex flex-col justify-between border-r border-[#5F1618] shadow-2xl transition-transform duration-300 lg:translate-x-0 ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
         {/* Sidebar Header */}
         <div className="flex flex-col h-full overflow-hidden">
-          <div className="p-4 sm:p-5 border-b border-[#3D6357]/80 flex items-center justify-between shrink-0">
+          <div className="p-4 sm:p-5 border-b border-[#5F1618]/80 flex items-center justify-between shrink-0">
             <Logo variant="light" size="sm" isLink={false} />
             <button
               onClick={() => setIsSidebarOpen(false)}
-              className="lg:hidden p-1.5 text-[#C2D3D0] hover:text-white rounded-lg"
+              className="lg:hidden p-1.5 text-[#D4E2DF] hover:text-white rounded-lg"
             >
               <X className="w-5 h-5" />
             </button>
@@ -126,20 +126,20 @@ export const AdminLayout: React.FC = () => {
 
           {/* Quick Notice Pill */}
           <div className="px-4 pt-3 pb-1 shrink-0">
-            <div className="p-2.5 rounded-xl bg-[#182B28]/80 border border-[#3D6357]/80 text-xs text-[#EDEFF4]">
+            <div className="p-2.5 rounded-xl bg-[#26230A]/80 border border-[#5F1618]/80 text-xs text-[#FAF6F8]">
               <div className="flex items-center justify-between font-bold text-white mb-0.5">
-                <span className="text-[0.72rem] tracking-wide uppercase text-[#C2D3D0]">Content Engine</span>
+                <span className="text-[0.72rem] tracking-wide uppercase text-[#D4E2DF]">Content Engine</span>
                 {isCustomized ? (
-                  <span className="px-1.5 py-0.5 rounded bg-[#42B7A7]/20 text-[#42B7A7] font-bold text-[0.65rem]">
+                  <span className="px-1.5 py-0.5 rounded bg-[#BC2639]/20 text-[#FFC5DC] font-bold text-[0.65rem]">
                     Draft Active
                   </span>
                 ) : (
-                  <span className="px-1.5 py-0.5 rounded bg-[#3D6357]/80 text-[#EDEFF4] font-medium text-[0.65rem]">
+                  <span className="px-1.5 py-0.5 rounded bg-[#5F1618]/80 text-[#FAF6F8] font-medium text-[0.65rem]">
                     Default
                   </span>
                 )}
               </div>
-              <p className="text-[0.68rem] text-[#C2D3D0] leading-tight">
+              <p className="text-[0.68rem] text-[#D4E2DF] leading-tight">
                 Live reactive edits. Export JSON to persist changes into code.
               </p>
             </div>
@@ -149,7 +149,7 @@ export const AdminLayout: React.FC = () => {
           <nav className="p-3 space-y-4 flex-1 overflow-y-auto custom-scrollbar">
             {navCategories.map((cat, cIdx) => (
               <div key={cIdx} className="space-y-1">
-                <div className="px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-[#C2D3D0]">
+                <div className="px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-[#D4E2DF]">
                   {cat.group}
                 </div>
                 {cat.items.map((item) => {
@@ -163,11 +163,11 @@ export const AdminLayout: React.FC = () => {
                       onClick={() => setIsSidebarOpen(false)}
                       className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
                         isActive
-                          ? 'bg-[#42B7A7] text-[#26423E] shadow-sm font-bold'
-                          : 'text-[#C2D3D0] hover:text-white hover:bg-[#182B28]/60'
+                          ? 'bg-[#BC2639] text-white shadow-sm font-bold'
+                          : 'text-[#D4E2DF] hover:text-white hover:bg-[#26230A]/60'
                       }`}
                     >
-                      <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-[#26423E]' : 'text-[#C2D3D0]'}`} />
+                      <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-white' : 'text-[#D4E2DF]'}`} />
                       <span className="truncate">{item.label}</span>
                     </Link>
                   );
@@ -177,18 +177,18 @@ export const AdminLayout: React.FC = () => {
           </nav>
 
           {/* Sidebar Footer Actions */}
-          <div className="p-3 border-t border-[#3D6357]/80 space-y-1.5 bg-[#182B28]/60 shrink-0">
+          <div className="p-3 border-t border-[#5F1618]/80 space-y-1.5 bg-[#26230A]/60 shrink-0">
             <Link
               to="/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-between w-full px-3 py-2 rounded-xl bg-[#182B28]/80 hover:bg-[#182B28] text-xs font-semibold text-[#42B7A7] transition-colors"
+              className="flex items-center justify-between w-full px-3 py-2 rounded-xl bg-[#26230A]/80 hover:bg-[#26230A] text-xs font-semibold text-[#FFC5DC] transition-colors"
             >
               <span className="flex items-center gap-2">
                 <ExternalLink className="w-3.5 h-3.5" />
                 Live Website
               </span>
-              <span className="text-[0.65rem] bg-[#26423E] px-1.5 py-0.5 rounded text-[#42B7A7] font-mono">
+              <span className="text-[0.65rem] bg-[#39340F] px-1.5 py-0.5 rounded text-[#FFC5DC] font-mono">
                 Preview ↗
               </span>
             </Link>
@@ -207,25 +207,25 @@ export const AdminLayout: React.FC = () => {
       {/* Main Admin Area */}
       <div className="flex-1 lg:ml-64 flex flex-col min-w-0">
         {/* Admin Top Bar */}
-        <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-[#C2D3D0] px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between shadow-xs">
+        <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-[#D4E2DF] px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between shadow-xs">
           <div className="flex items-center gap-3 min-w-0">
             <button
               onClick={() => setIsSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-xl text-[#26423E] hover:bg-[#EDEFF4] transition-colors"
+              className="lg:hidden p-2 rounded-xl text-[#39340F] hover:bg-[#FAF6F8] transition-colors"
               aria-label="Open navigation menu"
             >
               <Menu className="w-5 h-5" />
             </button>
 
             <div className="flex items-center gap-2 min-w-0">
-              <div className="w-7 h-7 rounded-lg bg-[#E2F3F0] text-[#42B7A7] border border-[#C2D3D0] flex items-center justify-center shrink-0 hidden sm:flex">
+              <div className="w-7 h-7 rounded-lg bg-[#FDF2F5] text-[#BC2639] border border-[#D4E2DF] flex items-center justify-center shrink-0 hidden sm:flex">
                 <ActiveIcon className="w-4 h-4" />
               </div>
               <div className="min-w-0">
-                <h1 className="text-sm sm:text-base font-bold font-display text-[#26423E] truncate leading-tight">
+                <h1 className="text-sm sm:text-base font-bold font-display text-[#39340F] truncate leading-tight">
                   {activeItem.label}
                 </h1>
-                <p className="text-[0.7rem] text-[#56776A] truncate hidden md:block">
+                <p className="text-[0.7rem] text-[#404D68] truncate hidden md:block">
                   DriveCraft CMS & Live Content Engine
                 </p>
               </div>
@@ -252,8 +252,8 @@ export const AdminLayout: React.FC = () => {
                 onChange={handleFileUpload}
                 className="sr-only"
               />
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#C2D3D0] bg-white hover:bg-[#EDEFF4] text-[#26423E] text-xs font-semibold transition-colors shadow-xs">
-                <Upload className="w-3.5 h-3.5 text-[#56776A]" />
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#D4E2DF] bg-white hover:bg-[#FAF6F8] text-[#39340F] text-xs font-semibold transition-colors shadow-xs">
+                <Upload className="w-3.5 h-3.5 text-[#404D68]" />
                 <span className="hidden sm:inline">Import JSON</span>
               </span>
             </label>
