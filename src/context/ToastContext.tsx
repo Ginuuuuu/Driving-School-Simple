@@ -53,17 +53,17 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       >
         {toasts.map((toast) => {
           const bgColors = {
-            success: 'bg-emerald-50 border-emerald-300 text-emerald-950',
+            success: 'bg-[#FDF2F5] border-[#FFC5DC] text-[#39340F]',
             error: 'bg-red-50 border-red-300 text-red-950',
             warning: 'bg-amber-50 border-amber-300 text-amber-950',
-            info: 'bg-blue-50 border-blue-300 text-blue-950',
+            info: 'bg-[#FAF6F8] border-[#D4E2DF] text-[#39340F]',
           };
 
           const iconColors = {
-            success: 'text-emerald-600',
+            success: 'text-[#BC2639]',
             error: 'text-red-600',
             warning: 'text-amber-600',
-            info: 'text-blue-600',
+            info: 'text-[#404D68]',
           };
 
           const icons = {
