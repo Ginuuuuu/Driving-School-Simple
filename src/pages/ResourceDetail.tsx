@@ -38,17 +38,17 @@ export const ResourceDetail: React.FC = () => {
           <Badge variant="emerald" size="sm">
             {guide.category}
           </Badge>
-          <span className="text-xs text-[#56776A] flex items-center gap-1">
-            <Clock className="w-3.5 h-3.5 text-[#42B7A7]" />
+          <span className="text-xs text-[#404D68] flex items-center gap-1">
+            <Clock className="w-3.5 h-3.5 text-[#BC2639]" />
             {guide.readTimeMinutes} min read • Published {guide.publishDate}
           </span>
         </div>
 
-        <h1 className="text-2xl sm:text-4xl font-extrabold font-display text-[#26423E] leading-tight">
+        <h1 className="text-2xl sm:text-4xl font-extrabold font-display text-[#39340F] leading-tight">
           {guide.title}
         </h1>
 
-        <p className="text-sm sm:text-base text-[#26423E] leading-relaxed border-l-4 border-[#42B7A7] pl-4 py-1 italic bg-[#E2F3F0]/60 rounded-r-xl">
+        <p className="text-sm sm:text-base text-[#39340F] leading-relaxed border-l-4 border-[#BC2639] pl-4 py-1 italic bg-[#FDF2F5]/60 rounded-r-xl">
           {guide.summary}
         </p>
       </motion.header>
@@ -58,15 +58,15 @@ export const ResourceDetail: React.FC = () => {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.1 }}
-        className="p-6 rounded-3xl bg-[#26423E] text-white border border-[#3D6357] space-y-3 shadow-md"
+        className="p-6 rounded-3xl bg-[#39340F] text-white border border-[#5F1618] space-y-3 shadow-md"
       >
-        <h2 className="text-sm uppercase tracking-wider font-bold text-[#42B7A7]">
+        <h2 className="text-sm uppercase tracking-wider font-bold text-[#FFC5DC]">
           Key Takeaways & Golden Rules:
         </h2>
-        <ul className="space-y-2 text-xs sm:text-sm text-[#EDEFF4]">
+        <ul className="space-y-2 text-xs sm:text-sm text-[#FAF6F8]">
           {guide.keyTakeaways.map((takeaway, idx) => (
             <li key={idx} className="flex items-start gap-2.5">
-              <CheckCircle2 className="w-4 h-4 text-[#42B7A7] mt-0.5 shrink-0" />
+              <CheckCircle2 className="w-4 h-4 text-[#BC2639] mt-0.5 shrink-0" />
               <span className="leading-relaxed">{takeaway}</span>
             </li>
           ))}
@@ -74,7 +74,7 @@ export const ResourceDetail: React.FC = () => {
       </motion.section>
 
       {/* Article Body Sections */}
-      <div className="space-y-8 text-[#26423E] leading-relaxed">
+      <div className="space-y-8 text-[#39340F] leading-relaxed">
         {guide.sections.map((section, idx) => (
           <motion.section
             key={idx}
@@ -82,12 +82,12 @@ export const ResourceDetail: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.4 }}
-            className="p-6 sm:p-8 rounded-3xl bg-white border border-[#C2D3D0] shadow-xs space-y-3 hover-lift-subtle transition-all"
+            className="p-6 sm:p-8 rounded-3xl bg-white border border-[#D4E2DF] shadow-xs space-y-3 hover-lift-subtle transition-all"
           >
-            <h2 className="text-lg sm:text-xl font-bold font-display text-[#26423E]">
+            <h2 className="text-lg sm:text-xl font-bold font-display text-[#39340F]">
               {section.heading}
             </h2>
-            <p className="text-xs sm:text-sm text-[#56776A] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#404D68] leading-relaxed">
               {section.content}
             </p>
           </motion.section>
@@ -100,12 +100,12 @@ export const ResourceDetail: React.FC = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.4 }}
-        className="p-8 rounded-3xl bg-[#E2F3F0] border border-[#C2D3D0] text-center space-y-3 shadow-xs"
+        className="p-8 rounded-3xl bg-[#FDF2F5] border border-[#FFC5DC] text-center space-y-3 shadow-xs"
       >
-        <h3 className="text-xl font-bold font-display text-[#26423E]">
+        <h3 className="text-xl font-bold font-display text-[#39340F]">
           Want to Practice This with a Certified Mentor?
         </h3>
-        <p className="text-xs sm:text-sm text-[#56776A] max-w-md mx-auto">
+        <p className="text-xs sm:text-sm text-[#404D68] max-w-md mx-auto">
           Our dual-control cars and patient instructors help you apply these theories into muscle memory on real roads.
         </p>
         <div className="pt-2">
