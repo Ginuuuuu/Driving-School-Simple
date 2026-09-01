@@ -19,7 +19,7 @@ export const Instructors: React.FC = () => {
       />
 
       <div>
-        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-slate-900 tracking-tight">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-[#26423E] tracking-tight">
           Certified Driving Instructors
         </h1>
       </div>
