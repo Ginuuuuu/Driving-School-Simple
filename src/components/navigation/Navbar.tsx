@@ -43,8 +43,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-3'
-          : 'bg-white/80 backdrop-blur-sm border-b border-slate-100 py-4'
+          ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80 py-2 sm:py-3'
+          : 'bg-white/90 backdrop-blur-md border-b border-slate-100 py-2.5 sm:py-4'
       }`}
     >
       {/* Top Announcement Micro-Bar (Only when top) */}

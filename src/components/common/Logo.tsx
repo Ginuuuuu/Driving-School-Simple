@@ -24,12 +24,6 @@ export const Logo: React.FC<LogoProps> = ({
     lg: 'w-12 h-12',
   };
 
-  const textSizes = {
-    sm: 'text-base',
-    md: 'text-xl',
-    lg: 'text-2xl',
-  };
-
   const content = (
     <div className={`flex items-center gap-2.5 group select-none ${className}`}>
       {/* Emblem Icon */}
@@ -64,7 +58,7 @@ export const Logo: React.FC<LogoProps> = ({
           </span>
         </div>
         {showTagline && (
-          <span className={`text-[0.68rem] tracking-wider uppercase font-medium mt-0.5 ${isLight ? 'text-slate-300' : 'text-slate-500'}`}>
+          <span className={`text-[0.68rem] tracking-wider uppercase font-medium mt-0.5 hidden sm:block ${isLight ? 'text-slate-300' : 'text-slate-500'}`}>
             Master Every Mile
           </span>
         )}

@@ -28,30 +28,30 @@ export const Home: React.FC = () => {
   const featuredTestimonials = testimonials.slice(0, 3);
 
   return (
-    <div className="space-y-10 sm:space-y-16 lg:space-y-24">
+    <div className="space-y-8 sm:space-y-14 lg:space-y-24">
       <SEO
         title="India's Premier Certified Driving Academy"
         description="Learn driving with 100% dual-control safety cars, patient certified instructors, automated RTO test-track preparation, and doorstep pickup."
       />
 
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden pt-4 pb-6 sm:pt-6 lg:pt-8 lg:pb-16">
+      <section className="relative overflow-hidden pt-1 pb-4 sm:pt-6 lg:pt-8 lg:pb-16">
         {/* Ambient background glow */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-100/50 rounded-full blur-3xl pointer-events-none -z-10 animate-glow" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
             {/* Hero Left Content (7 Cols) */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
-              className="lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left"
+              transition={{ duration: 0.45, ease: 'easeOut' }}
+              className="lg:col-span-7 space-y-3 sm:space-y-6 text-center lg:text-left"
             >
               {/* Trust Badge Pill */}
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-emerald-100/90 border border-emerald-300 text-[0.72rem] sm:text-sm font-bold text-emerald-950 shadow-xs">
-                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 animate-pulse-subtle" />
-                <span>{siteConfig.hero?.badgeText || '100% Dual-Control Safety Fleet • Doorstep Pickup'}</span>
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-emerald-100/90 border border-emerald-300 text-[0.68rem] xs:text-[0.72rem] sm:text-sm font-bold text-emerald-950 shadow-2xs max-w-full">
+                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 shrink-0 animate-pulse-subtle" />
+                <span className="leading-snug">{siteConfig.hero?.badgeText || '100% Dual-Control Safety Fleet • Doorstep Pickup'}</span>
               </div>
 
               {/* Main Headline */}

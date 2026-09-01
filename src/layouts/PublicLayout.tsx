@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, Phone, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { MessageCircle } from 'lucide-react';
 import { Navbar } from '../components/navigation/Navbar';
 import { MobileMenu } from '../components/navigation/MobileMenu';
 import { Footer } from '../components/navigation/Footer';
@@ -64,7 +64,7 @@ export const PublicLayout: React.FC = () => {
       />
 
       {/* Main Page Body with Instant Smooth Fade */}
-      <main id="main-content" className="flex-1 pt-24 sm:pt-28 lg:pt-36 focus:outline-none overflow-x-hidden">
+      <main id="main-content" className="flex-1 pt-16 sm:pt-20 lg:pt-28 focus:outline-none overflow-x-hidden">
         <motion.div
           key={location.pathname}
           initial={{ opacity: 0, y: 6 }}
