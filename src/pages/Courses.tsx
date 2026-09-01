@@ -7,9 +7,11 @@ import { CourseCard } from '../components/cards/CourseCard';
 import { Button } from '../components/common/Button';
 import { SEO } from '../components/common/SEO';
 
+import { defaultCourses } from '../content/courses';
+
 export const Courses: React.FC = () => {
   const { siteData } = useContent();
-  const { courses } = siteData;
+  const courses = siteData?.courses || defaultCourses;
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string) => void }>();
 
   const [searchQuery, setSearchQuery] = useState('');
