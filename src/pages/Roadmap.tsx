@@ -2,14 +2,8 @@ import React from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  FileText,
-  CheckCircle2,
-  AlertTriangle,
-  ExternalLink,
-  ShieldCheck,
   Award,
-  Sparkles,
-  HelpCircle,
+  AlertTriangle,
 } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { RoadmapSection } from '../components/roadmap/RoadmapSection';
@@ -18,7 +12,7 @@ import { SEO } from '../components/common/SEO';
 
 export const Roadmap: React.FC = () => {
   const { siteData } = useContent();
-  const { roadmap, siteConfig } = siteData;
+  const { roadmap } = siteData;
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string) => void }>();
 
   return (

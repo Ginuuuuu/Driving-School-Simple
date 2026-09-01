@@ -7,11 +7,8 @@ import {
   ShieldCheck,
   CheckCircle2,
   Star,
-  ArrowRight,
-  Car,
-  Clock,
-  Compass,
   Award,
+  Compass,
 } from 'lucide-react';
 import { useContent } from '../context/ContentContext';
 import { Button } from '../components/common/Button';
@@ -23,7 +20,7 @@ import { generateDirectWhatsAppChatLink } from '../utils/whatsapp';
 
 export const Home: React.FC = () => {
   const { siteData } = useContent();
-  const { siteConfig, courses, roadmap, testimonials, about } = siteData;
+  const { siteConfig, roadmap, testimonials, instructors } = siteData;
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string, instructorId?: string) => void }>();
 
   const whatsappUrl = generateDirectWhatsAppChatLink(siteConfig);
@@ -245,7 +242,7 @@ export const Home: React.FC = () => {
         </div>
       </motion.section>
 
-      {/* 4. TEAM SHOWCASE */}
+      {/* 4. INSTRUCTOR & MENTOR SHOWCASE */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -253,7 +250,30 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <TeamShowcase members={siteConfig.teamMembers} />
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-4 sm:mb-6">
+          <div>
+            <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-emerald-700 mb-1">
+              <Award className="w-3.5 h-3.5 text-emerald-600" />
+              MoRTH Certified Safety Mentors
+            </div>
+            <h2 className="text-lg sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+              Learn From Patient, Background-Verified Instructors
+            </h2>
+          </div>
+
+          <Link
+            to="/instructors"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-emerald-700 hover:text-emerald-800 underline shrink-0 transition-colors"
+          >
+            View All Mentors ({instructors?.length || 9}) →
+          </Link>
+        </div>
+
+        <TeamShowcase
+          instructors={instructors}
+          members={siteConfig.teamMembers}
+          onSelectInstructor={(instructorId) => onOpenBooking(undefined, instructorId)}
+        />
       </motion.section>
 
       {/* 5. SIGNATURE FEATURE — SERPENTINE LICENCE ROADMAP */}

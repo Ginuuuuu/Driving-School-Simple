@@ -1,6 +1,7 @@
 import React from 'react';
 import { RoadmapStep } from '../../types';
 import { ScrollFlowingRoadmap } from './ScrollFlowingRoadmap';
+import { RoadmapMobile } from './RoadmapMobile';
 
 interface RoadmapSectionProps {
   steps: RoadmapStep[];
@@ -17,11 +18,24 @@ export const RoadmapSection: React.FC<RoadmapSectionProps> = ({
 }) => {
   return (
     <div className={`w-full ${className}`}>
-      <ScrollFlowingRoadmap
-        steps={steps}
-        onOpenBookingModal={onOpenBookingModal}
-        isCompactPreview={isCompactPreview}
-      />
+      {/* Mobile View: Clean Tap-to-Expand Accordion with Title-First Scannability */}
+      <div className="block md:hidden">
+        <RoadmapMobile
+          steps={steps}
+          onOpenBookingModal={onOpenBookingModal}
+          isCompactPreview={isCompactPreview}
+        />
+      </div>
+
+      {/* Desktop/Tablet View: Smooth Flowing Interactive Scroll Timeline */}
+      <div className="hidden md:block">
+        <ScrollFlowingRoadmap
+          steps={steps}
+          onOpenBookingModal={onOpenBookingModal}
+          isCompactPreview={isCompactPreview}
+        />
+      </div>
     </div>
   );
 };
+
