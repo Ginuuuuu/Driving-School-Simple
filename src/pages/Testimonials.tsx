@@ -94,20 +94,24 @@ export const Testimonials: React.FC = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.45 }}
-        className="bg-[#39340F] text-white rounded-2xl sm:rounded-3xl p-5 sm:p-12 text-center max-w-3xl mx-auto border border-[#5F1618] space-y-3 sm:space-y-4 shadow-xl"
+        className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center max-w-3xl mx-auto bg-gradient-to-br from-[#2D0A14] via-[#481320] to-[#1E060D] border border-[#BC2639]/30 text-white space-y-3 sm:space-y-4 shadow-2xl"
       >
-        <h2 className="text-xl sm:text-3xl font-bold font-display text-white">
+        {/* Ambient Flowing Light Glow Orbs */}
+        <div className="absolute -top-20 -right-20 w-72 h-72 bg-[#BC2639]/25 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-[#FFC5DC]/15 rounded-full blur-3xl pointer-events-none" />
+
+        <h2 className="relative z-10 text-xl sm:text-3xl font-bold font-display text-white">
           Ready to Write Your Own Driving Success Story?
         </h2>
-        <p className="text-xs sm:text-sm text-[#D4E2DF] max-w-xl mx-auto">
+        <p className="relative z-10 text-xs sm:text-sm text-[#FFC5DC]/90 max-w-xl mx-auto leading-relaxed">
           Start with a zero-pressure trial lesson. Doorstep pickup, dual-control safety, and patient certified mentors.
         </p>
-        <div className="pt-2">
+        <div className="relative z-10 pt-2">
           <Button
             variant="primary"
             size="md"
             onClick={() => onOpenBooking()}
-            className="text-xs sm:text-sm py-2.5 sm:py-3 hover-lift"
+            className="text-xs sm:text-sm py-2.5 sm:py-3 hover-lift shadow-lg"
             icon={<Sparkles className="w-4 h-4 text-[#FFC5DC]" />}
           >
             Book Your First Lesson
