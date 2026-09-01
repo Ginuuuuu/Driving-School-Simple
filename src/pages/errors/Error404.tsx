@@ -14,21 +14,21 @@ export const Error404: React.FC = () => {
       <SEO title="404 - Page Not Found" description="The page you are looking for does not exist." />
 
       {/* Visual illustration */}
-      <div className="w-24 h-24 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center mx-auto shadow-inner">
+      <div className="w-24 h-24 rounded-full bg-[#E2F3F0] text-[#42B7A7] flex items-center justify-center mx-auto shadow-inner">
         <Compass className="w-12 h-12 animate-pulse" />
       </div>
 
       <div className="space-y-3">
-        <span className="text-xs uppercase font-extrabold tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+        <span className="text-xs uppercase font-extrabold tracking-widest text-[#26423E] bg-[#E2F3F0] px-3 py-1 rounded-full border border-[#C2D3D0]">
           Navigation Detour
         </span>
-        <h1 className="text-3xl sm:text-5xl font-black font-display text-slate-900">
+        <h1 className="text-3xl sm:text-5xl font-black font-display text-[#26423E]">
           {e404.title}
         </h1>
-        <p className="text-base text-slate-700 font-semibold">
+        <p className="text-base text-[#26423E] font-semibold">
           {e404.subtitle}
         </p>
-        <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
+        <p className="text-xs sm:text-sm text-[#56776A] max-w-md mx-auto leading-relaxed">
           {e404.description}
         </p>
       </div>
