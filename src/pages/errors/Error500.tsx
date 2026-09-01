@@ -13,18 +13,18 @@ export const Error500: React.FC = () => {
     <div className="max-w-xl mx-auto px-4 py-16 text-center space-y-6">
       <SEO title="500 - System Breakdown" description="An unexpected error occurred." />
 
-      <div className="w-20 h-20 rounded-full bg-red-100 text-red-600 flex items-center justify-center mx-auto">
-        <AlertOctagon className="w-10 h-10" />
+      <div className="w-20 h-20 rounded-full bg-[#E2F3F0] text-[#26423E] flex items-center justify-center mx-auto">
+        <AlertOctagon className="w-10 h-10 text-[#42B7A7]" />
       </div>
 
       <div className="space-y-2">
-        <h1 className="text-2xl sm:text-4xl font-extrabold font-display text-slate-900">
+        <h1 className="text-2xl sm:text-4xl font-extrabold font-display text-[#26423E]">
           {e500.title}
         </h1>
-        <p className="text-sm font-semibold text-slate-700">
+        <p className="text-sm font-semibold text-[#26423E]">
           {e500.subtitle}
         </p>
-        <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
+        <p className="text-xs text-[#56776A] max-w-md mx-auto leading-relaxed">
           {e500.description}
         </p>
       </div>

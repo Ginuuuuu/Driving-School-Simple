@@ -13,18 +13,18 @@ export const Error503: React.FC = () => {
     <div className="max-w-xl mx-auto px-4 py-16 text-center space-y-6">
       <SEO title="503 - Pit Stop Maintenance" description="Service temporarily under maintenance." />
 
-      <div className="w-20 h-20 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center mx-auto">
-        <Wrench className="w-10 h-10 animate-spin" />
+      <div className="w-20 h-20 rounded-full bg-[#E2F3F0] text-[#26423E] flex items-center justify-center mx-auto">
+        <Wrench className="w-10 h-10 animate-spin text-[#42B7A7]" />
       </div>
 
       <div className="space-y-2">
-        <h1 className="text-2xl sm:text-4xl font-extrabold font-display text-slate-900">
+        <h1 className="text-2xl sm:text-4xl font-extrabold font-display text-[#26423E]">
           {e503.title}
         </h1>
-        <p className="text-sm font-semibold text-slate-700">
+        <p className="text-sm font-semibold text-[#26423E]">
           {e503.subtitle}
         </p>
-        <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
+        <p className="text-xs text-[#56776A] max-w-md mx-auto leading-relaxed">
           {e503.description}
         </p>
       </div>
