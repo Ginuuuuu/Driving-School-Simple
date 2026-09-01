@@ -8,7 +8,6 @@ export default {
   theme: {
     extend: {
       colors: {
-      colors: {
         // Design Tokens: New 6-Color Identity
         // 1. Deep Burgundy / Dark Wine: #39340F
         // 2. Dark Crimson / Burgundy: #5F1618
