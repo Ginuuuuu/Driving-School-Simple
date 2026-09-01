@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Phone, MessageCircle, Menu, X, Shield, Sparkles } from 'lucide-react';
+import { Phone, MessageCircle, Menu, Shield, Sparkles } from 'lucide-react';
 import { Logo } from '../common/Logo';
 import { Button } from '../common/Button';
 import { useContent } from '../../context/ContentContext';
@@ -14,7 +14,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const { siteData, isCustomized } = useContent();
+  const { siteData } = useContent();
   const { siteConfig } = siteData;
 
   useEffect(() => {
@@ -102,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
           </nav>
 
           {/* Action CTAs */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Direct WhatsApp trigger */}
             <a
               href={whatsappUrl}
@@ -130,19 +130,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
               variant="primary"
               size="sm"
               onClick={onOpenBookingModal}
-              className="sm:text-sm sm:px-4 sm:py-2.5 shadow-sm"
-              icon={<Sparkles className="w-4 h-4 text-amber-300" />}
+              className="text-xs sm:text-sm px-2.5 sm:px-4 py-2 sm:py-2.5 shadow-sm font-bold shrink-0"
+              icon={<Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-300 shrink-0" />}
             >
-              Book a Lesson
+              <span className="hidden sm:inline">Book a Lesson</span>
+              <span className="sm:hidden">Book</span>
             </Button>
 
-            {/* Mobile Hamburger Button */}
+            {/* Mobile Hamburger Three-Bar Menu Button */}
             <button
+              type="button"
               onClick={onOpenMobileMenu}
-              className="xl:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 focus:ring-2 focus:ring-emerald-500 transition-colors"
-              aria-label="Open Mobile Menu"
+              className="xl:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100/90 hover:bg-slate-200 text-slate-800 border border-slate-200/80 focus:ring-2 focus:ring-emerald-500 active:scale-95 transition-all shrink-0 cursor-pointer"
+              aria-label="Open Mobile Navigation Menu"
             >
-              <Menu className="w-6 h-6" />
+              <Menu className="w-5 h-5" />
             </button>
           </div>
         </div>
