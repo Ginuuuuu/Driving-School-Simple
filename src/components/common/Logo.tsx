@@ -68,7 +68,7 @@ export const Logo: React.FC<LogoProps> = ({
 
   if (isLink) {
     return (
-      <Link to="/" aria-label="DriveCraft Motor Academy Home" className="focus-visible:ring-2 ring-emerald-500 rounded-lg">
+      <Link to="/" aria-label="DriveCraft Motor Academy Home" className="focus-visible:ring-2 ring-[#BC2639] rounded-lg">
         {content}
       </Link>
     );
