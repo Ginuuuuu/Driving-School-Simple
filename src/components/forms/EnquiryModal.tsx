@@ -43,7 +43,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-[#39340F]/70 backdrop-blur-sm"
+            className="fixed inset-0 bg-[#082B4C]/70 backdrop-blur-sm"
             onClick={onClose}
             aria-hidden="true"
           />
@@ -54,19 +54,19 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.94, y: 15 }}
             transition={{ type: 'spring', damping: 25, stiffness: 320 }}
-            className="relative w-full max-w-xl bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-[#D4E2DF] overflow-hidden z-10 my-4 sm:my-8"
+            className="relative w-full max-w-xl bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-[#E5E7EB] overflow-hidden z-10 my-4 sm:my-8"
           >
             {/* Modal Header */}
-            <div className="px-4 sm:px-6 py-3.5 sm:py-5 border-b border-[#D4E2DF] bg-[#FAF6F8]/90 flex items-center justify-between">
+            <div className="px-4 sm:px-6 py-3.5 sm:py-5 border-b border-[#E5E7EB] bg-[#F5F6F7] flex items-center justify-between">
               <div className="flex items-center gap-2 sm:gap-2.5">
-                <div className="p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-[#FDF2F5] text-[#BC2639]">
-                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#BC2639]" />
+                <div className="p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-[#F4C400]/20 text-[#082B4C]">
+                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#082B4C]" />
                 </div>
                 <div>
-                  <h3 id="modal-title" className="text-sm sm:text-lg font-bold font-display text-[#39340F] leading-snug">
+                  <h3 id="modal-title" className="text-sm sm:text-lg font-bold font-display text-[#202B33] leading-snug">
                     Book a Driving Lesson
                   </h3>
-                  <p className="text-[0.65rem] sm:text-xs text-[#404D68]">
+                  <p className="text-[0.65rem] sm:text-xs text-[#6B7280]">
                     Doorstep pickup • Dual-control safety • Patient certified mentors
                   </p>
                 </div>
@@ -74,7 +74,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
 
               <button
                 onClick={onClose}
-                className="p-1.5 sm:p-2 rounded-lg sm:rounded-xl text-[#404D68] hover:text-[#39340F] hover:bg-[#FFC5DC]/40 transition-colors"
+                className="p-1.5 sm:p-2 rounded-lg sm:rounded-xl text-[#6B7280] hover:text-[#202B33] hover:bg-[#E5E7EB] transition-colors"
                 aria-label="Close dialog"
               >
                 <X className="w-4 h-4 sm:w-5 sm:h-5" />
