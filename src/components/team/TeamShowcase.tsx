@@ -24,20 +24,32 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
 }) => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
-  // Normalize members for desktop view & instructors for mobile view
+  // Normalize instructors & ensure 6 primary mentors for the desktop showcase
   const displayInstructors: Instructor[] = React.useMemo(() => {
     if (instructors && instructors.length > 0) return instructors;
     return defaultInstructors;
   }, [instructors]);
 
   const displayMembers: (TeamMember & { fullInstructor?: Instructor })[] = React.useMemo(() => {
+    // Prioritize displayInstructors so desktop matches the driving school mentors
+    if (displayInstructors && displayInstructors.length > 0) {
+      return displayInstructors.slice(0, 6).map((inst) => ({
+        id: inst.id,
+        name: inst.name,
+        role: inst.role,
+        image: inst.photoUrl,
+        social: { twitter: '#', linkedin: '#' },
+        fullInstructor: inst,
+      }));
+    }
     if (members && members.length > 0) {
-      return members.map((m, idx) => ({
+      return members.slice(0, 6).map((m, idx) => ({
         ...m,
+        image: m.image || defaultInstructors[idx % defaultInstructors.length].photoUrl,
         fullInstructor: displayInstructors[idx % displayInstructors.length],
       }));
     }
-    return displayInstructors.map((inst) => ({
+    return defaultInstructors.slice(0, 6).map((inst) => ({
       id: inst.id,
       name: inst.name,
       role: inst.role,
@@ -47,7 +59,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
     }));
   }, [members, displayInstructors]);
 
-  // Desktop 3 columns
+  // Desktop 3 staggered columns
   const col1 = displayMembers.filter((_, i) => i % 3 === 0);
   const col2 = displayMembers.filter((_, i) => i % 3 === 1);
   const col3 = displayMembers.filter((_, i) => i % 3 === 2);
@@ -75,6 +87,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
                 className="w-[110px] h-[120px] sm:w-[130px] sm:h-[140px] md:w-[155px] md:h-[165px]"
                 hoveredId={hoveredId}
                 onHover={setHoveredId}
+                onClick={() => onSelectInstructor?.(member.id)}
               />
             ))}
           </div>
@@ -88,6 +101,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
                 className="w-[122px] h-[132px] sm:w-[145px] sm:h-[155px] md:w-[172px] md:h-[182px]"
                 hoveredId={hoveredId}
                 onHover={setHoveredId}
+                onClick={() => onSelectInstructor?.(member.id)}
               />
             ))}
           </div>
@@ -101,6 +115,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
                 className="w-[115px] h-[125px] sm:w-[136px] sm:h-[146px] md:w-[162px] md:h-[172px]"
                 hoveredId={hoveredId}
                 onHover={setHoveredId}
+                onClick={() => onSelectInstructor?.(member.id)}
               />
             ))}
           </div>
@@ -114,6 +129,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
               member={member}
               hoveredId={hoveredId}
               onHover={setHoveredId}
+              onClick={() => onSelectInstructor?.(member.id)}
             />
           ))}
         </div>
@@ -167,7 +183,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
           </div>
         </div>
 
-        {/* Featured Mentor Mobile Card (Clean, Concise & Professional UX) */}
+        {/* Featured Mentor Mobile Card */}
         <div className="rounded-2xl bg-white border border-[#E5E7EB] shadow-sm overflow-hidden">
           {/* Header Photo Banner */}
           <div className="relative h-44 w-full bg-[#F5F6F7]">
@@ -196,7 +212,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
             </div>
           </div>
 
-          {/* Body: Concise & UX-friendly */}
+          {/* Body */}
           <div className="p-3.5 space-y-2.5">
             <div className="flex items-baseline justify-between gap-2">
               <h3 className="text-base font-bold font-display text-[#202B33] leading-tight">
@@ -207,7 +223,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
               </span>
             </div>
 
-            {/* Specialties & Languages (Compact Single/Double Line) */}
+            {/* Specialties & Languages */}
             <div className="flex flex-wrap items-center gap-1 pt-0.5">
               {activeMobileInstructor.specialties.slice(0, 2).map((spec, i) => (
                 <span
@@ -250,31 +266,41 @@ function PhotoCard({
   className,
   hoveredId,
   onHover,
+  onClick,
 }: {
-  member: TeamMember;
+  member: TeamMember & { fullInstructor?: Instructor };
   className: string;
   hoveredId: string | null;
   onHover: (id: string | null) => void;
+  onClick?: () => void;
 }) {
   const isActive = hoveredId === member.id;
   const isDimmed = hoveredId !== null && !isActive;
+  const [imgError, setImgError] = useState(false);
+
+  const photoSrc = imgError
+    ? 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'
+    : member.image || member.fullInstructor?.photoUrl || 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80';
 
   return (
     <div
       className={cn(
-        'overflow-hidden rounded-xl cursor-pointer flex-shrink-0 transition-opacity duration-400',
+        'overflow-hidden rounded-2xl cursor-pointer flex-shrink-0 transition-all duration-300 relative group bg-slate-100 border border-[#E5E7EB]',
         className,
-        isDimmed ? 'opacity-60' : 'opacity-100',
+        isActive ? 'ring-2 ring-[#F4C400] scale-105 z-10 shadow-lg' : '',
+        isDimmed ? 'opacity-50 grayscale' : 'opacity-100',
       )}
       onMouseEnter={() => onHover(member.id)}
       onMouseLeave={() => onHover(null)}
+      onClick={onClick}
     >
       <img
-        src={member.image}
+        src={photoSrc}
         alt={member.name}
-        className="w-full h-full object-cover transition-[filter] duration-500"
+        onError={() => setImgError(true)}
+        className="w-full h-full object-cover object-top transition-all duration-500 group-hover:scale-105"
         style={{
-          filter: isActive ? 'grayscale(0) brightness(1)' : 'grayscale(1) brightness(0.77)',
+          filter: isActive ? 'grayscale(0) brightness(1)' : 'grayscale(1) brightness(0.85)',
         }}
       />
     </div>
@@ -288,10 +314,12 @@ function MemberRow({
   member,
   hoveredId,
   onHover,
+  onClick,
 }: {
-  member: TeamMember;
+  member: TeamMember & { fullInstructor?: Instructor };
   hoveredId: string | null;
   onHover: (id: string | null) => void;
+  onClick?: () => void;
 }) {
   const isActive = hoveredId === member.id;
   const isDimmed = hoveredId !== null && !isActive;
@@ -304,24 +332,25 @@ function MemberRow({
   return (
     <div
       className={cn(
-        'cursor-pointer transition-opacity duration-300',
+        'cursor-pointer transition-opacity duration-300 group',
         isDimmed ? 'opacity-50' : 'opacity-100',
       )}
       onMouseEnter={() => onHover(member.id)}
       onMouseLeave={() => onHover(null)}
+      onClick={onClick}
     >
       {/* Name + social*/}
       <div className="flex items-center gap-2.5">
         <span
           className={cn(
             'w-4 h-3 rounded-[5px] flex-shrink-0 transition-all duration-300',
-            isActive ? 'bg-[#F4C400] w-5' : 'bg-[#6B7280]/30',
+            isActive ? 'bg-[#F4C400] w-5' : 'bg-[#6B7280]/30 group-hover:bg-[#F4C400]/60',
           )}
         />
         <span
           className={cn(
             'text-base md:text-[18px] font-semibold leading-none tracking-tight transition-colors duration-300',
-            isActive ? 'text-[#082B4C] font-bold' : 'text-[#6B7280]',
+            isActive ? 'text-[#082B4C] font-bold' : 'text-[#6B7280] group-hover:text-[#082B4C]',
           )}
         >
           {member.name}
@@ -398,3 +427,4 @@ function MemberRow({
 }
 
 export default TeamShowcase;
+

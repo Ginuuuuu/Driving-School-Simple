@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Compass, Sparkles, ShieldCheck } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 interface WordLogoIntroProps {
   onComplete?: () => void;
@@ -272,4 +272,3 @@ export const WordLogoIntro: React.FC<WordLogoIntroProps> = ({
     </AnimatePresence>
   );
 };
-
