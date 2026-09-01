@@ -24,12 +24,12 @@ export const Badge: React.FC<BadgeProps> = ({
   };
 
   const variantStyles = {
-    emerald: 'bg-emerald-100 text-emerald-900 border border-emerald-300',
-    amber: 'bg-amber-100 text-amber-950 border border-amber-300 font-bold',
-    blue: 'bg-blue-100 text-blue-900 border border-blue-200',
-    slate: 'bg-slate-100 text-slate-800 border border-slate-200',
-    red: 'bg-red-100 text-red-900 border border-red-200',
-    purple: 'bg-purple-100 text-purple-900 border border-purple-200',
+    emerald: 'bg-[#E2F3F0] text-[#26423E] border border-[#C2D3D0]',
+    amber: 'bg-[#C2D3D0] text-[#26423E] border border-[#56776A]/30 font-bold',
+    blue: 'bg-[#E2F3F0] text-[#26423E] border border-[#42B7A7]/40',
+    slate: 'bg-[#EDEFF4] text-[#26423E] border border-[#C2D3D0]',
+    red: 'bg-[#FDE8E8] text-[#C84040] border border-[#F8B4B4]',
+    purple: 'bg-[#E2F3F0] text-[#26423E] border border-[#C2D3D0]',
   };
 
   return (
