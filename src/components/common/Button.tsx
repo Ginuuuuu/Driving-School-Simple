@@ -38,13 +38,13 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const variantStyles = {
-    primary: 'bg-[#42B7A7] hover:bg-[#56776A] active:bg-[#26423E] text-white shadow-sm hover:shadow-glow-emerald focus-visible:ring-[#42B7A7]',
-    secondary: 'bg-[#C2D3D0] hover:bg-[#56776A] hover:text-white active:bg-[#26423E] text-[#26423E] shadow-sm focus-visible:ring-[#56776A]',
-    amber: 'bg-[#42B7A7] hover:bg-[#56776A] text-white font-bold shadow-sm focus-visible:ring-[#42B7A7]',
-    outline: 'border-2 border-[#C2D3D0] hover:border-[#26423E] text-[#26423E] hover:bg-[#EDEFF4] focus-visible:ring-[#42B7A7]',
-    ghost: 'text-[#26423E] hover:bg-[#C2D3D0]/30 hover:text-[#26423E] focus-visible:ring-[#56776A]',
+    primary: 'bg-[#BC2639] hover:bg-[#5F1618] active:bg-[#39340F] text-white shadow-sm hover:shadow-glow-crimson focus-visible:ring-[#BC2639]',
+    secondary: 'bg-[#9FBAB4] hover:bg-[#404D68] hover:text-white active:bg-[#39340F] text-[#39340F] shadow-sm focus-visible:ring-[#404D68]',
+    amber: 'bg-[#BC2639] hover:bg-[#5F1618] text-white font-bold shadow-sm focus-visible:ring-[#BC2639]',
+    outline: 'border-2 border-[#D4E2DF] hover:border-[#BC2639] text-[#39340F] hover:bg-[#FFF5F8] focus-visible:ring-[#BC2639]',
+    ghost: 'text-[#39340F] hover:bg-[#FFC5DC]/30 hover:text-[#39340F] focus-visible:ring-[#404D68]',
     whatsapp: 'bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold shadow-sm hover:shadow-md focus-visible:ring-[#25D366]',
-    danger: 'bg-[#E05353] hover:bg-[#C84040] text-white focus-visible:ring-[#E05353]',
+    danger: 'bg-[#BC2639] hover:bg-[#5F1618] text-white focus-visible:ring-[#BC2639]',
   };
 
   const combinedClasses = twMerge(clsx(baseStyles, sizeStyles[size], variantStyles[variant], className));
