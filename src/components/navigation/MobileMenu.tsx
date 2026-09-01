@@ -61,13 +61,13 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenB
       />
 
       {/* Drawer */}
-      <div className="relative w-full max-w-sm bg-white h-full shadow-2xl flex flex-col justify-between overflow-y-auto z-10 animate-in slide-in-from-right duration-300">
+      <div className="relative w-full max-w-sm bg-[#EDEFF4] h-full shadow-2xl flex flex-col justify-between overflow-y-auto z-10 animate-in slide-in-from-right duration-300">
         {/* Drawer Header */}
-        <div className="p-5 border-b border-slate-100 flex items-center justify-between">
+        <div className="p-5 border-b border-[#C2D3D0] flex items-center justify-between">
           <Logo size="md" />
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+            className="p-2 rounded-xl text-[#56776A] hover:text-[#26423E] hover:bg-[#C2D3D0]/40 transition-colors"
             aria-label="Close menu"
           >
             <X className="w-6 h-6" />
@@ -76,7 +76,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenB
 
         {/* Navigation List */}
         <div className="p-5 space-y-1.5 flex-1">
-          <div className="text-[0.7rem] uppercase tracking-wider font-bold text-slate-600 mb-2 px-3">
+          <div className="text-[0.7rem] uppercase tracking-wider font-bold text-[#56776A] mb-2 px-3">
             Menu Navigation
           </div>
 
@@ -89,30 +89,30 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onOpenB
                 to={link.to}
                 className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-base font-semibold transition-all ${
                   isActive
-                    ? 'bg-emerald-50 text-emerald-800 font-bold'
-                    : 'text-slate-800 hover:bg-slate-50'
+                    ? 'bg-[#C2D3D0]/70 text-[#26423E] font-bold border border-[#C2D3D0]'
+                    : 'text-[#26423E] hover:bg-[#C2D3D0]/30'
                 }`}
               >
                 <span>{link.label}</span>
-                <ChevronRight className={`w-4 h-4 ${isActive ? 'text-emerald-600' : 'text-slate-400'}`} />
+                <ChevronRight className={`w-4 h-4 ${isActive ? 'text-[#42B7A7]' : 'text-[#56776A]'}`} />
               </Link>
             );
           })}
 
           {/* Service Areas Note */}
-          <div className="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-600">
-            <div className="flex items-center gap-1.5 font-bold text-slate-800 mb-1">
-              <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+          <div className="mt-4 p-3 rounded-xl bg-white/80 border border-[#C2D3D0] text-xs text-[#56776A]">
+            <div className="flex items-center gap-1.5 font-bold text-[#26423E] mb-1">
+              <MapPin className="w-3.5 h-3.5 text-[#42B7A7]" />
               Doorstep Pickup Available in:
             </div>
-            <p className="leading-relaxed">
+            <p className="leading-relaxed text-[#56776A]">
               {siteConfig.serviceCities.join(' • ')}
             </p>
           </div>
         </div>
 
         {/* Bottom Drawer Actions */}
-        <div className="p-5 border-t border-slate-100 bg-slate-50/50 space-y-3">
+        <div className="p-5 border-t border-[#C2D3D0] bg-[#EDEFF4] space-y-3">
           <Button
             variant="primary"
             size="lg"
