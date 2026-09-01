@@ -59,7 +59,7 @@ export const RoadmapDesktop: React.FC<RoadmapDesktopProps> = ({ steps, onOpenBoo
       <div className="relative z-10 mb-8 border-b border-slate-800 pb-6">
         <div className="flex items-center justify-between gap-4 mb-4">
           <div className="flex items-center gap-2">
-            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#BC2639]/20 text-[#FFC5DC] border border-[#BC2639]/30">
               Interactive Licence Journey
             </span>
             <span className="text-xs text-slate-400">
@@ -92,7 +92,7 @@ export const RoadmapDesktop: React.FC<RoadmapDesktopProps> = ({ steps, onOpenBoo
           {/* Track Progress Line */}
           <div className="absolute top-1/2 left-4 right-4 h-1 bg-slate-800 -translate-y-1/2 z-0 rounded-full" />
           <div
-            className="absolute top-1/2 left-4 h-1 bg-gradient-to-r from-emerald-500 to-amber-500 -translate-y-1/2 z-0 transition-all duration-500 rounded-full"
+            className="absolute top-1/2 left-4 h-1 bg-gradient-to-r from-[#BC2639] to-[#FFC5DC] -translate-y-1/2 z-0 transition-all duration-500 rounded-full"
             style={{ width: `${(activeStepIndex / (steps.length - 1)) * 92}%` }}
           />
 
@@ -112,18 +112,18 @@ export const RoadmapDesktop: React.FC<RoadmapDesktopProps> = ({ steps, onOpenBoo
                 <div
                   className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm transition-all duration-300 mb-2 border ${
                     isActive
-                      ? 'bg-emerald-500 text-slate-950 border-emerald-300 shadow-glow-emerald ring-4 ring-emerald-500/20'
+                      ? 'bg-[#BC2639] text-white border-[#FFC5DC] shadow-sm ring-4 ring-[#FFC5DC]/30'
                       : isCompleted
-                      ? 'bg-emerald-950/80 text-emerald-300 border-emerald-700'
+                      ? 'bg-[#5F1618] text-[#FFC5DC] border-[#BC2639]'
                       : 'bg-slate-800 text-slate-400 border-slate-700 group-hover:border-slate-500'
                   }`}
                 >
-                  {isCompleted ? <CheckCircle2 className="w-5 h-5" /> : idx + 1}
+                  {isCompleted ? <CheckCircle2 className="w-5 h-5 text-[#FFC5DC]" /> : idx + 1}
                 </div>
 
                 {/* Short Milestone Title */}
                 <span className={`text-[0.75rem] font-semibold line-clamp-1 leading-tight ${
-                  isActive ? 'text-emerald-300 font-bold' : isCompleted ? 'text-slate-300' : 'text-slate-500'
+                  isActive ? 'text-[#FFC5DC] font-bold' : isCompleted ? 'text-slate-300' : 'text-slate-500'
                 }`}>
                   {step.subtitle.split('&')[0]}
                 </span>
