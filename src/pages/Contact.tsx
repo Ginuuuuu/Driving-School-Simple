@@ -38,21 +38,23 @@ export const Contact: React.FC = () => {
           className="lg:col-span-5 space-y-4 sm:space-y-6"
         >
           {/* Quick Helpline Cards */}
-          <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-[#39340F] text-white border border-[#5F1618] shadow-md sm:shadow-lg space-y-3.5 sm:space-y-5">
-            <h3 className="text-base sm:text-lg font-bold font-display text-white">
+          <div className="relative overflow-hidden p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#2D0A14] via-[#481320] to-[#1E060D] text-white border border-[#BC2639]/30 shadow-2xl space-y-4 sm:space-y-5">
+            <div className="absolute -top-16 -right-16 w-60 h-60 bg-[#BC2639]/20 rounded-full blur-2xl pointer-events-none" />
+            
+            <h3 className="relative z-10 text-base sm:text-lg font-bold font-display text-white">
               Instant Contact Channels
             </h3>
 
-            <div className="space-y-2.5 sm:space-y-4 text-xs sm:text-sm">
+            <div className="relative z-10 space-y-2.5 sm:space-y-3 text-xs sm:text-sm">
               <a
                 href={`tel:${siteConfig.phoneDial}`}
-                className="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-[#26230A]/80 hover:bg-[#26230A] text-[#FAF6F8] hover-lift-subtle transition-all"
+                className="flex items-center gap-3 p-3 rounded-xl sm:rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 hover:bg-white/[0.14] hover:border-[#FFC5DC]/40 text-[#FAF6F8] hover-lift-subtle transition-all"
               >
-                <div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-[#BC2639]/20 text-[#FFC5DC]">
+                <div className="p-2 sm:p-2.5 rounded-xl bg-[#BC2639]/40 text-[#FFC5DC] border border-[#BC2639]/50">
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <span className="text-[0.6rem] sm:text-[0.65rem] uppercase font-bold text-[#D4E2DF] block">Phone Support</span>
+                  <span className="text-[0.6rem] sm:text-[0.65rem] uppercase font-bold text-[#FFC5DC] block">Phone Support</span>
                   <span className="font-bold text-white text-sm sm:text-base">{siteConfig.phoneDisplay}</span>
                 </div>
               </a>
@@ -61,9 +63,9 @@ export const Contact: React.FC = () => {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#FAF6F8] hover-lift-subtle transition-all border border-[#25D366]/30"
+                className="flex items-center gap-3 p-3 rounded-xl sm:rounded-2xl bg-[#25D366]/15 hover:bg-[#25D366]/25 text-[#FAF6F8] hover-lift-subtle transition-all border border-[#25D366]/30"
               >
-                <div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-[#25D366] text-white">
+                <div className="p-2 sm:p-2.5 rounded-xl bg-[#25D366] text-white shadow-sm">
                   <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
                 </div>
                 <div>
@@ -72,12 +74,12 @@ export const Contact: React.FC = () => {
                 </div>
               </a>
 
-              <div className="flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-[#26230A]/80 text-[#FAF6F8]">
-                <div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-[#26230A] text-[#FFC5DC]">
+              <div className="flex items-center gap-3 p-3 rounded-xl sm:rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 text-[#FAF6F8]">
+                <div className="p-2 sm:p-2.5 rounded-xl bg-white/10 text-[#FFC5DC]">
                   <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
-                  <span className="text-[0.6rem] sm:text-[0.65rem] uppercase font-bold text-[#D4E2DF] block">Training Hours</span>
+                  <span className="text-[0.6rem] sm:text-[0.65rem] uppercase font-bold text-[#FFC5DC] block">Training Hours</span>
                   <span className="font-semibold text-[#FAF6F8] text-xs sm:text-sm">{siteConfig.operatingHours.weekdays}</span>
                 </div>
               </div>
