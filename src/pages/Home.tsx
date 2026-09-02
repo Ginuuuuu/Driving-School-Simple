@@ -111,19 +111,11 @@ export const Home: React.FC = () => {
               transition={{ duration: 0.55, delay: 0.15, ease: 'easeOut' }}
               className="lg:col-span-5 relative w-full"
             >
-<<<<<<< HEAD
               <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[1.15/1] xl:aspect-[1.2/1] w-full min-h-[320px] sm:min-h-[380px] lg:min-h-[440px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#E5E7EB] bg-white">
                 <img
                   src={siteConfig.hero?.heroImageUrl || "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80"}
                   alt="Student learning to drive in dual control safety car"
                   className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
-=======
-              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#E5E7EB] bg-white w-full">
-                <img
-                  src={siteConfig.hero?.heroImageUrl || "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80"}
-                  alt="Student learning to drive in dual control safety car"
-                  className="w-full h-64 sm:h-80 md:h-96 lg:h-[460px] xl:h-[520px] 2xl:h-[580px] object-cover object-center transition-transform duration-700 hover:scale-105"
->>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#082B4C]/80 via-transparent to-transparent pointer-events-none" />
 
@@ -210,11 +202,7 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="site-container"
       >
-<<<<<<< HEAD
-        <div className="flex overflow-x-auto gap-3 pb-2 -mx-4 px-4 snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:m-0 md:p-0 md:overflow-visible md:items-stretch">
-=======
-        <div className="flex overflow-x-auto gap-3 pb-2 -mx-4 px-4 snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-3 md:gap-6 lg:gap-8 xl:gap-10 md:m-0 md:p-0 md:overflow-visible">
->>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
+        <div className="flex overflow-x-auto gap-3 pb-2 -mx-4 px-4 snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-3 md:gap-6 lg:gap-8 xl:gap-10 md:m-0 md:p-0 md:overflow-visible md:items-stretch">
           {(siteConfig.coreValues || [
             {
               id: 'val-1',
@@ -235,7 +223,6 @@ export const Home: React.FC = () => {
               icon: 'Compass',
             },
           ]).map((item, idx) => (
-<<<<<<< HEAD
             <div key={item.id || idx} className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between hover-lift h-full">
               <div>
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center font-bold mb-3 bg-[#F4C400]/20 text-[#082B4C]">
@@ -245,17 +232,6 @@ export const Home: React.FC = () => {
                   {item.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed mt-1.5">
-=======
-            <div key={item.id || idx} className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-3 sm:space-y-4 flex flex-col justify-between hover-lift">
-              <div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center font-bold mb-3 bg-[#F4C400]/20 text-[#082B4C]">
-                  {idx === 0 ? <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" /> : idx === 1 ? <Award className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" /> : <Compass className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />}
-                </div>
-                <h3 className="text-base sm:text-lg lg:text-xl font-bold font-display text-[#202B33]">
-                  {item.title}
-                </h3>
-                <p className="text-xs sm:text-sm lg:text-base text-[#6B7280] leading-relaxed mt-1.5">
->>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
                   {item.description}
                 </p>
               </div>
@@ -343,13 +319,8 @@ export const Home: React.FC = () => {
           </Link>
         </div>
 
-<<<<<<< HEAD
         {/* HORIZONTALLY SWIPEABLE REVIEWS ON MOBILE / EQUAL HEIGHT GRID ON DESKTOP */}
-        <div className="flex overflow-x-auto pb-3 pt-1 -mx-4 px-4 snap-x snap-mandatory scrollbar-none gap-3 md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:p-0 md:m-0 md:items-stretch">
-=======
-        {/* HORIZONTALLY SWIPEABLE REVIEWS ON MOBILE */}
-        <div className="flex overflow-x-auto pb-3 pt-1 -mx-4 px-4 snap-x snap-mandatory scrollbar-none gap-3 md:grid md:grid-cols-3 md:gap-6 lg:gap-8 xl:gap-10 md:overflow-visible md:p-0 md:m-0">
->>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
+        <div className="flex overflow-x-auto pb-3 pt-1 -mx-4 px-4 snap-x snap-mandatory scrollbar-none gap-3 md:grid md:grid-cols-3 md:gap-6 lg:gap-8 xl:gap-10 md:overflow-visible md:p-0 md:m-0 md:items-stretch">
           {featuredTestimonials.map((test) => (
             <div key={test.id} className="w-[82vw] max-w-[320px] shrink-0 snap-center md:w-auto md:max-w-none hover-lift h-full flex flex-col">
               <TestimonialCard testimonial={test} />
