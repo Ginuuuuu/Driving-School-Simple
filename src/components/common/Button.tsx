@@ -8,6 +8,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   size?: 'sm' | 'md' | 'lg' | 'xl';
   to?: string;
   href?: string;
+  target?: string;
+  rel?: string;
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
   isLoading?: boolean;
