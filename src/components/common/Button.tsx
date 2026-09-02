@@ -70,7 +70,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   if (to) {
     return (
-      <Link to={to} className={combinedClasses} aria-disabled={disabled}>
+      <Link to={to} className={combinedClasses} target={target} rel={rel} aria-disabled={disabled}>
         {content}
       </Link>
     );
@@ -81,8 +81,8 @@ export const Button: React.FC<ButtonProps> = ({
       <a
         href={href}
         className={combinedClasses}
-        target={isExternal ? '_blank' : undefined}
-        rel={isExternal ? 'noopener noreferrer' : undefined}
+        target={target || (isExternal ? '_blank' : undefined)}
+        rel={rel || (isExternal ? 'noopener noreferrer' : undefined)}
         aria-disabled={disabled}
       >
         {content}
