@@ -59,11 +59,7 @@ export const About: React.FC = () => {
             <img
               src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80"
               alt="DriveCraft training fleet and certified mentors"
-<<<<<<< HEAD
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-=======
-              className="w-full h-64 sm:h-80 md:h-96 lg:h-[460px] xl:h-[500px] object-cover transition-transform duration-700 hover:scale-105"
->>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
             />
           </div>
         </motion.div>
@@ -123,37 +119,22 @@ export const About: React.FC = () => {
           </h2>
         </div>
 
-<<<<<<< HEAD
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 items-stretch">
-          {about.fleetStandards.map((std, idx) => (
-            <div key={idx} className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-2 flex flex-col justify-between hover-lift h-full">
-              <div>
-                <div className="text-xl sm:text-2xl font-black font-display text-[#082B4C]">
-                  {std.metric}
-                </div>
-                <h3 className="text-sm sm:text-base font-bold font-display text-[#202B33] mt-1">
-                  {std.title}
-                </h3>
-              </div>
-              <p className="text-xs text-[#6B7280] leading-relaxed">
-                {std.description}
-              </p>
-=======
         <div className="cards-grid-centered">
           {about.fleetStandards.map((std, idx) => (
             <div key={idx} className="card-col-4">
-              <div className="w-full h-full p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-2 sm:space-y-3 hover-lift">
-                <div className="text-2xl sm:text-3xl font-black font-display text-[#082B4C]">
-                  {std.metric}
+              <div className="w-full h-full p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-2 sm:space-y-3 hover-lift flex flex-col justify-between">
+                <div>
+                  <div className="text-2xl sm:text-3xl font-black font-display text-[#082B4C]">
+                    {std.metric}
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold font-display text-[#202B33] mt-1">
+                    {std.title}
+                  </h3>
                 </div>
-                <h3 className="text-base sm:text-lg font-bold font-display text-[#202B33]">
-                  {std.title}
-                </h3>
                 <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed">
                   {std.description}
                 </p>
               </div>
->>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
             </div>
           ))}
         </div>
