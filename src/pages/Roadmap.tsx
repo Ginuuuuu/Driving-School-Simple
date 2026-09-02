@@ -68,26 +68,32 @@ export const Roadmap: React.FC = () => {
           Unlike manual driving tests of the past where an inspector sat inside, modern Indian RTOs use automated electronic sensors and high-speed overhead cameras. Touching a sensor pole on the Figure-8 or rolling back on the gradient slope results in an immediate computerized disqualification.
         </p>
 
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-2.5 sm:gap-4 pt-1 sm:pt-2">
-          <div className="p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 hover:bg-white/[0.14] hover:border-[#F4C400]/40 space-y-1.5 hover-lift-subtle transition-all">
-            <h3 className="text-xs sm:text-sm font-bold text-[#F4C400]">Figure "8" Track</h3>
-            <p className="text-[0.72rem] sm:text-xs text-slate-100 leading-relaxed">
-              Evaluates steering lock timing and constant creep speed without touching yellow boundary lines.
-            </p>
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 pt-1 sm:pt-2 items-stretch">
+          <div className="p-4 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 hover:bg-white/[0.14] hover:border-[#F4C400]/40 space-y-1.5 hover-lift-subtle transition-all h-full flex flex-col justify-between">
+            <div>
+              <h3 className="text-xs sm:text-sm lg:text-base font-bold text-[#F4C400]">Figure "8" Track</h3>
+              <p className="text-[0.72rem] sm:text-xs text-slate-100 leading-relaxed mt-1">
+                Evaluates steering lock timing and constant creep speed without touching yellow boundary lines.
+              </p>
+            </div>
           </div>
 
-          <div className="p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 hover:bg-white/[0.14] hover:border-[#F4C400]/40 space-y-1.5 hover-lift-subtle transition-all">
-            <h3 className="text-xs sm:text-sm font-bold text-[#F4C400]">"H" Box Parking</h3>
-            <p className="text-[0.72rem] sm:text-xs text-slate-100 leading-relaxed">
-              Forward entry and tight reverse parking into parallel bay without halting or extra turns.
-            </p>
+          <div className="p-4 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 hover:bg-white/[0.14] hover:border-[#F4C400]/40 space-y-1.5 hover-lift-subtle transition-all h-full flex flex-col justify-between">
+            <div>
+              <h3 className="text-xs sm:text-sm lg:text-base font-bold text-[#F4C400]">"H" Box Parking</h3>
+              <p className="text-[0.72rem] sm:text-xs text-slate-100 leading-relaxed mt-1">
+                Forward entry and tight reverse parking into parallel bay without halting or extra turns.
+              </p>
+            </div>
           </div>
 
-          <div className="p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 hover:bg-white/[0.14] hover:border-[#F4C400]/40 space-y-1.5 hover-lift-subtle transition-all">
-            <h3 className="text-xs sm:text-sm font-bold text-[#F4C400]">Gradient Slope Stop & Go</h3>
-            <p className="text-[0.72rem] sm:text-xs text-slate-100 leading-relaxed">
-              Stop on a 15-degree slope and restart within 10 seconds with less than 2 inches of rollback.
-            </p>
+          <div className="p-4 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 hover:bg-white/[0.14] hover:border-[#F4C400]/40 space-y-1.5 hover-lift-subtle transition-all h-full flex flex-col justify-between">
+            <div>
+              <h3 className="text-xs sm:text-sm lg:text-base font-bold text-[#F4C400]">Gradient Slope Stop & Go</h3>
+              <p className="text-[0.72rem] sm:text-xs text-slate-100 leading-relaxed mt-1">
+                Stop on a 15-degree slope and restart within 10 seconds with less than 2 inches of rollback.
+              </p>
+            </div>
           </div>
         </div>
       </motion.section>

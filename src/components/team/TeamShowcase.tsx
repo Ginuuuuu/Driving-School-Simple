@@ -74,17 +74,17 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
 
   return (
     <div className="w-full select-none font-sans">
-      {/* ── DESKTOP VIEW (md and up): EXACT PREVIOUS OFFSET 3-COLUMNS + NAME LIST ── */}
-      <div className="hidden md:flex flex-row items-start gap-8 md:gap-10 lg:gap-14 w-full max-w-5xl mx-auto py-6 md:py-8 px-4 md:px-6">
+      {/* ── DESKTOP VIEW (md and up): FLUID OFFSET 3-COLUMNS + NAME LIST ── */}
+      <div className="hidden md:flex flex-row items-start gap-6 lg:gap-10 xl:gap-14 w-full max-w-5xl mx-auto py-4 lg:py-6 px-2 sm:px-4">
         {/* Left: 3 staggered photo columns */}
-        <div className="flex gap-2 md:gap-3 flex-shrink-0">
+        <div className="flex gap-2.5 lg:gap-3.5 flex-shrink-0">
           {/* Column 1 */}
-          <div className="flex flex-col gap-2 md:gap-3">
+          <div className="flex flex-col gap-2.5 lg:gap-3.5">
             {col1.map((member) => (
               <PhotoCard
                 key={member.id}
                 member={member}
-                className="w-[110px] h-[120px] sm:w-[130px] sm:h-[140px] md:w-[155px] md:h-[165px]"
+                className="w-[115px] h-[128px] lg:w-[145px] lg:h-[160px] xl:w-[165px] xl:h-[180px]"
                 hoveredId={hoveredId}
                 onHover={setHoveredId}
                 onClick={() => onSelectInstructor?.(member.id)}
@@ -93,12 +93,12 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
           </div>
 
           {/* Column 2 */}
-          <div className="flex flex-col gap-2 md:gap-3 mt-[48px] sm:mt-[56px] md:mt-[68px]">
+          <div className="flex flex-col gap-2.5 lg:gap-3.5 mt-[36px] lg:mt-[52px] xl:mt-[64px]">
             {col2.map((member) => (
               <PhotoCard
                 key={member.id}
                 member={member}
-                className="w-[122px] h-[132px] sm:w-[145px] sm:h-[155px] md:w-[172px] md:h-[182px]"
+                className="w-[126px] h-[138px] lg:w-[158px] lg:h-[175px] xl:w-[180px] xl:h-[195px]"
                 hoveredId={hoveredId}
                 onHover={setHoveredId}
                 onClick={() => onSelectInstructor?.(member.id)}
@@ -107,12 +107,12 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
           </div>
 
           {/* Column 3 */}
-          <div className="flex flex-col gap-2 md:gap-3 mt-[22px] sm:mt-[26px] md:mt-[32px]">
+          <div className="flex flex-col gap-2.5 lg:gap-3.5 mt-[18px] lg:mt-[26px] xl:mt-[32px]">
             {col3.map((member) => (
               <PhotoCard
                 key={member.id}
                 member={member}
-                className="w-[115px] h-[125px] sm:w-[136px] sm:h-[146px] md:w-[162px] md:h-[172px]"
+                className="w-[120px] h-[132px] lg:w-[150px] lg:h-[165px] xl:w-[170px] xl:h-[185px]"
                 hoveredId={hoveredId}
                 onHover={setHoveredId}
                 onClick={() => onSelectInstructor?.(member.id)}
@@ -122,7 +122,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
         </div>
 
         {/* Right: member name list */}
-        <div className="flex flex-col gap-4 md:gap-5 pt-0 md:pt-2 flex-1 w-full">
+        <div className="flex flex-col gap-3.5 lg:gap-5 pt-1 lg:pt-3 flex-1 min-w-0">
           {displayMembers.map((member) => (
             <MemberRow
               key={member.id}

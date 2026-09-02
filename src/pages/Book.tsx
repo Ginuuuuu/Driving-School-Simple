@@ -42,24 +42,30 @@ export const Book: React.FC = () => {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.2 }}
-        className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-4 text-center"
+        className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-center items-stretch"
       >
-        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-[#E5E7EB] shadow-xs space-y-1 hover-lift">
-          <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#082B4C] mx-auto" />
-          <h4 className="text-xs font-bold text-[#202B33]">100% Dual-Control</h4>
-          <p className="text-[0.65rem] sm:text-[0.7rem] text-[#6B7280]">Secondary instructor safety pedals</p>
+        <div className="p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-white border border-[#E5E7EB] shadow-xs space-y-1 hover-lift h-full flex flex-col justify-between">
+          <div>
+            <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#082B4C] mx-auto" />
+            <h4 className="text-xs sm:text-sm font-bold text-[#202B33] mt-1.5">100% Dual-Control</h4>
+          </div>
+          <p className="text-[0.68rem] sm:text-xs text-[#6B7280]">Secondary instructor safety pedals</p>
         </div>
 
-        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-[#E5E7EB] shadow-xs space-y-1 hover-lift">
-          <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#082B4C] mx-auto" />
-          <h4 className="text-xs font-bold text-[#202B33]">Flexible Scheduling</h4>
-          <p className="text-[0.65rem] sm:text-[0.7rem] text-[#6B7280]">Daily 1-hour slots from 6 AM to 8 PM</p>
+        <div className="p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-white border border-[#E5E7EB] shadow-xs space-y-1 hover-lift h-full flex flex-col justify-between">
+          <div>
+            <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#082B4C] mx-auto" />
+            <h4 className="text-xs sm:text-sm font-bold text-[#202B33] mt-1.5">Flexible Scheduling</h4>
+          </div>
+          <p className="text-[0.68rem] sm:text-xs text-[#6B7280]">Daily 1-hour slots from 6 AM to 8 PM</p>
         </div>
 
-        <div className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-[#E5E7EB] shadow-xs space-y-1 hover-lift">
-          <Car className="w-4 h-4 sm:w-5 sm:h-5 text-[#082B4C] mx-auto" />
-          <h4 className="text-xs font-bold text-[#202B33]">Doorstep Pickup</h4>
-          <p className="text-[0.65rem] sm:text-[0.7rem] text-[#6B7280]">Directly from your home or office</p>
+        <div className="p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-white border border-[#E5E7EB] shadow-xs space-y-1 hover-lift h-full flex flex-col justify-between">
+          <div>
+            <Car className="w-4 h-4 sm:w-5 sm:h-5 text-[#082B4C] mx-auto" />
+            <h4 className="text-xs sm:text-sm font-bold text-[#202B33] mt-1.5">Doorstep Pickup</h4>
+          </div>
+          <p className="text-[0.68rem] sm:text-xs text-[#6B7280]">Directly from your home or office</p>
         </div>
       </motion.div>
     </div>

@@ -255,8 +255,8 @@ export const CourseDetail: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Inclusions, Suitable For & FAQs (5 Cols) */}
-        <div className="lg:col-span-5 space-y-4 sm:space-y-6">
+        {/* Right Column: Inclusions, Suitable For & FAQs (5 Cols - Sticky on Desktop) */}
+        <div className="lg:col-span-5 space-y-4 sm:space-y-6 lg:sticky lg:top-28">
           {/* What's Included */}
           <div className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-3 sm:space-y-4">
             <h3 className="text-sm sm:text-base font-bold font-display text-[#202B33] flex items-center gap-2">

@@ -19,14 +19,14 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onBookNow }) => 
 
   return (
     <div
-      className={`group flex flex-col justify-between rounded-2xl sm:rounded-3xl bg-white border transition-all duration-300 hover-lift ${
+      className={`group flex flex-col justify-between h-full rounded-2xl sm:rounded-3xl bg-white border transition-all duration-300 hover-lift ${
         course.popular
           ? 'border-[#F4C400] shadow-md ring-2 ring-[#F4C400]/20'
           : 'border-[#E5E7EB] shadow-sm'
       }`}
     >
       {/* Card Header & Badges */}
-      <div className="p-4 sm:p-6 pb-3 sm:pb-4">
+      <div className="p-4 sm:p-6 pb-3 sm:pb-4 flex-1 flex flex-col justify-between">
         <div className="flex items-center justify-between gap-1.5 mb-2 sm:mb-3">
           <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap">
             <Badge variant={transmissionBadge.variant} size="sm">

@@ -109,13 +109,13 @@ export const Home: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.55, delay: 0.15, ease: 'easeOut' }}
-              className="lg:col-span-5 relative"
+              className="lg:col-span-5 relative w-full"
             >
-              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#E5E7EB] bg-white">
+              <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[1.15/1] xl:aspect-[1.2/1] w-full min-h-[320px] sm:min-h-[380px] lg:min-h-[440px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#E5E7EB] bg-white">
                 <img
                   src={siteConfig.hero?.heroImageUrl || "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80"}
                   alt="Student learning to drive in dual control safety car"
-                  className="w-full h-56 sm:h-96 object-cover object-center transition-transform duration-700 hover:scale-105"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#082B4C]/80 via-transparent to-transparent pointer-events-none" />
 
@@ -202,7 +202,7 @@ export const Home: React.FC = () => {
         transition={{ duration: 0.45 }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <div className="flex overflow-x-auto gap-3 pb-2 -mx-4 px-4 snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-3 md:gap-6 md:m-0 md:p-0 md:overflow-visible">
+        <div className="flex overflow-x-auto gap-3 pb-2 -mx-4 px-4 snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:m-0 md:p-0 md:overflow-visible md:items-stretch">
           {(siteConfig.coreValues || [
             {
               id: 'val-1',
@@ -223,15 +223,15 @@ export const Home: React.FC = () => {
               icon: 'Compass',
             },
           ]).map((item, idx) => (
-            <div key={item.id || idx} className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between hover-lift">
+            <div key={item.id || idx} className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between hover-lift h-full">
               <div>
-                <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center font-bold mb-2 bg-[#F4C400]/20 text-[#082B4C]">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center font-bold mb-3 bg-[#F4C400]/20 text-[#082B4C]">
                   {idx === 0 ? <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" /> : idx === 1 ? <Award className="w-5 h-5 sm:w-6 sm:h-6" /> : <Compass className="w-5 h-5 sm:w-6 sm:h-6" />}
                 </div>
-                <h3 className="text-sm sm:text-base font-bold font-display text-[#202B33]">
+                <h3 className="text-sm sm:text-base lg:text-lg font-bold font-display text-[#202B33]">
                   {item.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed mt-1">
+                <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed mt-1.5">
                   {item.description}
                 </p>
               </div>
@@ -319,10 +319,10 @@ export const Home: React.FC = () => {
           </Link>
         </div>
 
-        {/* HORIZONTALLY SWIPEABLE REVIEWS ON MOBILE */}
-        <div className="flex overflow-x-auto pb-3 pt-1 -mx-4 px-4 snap-x snap-mandatory scrollbar-none gap-3 md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:p-0 md:m-0">
+        {/* HORIZONTALLY SWIPEABLE REVIEWS ON MOBILE / EQUAL HEIGHT GRID ON DESKTOP */}
+        <div className="flex overflow-x-auto pb-3 pt-1 -mx-4 px-4 snap-x snap-mandatory scrollbar-none gap-3 md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:p-0 md:m-0 md:items-stretch">
           {featuredTestimonials.map((test) => (
-            <div key={test.id} className="w-[82vw] max-w-[320px] shrink-0 snap-center md:w-auto md:max-w-none hover-lift">
+            <div key={test.id} className="w-[82vw] max-w-[320px] shrink-0 snap-center md:w-auto md:max-w-none hover-lift h-full flex flex-col">
               <TestimonialCard testimonial={test} />
             </div>
           ))}

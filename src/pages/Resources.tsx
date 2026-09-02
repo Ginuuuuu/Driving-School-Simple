@@ -31,7 +31,7 @@ export const Resources: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-stretch"
       >
         {resources.map((guide, idx) => (
           <motion.div
@@ -39,8 +39,9 @@ export const Resources: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, delay: idx * 0.08 }}
-            className="p-3.5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs hover:shadow-md hover-lift transition-all flex flex-col justify-between space-y-3 sm:space-y-4"
+            className="h-full flex flex-col"
           >
+            <div className="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs hover:shadow-md hover-lift transition-all flex flex-col justify-between space-y-3 sm:space-y-4 h-full">
             <div>
               <div className="flex items-center justify-between gap-2 mb-2 sm:mb-3">
                 <Badge variant="emerald" size="sm">
@@ -86,9 +87,10 @@ export const Resources: React.FC = () => {
                 Read Complete Guide →
               </Link>
             </div>
-          </motion.div>
-        ))}
-      </motion.div>
+          </div>
+        </motion.div>
+      ))}
+    </motion.div>
     </div>
   );
 };

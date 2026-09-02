@@ -150,6 +150,12 @@
   .animate-glow {
     animation: pulseGlow 3s ease-in-out infinite;
   }
+
+  /* Proportional layout utilities */
+  .grid-equal-height {
+    display: grid;
+    align-items: stretch;
+  }
 }
 
 @keyframes floatSlow {

@@ -76,13 +76,20 @@ export const FAQ: React.FC = () => {
 
         {/* 3-Column Grid of Questions and Direct Answers */}
         {filteredFAQs.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 items-stretch">
             {filteredFAQs.map((faq) => (
-              <div key={faq.id} className="space-y-2">
-                <h3 className="text-base font-bold text-[#202B33] leading-snug">
+              <div
+                key={faq.id}
+                className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs hover:shadow-md hover-lift-subtle space-y-2 h-full flex flex-col justify-start transition-all"
+              >
+                <div className="flex items-center gap-1.5 text-xs font-bold text-[#082B4C] bg-[#F4C400]/15 px-2.5 py-0.5 rounded-md w-fit border border-[#F4C400]/30">
+                  <HelpCircle className="w-3.5 h-3.5 text-[#082B4C]" />
+                  <span>{faq.category}</span>
+                </div>
+                <h3 className="text-sm sm:text-base font-bold text-[#202B33] leading-snug">
                   {faq.question}
                 </h3>
-                <p className="text-sm text-[#6B7280] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed pt-1">
                   {faq.answer}
                 </p>
               </div>

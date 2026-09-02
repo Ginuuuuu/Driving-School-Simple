@@ -37,7 +37,7 @@ export const Pricing: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-8"
+        className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-8 items-stretch"
       >
         {pricing.packages.slice(0, 3).map((pkg) => (
           <PricingCard
@@ -68,11 +68,11 @@ export const Pricing: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 items-stretch">
           {pricing.addOns.map((addon) => (
             <div
               key={addon.id}
-              className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs flex flex-col justify-between space-y-2.5 sm:space-y-4 hover-lift"
+              className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs flex flex-col justify-between space-y-3 sm:space-y-4 hover-lift h-full"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-1.5 sm:mb-2">
@@ -118,13 +118,13 @@ export const Pricing: React.FC = () => {
         </div>
 
         <div className="bg-white rounded-3xl border border-[#E5E7EB] overflow-x-auto shadow-sm">
-          <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[600px]">
+          <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[640px] table-fixed">
             <thead>
               <tr className="border-b border-[#E5E7EB] bg-[#F5F6F7]">
-                <th className="p-4 sm:p-5 font-bold text-[#202B33]">Features</th>
-                <th className="p-4 sm:p-5 font-bold text-[#202B33] text-center">Starter (10h)</th>
-                <th className="p-4 sm:p-5 font-bold text-[#082B4C] text-center bg-[#F4C400]/15">Standard (20h)</th>
-                <th className="p-4 sm:p-5 font-bold text-[#202B33] text-center">Mastery Pro (30h)</th>
+                <th className="p-4 sm:p-5 font-bold text-[#202B33] w-[37%]">Features</th>
+                <th className="p-4 sm:p-5 font-bold text-[#202B33] text-center w-[21%]">Starter (10h)</th>
+                <th className="p-4 sm:p-5 font-bold text-[#082B4C] text-center bg-[#F4C400]/15 w-[21%]">Standard (20h)</th>
+                <th className="p-4 sm:p-5 font-bold text-[#202B33] text-center w-[21%]">Mastery Pro (30h)</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#E5E7EB]">

@@ -27,13 +27,14 @@ export const Instructors: React.FC = () => {
       </div>
 
       {/* Instructors Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 items-stretch">
         {instructors.map((inst, idx) => (
           <motion.div
             key={inst.id}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: idx * 0.05 }}
+            className="h-full flex flex-col"
           >
             <InstructorCard
               instructor={inst}

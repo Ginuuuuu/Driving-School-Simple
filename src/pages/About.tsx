@@ -53,13 +53,13 @@ export const About: React.FC = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="lg:col-span-5 relative"
+          className="lg:col-span-5 relative w-full"
         >
-          <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#E5E7EB] bg-white">
+          <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[1.15/1] w-full min-h-[300px] sm:min-h-[360px] lg:min-h-[400px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#E5E7EB] bg-white">
             <img
               src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80"
               alt="DriveCraft training fleet and certified mentors"
-              className="w-full h-64 sm:h-96 object-cover transition-transform duration-700 hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
             />
           </div>
         </motion.div>
@@ -90,11 +90,11 @@ export const About: React.FC = () => {
           </p>
         </div>
 
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm text-white">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4 lg:gap-5 items-stretch text-xs sm:text-sm text-white">
           {about.safetyPledge.map((item, idx) => (
             <div
               key={idx}
-              className="flex items-start gap-3 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 hover:bg-white/[0.14] hover:border-[#F4C400]/40 hover-lift-subtle transition-all"
+              className="flex items-start gap-3 p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 hover:bg-white/[0.14] hover:border-[#F4C400]/40 hover-lift-subtle transition-all h-full"
             >
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#F4C400]/20 border border-[#F4C400]/40 flex items-center justify-center shrink-0 mt-0.5 text-[#F4C400]">
                 <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#F4C400]" />
@@ -119,15 +119,17 @@ export const About: React.FC = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 items-stretch">
           {about.fleetStandards.map((std, idx) => (
-            <div key={idx} className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-1.5 sm:space-y-2 hover-lift">
-              <div className="text-xl sm:text-2xl font-black font-display text-[#082B4C]">
-                {std.metric}
+            <div key={idx} className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-2 flex flex-col justify-between hover-lift h-full">
+              <div>
+                <div className="text-xl sm:text-2xl font-black font-display text-[#082B4C]">
+                  {std.metric}
+                </div>
+                <h3 className="text-sm sm:text-base font-bold font-display text-[#202B33] mt-1">
+                  {std.title}
+                </h3>
               </div>
-              <h3 className="text-sm sm:text-base font-bold font-display text-[#202B33]">
-                {std.title}
-              </h3>
               <p className="text-xs text-[#6B7280] leading-relaxed">
                 {std.description}
               </p>
