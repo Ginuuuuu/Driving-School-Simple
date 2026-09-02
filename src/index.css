@@ -151,12 +151,12 @@
     animation: pulseGlow 3s ease-in-out infinite;
   }
 
-<<<<<<< HEAD
   /* Proportional layout utilities */
   .grid-equal-height {
     display: grid;
     align-items: stretch;
-=======
+  }
+
   /* Responsive Site Container System (Standardizes desktop layout ratios and eliminates excessive negative space) */
   .site-container {
     width: 100%;
@@ -250,7 +250,7 @@
       width: calc((100% - 6rem) / 4);
       max-width: none;
     }
->>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
+  }
   }
 }
 
