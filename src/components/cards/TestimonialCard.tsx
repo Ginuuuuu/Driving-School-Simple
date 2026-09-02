@@ -9,7 +9,7 @@ interface TestimonialCardProps {
 
 export const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => {
   return (
-    <div className="flex flex-col justify-between h-full rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] p-3.5 sm:p-7 shadow-xs hover:shadow-md hover-lift transition-all duration-300">
+    <div className="flex flex-col justify-between w-full h-full rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] p-3.5 sm:p-7 shadow-xs hover:shadow-md hover-lift transition-all duration-300">
       <div>
         {/* Rating Stars & Verified Tag */}
         <div className="flex items-center justify-between gap-2 mb-2.5 sm:mb-4">

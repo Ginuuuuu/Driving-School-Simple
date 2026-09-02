@@ -117,7 +117,7 @@ export const SerpentineRoadmap: React.FC<SerpentineRoadmapProps> = ({
       </div>
 
       {/* SERPENTINE ROADMAP DESKTOP VIEW (Visible on md and larger) */}
-      <div className="hidden md:block relative max-w-5xl mx-auto py-6 space-y-16">
+      <div className="hidden md:block relative max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto py-6 space-y-16">
         {/* ROW 1: Stages 1 & 2 (Left to Right) */}
         <div className="relative">
           {/* Top Horizontal Road Track */}

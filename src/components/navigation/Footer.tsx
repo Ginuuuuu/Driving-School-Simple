@@ -13,9 +13,9 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="bg-[#082B4C] text-[#F5F6F7] pt-8 pb-6 sm:pt-16 sm:pb-12 border-t border-[#061F36]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-10 lg:gap-8 mb-6 sm:mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-10 lg:gap-10 xl:gap-12 2xl:gap-16 mb-6 sm:mb-12">
           {/* Column 1: Brand & Safety Bio */}
           <div className="lg:col-span-2 space-y-2.5 sm:space-y-4">
             <Logo variant="light" size="sm" showTagline />

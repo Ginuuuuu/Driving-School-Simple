@@ -19,7 +19,7 @@ export const Pricing: React.FC = () => {
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string) => void }>();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 space-y-10 sm:space-y-16 lg:space-y-24">
+    <div className="site-container py-4 sm:py-10 space-y-10 sm:space-y-16 lg:space-y-24">
       <SEO
         title="Transparent Driving Lesson Pricing & Packages"
         description="Affordable and all-inclusive driving package pricing with zero hidden fees. Starter, Standard, and Mastery Pro courses with doorstep pickup."
@@ -37,14 +37,19 @@ export const Pricing: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
+<<<<<<< HEAD
         className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-8 items-stretch"
+=======
+        className="cards-grid-centered"
+>>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
       >
         {pricing.packages.slice(0, 3).map((pkg) => (
-          <PricingCard
-            key={pkg.id}
-            pkg={pkg}
-            onSelectPackage={(slug) => onOpenBooking(slug)}
-          />
+          <div key={pkg.id} className="card-col-3">
+            <PricingCard
+              pkg={pkg}
+              onSelectPackage={(slug) => onOpenBooking(slug)}
+            />
+          </div>
         ))}
       </motion.div>
 
@@ -68,33 +73,43 @@ export const Pricing: React.FC = () => {
           </p>
         </div>
 
+<<<<<<< HEAD
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 items-stretch">
           {pricing.addOns.map((addon) => (
             <div
               key={addon.id}
               className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs flex flex-col justify-between space-y-3 sm:space-y-4 hover-lift h-full"
+=======
+        <div className="cards-grid-centered">
+          {pricing.addOns.map((addon) => (
+            <div
+              key={addon.id}
+              className="card-col-4"
+>>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
             >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-1.5 sm:mb-2">
-                  <span className="text-base sm:text-lg font-bold text-[#202B33]">₹{addon.price}</span>
-                  <span className="text-[0.65rem] text-[#6B7280] font-medium">/{addon.perUnit}</span>
+              <div className="w-full h-full p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs flex flex-col justify-between space-y-2.5 sm:space-y-4 hover-lift">
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-1.5 sm:mb-2">
+                    <span className="text-base sm:text-lg font-bold text-[#202B33]">₹{addon.price}</span>
+                    <span className="text-[0.65rem] text-[#6B7280] font-medium">/{addon.perUnit}</span>
+                  </div>
+                  <h3 className="text-xs sm:text-sm font-bold font-display text-[#202B33]">
+                    {addon.title}
+                  </h3>
+                  <p className="text-[0.72rem] sm:text-xs text-[#6B7280] mt-1 leading-relaxed">
+                    {addon.description}
+                  </p>
                 </div>
-                <h3 className="text-xs sm:text-sm font-bold font-display text-[#202B33]">
-                  {addon.title}
-                </h3>
-                <p className="text-[0.72rem] sm:text-xs text-[#6B7280] mt-1 leading-relaxed">
-                  {addon.description}
-                </p>
-              </div>
 
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => onOpenBooking()}
-                className="w-full justify-center text-xs py-1.5 sm:py-2 hover:border-[#082B4C] hover:text-[#082B4C]"
-              >
-                Add to Booking
-              </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => onOpenBooking()}
+                  className="w-full justify-center text-xs py-1.5 sm:py-2 hover:border-[#082B4C] hover:text-[#082B4C]"
+                >
+                  Add to Booking
+                </Button>
+              </div>
             </div>
           ))}
         </div>

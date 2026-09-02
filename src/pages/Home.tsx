@@ -39,14 +39,14 @@ export const Home: React.FC = () => {
         {/* Ambient background glow */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#F4C400]/15 rounded-full blur-3xl pointer-events-none -z-10 animate-glow" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+        <div className="site-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
             {/* Hero Left Content (7 Cols) */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, ease: 'easeOut' }}
-              className="lg:col-span-7 space-y-3 sm:space-y-6 text-center lg:text-left"
+              className="lg:col-span-7 space-y-4 sm:space-y-6 lg:space-y-8 text-center lg:text-left"
             >
               {/* Trust Badge Pill */}
               <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#F4C400]/15 border border-[#F4C400]/30 text-[0.68rem] xs:text-[0.72rem] sm:text-sm font-bold text-[#082B4C] shadow-2xs max-w-full">
@@ -55,14 +55,14 @@ export const Home: React.FC = () => {
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-2xl sm:text-5xl lg:text-6xl font-extrabold font-display text-[#202B33] tracking-tight leading-[1.18] sm:leading-[1.15]">
+              <h1 className="text-2xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold font-display text-[#202B33] tracking-tight leading-[1.18] sm:leading-[1.12]">
                 {siteConfig.hero?.headlineMain || 'Master Every Mile with '}
                 <span className="text-[#082B4C]">{siteConfig.hero?.headlineHighlight || 'Confidence'}</span>
                 {siteConfig.hero?.headlineEnd || ' & Total Safety.'}
               </h1>
 
               {/* Subtitle */}
-              <p className="text-xs sm:text-base lg:text-lg text-[#6B7280] leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="text-xs sm:text-base lg:text-lg xl:text-xl text-[#6B7280] leading-relaxed max-w-2xl lg:max-w-3xl mx-auto lg:mx-0">
                 {siteConfig.hero?.subtitle || 'Learn driving in modern dual-control cars with patient certified mentors, replica automated RTO track training, and zero hidden fees.'}
               </p>
 
@@ -91,7 +91,7 @@ export const Home: React.FC = () => {
               </div>
 
               {/* Quick Trust Checks */}
-              <div className="pt-2 sm:pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-4 text-[0.72rem] sm:text-xs font-semibold text-[#6B7280]">
+              <div className="pt-2 sm:pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-4 text-[0.72rem] sm:text-xs lg:text-sm font-semibold text-[#6B7280]">
                 {(siteConfig.hero?.trustChecks || ['98.4% First-Attempt RTO Pass', 'Female & Male Mentors', 'Manual & Auto']).map((check, idx, arr) => (
                   <React.Fragment key={idx}>
                     <div className="flex items-center gap-1 sm:gap-1.5">
@@ -111,11 +111,19 @@ export const Home: React.FC = () => {
               transition={{ duration: 0.55, delay: 0.15, ease: 'easeOut' }}
               className="lg:col-span-5 relative w-full"
             >
+<<<<<<< HEAD
               <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[1.15/1] xl:aspect-[1.2/1] w-full min-h-[320px] sm:min-h-[380px] lg:min-h-[440px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#E5E7EB] bg-white">
                 <img
                   src={siteConfig.hero?.heroImageUrl || "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80"}
                   alt="Student learning to drive in dual control safety car"
                   className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+=======
+              <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#E5E7EB] bg-white w-full">
+                <img
+                  src={siteConfig.hero?.heroImageUrl || "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80"}
+                  alt="Student learning to drive in dual control safety car"
+                  className="w-full h-64 sm:h-80 md:h-96 lg:h-[460px] xl:h-[520px] 2xl:h-[580px] object-cover object-center transition-transform duration-700 hover:scale-105"
+>>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#082B4C]/80 via-transparent to-transparent pointer-events-none" />
 
@@ -151,42 +159,42 @@ export const Home: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-20px" }}
         transition={{ duration: 0.4 }}
-        className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8"
+        className="site-container"
       >
-        <div className="py-2.5 sm:py-4 px-2 sm:px-6 bg-[#082B4C] text-white rounded-xl sm:rounded-2xl border border-[#061F36] shadow-sm">
+        <div className="py-3 sm:py-4 lg:py-5 xl:py-6 px-3 sm:px-6 lg:px-8 xl:px-12 bg-[#082B4C] text-white rounded-xl sm:rounded-2xl lg:rounded-3xl border border-[#061F36] shadow-sm">
           <div className="grid grid-cols-4 divide-x divide-[#061F36] text-center items-center">
             <div className="px-1 sm:px-3">
-              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-[#F4C400] leading-tight">
+              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl xl:text-4xl font-black font-display text-[#F4C400] leading-tight">
                 {siteConfig.trustStats[0]?.value || '14,800+'}
               </div>
-              <div className="text-[0.6rem] sm:text-xs text-slate-200 font-medium mt-0.5 truncate">
+              <div className="text-[0.6rem] sm:text-xs lg:text-sm text-slate-200 font-medium mt-0.5 sm:mt-1 truncate">
                 Learners Trained
               </div>
             </div>
 
             <div className="px-1 sm:px-3">
-              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-[#F4C400] leading-tight">
+              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl xl:text-4xl font-black font-display text-[#F4C400] leading-tight">
                 {siteConfig.trustStats[1]?.value || '98.4%'}
               </div>
-              <div className="text-[0.6rem] sm:text-xs text-slate-200 font-medium mt-0.5 truncate">
+              <div className="text-[0.6rem] sm:text-xs lg:text-sm text-slate-200 font-medium mt-0.5 sm:mt-1 truncate">
                 RTO Pass Rate
               </div>
             </div>
 
             <div className="px-1 sm:px-3">
-              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-[#F4C400] leading-tight">
+              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl xl:text-4xl font-black font-display text-[#F4C400] leading-tight">
                 {siteConfig.trustStats[2]?.value || '35+'}
               </div>
-              <div className="text-[0.6rem] sm:text-xs text-slate-200 font-medium mt-0.5 truncate">
+              <div className="text-[0.6rem] sm:text-xs lg:text-sm text-slate-200 font-medium mt-0.5 sm:mt-1 truncate">
                 Top Mentors
               </div>
             </div>
 
             <div className="px-1 sm:px-3">
-              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl font-black font-display text-[#F4C400] leading-tight">
+              <div className="text-sm xs:text-base sm:text-2xl lg:text-3xl xl:text-4xl font-black font-display text-[#F4C400] leading-tight">
                 {siteConfig.trustStats[3]?.value || '100%'}
               </div>
-              <div className="text-[0.6rem] sm:text-xs text-slate-200 font-medium mt-0.5 truncate">
+              <div className="text-[0.6rem] sm:text-xs lg:text-sm text-slate-200 font-medium mt-0.5 sm:mt-1 truncate">
                 Dual-Control
               </div>
             </div>
@@ -200,9 +208,13 @@ export const Home: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.45 }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="site-container"
       >
+<<<<<<< HEAD
         <div className="flex overflow-x-auto gap-3 pb-2 -mx-4 px-4 snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:m-0 md:p-0 md:overflow-visible md:items-stretch">
+=======
+        <div className="flex overflow-x-auto gap-3 pb-2 -mx-4 px-4 snap-x snap-mandatory scrollbar-none md:grid md:grid-cols-3 md:gap-6 lg:gap-8 xl:gap-10 md:m-0 md:p-0 md:overflow-visible">
+>>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
           {(siteConfig.coreValues || [
             {
               id: 'val-1',
@@ -223,6 +235,7 @@ export const Home: React.FC = () => {
               icon: 'Compass',
             },
           ]).map((item, idx) => (
+<<<<<<< HEAD
             <div key={item.id || idx} className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-4 sm:p-6 lg:p-7 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-2 sm:space-y-3 flex flex-col justify-between hover-lift h-full">
               <div>
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center font-bold mb-3 bg-[#F4C400]/20 text-[#082B4C]">
@@ -232,6 +245,17 @@ export const Home: React.FC = () => {
                   {item.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed mt-1.5">
+=======
+            <div key={item.id || idx} className="w-[78vw] max-w-[300px] shrink-0 snap-center md:w-auto md:max-w-none p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-3 sm:space-y-4 flex flex-col justify-between hover-lift">
+              <div>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center font-bold mb-3 bg-[#F4C400]/20 text-[#082B4C]">
+                  {idx === 0 ? <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" /> : idx === 1 ? <Award className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" /> : <Compass className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />}
+                </div>
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold font-display text-[#202B33]">
+                  {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm lg:text-base text-[#6B7280] leading-relaxed mt-1.5">
+>>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
                   {item.description}
                 </p>
               </div>
@@ -246,7 +270,7 @@ export const Home: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.45 }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="site-container"
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-4 sm:mb-6">
           <div>
@@ -254,7 +278,7 @@ export const Home: React.FC = () => {
               <Award className="w-3.5 h-3.5 text-[#082B4C]" />
               MoRTH Certified Safety Mentors
             </div>
-            <h2 className="text-lg sm:text-2xl font-bold font-display text-[#202B33] tracking-tight">
+            <h2 className="text-lg sm:text-2xl lg:text-3xl xl:text-4xl font-bold font-display text-[#202B33] tracking-tight">
               Learn From Patient, Background-Verified Instructors
             </h2>
           </div>
@@ -280,10 +304,10 @@ export const Home: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.45 }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="site-container"
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-3 sm:mb-6">
-          <h2 className="text-lg sm:text-2xl font-bold font-display text-[#202B33] tracking-tight">
+          <h2 className="text-lg sm:text-2xl lg:text-3xl xl:text-4xl font-bold font-display text-[#202B33] tracking-tight">
             6-Step Licence Roadmap
           </h2>
 
@@ -304,10 +328,10 @@ export const Home: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.45 }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="site-container"
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-4 mb-3 sm:mb-6">
-          <h2 className="text-lg sm:text-2xl font-bold font-display text-[#202B33] tracking-tight">
+          <h2 className="text-lg sm:text-2xl lg:text-3xl xl:text-4xl font-bold font-display text-[#202B33] tracking-tight">
             Student Reviews & Stories
           </h2>
 
@@ -319,8 +343,13 @@ export const Home: React.FC = () => {
           </Link>
         </div>
 
+<<<<<<< HEAD
         {/* HORIZONTALLY SWIPEABLE REVIEWS ON MOBILE / EQUAL HEIGHT GRID ON DESKTOP */}
         <div className="flex overflow-x-auto pb-3 pt-1 -mx-4 px-4 snap-x snap-mandatory scrollbar-none gap-3 md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:p-0 md:m-0 md:items-stretch">
+=======
+        {/* HORIZONTALLY SWIPEABLE REVIEWS ON MOBILE */}
+        <div className="flex overflow-x-auto pb-3 pt-1 -mx-4 px-4 snap-x snap-mandatory scrollbar-none gap-3 md:grid md:grid-cols-3 md:gap-6 lg:gap-8 xl:gap-10 md:overflow-visible md:p-0 md:m-0">
+>>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
           {featuredTestimonials.map((test) => (
             <div key={test.id} className="w-[82vw] max-w-[320px] shrink-0 snap-center md:w-auto md:max-w-none hover-lift h-full flex flex-col">
               <TestimonialCard testimonial={test} />
@@ -338,30 +367,30 @@ export const Home: React.FC = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.45 }}
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8"
+        className="site-container pb-10 sm:pb-14"
       >
-        <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#082B4C] via-[#061F36] to-[#041424] text-white p-6 sm:p-10 lg:p-12 border border-white/10 shadow-2xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-8">
+        <div className="relative rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#082B4C] via-[#061F36] to-[#041424] text-white p-6 sm:p-10 lg:p-14 xl:p-16 border border-white/10 shadow-2xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-10">
           {/* Ambient Flowing Light Glow Orbs */}
           <div className="absolute -top-20 -right-20 w-80 h-80 bg-[#F4C400]/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-20 -left-20 w-72 h-72 bg-[#082B4C]/30 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 space-y-1.5 sm:space-y-2 text-center md:text-left max-w-xl">
-            <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold font-display text-white tracking-tight">
+          <div className="relative z-10 space-y-2 sm:space-y-3 text-center md:text-left max-w-2xl">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold font-display text-white tracking-tight">
               Ready to Start Your Driving Lessons?
             </h2>
 
-            <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
+            <p className="text-xs sm:text-sm lg:text-base text-slate-200 leading-relaxed">
               Doorstep pickup, zero-stall training, and patient mentors. Enquire online or chat with our admissions team on WhatsApp.
             </p>
           </div>
 
-          <div className="relative z-10 flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3 shrink-0 w-full md:w-auto">
+          <div className="relative z-10 flex flex-col sm:flex-row items-center gap-3 shrink-0 w-full md:w-auto">
             <Button
               variant="primary"
               size="lg"
               onClick={() => onOpenBooking()}
-              className="w-full sm:w-auto justify-center shadow-lg text-xs sm:text-sm py-2.5 sm:py-3 hover-lift"
-              icon={<Sparkles className="w-4 h-4 text-[#082B4C]" />}
+              className="w-full sm:w-auto justify-center shadow-lg text-sm sm:text-base py-3 sm:py-3.5 hover-lift"
+              icon={<Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#082B4C]" />}
             >
               Book a Lesson
             </Button>
@@ -371,8 +400,8 @@ export const Home: React.FC = () => {
               size="lg"
               href={whatsappUrl}
               isExternal
-              className="w-full sm:w-auto justify-center text-xs sm:text-sm py-2.5 sm:py-3 hover-lift"
-              icon={<MessageCircle className="w-4 h-4 fill-current" />}
+              className="w-full sm:w-auto justify-center text-sm sm:text-base py-3 sm:py-3.5 hover-lift"
+              icon={<MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />}
             >
               WhatsApp Us
             </Button>

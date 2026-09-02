@@ -157,6 +157,11 @@ export default {
         'card': '0 1px 3px 0 rgba(8, 43, 76, 0.06), 0 1px 2px -1px rgba(8, 43, 76, 0.04)',
         'card-hover': '0 10px 25px -5px rgba(8, 43, 76, 0.12), 0 8px 10px -6px rgba(8, 43, 76, 0.08)',
       },
+      maxWidth: {
+        '8xl': '88rem',
+        '9xl': '96rem',
+        '10xl': '104rem',
+      },
       borderRadius: {
         'xl': '1rem',
         '2xl': '1.25rem',

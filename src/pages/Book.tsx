@@ -11,7 +11,7 @@ export const Book: React.FC = () => {
   const instructorParam = searchParams.get('instructor') || undefined;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 space-y-6 sm:space-y-10">
+    <div className="site-container max-w-5xl xl:max-w-6xl py-4 sm:py-10 space-y-6 sm:space-y-10">
       <SEO
         title="Book a Driving Lesson | Online Lesson Enquiry Studio"
         description="Book your driving lessons online with DriveCraft Motor Academy. Doorstep pickup, dual-control safety cars, and patient certified mentors."

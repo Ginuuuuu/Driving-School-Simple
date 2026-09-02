@@ -11,8 +11,13 @@ interface InstructorCardProps {
 
 export const InstructorCard: React.FC<InstructorCardProps> = ({ instructor, onSelectInstructor }) => {
   return (
+<<<<<<< HEAD
     <div className="flex flex-col justify-between h-full rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-sm hover:shadow-lg hover-lift transition-all duration-300 overflow-hidden group">
       <div className="flex-1 flex flex-col justify-between">
+=======
+    <div className="flex flex-col justify-between w-full h-full rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-sm hover:shadow-lg hover-lift transition-all duration-300 overflow-hidden group">
+      <div>
+>>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
         {/* Photo & Rating Banner */}
         <div className="relative aspect-[16/11] sm:aspect-[4/3] w-full bg-[#F5F6F7] overflow-hidden">
           <img

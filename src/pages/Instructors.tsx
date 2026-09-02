@@ -13,7 +13,7 @@ export const Instructors: React.FC = () => {
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string, instructorId?: string) => void }>();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 space-y-6 sm:space-y-10">
+    <div className="site-container py-4 sm:py-10 space-y-6 sm:space-y-10">
       <SEO
         title="Meet Our Certified Driving Instructors"
         description="Learn with patient, certified male and female driving instructors with over 10+ years of experience across Hindi, English, and regional languages."
@@ -27,14 +27,22 @@ export const Instructors: React.FC = () => {
       </div>
 
       {/* Instructors Grid */}
+<<<<<<< HEAD
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 items-stretch">
+=======
+      <div className="cards-grid-centered">
+>>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
         {instructors.map((inst, idx) => (
           <motion.div
             key={inst.id}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: idx * 0.05 }}
+<<<<<<< HEAD
             className="h-full flex flex-col"
+=======
+            className="card-col-4"
+>>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
           >
             <InstructorCard
               instructor={inst}

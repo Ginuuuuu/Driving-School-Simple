@@ -12,7 +12,11 @@ interface PricingCardProps {
 export const PricingCard: React.FC<PricingCardProps> = ({ pkg, onSelectPackage }) => {
   return (
     <div
+<<<<<<< HEAD
       className={`relative flex flex-col justify-between h-full rounded-2xl sm:rounded-3xl bg-white border hover-lift transition-all duration-300 ${
+=======
+      className={`relative flex flex-col justify-between w-full h-full rounded-2xl sm:rounded-3xl bg-white border hover-lift transition-all duration-300 ${
+>>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
         pkg.popular
           ? 'border-[#F4C400] shadow-xl ring-2 ring-[#F4C400]/25'
           : 'border-[#E5E7EB] shadow-sm hover:shadow-lg'

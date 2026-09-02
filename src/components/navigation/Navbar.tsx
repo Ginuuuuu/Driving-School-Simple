@@ -53,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
       {/* Top Announcement Micro-Bar (Only when top) */}
       {!isScrolled && (
         <div className="hidden lg:block border-b border-[#E5E7EB] pb-2 mb-2">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs text-[#6B7280]">
+          <div className="site-container flex items-center justify-between text-xs text-[#6B7280]">
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1.5 text-[#082B4C] font-semibold">
                 <Shield className="w-3.5 h-3.5 text-[#F4C400]" />
@@ -78,7 +78,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
       )}
 
       {/* Main Navbar Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="flex items-center justify-between gap-4">
           {/* Logo */}
           <Logo size="md" showTagline={!isScrolled} />

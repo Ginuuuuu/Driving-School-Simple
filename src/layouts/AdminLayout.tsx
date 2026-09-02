@@ -284,7 +284,11 @@ export const AdminLayout: React.FC = () => {
         </header>
 
         {/* Dynamic Admin Body with Clean Padding and Spacing */}
+<<<<<<< HEAD
         <main className="p-4 sm:p-6 lg:p-8 flex-1 max-w-7xl 2xl:max-w-screen-2xl w-full mx-auto">
+=======
+        <main className="p-4 sm:p-6 lg:p-8 flex-1 max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px] w-full mx-auto">
+>>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
           <Outlet />
         </main>
       </div>

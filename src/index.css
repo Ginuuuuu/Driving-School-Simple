@@ -151,10 +151,106 @@
     animation: pulseGlow 3s ease-in-out infinite;
   }
 
+<<<<<<< HEAD
   /* Proportional layout utilities */
   .grid-equal-height {
     display: grid;
     align-items: stretch;
+=======
+  /* Responsive Site Container System (Standardizes desktop layout ratios and eliminates excessive negative space) */
+  .site-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  @media (min-width: 640px) {
+    .site-container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .site-container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    .site-container {
+      max-width: 1400px;
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+  @media (min-width: 1536px) {
+    .site-container {
+      max-width: 1600px;
+      padding-left: 3.5rem;
+      padding-right: 3.5rem;
+    }
+  }
+
+  /* Centered Responsive Card Grids (Centers orphan/last-row cards and keeps uniform card dimensions) */
+  .cards-grid-centered {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+  @media (min-width: 640px) {
+    .cards-grid-centered {
+      gap: 2rem;
+    }
+  }
+
+  /* 3-Column Card Item (Centers remaining cards on the last row) */
+  .card-col-3 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 28rem;
+  }
+  @media (min-width: 640px) {
+    .card-col-3 {
+      width: calc((100% - 2rem) / 2);
+      max-width: none;
+    }
+  }
+  @media (min-width: 1024px) {
+    .card-col-3 {
+      width: calc((100% - 4rem) / 3);
+      max-width: none;
+    }
+  }
+
+  /* 4-Column Card Item (Centers remaining cards on the last row) */
+  .card-col-4 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 28rem;
+  }
+  @media (min-width: 640px) {
+    .card-col-4 {
+      width: calc((100% - 2rem) / 2);
+      max-width: none;
+    }
+  }
+  @media (min-width: 1024px) {
+    .card-col-4 {
+      width: calc((100% - 4rem) / 3);
+      max-width: none;
+    }
+  }
+  @media (min-width: 1280px) {
+    .card-col-4 {
+      width: calc((100% - 6rem) / 4);
+      max-width: none;
+    }
+>>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
   }
 }
 

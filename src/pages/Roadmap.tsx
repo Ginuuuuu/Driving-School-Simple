@@ -18,7 +18,7 @@ export const Roadmap: React.FC = () => {
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string) => void }>();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-6 sm:space-y-8 lg:space-y-10">
+    <div className="site-container py-4 sm:py-8 space-y-8 sm:space-y-12 lg:space-y-16">
       <SEO
         title="How to Get Your Driving Licence in India | Step-by-Step RTO Roadmap"
         description="Comprehensive official guide to the Indian driving licence process: Sarathi Parivahan LL application, theory test, 30-day dual-control training, and automated ADTT track tests."
