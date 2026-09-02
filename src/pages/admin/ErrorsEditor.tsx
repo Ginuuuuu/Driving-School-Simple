@@ -156,8 +156,8 @@ export const ErrorsEditor: React.FC = () => {
                   setErrorState({
                     ...errorState,
                     error500: {
+                      ...errorState.error500,
                       title: e.target.value,
-                      description: errorState.error500?.description || 'Our roadside technical assistance team has been dispatched. Please refresh the page.',
                     },
                   })
                 }
@@ -176,7 +176,7 @@ export const ErrorsEditor: React.FC = () => {
                   setErrorState({
                     ...errorState,
                     error500: {
-                      title: errorState.error500?.title || 'Engine Stalled (Server Error)',
+                      ...errorState.error500,
                       description: e.target.value,
                     },
                   })
@@ -215,8 +215,8 @@ export const ErrorsEditor: React.FC = () => {
                   setErrorState({
                     ...errorState,
                     offline: {
+                      ...errorState.offline,
                       title: e.target.value,
-                      description: errorState.offline?.description || 'Please check your internet connection to continue browsing driving slots and updates.',
                     },
                   })
                 }
@@ -235,7 +235,7 @@ export const ErrorsEditor: React.FC = () => {
                   setErrorState({
                     ...errorState,
                     offline: {
-                      title: errorState.offline?.title || 'You Are Currently Offline',
+                      ...errorState.offline,
                       description: e.target.value,
                     },
                   })
