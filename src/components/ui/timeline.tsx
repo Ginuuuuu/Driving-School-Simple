@@ -41,6 +41,7 @@ const timelineItemVariants = cva('grid items-center gap-x-2', {
    variants: {
       status: {
          done: 'text-primary',
+         current: 'text-primary',
          default: 'text-muted-foreground',
       },
    },
