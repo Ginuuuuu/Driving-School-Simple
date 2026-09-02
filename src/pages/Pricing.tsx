@@ -37,11 +37,7 @@ export const Pricing: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
-<<<<<<< HEAD
-        className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-8 items-stretch"
-=======
         className="cards-grid-centered"
->>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
       >
         {pricing.packages.slice(0, 3).map((pkg) => (
           <div key={pkg.id} className="card-col-3">
@@ -73,19 +69,11 @@ export const Pricing: React.FC = () => {
           </p>
         </div>
 
-<<<<<<< HEAD
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 items-stretch">
-          {pricing.addOns.map((addon) => (
-            <div
-              key={addon.id}
-              className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs flex flex-col justify-between space-y-3 sm:space-y-4 hover-lift h-full"
-=======
         <div className="cards-grid-centered">
           {pricing.addOns.map((addon) => (
             <div
               key={addon.id}
               className="card-col-4"
->>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
             >
               <div className="w-full h-full p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs flex flex-col justify-between space-y-2.5 sm:space-y-4 hover-lift">
                 <div>
