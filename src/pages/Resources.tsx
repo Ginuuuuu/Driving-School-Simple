@@ -31,11 +31,7 @@ export const Resources: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-<<<<<<< HEAD
-        className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-stretch"
-=======
         className="cards-grid-centered"
->>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
       >
         {resources.map((guide, idx) => (
           <motion.div
@@ -43,20 +39,6 @@ export const Resources: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, delay: idx * 0.08 }}
-<<<<<<< HEAD
-            className="h-full flex flex-col"
-          >
-            <div className="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs hover:shadow-md hover-lift transition-all flex flex-col justify-between space-y-3 sm:space-y-4 h-full">
-            <div>
-              <div className="flex items-center justify-between gap-2 mb-2 sm:mb-3">
-                <Badge variant="emerald" size="sm">
-                  {guide.category}
-                </Badge>
-                <span className="text-[0.7rem] sm:text-xs text-[#6B7280] flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5 text-[#082B4C]" />
-                  {guide.readTimeMinutes} min read
-                </span>
-=======
             className="card-col-3"
           >
             <div className="w-full h-full p-3.5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs hover:shadow-md hover-lift transition-all flex flex-col justify-between space-y-3 sm:space-y-4">
@@ -95,7 +77,6 @@ export const Resources: React.FC = () => {
                     ))}
                   </ul>
                 </div>
->>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
               </div>
 
               <div className="pt-1.5 sm:pt-2">
@@ -107,25 +88,9 @@ export const Resources: React.FC = () => {
                 </Link>
               </div>
             </div>
-<<<<<<< HEAD
-
-            <div className="pt-1.5 sm:pt-2">
-              <Link
-                to={`/resources/${guide.slug}`}
-                className="inline-flex items-center gap-2 text-xs font-bold text-[#082B4C] hover:text-[#061F36] transition-colors"
-              >
-                Read Complete Guide →
-              </Link>
-            </div>
-          </div>
-        </motion.div>
-      ))}
-    </motion.div>
-=======
           </motion.div>
         ))}
       </motion.div>
->>>>>>> f9da9236e7e30d399b1b7cf1d862c30139c4c05e
     </div>
   );
 };
