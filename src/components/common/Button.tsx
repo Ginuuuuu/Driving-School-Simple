@@ -22,6 +22,8 @@ export const Button: React.FC<ButtonProps> = ({
   size = 'md',
   to,
   href,
+  target,
+  rel,
   icon,
   iconPosition = 'left',
   isLoading = false,
