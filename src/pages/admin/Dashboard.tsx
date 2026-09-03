@@ -79,28 +79,29 @@ export const Dashboard: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-6 sm:space-y-8 w-full max-w-6xl mx-auto">
+    <div className="space-y-6 sm:space-y-8 w-full">
       <SEO title="Admin Dashboard | DriveCraft Content Control Center" />
 
       {/* Welcome Banner */}
-      <div className="relative overflow-hidden p-6 sm:p-8 rounded-3xl bg-[#082B4C] text-white border border-[#061F36] shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div className="space-y-2 relative z-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#F4C400]/20 text-[#F4C400] border border-[#F4C400]/40">
+      <div className="relative overflow-hidden p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-[#082B4C] via-[#061F36] to-[#041424] text-white border border-[#061F36] shadow-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+        <div className="space-y-2.5 relative z-10">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold bg-[#F4C400]/20 text-[#F4C400] border border-[#F4C400]/40 shadow-xs">
             <Sparkles className="w-3.5 h-3.5 text-[#F4C400]" /> Content Control Center
           </div>
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold font-display text-white">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-display text-white tracking-tight">
             Welcome, {siteConfig.brandName} Administrator
           </h2>
-          <p className="text-xs sm:text-sm text-slate-200 max-w-xl leading-relaxed">
+          <p className="text-xs sm:text-sm lg:text-base text-slate-200 max-w-2xl leading-relaxed">
             Every page across your website is fully editable in real time. Use the structured editors below to customize hero copy, team members, courses, milestones, and branch hubs.
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 relative z-10">
+        <div className="flex flex-wrap items-center gap-3 relative z-10 shrink-0">
           <Button
             variant="primary"
             size="md"
             onClick={exportConfigAsJSON}
+            className="font-bold shadow-md"
             icon={<Download className="w-4 h-4" />}
           >
             Export JSON Backup
@@ -112,7 +113,7 @@ export const Dashboard: React.FC = () => {
             to="/"
             target="_blank"
             rel="noopener noreferrer"
-            className="border-slate-500 text-slate-100 hover:text-white"
+            className="border-slate-400 text-slate-100 hover:text-white hover:border-white"
             icon={<ExternalLink className="w-4 h-4" />}
           >
             View Live Site
@@ -122,12 +123,12 @@ export const Dashboard: React.FC = () => {
 
       {/* KPI Overview Cards */}
       <div>
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between mb-3.5">
           <h3 className="text-xs font-bold font-display uppercase tracking-wider text-slate-500">
             Live Catalog & Metrics Overview
           </h3>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-3.5">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 2xl:grid-cols-8 gap-4 sm:gap-5">
           {quickStats.map((stat, idx) => {
             const Icon = stat.icon;
 
@@ -135,16 +136,16 @@ export const Dashboard: React.FC = () => {
               <Link
                 key={idx}
                 to={stat.to}
-                className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-md hover:border-slate-300 hover-lift transition-all space-y-1.5 group flex flex-col justify-between"
+                className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-slate-200/90 shadow-xs hover:shadow-lg hover:border-slate-300 hover-lift transition-all space-y-2.5 group flex flex-col justify-between min-h-[120px]"
               >
-                <div className={`w-7 h-7 rounded-xl border flex items-center justify-center ${stat.color}`}>
-                  <Icon className="w-3.5 h-3.5" />
+                <div className={`w-10 h-10 rounded-2xl border flex items-center justify-center shrink-0 ${stat.color}`}>
+                  <Icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <div className="text-xl font-bold font-display text-slate-900 group-hover:text-[#082B4C] transition-colors">
+                  <div className="text-2xl sm:text-3xl font-extrabold font-display text-slate-900 group-hover:text-[#082B4C] transition-colors leading-tight">
                     {stat.count}
                   </div>
-                  <div className="text-[0.7rem] font-semibold text-slate-600 truncate">
+                  <div className="text-xs sm:text-sm font-semibold text-slate-600 truncate mt-0.5">
                     {stat.label}
                   </div>
                 </div>
@@ -160,22 +161,22 @@ export const Dashboard: React.FC = () => {
           All Page & Module Editors
         </h3>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 items-stretch">
           {editorCategories.map((cat, cIdx) => (
             <div
               key={cIdx}
-              className="p-5 sm:p-6 rounded-3xl bg-white border border-slate-200 shadow-xs space-y-4 flex flex-col justify-between hover:shadow-sm transition-all h-full"
+              className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-sm space-y-6 flex flex-col justify-between hover:shadow-md transition-all h-full"
             >
-              <div className="space-y-1.5">
-                <h4 className="text-base font-bold font-display text-slate-900">
+              <div className="space-y-2">
+                <h4 className="text-lg sm:text-xl font-bold font-display text-slate-900">
                   {cat.title}
                 </h4>
-                <p className="text-xs text-slate-500 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
                   {cat.description}
                 </p>
               </div>
 
-              <div className="space-y-2 pt-2 border-t border-slate-100">
+              <div className="space-y-2.5 pt-3 border-t border-slate-100">
                 {cat.links.map((link, lIdx) => {
                   const LinkIcon = link.icon;
 
@@ -183,19 +184,19 @@ export const Dashboard: React.FC = () => {
                     <Link
                       key={lIdx}
                       to={link.to}
-                      className="flex items-center justify-between p-2.5 sm:p-3 rounded-xl bg-slate-50 hover:bg-[#F4C400]/10 text-slate-700 hover:text-[#082B4C] border border-slate-100 hover:border-[#F4C400]/40 transition-all group"
+                      className="flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-slate-50 hover:bg-[#F4C400]/15 text-slate-700 hover:text-[#082B4C] border border-slate-200/80 hover:border-[#F4C400]/50 transition-all group"
                     >
-                      <div className="flex items-center gap-2.5 min-w-0">
-                        <LinkIcon className="w-4 h-4 text-slate-400 group-hover:text-[#082B4C] shrink-0 transition-colors" />
-                        <span className="text-xs font-semibold truncate">{link.name}</span>
+                      <div className="flex items-center gap-3 min-w-0">
+                        <LinkIcon className="w-5 h-5 text-slate-400 group-hover:text-[#082B4C] shrink-0 transition-colors" />
+                        <span className="text-xs sm:text-sm font-semibold truncate">{link.name}</span>
                       </div>
-                      <div className="flex items-center gap-1.5 shrink-0">
+                      <div className="flex items-center gap-2 shrink-0">
                         {link.count !== undefined && (
-                          <span className="px-1.5 py-0.5 rounded-md bg-white border border-slate-200 text-[0.68rem] font-mono font-bold text-slate-600">
+                          <span className="px-2.5 py-0.5 rounded-lg bg-white border border-slate-200 text-xs font-mono font-bold text-slate-700 shadow-2xs">
                             {link.count}
                           </span>
                         )}
-                        <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#082B4C] group-hover:translate-x-0.5 transition-transform" />
+                        <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-[#082B4C] group-hover:translate-x-1 transition-transform" />
                       </div>
                     </Link>
                   );
@@ -207,23 +208,23 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* Persistence Guide */}
-      <div className="p-5 sm:p-6 rounded-3xl bg-slate-100/90 border border-slate-200 text-xs text-slate-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div className="space-y-1 max-w-2xl">
-          <div className="font-bold text-sm text-slate-900 flex items-center gap-2">
-            <FileCode className="w-4 h-4 text-[#082B4C]" />
+      <div className="p-6 sm:p-8 rounded-3xl bg-slate-100/90 border border-slate-200 text-xs sm:text-sm text-slate-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div className="space-y-1.5 max-w-3xl">
+          <div className="font-bold text-sm sm:text-base text-slate-900 flex items-center gap-2.5">
+            <FileCode className="w-5 h-5 text-[#082B4C]" />
             Instant Browser State & Repository Sync
           </div>
-          <p className="text-slate-600 leading-relaxed">
+          <p className="text-slate-600 leading-relaxed text-xs sm:text-sm">
             All modifications you save in the Admin Panel update the live website immediately using persistent browser storage. You can click <strong>"Export JSON Backup"</strong> anytime to download a snapshot or commit it to your repository.
           </p>
         </div>
 
         <Button
           variant="outline"
-          size="sm"
+          size="md"
           onClick={exportConfigAsJSON}
-          className="shrink-0 bg-white"
-          icon={<Download className="w-3.5 h-3.5" />}
+          className="shrink-0 bg-white shadow-xs font-bold"
+          icon={<Download className="w-4 h-4" />}
         >
           Export JSON
         </Button>
