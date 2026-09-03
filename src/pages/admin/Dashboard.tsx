@@ -79,7 +79,7 @@ export const Dashboard: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-6 sm:space-y-8 max-w-6xl">
+    <div className="space-y-6 sm:space-y-8 w-full max-w-6xl mx-auto">
       <SEO title="Admin Dashboard | DriveCraft Content Control Center" />
 
       {/* Welcome Banner */}
@@ -127,7 +127,7 @@ export const Dashboard: React.FC = () => {
             Live Catalog & Metrics Overview
           </h3>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-3.5">
           {quickStats.map((stat, idx) => {
             const Icon = stat.icon;
 
@@ -135,7 +135,7 @@ export const Dashboard: React.FC = () => {
               <Link
                 key={idx}
                 to={stat.to}
-                className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-md hover:border-slate-300 transition-all space-y-1.5 group"
+                className="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-xs hover:shadow-md hover:border-slate-300 hover-lift transition-all space-y-1.5 group flex flex-col justify-between"
               >
                 <div className={`w-7 h-7 rounded-xl border flex items-center justify-center ${stat.color}`}>
                   <Icon className="w-3.5 h-3.5" />
@@ -160,11 +160,11 @@ export const Dashboard: React.FC = () => {
           All Page & Module Editors
         </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
           {editorCategories.map((cat, cIdx) => (
             <div
               key={cIdx}
-              className="p-5 rounded-3xl bg-white border border-slate-200 shadow-xs space-y-4 flex flex-col justify-between"
+              className="p-5 sm:p-6 rounded-3xl bg-white border border-slate-200 shadow-xs space-y-4 flex flex-col justify-between hover:shadow-sm transition-all h-full"
             >
               <div className="space-y-1.5">
                 <h4 className="text-base font-bold font-display text-slate-900">
@@ -183,7 +183,7 @@ export const Dashboard: React.FC = () => {
                     <Link
                       key={lIdx}
                       to={link.to}
-                      className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 hover:bg-[#F4C400]/10 text-slate-700 hover:text-[#082B4C] border border-slate-100 hover:border-[#F4C400]/40 transition-all group"
+                      className="flex items-center justify-between p-2.5 sm:p-3 rounded-xl bg-slate-50 hover:bg-[#F4C400]/10 text-slate-700 hover:text-[#082B4C] border border-slate-100 hover:border-[#F4C400]/40 transition-all group"
                     >
                       <div className="flex items-center gap-2.5 min-w-0">
                         <LinkIcon className="w-4 h-4 text-slate-400 group-hover:text-[#082B4C] shrink-0 transition-colors" />
@@ -207,7 +207,7 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* Persistence Guide */}
-      <div className="p-5 sm:p-6 rounded-3xl bg-slate-100 border border-slate-200 text-xs text-slate-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="p-5 sm:p-6 rounded-3xl bg-slate-100/90 border border-slate-200 text-xs text-slate-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="space-y-1 max-w-2xl">
           <div className="font-bold text-sm text-slate-900 flex items-center gap-2">
             <FileCode className="w-4 h-4 text-[#082B4C]" />
