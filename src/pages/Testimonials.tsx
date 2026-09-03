@@ -72,7 +72,7 @@ export const Testimonials: React.FC = () => {
       {/* Testimonials Grid with Staggered Motion */}
       <motion.div
         layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 sm:gap-8"
+        className="cards-grid-centered"
       >
         <AnimatePresence mode="popLayout">
           {filteredTestimonials.map((testimonial, idx) => (
@@ -83,6 +83,7 @@ export const Testimonials: React.FC = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.3, delay: idx * 0.05 }}
+              className="card-col-4"
             >
               <TestimonialCard testimonial={testimonial} />
             </motion.div>

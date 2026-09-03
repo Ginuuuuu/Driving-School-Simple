@@ -119,18 +119,20 @@ export const About: React.FC = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+        <div className="cards-grid-centered">
           {about.fleetStandards.map((std, idx) => (
-            <div key={idx} className="p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-2 sm:space-y-3 hover-lift">
-              <div className="text-2xl sm:text-3xl font-black font-display text-[#082B4C]">
-                {std.metric}
+            <div key={idx} className="card-col-4">
+              <div className="w-full h-full p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-2 sm:space-y-3 hover-lift">
+                <div className="text-2xl sm:text-3xl font-black font-display text-[#082B4C]">
+                  {std.metric}
+                </div>
+                <h3 className="text-base sm:text-lg font-bold font-display text-[#202B33]">
+                  {std.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed">
+                  {std.description}
+                </p>
               </div>
-              <h3 className="text-base sm:text-lg font-bold font-display text-[#202B33]">
-                {std.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed">
-                {std.description}
-              </p>
             </div>
           ))}
         </div>

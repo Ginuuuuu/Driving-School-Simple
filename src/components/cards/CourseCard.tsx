@@ -19,7 +19,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, onBookNow }) => 
 
   return (
     <div
-      className={`group flex flex-col justify-between rounded-2xl sm:rounded-3xl bg-white border transition-all duration-300 hover-lift ${
+      className={`group flex flex-col justify-between w-full h-full rounded-2xl sm:rounded-3xl bg-white border transition-all duration-300 hover-lift ${
         course.popular
           ? 'border-[#F4C400] shadow-md ring-2 ring-[#F4C400]/20'
           : 'border-[#E5E7EB] shadow-sm'

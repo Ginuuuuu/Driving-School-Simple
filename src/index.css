@@ -185,6 +185,66 @@
       padding-right: 3.5rem;
     }
   }
+
+  /* Centered Responsive Card Grids (Centers orphan/last-row cards and keeps uniform card dimensions) */
+  .cards-grid-centered {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+  @media (min-width: 640px) {
+    .cards-grid-centered {
+      gap: 2rem;
+    }
+  }
+
+  /* 3-Column Card Item (Centers remaining cards on the last row) */
+  .card-col-3 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 28rem;
+  }
+  @media (min-width: 640px) {
+    .card-col-3 {
+      width: calc((100% - 2rem) / 2);
+      max-width: none;
+    }
+  }
+  @media (min-width: 1024px) {
+    .card-col-3 {
+      width: calc((100% - 4rem) / 3);
+      max-width: none;
+    }
+  }
+
+  /* 4-Column Card Item (Centers remaining cards on the last row) */
+  .card-col-4 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 28rem;
+  }
+  @media (min-width: 640px) {
+    .card-col-4 {
+      width: calc((100% - 2rem) / 2);
+      max-width: none;
+    }
+  }
+  @media (min-width: 1024px) {
+    .card-col-4 {
+      width: calc((100% - 4rem) / 3);
+      max-width: none;
+    }
+  }
+  @media (min-width: 1280px) {
+    .card-col-4 {
+      width: calc((100% - 6rem) / 4);
+      max-width: none;
+    }
+  }
 }
 
 @keyframes floatSlow {

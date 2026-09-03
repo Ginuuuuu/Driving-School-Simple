@@ -125,7 +125,7 @@ export const Courses: React.FC = () => {
       {filteredCourses.length > 0 ? (
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-8"
+          className="cards-grid-centered"
         >
           <AnimatePresence mode="popLayout">
             {filteredCourses.map((course, idx) => (
@@ -136,6 +136,7 @@ export const Courses: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.3, delay: idx * 0.05 }}
+                className="card-col-3"
               >
                 <CourseCard
                   course={course}
