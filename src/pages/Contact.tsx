@@ -17,7 +17,7 @@ export const Contact: React.FC = () => {
   const whatsappUrl = generateDirectWhatsAppChatLink(siteConfig);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 space-y-6 sm:space-y-12 lg:space-y-16">
+    <div className="site-container py-4 sm:py-10 space-y-6 sm:space-y-12 lg:space-y-16">
       <SEO
         title="Contact Us & Training Branch Locations"
         description="Get in touch with DriveCraft Motor Academy. Call us, WhatsApp us, or visit our training branches with doorstep lesson pickup."
@@ -31,7 +31,7 @@ export const Contact: React.FC = () => {
       </div>
 
       {/* Main Grid: Left Contact Info & Branches, Right Enquiry Form */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-12 xl:gap-16 items-start">
         {/* Left Column: Direct Contact & Locations (5 Cols) */}
         <motion.div
           initial={{ opacity: 0, x: -15 }}

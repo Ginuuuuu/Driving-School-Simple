@@ -19,7 +19,7 @@ export const Pricing: React.FC = () => {
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string) => void }>();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 space-y-10 sm:space-y-16 lg:space-y-24">
+    <div className="site-container py-4 sm:py-10 space-y-10 sm:space-y-16 lg:space-y-24">
       <SEO
         title="Transparent Driving Lesson Pricing & Packages"
         description="Affordable and all-inclusive driving package pricing with zero hidden fees. Starter, Standard, and Mastery Pro courses with doorstep pickup."
@@ -37,7 +37,7 @@ export const Pricing: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-8"
+        className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10"
       >
         {pricing.packages.slice(0, 3).map((pkg) => (
           <PricingCard

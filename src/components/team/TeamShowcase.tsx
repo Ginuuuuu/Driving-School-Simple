@@ -74,17 +74,17 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
 
   return (
     <div className="w-full select-none font-sans">
-      {/* ── DESKTOP VIEW (md and up): EXACT PREVIOUS OFFSET 3-COLUMNS + NAME LIST ── */}
-      <div className="hidden md:flex flex-row items-start gap-8 md:gap-10 lg:gap-14 w-full max-w-5xl mx-auto py-6 md:py-8 px-4 md:px-6">
+      {/* ── DESKTOP VIEW (md and up): BALANCED RESPONSIVE STAGGERED PHOTO COLUMNS + INSTRUCTOR LIST ── */}
+      <div className="hidden md:flex flex-row items-center justify-between gap-8 md:gap-10 lg:gap-16 xl:gap-24 w-full max-w-7xl mx-auto py-6 md:py-10 px-2 sm:px-4">
         {/* Left: 3 staggered photo columns */}
-        <div className="flex gap-2 md:gap-3 flex-shrink-0">
+        <div className="flex gap-2.5 md:gap-3.5 lg:gap-4 xl:gap-5 flex-shrink-0">
           {/* Column 1 */}
-          <div className="flex flex-col gap-2 md:gap-3">
+          <div className="flex flex-col gap-2.5 md:gap-3.5 lg:gap-4 xl:gap-5">
             {col1.map((member) => (
               <PhotoCard
                 key={member.id}
                 member={member}
-                className="w-[110px] h-[120px] sm:w-[130px] sm:h-[140px] md:w-[155px] md:h-[165px]"
+                className="w-[110px] h-[120px] sm:w-[130px] sm:h-[140px] md:w-[150px] md:h-[160px] lg:w-[170px] lg:h-[185px] xl:w-[190px] xl:h-[205px] 2xl:w-[210px] 2xl:h-[225px]"
                 hoveredId={hoveredId}
                 onHover={setHoveredId}
                 onClick={() => onSelectInstructor?.(member.id)}
@@ -93,12 +93,12 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
           </div>
 
           {/* Column 2 */}
-          <div className="flex flex-col gap-2 md:gap-3 mt-[48px] sm:mt-[56px] md:mt-[68px]">
+          <div className="flex flex-col gap-2.5 md:gap-3.5 lg:gap-4 xl:gap-5 mt-[48px] sm:mt-[56px] md:mt-[64px] lg:mt-[76px] xl:mt-[86px]">
             {col2.map((member) => (
               <PhotoCard
                 key={member.id}
                 member={member}
-                className="w-[122px] h-[132px] sm:w-[145px] sm:h-[155px] md:w-[172px] md:h-[182px]"
+                className="w-[122px] h-[132px] sm:w-[145px] sm:h-[155px] md:w-[165px] md:h-[175px] lg:w-[185px] lg:h-[200px] xl:w-[210px] xl:h-[225px] 2xl:w-[230px] 2xl:h-[245px]"
                 hoveredId={hoveredId}
                 onHover={setHoveredId}
                 onClick={() => onSelectInstructor?.(member.id)}
@@ -107,12 +107,12 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
           </div>
 
           {/* Column 3 */}
-          <div className="flex flex-col gap-2 md:gap-3 mt-[22px] sm:mt-[26px] md:mt-[32px]">
+          <div className="flex flex-col gap-2.5 md:gap-3.5 lg:gap-4 xl:gap-5 mt-[22px] sm:mt-[26px] md:mt-[30px] lg:mt-[36px] xl:mt-[42px]">
             {col3.map((member) => (
               <PhotoCard
                 key={member.id}
                 member={member}
-                className="w-[115px] h-[125px] sm:w-[136px] sm:h-[146px] md:w-[162px] md:h-[172px]"
+                className="w-[115px] h-[125px] sm:w-[136px] sm:h-[146px] md:w-[155px] md:h-[165px] lg:w-[175px] lg:h-[190px] xl:w-[195px] xl:h-[210px] 2xl:w-[215px] 2xl:h-[230px]"
                 hoveredId={hoveredId}
                 onHover={setHoveredId}
                 onClick={() => onSelectInstructor?.(member.id)}
@@ -122,7 +122,7 @@ export const TeamShowcase: React.FC<TeamShowcaseProps> = ({
         </div>
 
         {/* Right: member name list */}
-        <div className="flex flex-col gap-4 md:gap-5 pt-0 md:pt-2 flex-1 w-full">
+        <div className="flex flex-col gap-4 md:gap-5 lg:gap-6 pt-0 md:pt-2 flex-1 w-full max-w-xl pl-4 lg:pl-8">
           {displayMembers.map((member) => (
             <MemberRow
               key={member.id}

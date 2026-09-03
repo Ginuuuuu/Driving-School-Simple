@@ -13,7 +13,7 @@ export const Resources: React.FC = () => {
   const resources = siteData?.resources || defaultResources;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 space-y-6 sm:space-y-12">
+    <div className="site-container py-4 sm:py-10 space-y-6 sm:space-y-12">
       <SEO
         title="Driving Resources, Road Signs & RTO Guides"
         description="Free educational resources on Indian road signs, parallel parking formulas, automated test track secrets, and defensive driving techniques."
@@ -31,7 +31,7 @@ export const Resources: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
       >
         {resources.map((guide, idx) => (
           <motion.div

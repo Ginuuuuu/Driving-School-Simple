@@ -28,7 +28,7 @@ export const Testimonials: React.FC = () => {
   }, [testimonials, selectedTag]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 space-y-6 sm:space-y-12">
+    <div className="site-container py-4 sm:py-10 space-y-6 sm:space-y-12">
       <SEO
         title="Student Reviews & First-Attempt Pass Stories"
         description="Read authentic learner reviews from nervous first-timers, working professionals, and seniors who gained safe lifelong driving confidence."
@@ -72,7 +72,7 @@ export const Testimonials: React.FC = () => {
       {/* Testimonials Grid with Staggered Motion */}
       <motion.div
         layout
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-6 sm:gap-8"
       >
         <AnimatePresence mode="popLayout">
           {filteredTestimonials.map((testimonial, idx) => (

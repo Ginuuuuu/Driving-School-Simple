@@ -46,7 +46,7 @@ export const CourseDetail: React.FC = () => {
   const whatsappUrl = generateDirectWhatsAppChatLink(siteConfig, `Hello! I would like to book the "${course.title}" course.`);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 space-y-6 sm:space-y-12 lg:space-y-16">
+    <div className="site-container py-4 sm:py-10 space-y-6 sm:space-y-12 lg:space-y-16">
       <SEO
         title={course.title}
         description={course.summary}

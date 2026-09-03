@@ -16,7 +16,7 @@ export const About: React.FC = () => {
   const { onOpenBooking } = useOutletContext<{ onOpenBooking: (courseSlug?: string) => void }>();
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 space-y-10 sm:space-y-16 lg:space-y-24">
+    <div className="site-container py-4 sm:py-10 space-y-10 sm:space-y-16 lg:space-y-24">
       <SEO
         title="About Our Academy & Safety Philosophy"
         description="Learn about DriveCraft Motor Academy's mission to transform Indian drivers through dual-control safety cars, patient certified instructors, and structured muscle memory training."
@@ -28,14 +28,14 @@ export const About: React.FC = () => {
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
-        className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center"
+        className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center"
       >
-        <div className="lg:col-span-7 space-y-3 sm:space-y-4">
-          <h1 className="text-xl sm:text-3xl lg:text-4xl font-extrabold font-display text-[#202B33] tracking-tight leading-tight">
+        <div className="lg:col-span-7 space-y-4 sm:space-y-6">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold font-display text-[#202B33] tracking-tight leading-tight">
             {about.missionHeadline}
           </h1>
 
-          <p className="text-xs sm:text-base text-[#6B7280] leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-[#6B7280] leading-relaxed">
             {about.missionBody}
           </p>
 
@@ -59,7 +59,7 @@ export const About: React.FC = () => {
             <img
               src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80"
               alt="DriveCraft training fleet and certified mentors"
-              className="w-full h-64 sm:h-96 object-cover transition-transform duration-700 hover:scale-105"
+              className="w-full h-64 sm:h-80 md:h-96 lg:h-[460px] xl:h-[500px] object-cover transition-transform duration-700 hover:scale-105"
             />
           </div>
         </motion.div>
@@ -119,16 +119,16 @@ export const About: React.FC = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {about.fleetStandards.map((std, idx) => (
-            <div key={idx} className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-1.5 sm:space-y-2 hover-lift">
-              <div className="text-xl sm:text-2xl font-black font-display text-[#082B4C]">
+            <div key={idx} className="p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7EB] shadow-xs space-y-2 sm:space-y-3 hover-lift">
+              <div className="text-2xl sm:text-3xl font-black font-display text-[#082B4C]">
                 {std.metric}
               </div>
-              <h3 className="text-sm sm:text-base font-bold font-display text-[#202B33]">
+              <h3 className="text-base sm:text-lg font-bold font-display text-[#202B33]">
                 {std.title}
               </h3>
-              <p className="text-xs text-[#6B7280] leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed">
                 {std.description}
               </p>
             </div>
@@ -142,12 +142,12 @@ export const About: React.FC = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-30px" }}
         transition={{ duration: 0.45 }}
-        className="bg-[#F5F6F7] rounded-2xl sm:rounded-3xl p-5 sm:p-12 border border-[#E5E7EB] text-center max-w-4xl mx-auto space-y-3 sm:space-y-4 shadow-sm"
+        className="bg-[#F5F6F7] rounded-2xl sm:rounded-3xl p-6 sm:p-12 lg:p-16 border border-[#E5E7EB] text-center max-w-5xl xl:max-w-6xl mx-auto space-y-3 sm:space-y-5 shadow-sm"
       >
-        <h2 className="text-xl sm:text-3xl font-extrabold font-display text-[#202B33]">
+        <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold font-display text-[#202B33]">
           {about.visionHeadline}
         </h2>
-        <p className="text-xs sm:text-base text-[#6B7280] leading-relaxed max-w-2xl mx-auto">
+        <p className="text-xs sm:text-base lg:text-lg text-[#6B7280] leading-relaxed max-w-3xl mx-auto">
           {about.visionBody}
         </p>
         <div className="pt-2 sm:pt-4">

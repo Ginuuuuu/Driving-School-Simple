@@ -38,7 +38,7 @@ export const Courses: React.FC = () => {
   }, [courses, searchQuery, selectedCategory, selectedTransmission]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 space-y-6 sm:space-y-12">
+    <div className="site-container py-4 sm:py-10 space-y-6 sm:space-y-12">
       <SEO
         title="Driving Courses & Training Packages"
         description="Explore our comprehensive driving curriculum: Beginner zero-to-hero, Automatic transmission specialist, Refresher confidence, and Highway defensive driving."

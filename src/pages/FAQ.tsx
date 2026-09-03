@@ -49,7 +49,7 @@ export const FAQ: React.FC = () => {
       {/* ============================================================ */}
       {/* DESKTOP UI (md:block) — Clean 3-Column Direct Grid Layout     */}
       {/* ============================================================ */}
-      <div className="hidden md:block max-w-7xl mx-auto px-6 lg:px-8 space-y-10 lg:space-y-12">
+      <div className="hidden md:block site-container space-y-10 lg:space-y-12">
         {/* Page Header */}
         <div className="space-y-3">
           <h1 className="text-3xl lg:text-4xl font-extrabold font-display text-[#202B33] tracking-tight">

@@ -95,7 +95,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full max-w-4xl mx-auto select-none ${
+      className={`relative w-full max-w-4xl lg:max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto select-none ${
         isCompactPreview ? 'py-3 sm:py-6' : 'py-6 sm:py-10 space-y-8'
       }`}
     >
@@ -211,7 +211,7 @@ export const ScrollFlowingRoadmap: React.FC<ScrollFlowingRoadmapProps> = ({
               {/* Content Section:
                   - On Desktop (>= md): Always shows previous rich layout.
                   - On Mobile (< md): Only shows details on full /roadmap page when expanded. */}
-              <TimelineContent side="right" className="pt-1 max-w-3xl">
+              <TimelineContent side="right" className="pt-1 w-full max-w-none">
                 {/* ── DESKTOP CONTENT (>= md): PREVIOUS COMPLETE RICH LAYOUT ── */}
                 <div className="hidden md:block space-y-3 pb-8">
                   {/* Subtitle / Stage name */}

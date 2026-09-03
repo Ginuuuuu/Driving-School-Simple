@@ -11,7 +11,7 @@ export const Privacy: React.FC = () => {
   const policy = legal?.privacyPolicy || defaultLegal.privacyPolicy;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
+    <div className="site-container max-w-4xl lg:max-w-5xl py-6 sm:py-10 space-y-8">
       <SEO
         title="Privacy Policy"
         description="DriveCraft Motor Academy privacy policy regarding learner information, WhatsApp communications, and Indian DPDP compliance."

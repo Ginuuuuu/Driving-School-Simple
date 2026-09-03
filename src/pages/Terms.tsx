@@ -10,7 +10,7 @@ export const Terms: React.FC = () => {
   const terms = legal?.termsAndConditions || defaultLegal.termsAndConditions;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
+    <div className="site-container max-w-4xl lg:max-w-5xl py-6 sm:py-10 space-y-8">
       <SEO
         title="Terms & Conditions"
         description="DriveCraft Motor Academy terms of service regarding lesson bookings, rescheduling, vehicle dual-control insurance, and student guidelines."
