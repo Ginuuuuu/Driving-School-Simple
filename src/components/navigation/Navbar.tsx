@@ -63,7 +63,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
               <span>Available in {siteConfig.serviceCities.slice(0, 4).join(', ')} & more</span>
             </div>
 
-            <div className="flex items-center gap-5">
+            <div className="w-[140px] xl:w-[155px] flex items-center justify-center shrink-0">
               <a
                 href={`tel:${siteConfig.phoneDial}`}
                 className="flex items-center gap-1.5 hover:text-[#082B4C] font-semibold text-[#202B33] transition-colors"
@@ -118,22 +118,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileMenu, onOpenBookingM
               <MessageCircle className="w-4 h-4 xl:w-5 xl:h-5 fill-current" />
             </a>
 
-            {/* Quick Call Button */}
-            <a
-              href={`tel:${siteConfig.phoneDial}`}
-              className="hidden 2xl:inline-flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold text-[#202B33] bg-[#F5F6F7] hover:bg-[#E5E7EB] border border-[#E5E7EB] transition-colors"
-              aria-label={`Call us at ${siteConfig.phoneDisplay}`}
-            >
-              <Phone className="w-3.5 h-3.5 text-[#082B4C]" />
-              <span>Call Us</span>
-            </a>
-
             {/* Primary CTA: Book a Lesson */}
             <Button
               variant="primary"
               size="sm"
               onClick={onOpenBookingModal}
-              className="text-xs xl:text-sm px-2.5 sm:px-3.5 xl:px-4 py-1.5 sm:py-2 xl:py-2.5 shadow-sm font-bold shrink-0 text-[#082B4C]"
+              className="text-xs xl:text-sm w-[140px] xl:w-[155px] justify-center py-1.5 sm:py-2 xl:py-2.5 shadow-sm font-bold shrink-0 text-[#082B4C]"
               icon={<Sparkles className="w-3.5 h-3.5 xl:w-4 xl:h-4 text-[#082B4C] shrink-0" />}
             >
               <span className="hidden sm:inline">Book a Lesson</span>
