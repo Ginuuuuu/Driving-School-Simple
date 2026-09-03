@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
           {/* Column 1: Brand & Safety Bio */}
           <div className="lg:col-span-2 space-y-2.5 sm:space-y-4">
             <Logo variant="light" size="sm" showTagline />
-            <p className="text-xs sm:text-sm text-[#F5F6F7]/80 leading-relaxed max-w-sm line-clamp-2 sm:line-clamp-none">
+            <p className="text-xs sm:text-sm text-[#F5F6F7]/80 leading-relaxed max-w-sm">
               {siteConfig.shortDescription}
             </p>
 
@@ -40,8 +40,69 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Columns 2 & 3: Side-by-Side 2-Column Grid on Mobile */}
-          <div className="grid grid-cols-2 gap-4 lg:col-span-2 lg:grid-cols-2">
+          {/* Mobile Navigation (sm:hidden): Clean 2-column grid without nested course lists, optimized for mobile UX and touch targets */}
+          <div className="grid grid-cols-2 gap-4 sm:hidden">
+            {/* Column: Explore & Programs */}
+            <div className="space-y-2">
+              <h3 className="text-white font-display font-bold text-xs tracking-wide uppercase">
+                Explore
+              </h3>
+              <ul className="space-y-2 text-xs text-[#F5F6F7]/80">
+                <li>
+                  <Link to="/courses" className="hover:text-[#F4C400] transition-colors block py-0.5 font-medium">
+                    Driving Courses
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/roadmap" className="hover:text-[#F4C400] transition-colors block py-0.5 font-medium">
+                    Licence Roadmap
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/pricing" className="hover:text-[#F4C400] transition-colors block py-0.5 font-medium">
+                    Pricing & Plans
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/instructors" className="hover:text-[#F4C400] transition-colors block py-0.5 font-medium">
+                    Our Instructors
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column: Company & Resources */}
+            <div className="space-y-2">
+              <h3 className="text-white font-display font-bold text-xs tracking-wide uppercase">
+                Company
+              </h3>
+              <ul className="space-y-2 text-xs text-[#F5F6F7]/80">
+                <li>
+                  <Link to="/about" className="hover:text-[#F4C400] transition-colors block py-0.5 font-medium">
+                    About Academy
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/resources" className="hover:text-[#F4C400] transition-colors block py-0.5 font-medium">
+                    Road Signs & Guides
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/faq" className="hover:text-[#F4C400] transition-colors block py-0.5 font-medium">
+                    FAQs
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="hover:text-[#F4C400] transition-colors block py-0.5 font-medium">
+                    Locations & Hubs
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Desktop Navigation (hidden sm:grid lg:col-span-2 lg:grid-cols-2): Original multi-column courses and explore lists */}
+          <div className="hidden sm:grid sm:grid-cols-2 gap-4 lg:col-span-2 lg:grid-cols-2">
             {/* Column 2: Popular Courses */}
             <div className="space-y-2 sm:space-y-3">
               <h3 className="text-white font-display font-bold text-xs sm:text-base tracking-wide uppercase">
@@ -155,7 +216,7 @@ export const Footer: React.FC = () => {
 
               <div className="flex items-start gap-2 col-span-2 sm:col-span-1 p-2 sm:p-0 rounded-lg sm:rounded-none bg-[#061F36]/60 sm:bg-transparent border border-[#0A3660]/40 sm:border-none text-[0.7rem] sm:text-xs text-[#F5F6F7]/80 leading-snug">
                 <MapPin className="w-3.5 h-3.5 text-[#F4C400] shrink-0 mt-0.5" />
-                <span className="truncate sm:whitespace-normal">
+                <span className="sm:whitespace-normal">
                   {siteConfig.branches[0]?.address}, {siteConfig.branches[0]?.city}
                 </span>
               </div>
