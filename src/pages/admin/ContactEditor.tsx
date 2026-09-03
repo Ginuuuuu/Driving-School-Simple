@@ -81,7 +81,7 @@ export const ContactEditor: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 w-full max-w-5xl mx-auto">
+    <div className="space-y-6 sm:space-y-8 w-full">
       <SEO title="Contact & Branches Editor | Admin Panel" />
 
       {/* Header with Title and Global Save CTA */}
