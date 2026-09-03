@@ -17,8 +17,8 @@ export const SEOEditor: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 max-w-5xl">
-      <SEO title="SEO Metadata Editor | Admin Panel" />
+    <div className="space-y-6 w-full max-w-5xl mx-auto">
+      <SEO title="SEO & Meta Editor | Admin Panel" />
 
       {/* Header with Title and Global Save CTA */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-xs">
