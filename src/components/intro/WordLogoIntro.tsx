@@ -59,19 +59,9 @@ export const WordLogoIntro: React.FC<WordLogoIntroProps> = ({
       handleFinish();
     }, 2100);
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') {
-        e.preventDefault();
-        handleFinish();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-
     return () => {
       clearInterval(timer);
       clearTimeout(exitTimer);
-      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isVisible, handleFinish, onComplete]);
 
@@ -147,8 +137,8 @@ export const WordLogoIntro: React.FC<WordLogoIntroProps> = ({
           </motion.div>
         </div>
 
-        {/* Bottom Loading Progress & Skip Control */}
-        <div className="relative z-10 w-full max-w-xs flex flex-col items-center gap-3">
+        {/* Bottom Loading Progress */}
+        <div className="relative z-10 w-full max-w-xs flex flex-col items-center">
           {/* Frosted Progress Track */}
           <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden backdrop-blur-md border border-white/10 p-0.5">
             <motion.div
@@ -157,15 +147,6 @@ export const WordLogoIntro: React.FC<WordLogoIntroProps> = ({
               transition={{ ease: 'linear' }}
             />
           </div>
-
-          {/* Frosted Glass Skip Button */}
-          <button
-            onClick={handleFinish}
-            className="text-[10px] sm:text-[11px] uppercase tracking-widest text-slate-200 hover:text-white px-4 py-1.5 rounded-full border border-white/15 hover:border-[#F4C400]/60 bg-white/[0.08] hover:bg-white/[0.15] backdrop-blur-md transition-all focus:outline-none focus:ring-2 focus:ring-[#F4C400]"
-            aria-label="Skip introduction"
-          >
-            Skip Intro <span className="text-slate-400 ml-1 font-mono text-[10px]">(Esc)</span>
-          </button>
         </div>
       </motion.div>
     </AnimatePresence>
